@@ -240,3 +240,28 @@ def queue(request):
 @roles('pharmacist', 'admin')
 def movements(request):
     return render(request, 'care/movements.html', {'movements': StockMovement.objects.select_related('medicine', 'actor', 'prescription')[:200]})
+
+
+@roles('admin')
+@require_http_methods(['GET'])
+def data_management(request):
+    from .models import Department, DoctorProfile, Medicine, Payment, AuditEvent, DeliveryOutbox
+    entities = [
+        {'name':'Users and access','count':User.objects.count(),'purpose':'Search accounts, review status and revoke access. Passwords and private clinical records are excluded.','route':'users'},
+        {'name':'Staff review','count':User.objects.exclude(role='patient').filter(approval='pending').count(),'purpose':'Review pending staff credentials before granting access.','route':'staff'},
+        {'name':'Departments','count':Department.objects.count(),'purpose':'Create departments and edit validated service descriptions.','route':'departments'},
+        {'name':'Doctor profiles','count':DoctorProfile.objects.count(),'purpose':'Review professional associations through staff approval.','route':'staff'},
+        {'name':'Appointment operations','count':Appointment.objects.count(),'purpose':'Manage scheduling and operational status without clinical notes or report downloads.','route':'appointments'},
+        {'name':'Medicine batches','count':Medicine.objects.count(),'purpose':'Manage catalog and validated, reasoned stock adjustments.','route':'inventory'},
+        {'name':'Payment records','count':Payment.objects.count(),'purpose':'Review operational totals. Open an appointment to record a verified payment.','route':'operations'},
+        {'name':'Audit events','count':AuditEvent.objects.count(),'purpose':'Review recorded administrative and security activity.','route':'audit'},
+    ]
+    query=request.GET.get('q','').strip()[:100]
+    if query:
+        entities=[item for item in entities if query.casefold() in item['name'].casefold()]
+    if request.GET.get('sort') == 'count':
+        entities.sort(key=lambda item:item['count'],reverse=True)
+    else:
+        entities.sort(key=lambda item:item['name'])
+    audit(request.user,'admin.data_management.viewed')
+    return render(request,'care/data_management.html',{'entities':entities,'q':query,'sort':request.GET.get('sort','name')})

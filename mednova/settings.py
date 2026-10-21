@@ -59,6 +59,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "care.middleware.SecurityPolicyMiddleware",
+    "care.middleware.InitialPasswordMiddleware",
 ]
 ROOT_URLCONF = "mednova.urls"
 TEMPLATES = [
@@ -182,3 +183,5 @@ RAZORPAY_WEBHOOK_SECRET = os.getenv("RAZORPAY_WEBHOOK_SECRET", "")
 CLAMAV_COMMAND = os.getenv("CLAMAV_COMMAND", "")
 CSRF_FAILURE_VIEW = "care.views.csrf_failure"
 CRON_SECRET = os.getenv("CRON_SECRET", "")
+
+LOCAL_DEMO = LOCAL and os.getenv("MEDNOVA_DEMO") == "1"

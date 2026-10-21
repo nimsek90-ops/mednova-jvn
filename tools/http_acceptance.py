@@ -36,8 +36,10 @@ def sign(email):
 
 
 def main():
-    if os.getenv("APP_ENV") != "local" or os.getenv("MEDNOVA_TESTING") != "1" or os.getenv("MEDNOVA_TEST_DB") != "browser_acceptance.sqlite3":
-        raise SystemExit("Refusing to mutate data: set APP_ENV=local, MEDNOVA_TESTING=1 and MEDNOVA_TEST_DB=browser_acceptance.sqlite3 for the isolated fixture server only.")
+    sqlite_fixture = os.getenv('MEDNOVA_TESTING') == '1' and os.getenv('MEDNOVA_TEST_DB') == 'browser_acceptance.sqlite3'
+    mysql_fixture = (os.getenv('MEDNOVA_HTTP_MYSQL') == '1' and os.getenv('MEDNOVA_DEMO') == '1' and os.getenv('MYSQL_HOST') == '127.0.0.1' and os.getenv('MYSQL_DATABASE') == 'mednova_local')
+    if os.getenv('APP_ENV') != 'local' or not (sqlite_fixture or mysql_fixture):
+        raise SystemExit('Refusing mutations: use the explicitly isolated SQLite fixture or the local MySQL demo helper.')
     patient = requests.Session()
     email = f"synthetic-{uuid.uuid4().hex[:12]}@example.test"
     response = post(patient, "/register/", {"name": "Synthetic HTTP Patient", "email": email, "role": "patient", "password1": PASSWORD, "password2": PASSWORD, "consent": "on"})

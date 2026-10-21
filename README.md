@@ -1,3 +1,5 @@
+> Latest final audit: [FINAL_SYSTEM_REPORT.md](docs/FINAL_SYSTEM_REPORT.md). The running local app now uses actual MySQL `mednova_local` (31 tables). 111 SQLite tests,115 MySQL tests,8 HTTP scenarios and261 responsive checks passed. Human administrator provisioning and hosted production verification remain blocked. Earlier counts below are historical.
+
 > UI redesign: see [UI_REDESIGN_REPORT.md](docs/UI_REDESIGN_REPORT.md) for the shared design system, all screen coverage,129 responsive checks and104 passing regression tests.
 
 > Current product expansion: see docs/PRODUCT_IMPLEMENTATION_REPORT.md. New additive migrations0003/0004; 108 MySQL tests and104 SQLite tests passed, including four real MySQL race tests. Older counts and statements below describe earlier checkpoints. Production deployment remains blocked.
@@ -27,7 +29,7 @@ A locally reviewable replacement for the supplied React/localStorage prototype. 
 
 Updated audit (21 October 2026): see `docs/PROJECT_AUDIT.md`, `docs/FIXES_APPLIED.md`, `docs/TEST_REPORT.md`, `docs/DATABASE_SETUP.md`, `docs/DEPLOYMENT.md` and `docs/PRODUCTION_READINESS.md`. Latest verification: 87 regression tests and eight actual HTTP scenarios passed; main authenticated browser journeys, including prescriptions/dispensing and report upload/download, were executed. Production MySQL, the explicit MySQL concurrency suite, real provider integrations and Vercel deployment remain UNVERIFIED. Vercel project creation was blocked by account permission (HTTP 403). No production-readiness claim is made. Earlier verification artifacts are historical.
 
-Read `docs/SECURITY_REVIEW.md` for exact test results, scope and remaining checks. This is a review build, **not a claim of production readiness or a completed independent penetration test**. No actual patient records or credentials are bundled. The target MySQL server, Windows installer, live email, real two-device video, payment provider and mobile/desktop browser rendering require target-environment verification.
+Read `docs/SECURITY_REVIEW.md` for exact test results, scope and remaining checks. This is a review build, **not a claim of production readiness or a completed independent penetration test**. No production dataset is included in the source artifact; existing local records are preserved in ignored private databases. The target MySQL server, Windows installer, live email, real two-device video, payment provider and mobile/desktop browser rendering require target-environment verification.
 
 ## Source map
 

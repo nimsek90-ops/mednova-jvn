@@ -47,6 +47,7 @@ class User(AbstractUser):
         default="approved",
     )
     review_note = models.CharField(max_length=300, blank=True)
+    must_change_password = models.BooleanField(default=False)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["name"]
     objects = UserManager()

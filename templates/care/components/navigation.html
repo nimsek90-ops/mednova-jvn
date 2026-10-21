@@ -11,7 +11,7 @@
 {% endif %}<span class="nav-heading">HEALTH &amp; WELLBEING</span>{% if request.user.role == 'patient' %}<a href="{% url 'wellness' %}">{% include 'care/components/icon.html' with name='heart' %}<span>{{ 'Wellness tracking'|t:language }}</span></a>
 <a href="{% url 'timeline' request.user.pk %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Medical timeline'|t:language }}</span></a>{% endif %}<a href="{% url 'health_hub' %}">{% include 'care/components/icon.html' with name='heart' %}<span>{{ 'Health Hub'|t:language }}</span></a>
 <a href="{% url 'symptoms' %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Symptom information'|t:language }}</span></a>
-{% if request.user.role == "admin" %}<span class="nav-heading">ADMINISTRATION</span><a href="{% url 'staff' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'Staff approvals'|t:language }}</span></a>
+{% if request.user.role == "admin" %}<span class="nav-heading">ADMINISTRATION</span><a href="{% url 'data_management' %}">{% include 'care/components/icon.html' with name='grid' %}<span>Data management</span></a><a href="{% url 'staff' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'Staff approvals'|t:language }}</span></a>
 <a href="{% url 'users' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'User management'|t:language }}</span></a>
 <a href="{% url 'departments' %}">{% include 'care/components/icon.html' with name='grid' %}<span>{{ 'Departments'|t:language }}</span></a>
 <a href="{% url 'operations' %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Operational report'|t:language }}</span></a>

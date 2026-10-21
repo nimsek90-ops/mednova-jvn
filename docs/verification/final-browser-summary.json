@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "method": "CUA actual browser viewport override + fresh AX observation + read-only document scrollWidth/innerWidth and h1 measurements",
+  "database": "mednova_local (actual MySQL)",
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1440,
+    1600
+  ],
+  "height": 1000,
+  "total_checks": 261,
+  "document_overflow_failures": 0,
+  "missing_main_headings": 0,
+  "groups": [
+    {
+      "role": "pharmacist",
+      "pages": [
+        "/inventory/",
+        "/inventory/movements/",
+        "/dashboard/"
+      ],
+      "checks": 27
+    },
+    {
+      "role": "admin",
+      "pages": [
+        "/admin/data/",
+        "/dashboard/",
+        "/admin/departments/",
+        "/admin/operations/"
+      ],
+      "checks": 36
+    },
+    {
+      "role": "receptionist",
+      "pages": [
+        "/dashboard/",
+        "/queue/",
+        "/appointments/<synthetic-final-booking>/"
+      ],
+      "checks": 27
+    },
+    {
+      "role": "doctor",
+      "pages": [
+        "/dashboard/",
+        "/availability/",
+        "/appointments/"
+      ],
+      "checks": 27
+    },
+    {
+      "role": "patient",
+      "pages": [
+        "/dashboard/",
+        "/doctors/",
+        "/doctors/3/",
+        "/book/3/",
+        "/wellness/",
+        "/health-hub/",
+        "/profile/",
+        "/prescriptions/"
+      ],
+      "checks": 72
+    },
+    {
+      "role": "anonymous",
+      "pages": [
+        "/",
+        "/login/",
+        "/register/",
+        "/about/",
+        "/departments/",
+        "/symptom-information/",
+        "/contact/",
+        "/pharmacy/"
+      ],
+      "checks": 72
+    }
+  ],
+  "visual_reviews": [
+    "1440x1000 patient dashboard",
+    "1440x1000 administrator data portal",
+    "390x900 booking"
+  ],
+  "keyboard": "Mobile menu opening moved focus to first navigation link; Escape closed it and returned focus to Menu.",
+  "console_errors_observed": [],
+  "screenshots": "Desktop and mobile screenshots captured and visually reviewed in browser tool output. No saved screenshot file artifact is claimed.",
+  "limits": "Geometry checks are not full accessibility certification, every-control overlap proof, real-device coverage or full write workflow verification."
+}

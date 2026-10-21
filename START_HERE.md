@@ -1,3 +1,5 @@
+> This prepared laptop already has a verified local MySQL installation. From this folder run `.\.venv\Scripts\python.exe tools/local_mysql.py serve` and open http://127.0.0.1:8000/. Do not rerun setup to reset existing data. See [final report](docs/FINAL_SYSTEM_REPORT.md) and [database/admin operations](docs/MYSQL_OPERATIONS.md). The setup steps below apply to a fresh installation.
+
 # Open MedNova on your Windows laptop
 
 1. Extract the ZIP completely. Do not run it from inside the ZIP viewer.
@@ -36,4 +38,4 @@ Review the website locally first. Hosting and custom-domain connection are a sep
 
 The public home, departments and doctor profiles are available before login. Sign in to open the role-specific workspace. Open the actual Django/Waitress URL, not a static template folder through Go Live. A confirmed application Referrer-Policy defect caused login/language CSRF failures and has been repaired; CSRF remains enabled.
 
-The current local acceptance server is explicitly labelled Synthetic data and uses an isolated test database. Its records and files are not production data. Production must use managed MySQL and private object storage; never copy the test SQLite database or test accounts. See docs/REPAIR_AND_VERCEL_REPORT.md and docs/VERCEL_DEPLOYMENT.md.
+The current local preview uses actual MySQL mednova_local and is labelled local development. Existing local records were preserved; verification mutations use synthetic accounts. Never copy this local dataset into external staging. Production must use managed MySQL and private object storage; never copy the test SQLite database or test accounts. See docs/REPAIR_AND_VERCEL_REPORT.md and docs/VERCEL_DEPLOYMENT.md.

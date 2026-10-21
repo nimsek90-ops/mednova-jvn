@@ -15,5 +15,5 @@ class Command(BaseCommand):
                 "Database connection failed. Check the MySQL service and the MYSQL_* values in your private .env. If this is the first run, use SETUP_WINDOWS.cmd."
             )
         self.stdout.write(
-            self.style.SUCCESS("Database connected. Application tables are available.")
+            self.style.SUCCESS(f"Database connected: {connection.vendor}; schema {connection.settings_dict['NAME']}. Application tables are available.")
         )

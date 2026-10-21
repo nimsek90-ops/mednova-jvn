@@ -1,0 +1,15 @@
+{
+  "database": "mednova_local",
+  "engine": "mysql",
+  "server_version": "8.4.13",
+  "transaction_isolation": "READ-COMMITTED",
+  "foreign_keys_enabled": true,
+  "ssl_cipher": "",
+  "certificate_identity_verified": false,
+  "runtime_grants": [
+    "GRANT USAGE ON *.* TO `mednova_local_app`@`localhost`",
+    "GRANT SELECT, INSERT, UPDATE, DELETE ON `mednova_local`.* TO `mednova_local_app`@`localhost`"
+  ],
+  "browser_appointment_persisted_status": "confirmed",
+  "measurement": "Django runtime connection; loopback local only; no verified production TLS"
+}

@@ -1,0 +1,157 @@
+{
+  "source": "browser_acceptance.sqlite3",
+  "target": "mednova_local",
+  "all_care_table_counts_match": true,
+  "tables": [
+    {
+      "table": "care_department",
+      "source_rows": 2,
+      "mysql_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_ratebucket",
+      "source_rows": 100,
+      "mysql_rows": 100,
+      "match": true
+    },
+    {
+      "table": "care_user_groups",
+      "source_rows": 0,
+      "mysql_rows": 0,
+      "match": true
+    },
+    {
+      "table": "care_user_user_permissions",
+      "source_rows": 0,
+      "mysql_rows": 0,
+      "match": true
+    },
+    {
+      "table": "care_auditevent",
+      "source_rows": 173,
+      "mysql_rows": 173,
+      "match": true
+    },
+    {
+      "table": "care_doctorprofile",
+      "source_rows": 4,
+      "mysql_rows": 4,
+      "match": true
+    },
+    {
+      "table": "care_medicine",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_payment",
+      "source_rows": 10,
+      "mysql_rows": 10,
+      "match": true
+    },
+    {
+      "table": "care_prescription",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_prescriptionitem",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_report",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_signal",
+      "source_rows": 0,
+      "mysql_rows": 0,
+      "match": true
+    },
+    {
+      "table": "care_appointment",
+      "source_rows": 10,
+      "mysql_rows": 10,
+      "match": true
+    },
+    {
+      "table": "care_slot",
+      "source_rows": 20,
+      "mysql_rows": 20,
+      "match": true
+    },
+    {
+      "table": "care_queuecounter",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_hospital",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_healthassessment",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_stockmovement",
+      "source_rows": 2,
+      "mysql_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_wellnessrevision",
+      "source_rows": 3,
+      "mysql_rows": 3,
+      "match": true
+    },
+    {
+      "table": "care_clinicalnote",
+      "source_rows": 2,
+      "mysql_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_queueentry",
+      "source_rows": 1,
+      "mysql_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_wellnessentry",
+      "source_rows": 2,
+      "mysql_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_notification",
+      "source_rows": 58,
+      "mysql_rows": 58,
+      "match": true
+    },
+    {
+      "table": "care_deliveryoutbox",
+      "source_rows": 20,
+      "mysql_rows": 20,
+      "match": true
+    },
+    {
+      "table": "care_user",
+      "source_rows": 19,
+      "mysql_rows": 19,
+      "match": true
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+[
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py check",
+    "exit_code": 0,
+    "output": "System check identified no issues (0 silenced)."
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py check_database",
+    "exit_code": 0,
+    "output": "Database connected: mysql; schema mednova_local. Application tables are available."
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py showmigrations --plan",
+    "exit_code": 0,
+    "output": "[X]  contenttypes.0001_initial\n[X]  contenttypes.0002_remove_content_type_name\n[X]  auth.0001_initial\n[X]  auth.0002_alter_permission_name_max_length\n[X]  auth.0003_alter_user_email_max_length\n[X]  auth.0004_alter_user_username_opts\n[X]  auth.0005_alter_user_last_login_null\n[X]  auth.0006_require_contenttypes_0002\n[X]  auth.0007_alter_validators_add_error_messages\n[X]  auth.0008_alter_user_username_max_length\n[X]  auth.0009_alter_user_last_name_max_length\n[X]  auth.0010_alter_group_name_max_length\n[X]  auth.0011_update_proxy_permissions\n[X]  auth.0012_alter_user_first_name_max_length\n[X]  care.0001_initial\n[X]  care.0002_appointment_checked_in_at_and_more\n[X]  care.0003_queuecounter_hospital_opening_hours_and_more\n[X]  care.0004_alter_notification_appointment_deliveryoutbox\n[X]  care.0005_user_must_change_password\n[X]  sessions.0001_initial"
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py makemigrations --check --dry-run",
+    "exit_code": 0,
+    "output": "No changes detected"
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py collectstatic --noinput",
+    "exit_code": 0,
+    "output": "0 static files copied to 'C:\\Users\\Niraj\\Downloads\\mednova-redesign\\MedNova-Python-MySQL\\staticfiles', 11 unmodified."
+  },
+  {
+    "command": ".venv/Scripts/python.exe -m compileall -q care mednova tools",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": ".venv/Scripts/python.exe -m pip check",
+    "exit_code": 0,
+    "output": "No broken requirements found."
+  },
+  {
+    "command": "node --check static/js/app.js",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "node --check static/js/video.js",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "node --check static/js/pay.js",
+    "exit_code": 1,
+    "output": "node:internal/modules/cjs/loader:1459\n  throw err;\n  ^\n\nError: Cannot find module 'C:\\Users\\Niraj\\Downloads\\mednova-redesign\\MedNova-Python-MySQL\\static\\js\\pay.js'\n    at node:internal/modules/cjs/loader:1456:15\n    at node:internal/main/check_syntax:33:20 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v24.14.1",
+    "resolution": "Operator filename typo; no pay.js exists. Correct payment.js command follows."
+  },
+  {
+    "command": "git diff --check",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "node --check static/js/payment.js",
+    "exit_code": 0,
+    "output": ""
+  }
+]

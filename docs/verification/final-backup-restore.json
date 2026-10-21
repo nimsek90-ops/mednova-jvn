@@ -1,0 +1,195 @@
+{
+  "status": "PASS",
+  "source_database": "mednova_local",
+  "restore_database": "mednova_restore_qa",
+  "backup_location": "ignored .runtime/backups/mednova_local_verified.sql",
+  "backup_sha256": "c863d911816d61ec8388a72a0064db303812ea4424143e2a3b1cf3925a4d5ffa",
+  "tables": [
+    {
+      "table": "auth_group",
+      "source_rows": 0,
+      "restored_rows": 0,
+      "match": true
+    },
+    {
+      "table": "auth_group_permissions",
+      "source_rows": 0,
+      "restored_rows": 0,
+      "match": true
+    },
+    {
+      "table": "auth_permission",
+      "source_rows": 108,
+      "restored_rows": 108,
+      "match": true
+    },
+    {
+      "table": "care_appointment",
+      "source_rows": 10,
+      "restored_rows": 10,
+      "match": true
+    },
+    {
+      "table": "care_auditevent",
+      "source_rows": 173,
+      "restored_rows": 173,
+      "match": true
+    },
+    {
+      "table": "care_clinicalnote",
+      "source_rows": 2,
+      "restored_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_deliveryoutbox",
+      "source_rows": 20,
+      "restored_rows": 20,
+      "match": true
+    },
+    {
+      "table": "care_department",
+      "source_rows": 2,
+      "restored_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_doctorprofile",
+      "source_rows": 4,
+      "restored_rows": 4,
+      "match": true
+    },
+    {
+      "table": "care_healthassessment",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_hospital",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_medicine",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_notification",
+      "source_rows": 58,
+      "restored_rows": 58,
+      "match": true
+    },
+    {
+      "table": "care_payment",
+      "source_rows": 10,
+      "restored_rows": 10,
+      "match": true
+    },
+    {
+      "table": "care_prescription",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_prescriptionitem",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_queuecounter",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_queueentry",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_ratebucket",
+      "source_rows": 100,
+      "restored_rows": 100,
+      "match": true
+    },
+    {
+      "table": "care_report",
+      "source_rows": 1,
+      "restored_rows": 1,
+      "match": true
+    },
+    {
+      "table": "care_signal",
+      "source_rows": 0,
+      "restored_rows": 0,
+      "match": true
+    },
+    {
+      "table": "care_slot",
+      "source_rows": 20,
+      "restored_rows": 20,
+      "match": true
+    },
+    {
+      "table": "care_stockmovement",
+      "source_rows": 2,
+      "restored_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_user",
+      "source_rows": 19,
+      "restored_rows": 19,
+      "match": true
+    },
+    {
+      "table": "care_user_groups",
+      "source_rows": 0,
+      "restored_rows": 0,
+      "match": true
+    },
+    {
+      "table": "care_user_user_permissions",
+      "source_rows": 0,
+      "restored_rows": 0,
+      "match": true
+    },
+    {
+      "table": "care_wellnessentry",
+      "source_rows": 2,
+      "restored_rows": 2,
+      "match": true
+    },
+    {
+      "table": "care_wellnessrevision",
+      "source_rows": 3,
+      "restored_rows": 3,
+      "match": true
+    },
+    {
+      "table": "django_content_type",
+      "source_rows": 27,
+      "restored_rows": 27,
+      "match": true
+    },
+    {
+      "table": "django_migrations",
+      "source_rows": 20,
+      "restored_rows": 20,
+      "match": true
+    },
+    {
+      "table": "django_session",
+      "source_rows": 39,
+      "restored_rows": 39,
+      "match": true
+    }
+  ]
+}

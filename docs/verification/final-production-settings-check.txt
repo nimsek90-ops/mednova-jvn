@@ -1,0 +1,2 @@
+Synthetic production settings check only; no deployed provider connectivity verified.
+System check identified no issues (0 silenced).

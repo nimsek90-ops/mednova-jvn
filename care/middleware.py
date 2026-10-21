@@ -31,3 +31,17 @@ class SecurityPolicyMiddleware:
         if not request.path.startswith("/static/"):
             response["Cache-Control"] = "no-store, private"
         return response
+
+
+class InitialPasswordMiddleware:
+    """Newly provisioned administrators must replace the bootstrap credential."""
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if (request.user.is_authenticated and request.user.must_change_password
+                and request.path not in ('/password/', '/logout/', '/language/')
+                and not request.path.startswith('/static/')):
+            from django.shortcuts import redirect
+            return redirect('password')
+        return self.get_response(request)

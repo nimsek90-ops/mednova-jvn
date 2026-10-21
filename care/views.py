@@ -249,6 +249,7 @@ def reset(request, uid, token):
 
 @roles(pending=True)
 def dashboard(request):
+    from .models import WellnessEntry
     u = request.user
     if u.approval != "approved":
         return render(request, "care/pending.html")
@@ -267,7 +268,7 @@ def dashboard(request):
         stats = [
             (
                 "Pending prescriptions",
-                Prescription.objects.filter(dispensed=False).count(),
+                Prescription.objects.filter(dispensed=False).exclude(appointment__status="cancelled").count(),
             ),
             ("Medicine batches", Medicine.objects.count()),
             ("Low stock", Medicine.objects.filter(stock__lt=10).count()),
@@ -277,6 +278,9 @@ def dashboard(request):
         "care/dashboard.html",
         {
             "appointments": future[:5],
+            "next_appointment": future.first(),
+            "unread_notifications": Notification.objects.filter(recipient=u, read=False).count(),
+            "latest_wellness": WellnessEntry.objects.filter(patient=u).first() if u.role == 'patient' else None,
             "stats": stats,
             "pending_staff": User.objects.filter(approval="pending")
             .exclude(role="patient")
@@ -342,6 +346,9 @@ def password(request):
     form = PasswordChangeForm(request.user, request.POST or None)
     if request.method == "POST" and form.is_valid():
         user = form.save()
+        if user.must_change_password:
+            user.must_change_password = False
+            user.save(update_fields=["must_change_password"])
         update_session_auth_hash(request, user)
         audit(user, "password.changed")
         messages.success(
@@ -496,6 +503,7 @@ def booking(request, doctor_id):
         start__gt=timezone.now(),
         start__lt=timezone.now() + timedelta(days=90),
     )
+    available_dates = sorted({timezone.localdate(start) for start in slots.values_list('start', flat=True)[:3000]})[:14]
     chosen_date = request.GET.get("date", "")
     if chosen_date:
         try:
@@ -508,7 +516,9 @@ def booking(request, doctor_id):
         slots = slots.filter(
             start__gte=day_start, start__lt=day_start + timedelta(days=1)
         )
-    slots = slots[:150]
+    slots = list(slots[:150])
+    from itertools import groupby
+    slot_days = [(day, list(items)) for day, items in groupby(slots, key=lambda item: timezone.localdate(item.start))]
     if request.method == "POST" and form.is_valid():
         patient = request.user
         if request.user.role == "receptionist":
@@ -548,6 +558,9 @@ def booking(request, doctor_id):
             "slots": slots,
             "reschedule": appt,
             "chosen_date": chosen_date,
+            "available_dates": available_dates,
+            "slot_days": slot_days,
+            "selected_slot": request.POST.get('slot', ''),
             "patients": (
                 User.objects.filter(role="patient", is_active=True).order_by("name")[
                     :300
@@ -599,6 +612,8 @@ def appointment(request, pk):
             "clinical": clinical,
             "rx": rx,
             "consultation_started": appt.slot.start <= timezone.now(),
+            "can_check_in": appt.status == "confirmed" and appt.mode == "in_person" and timezone.localdate(appt.slot.start) == timezone.localdate(),
+            "can_confirm": appt.status == "pending" and appt.slot.start > timezone.now(),
             "reports": appt.reports.all() if clinical else [],
             "can_change": appt.status in ("pending", "confirmed")
             and appt.slot.start > timezone.now(),
