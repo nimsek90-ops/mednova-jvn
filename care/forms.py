@@ -186,10 +186,14 @@ class UploadForm(forms.Form):
         help_text="JPEG or PNG, up to 5 MB. PDF requires the hospital antivirus scanner."
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["file"].help_text = f"JPEG or PNG, up to {settings.REPORT_MAX_BYTES // (1024 * 1024)} MB. PDF requires the hospital antivirus scanner."
+
     def clean_file(self):
         f = self.cleaned_data["file"]
-        if f.size > 5 * 1024 * 1024:
-            raise forms.ValidationError("The maximum upload size is 5 MB.")
+        if f.size > settings.REPORT_MAX_BYTES:
+            raise forms.ValidationError(f"The maximum upload size is {settings.REPORT_MAX_BYTES // (1024 * 1024)} MB.")
         raw = f.read()
         if raw.startswith(b"%PDF-"):
             if not settings.CLAMAV_COMMAND:

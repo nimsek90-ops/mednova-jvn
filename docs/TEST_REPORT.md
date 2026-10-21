@@ -1,3 +1,11 @@
+# Current verification — follow-up repair
+
+Latest results: **87 Django tests passed, 0 failures, 0 skips**, plus **8 real HTTP scenarios passed**. Actual browser journeys now include registration, staff approval, scheduling, booking, status changes, rescheduling/cancellation, check-in, receipts, prescription/dispensing, private report upload/download and restart persistence. See REPAIR_AND_VERCEL_REPORT.md and LOGIN_PREVIEW_DIAGNOSIS.md. The Origin: null problem was caused by application referrer policy and is fixed; older browser-blocker statements below are historical. Vercel project creation returned HTTP 403; production services remain unverified.
+
+---
+
+# Historical first audit verification
+
 # Verification report â€” 21 October 2026
 
 Windows, Python 3.14.6, Django 5.2.18; dependencies repaired/installed into project .venv. SQLite used only for isolated verification. All fixture users/registrations are synthetic with reserved example.test emails. No real patient data, MySQL credentials or external service account was supplied.

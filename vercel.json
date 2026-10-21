@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "django",
+  "functions": {
+    "mednova/wsgi.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{.git/**,.venv/**,.env,.env.*,docs/**,tools/**,care/tests.py,care/mysql_acceptance.py,**/*.sqlite3,private_uploads/**,backups/**}"
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/maintenance/cleanup/",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}

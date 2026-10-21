@@ -20,7 +20,9 @@ class SecurityPolicyMiddleware:
             response["Content-Security-Policy"] = (
                 "default-src 'self'; script-src 'self' https://checkout.razorpay.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.razorpay.com; font-src 'self'; connect-src 'self' https://api.razorpay.com; media-src 'self' blob:; frame-src https://api.razorpay.com https://checkout.razorpay.com; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
             )
-        response["Referrer-Policy"] = "no-referrer"
+        # Suppressing all referrers makes native POST forms send Origin: null
+        # in browsers. Preserve same-origin metadata required by Django CSRF.
+        response["Referrer-Policy"] = "same-origin"
         response["Permissions-Policy"] = (
             "camera=(self), microphone=(self), geolocation=(), payment=()"
         )

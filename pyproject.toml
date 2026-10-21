@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "mednova.wsgi:application"

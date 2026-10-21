@@ -11,3 +11,9 @@ staticfiles/
 backups/
 *.pem
 *.key
+
+.vercel/
+*.sqlite3-*
+.checkpoints/
+
+.runtime/

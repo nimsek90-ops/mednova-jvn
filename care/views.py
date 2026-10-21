@@ -28,7 +28,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.encoding import force_bytes, force_str
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode, url_has_allowed_host_and_scheme
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_http_methods
 from .models import *
@@ -37,6 +37,44 @@ from .security import roles, rate_limit, limited, audit
 from .services import book, change_status, dispense, BookingError
 
 logger = logging.getLogger(__name__)
+
+
+def safe_next(request, fallback="dashboard"):
+    target = request.POST.get("next") or request.GET.get("next", "")
+    if target and url_has_allowed_host_and_scheme(target, {request.get_host()}, require_https=request.is_secure()):
+        return target
+    return reverse(fallback)
+
+
+def approved_profiles():
+    return DoctorProfile.objects.select_related("user", "department").filter(
+        user__role="doctor", user__approval="approved", user__is_active=True,
+        department__active=True,
+    )
+
+
+@require_http_methods(["GET"])
+def home(request):
+    return render(request, "care/home.html", {
+        "departments": Department.objects.filter(active=True).order_by("name")[:6],
+        "doctors": approved_profiles().order_by("user__name")[:3],
+    })
+
+
+@require_http_methods(["GET"])
+def public_departments(request):
+    return render(request, "care/public_departments.html", {
+        "departments": Department.objects.filter(active=True).order_by("name"),
+    })
+
+
+@require_http_methods(["GET"])
+def doctor_detail(request, pk):
+    doctor = get_object_or_404(approved_profiles(), user_id=pk)
+    return render(request, "care/doctor_detail.html", {
+        "doc": doctor,
+        "slots": Slot.objects.filter(doctor_id=pk, active=True, booked=False, start__gt=timezone.now())[:12],
+    })
 
 
 @require_http_methods(["GET"])
@@ -108,9 +146,9 @@ def sign_in(request):
         if user:
             login(request, user)
             audit(user, "session.login")
-            return redirect("dashboard")
+            return redirect(safe_next(request))
         error = "Email or password is incorrect."
-    return render(request, "care/login.html", {"error": error})
+    return render(request, "care/login.html", {"error": error, "next": safe_next(request)})
 
 
 @require_http_methods(["GET", "POST"])
@@ -145,7 +183,7 @@ def language(request):
     value = request.POST.get("language", "en")
     if value in ("en", "mr", "hi"):
         request.session["language"] = value
-    return redirect("dashboard" if request.user.is_authenticated else "login")
+    return redirect(safe_next(request, "dashboard" if request.user.is_authenticated else "home"))
 
 
 @require_http_methods(["GET", "POST"])
@@ -560,6 +598,7 @@ def appointment(request, pk):
             "appt": appt,
             "clinical": clinical,
             "rx": rx,
+            "consultation_started": appt.slot.start <= timezone.now(),
             "reports": appt.reports.all() if clinical else [],
             "can_change": appt.status in ("pending", "confirmed")
             and appt.slot.start > timezone.now(),
@@ -604,16 +643,23 @@ def upload(request, pk):
         return HttpResponseForbidden("This appointment is cancelled.")
     form = UploadForm(request.POST or None, request.FILES or None)
     if request.method == "POST" and form.is_valid():
-        Report.objects.create(
-            appointment=appt,
-            uploaded_by=request.user,
-            title=form.cleaned_data["title"],
-            extension=form.extension,
-            file=form.cleaned_data["file"],
-        )
-        audit(request.user, "report.uploaded", appt.pk)
-        messages.success(request, "Report uploaded securely.")
-        return redirect("appointment", pk=pk)
+        from botocore.exceptions import BotoCoreError, ClientError
+        try:
+            with transaction.atomic():
+                Report.objects.create(
+                    appointment=appt,
+                    uploaded_by=request.user,
+                    title=form.cleaned_data["title"],
+                    extension=form.extension,
+                    file=form.cleaned_data["file"],
+                )
+                audit(request.user, "report.uploaded", appt.pk)
+        except (OSError, BotoCoreError, ClientError):
+            logger.error("Private report storage is unavailable.")
+            form.add_error(None, "Report storage is unavailable. Your upload was not saved. Please try again later.")
+        else:
+            messages.success(request, "Report uploaded securely.")
+            return redirect("appointment", pk=pk)
     return page(request, "Upload medical report", form, multipart=True)
 
 
@@ -624,6 +670,15 @@ def download(request, pk):
     clinical_appointment(request.user, report.appointment_id)
     audit(request.user, "report.downloaded", pk)
     try:
+        if settings.PRIVATE_STORAGE_BACKEND == "s3":
+            # Authorization precedes the short-lived URL. Large file bodies do
+            # not pass through the function's response payload limit.
+            from django.http import HttpResponseRedirect
+            return HttpResponseRedirect(report.file.storage.url(
+                report.file.name,
+                parameters={"ResponseContentDisposition": 'attachment; filename="medical-report' + report.extension + '"'},
+                expire=60,
+            ))
         return FileResponse(
             report.file.open("rb"),
             as_attachment=True,
@@ -1127,6 +1182,7 @@ def signal(request, pk):
     if request.method == "POST":
         if len(request.body) > 30000:
             return JsonResponse({"error": "Payload too large"}, status=413)
+        Signal.objects.filter(appointment=appt, created__lt=timezone.now() - timedelta(minutes=15)).delete()
         try:
             data = json.loads(request.body)
             kind = data["kind"]
@@ -1331,3 +1387,19 @@ def operational_report(request):
     rows = Appointment.objects.values("status").annotate(total=Count("pk")).order_by("status")
     payments = Payment.objects.values("status").annotate(total=Count("pk")).order_by("status")
     return render(request, "care/operations.html", {"appointment_totals": rows, "payment_totals": payments})
+
+
+@roles("patient", "receptionist", "admin")
+def receipt(request, pk):
+    appt = get_object_or_404(visible_appointments(request.user), pk=pk)
+    return render(request, "care/receipt.html", {"appt": appt})
+
+
+@require_http_methods(["GET"])
+def cleanup(request):
+    if not settings.CRON_SECRET or not hmac.compare_digest(request.headers.get("Authorization", ""), "Bearer " + settings.CRON_SECRET):
+        return HttpResponse(status=403)
+    from django.core.management import call_command
+    from io import StringIO
+    call_command("cleanup_transient", stdout=StringIO())
+    return JsonResponse({"ok": True})

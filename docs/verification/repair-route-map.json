@@ -1,0 +1,290 @@
+[
+  {
+    "route": "api/maintenance/cleanup/",
+    "name": "cleanup",
+    "view": "care.views.cleanup",
+    "source_line": 1398
+  },
+  {
+    "route": "health/",
+    "name": "health",
+    "view": "care.views.health",
+    "source_line": 80
+  },
+  {
+    "route": "notifications/",
+    "name": "notifications",
+    "view": "care.views.notifications",
+    "source_line": 1234
+  },
+  {
+    "route": "patients/",
+    "name": "patients",
+    "view": "care.views.patients",
+    "source_line": 1302
+  },
+  {
+    "route": "admin/users/",
+    "name": "users",
+    "view": "care.views.users",
+    "source_line": 1324
+  },
+  {
+    "route": "admin/operations/",
+    "name": "operations",
+    "view": "care.views.operational_report",
+    "source_line": 1385
+  },
+  {
+    "route": "availability/<int:pk>/edit/",
+    "name": "edit_slot",
+    "view": "care.views.edit_slot",
+    "source_line": 1360
+  },
+  {
+    "route": "admin/departments/<int:pk>/",
+    "name": "department_edit",
+    "view": "care.views.department_edit",
+    "source_line": 1347
+  },
+  {
+    "route": "appointments/<uuid:pk>/check-in/",
+    "name": "check_in",
+    "view": "care.views.check_in",
+    "source_line": 1244
+  },
+  {
+    "route": "",
+    "name": "home",
+    "view": "care.views.home",
+    "source_line": 56
+  },
+  {
+    "route": "departments/",
+    "name": "public_departments",
+    "view": "care.views.public_departments",
+    "source_line": 64
+  },
+  {
+    "route": "doctors/<int:pk>/",
+    "name": "doctor_detail",
+    "view": "care.views.doctor_detail",
+    "source_line": 71
+  },
+  {
+    "route": "appointments/<uuid:pk>/receipt/",
+    "name": "receipt",
+    "view": "care.views.receipt",
+    "source_line": 1392
+  },
+  {
+    "route": "login/",
+    "name": "login",
+    "view": "care.views.sign_in",
+    "source_line": 128
+  },
+  {
+    "route": "register/",
+    "name": "register",
+    "view": "care.views.register",
+    "source_line": 154
+  },
+  {
+    "route": "logout/",
+    "name": "logout",
+    "view": "care.views.sign_out",
+    "source_line": 173
+  },
+  {
+    "route": "language/",
+    "name": "language",
+    "view": "care.views.language",
+    "source_line": 181
+  },
+  {
+    "route": "forgot-password/",
+    "name": "forgot",
+    "view": "care.views.forgot",
+    "source_line": 189
+  },
+  {
+    "route": "reset/<str:uid>/<str:token>/",
+    "name": "reset",
+    "view": "care.views.reset",
+    "source_line": 221
+  },
+  {
+    "route": "password/",
+    "name": "password",
+    "view": "care.views.password",
+    "source_line": 339
+  },
+  {
+    "route": "dashboard/",
+    "name": "dashboard",
+    "view": "care.views.dashboard",
+    "source_line": 250
+  },
+  {
+    "route": "profile/",
+    "name": "profile",
+    "view": "care.views.profile",
+    "source_line": 293
+  },
+  {
+    "route": "doctors/",
+    "name": "doctors",
+    "view": "care.views.doctors",
+    "source_line": 354
+  },
+  {
+    "route": "availability/",
+    "name": "availability",
+    "view": "care.views.availability",
+    "source_line": 383
+  },
+  {
+    "route": "availability/<int:pk>/remove/",
+    "name": "remove_slot",
+    "view": "care.views.remove_slot",
+    "source_line": 449
+  },
+  {
+    "route": "book/<int:doctor_id>/",
+    "name": "booking",
+    "view": "care.views.booking",
+    "source_line": 466
+  },
+  {
+    "route": "appointments/",
+    "name": "appointments",
+    "view": "care.views.appointments",
+    "source_line": 562
+  },
+  {
+    "route": "appointments/<uuid:pk>/",
+    "name": "appointment",
+    "view": "care.views.appointment",
+    "source_line": 583
+  },
+  {
+    "route": "appointments/<uuid:pk>/action/",
+    "name": "appointment_action",
+    "view": "care.views.appointment_action",
+    "source_line": 612
+  },
+  {
+    "route": "appointments/<uuid:pk>/upload/",
+    "name": "upload",
+    "view": "care.views.upload",
+    "source_line": 637
+  },
+  {
+    "route": "reports/<uuid:pk>/download/",
+    "name": "download",
+    "view": "care.views.download",
+    "source_line": 666
+  },
+  {
+    "route": "appointments/<uuid:pk>/prescribe/",
+    "name": "prescribe",
+    "view": "care.views.prescribe",
+    "source_line": 692
+  },
+  {
+    "route": "prescriptions/",
+    "name": "prescriptions",
+    "view": "care.views.prescriptions",
+    "source_line": 757
+  },
+  {
+    "route": "prescriptions/<uuid:pk>/dispense/",
+    "name": "dispense",
+    "view": "care.views.dispense_rx",
+    "source_line": 776
+  },
+  {
+    "route": "inventory/",
+    "name": "inventory",
+    "view": "care.views.inventory",
+    "source_line": 788
+  },
+  {
+    "route": "inventory/<int:pk>/adjust/",
+    "name": "stock",
+    "view": "care.views.stock",
+    "source_line": 808
+  },
+  {
+    "route": "admin/staff/",
+    "name": "staff",
+    "view": "care.views.staff",
+    "source_line": 837
+  },
+  {
+    "route": "admin/departments/",
+    "name": "departments",
+    "view": "care.views.departments",
+    "source_line": 880
+  },
+  {
+    "route": "admin/settings/",
+    "name": "settings",
+    "view": "care.views.hospital_settings",
+    "source_line": 893
+  },
+  {
+    "route": "admin/audit/",
+    "name": "audit",
+    "view": "care.views.audit_log",
+    "source_line": 911
+  },
+  {
+    "route": "appointments/<uuid:pk>/payment-record/",
+    "name": "payment_record",
+    "view": "care.views.payment_record",
+    "source_line": 923
+  },
+  {
+    "route": "appointments/<uuid:pk>/pay/",
+    "name": "pay",
+    "view": "care.views.pay",
+    "source_line": 956
+  },
+  {
+    "route": "api/payments/<uuid:pk>/verify/",
+    "name": "payment_verify",
+    "view": "care.views.payment_verify",
+    "source_line": 1038
+  },
+  {
+    "route": "api/payments/webhook/",
+    "name": "webhook",
+    "view": "care.views.webhook",
+    "source_line": 1074
+  },
+  {
+    "route": "appointments/<uuid:pk>/video/",
+    "name": "video",
+    "view": "care.views.video",
+    "source_line": 1134
+  },
+  {
+    "route": "api/appointments/<uuid:pk>/signals/",
+    "name": "signal",
+    "view": "care.views.signal",
+    "source_line": 1177
+  },
+  {
+    "route": "legal/<str:kind>/",
+    "name": "legal",
+    "view": "care.views.legal",
+    "source_line": 1224
+  },
+  {
+    "route": "contact/",
+    "name": "contact",
+    "view": "care.views.contact",
+    "source_line": 1230
+  }
+]

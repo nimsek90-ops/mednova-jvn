@@ -1,3 +1,9 @@
+# Follow-up repair
+
+See LOGIN_PREVIEW_DIAGNOSIS.md and REPAIR_AND_VERCEL_REPORT.md for the current repair: corrected the application Referrer-Policy causing CSRF failures, added public navigation/pages, safe workflow redirects, receipts and private S3/Vercel configuration. Final verification: 87 regression tests, eight HTTP scenarios and actual browser journeys. Earlier browser limitations below were superseded by the confirmed header fix.
+
+---
+
 # Changes applied — 21 October 2026
 
 The initial baseline is PROJECT_AUDIT.md. Existing visual identity, ORM persistence, role approval, private reports, prescriptions, payment and video implementations were retained.

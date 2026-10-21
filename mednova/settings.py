@@ -3,8 +3,10 @@ import sys
 import secrets
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
+from .hosting import storage_config, validate_vercel
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+VERCEL = os.getenv("VERCEL") == "1"
 # Only known environment file; never serve this directory as a static root.
 env_path = BASE_DIR / ".env"
 if env_path.exists():
@@ -13,6 +15,8 @@ if env_path.exists():
             key, value = line.split("=", 1)
             os.environ.setdefault(key.strip(), value.strip())
 TESTING = "test" in sys.argv or os.getenv("MEDNOVA_TESTING") == "1"
+if VERCEL:
+    validate_vercel(os.environ)
 LOCAL = os.getenv("APP_ENV", "production") == "local"
 if not LOCAL and os.getenv("MEDNOVA_TESTING") == "1" and "test" not in sys.argv:
     raise ImproperlyConfigured("MEDNOVA_TESTING cannot be used to start a production application.")
@@ -33,6 +37,8 @@ ALLOWED_HOSTS = [
 ]
 if TESTING:
     ALLOWED_HOSTS += ["testserver"]
+if VERCEL and os.getenv("VERCEL_URL"):
+    ALLOWED_HOSTS.append(os.environ["VERCEL_URL"])
 if not ALLOWED_HOSTS or "*" in ALLOWED_HOSTS:
     raise ImproperlyConfigured("ALLOWED_HOSTS must list exact hostnames.")
 INSTALLED_APPS = [
@@ -79,16 +85,19 @@ DATABASES = {
         "PASSWORD": os.getenv("MYSQL_PASSWORD", ""),
         "HOST": os.getenv("MYSQL_HOST", "127.0.0.1"),
         "PORT": os.getenv("MYSQL_PORT", "3306"),
-        "CONN_MAX_AGE": 60,
+        "CONN_MAX_AGE": 0 if VERCEL else 60,
+        "CONN_HEALTH_CHECKS": True,
         "OPTIONS": {
             "charset": "utf8mb4",
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
             "isolation_level": "read committed",
+            "connect_timeout": 10,
         },
     }
 }
 if os.getenv("MYSQL_SSL_CA"):
     DATABASES["default"]["OPTIONS"]["ssl"] = {"ca": os.environ["MYSQL_SSL_CA"]}
+    DATABASES["default"]["OPTIONS"]["ssl_mode"] = "VERIFY_IDENTITY"
 if TESTING and os.getenv("MEDNOVA_TEST_MYSQL") != "1":
     DATABASES = {
         "default": {
@@ -122,8 +131,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 WHITENOISE_USE_FINDERS = LOCAL or TESTING
 MEDIA_ROOT = Path(os.getenv("PRIVATE_MEDIA_ROOT") or str(BASE_DIR / "private_uploads"))
+PRIVATE_STORAGE_BACKEND, STORAGES = storage_config(os.environ, VERCEL)
+REPORT_MAX_BYTES = (3 if VERCEL else 5) * 1024 * 1024
 FILE_UPLOAD_PERMISSIONS = 0o600
-FILE_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024
+FILE_UPLOAD_MAX_MEMORY_SIZE = 4 * 1024 * 1024 if VERCEL else 1024 * 1024
 DATA_UPLOAD_MAX_MEMORY_SIZE = 6 * 1024 * 1024
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 80
 SESSION_COOKIE_HTTPONLY = True
@@ -145,6 +156,8 @@ X_FRAME_OPTIONS = "DENY"
 CSRF_TRUSTED_ORIGINS = [
     s.strip() for s in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if s.strip()
 ]
+if VERCEL and os.getenv("VERCEL_URL"):
+    CSRF_TRUSTED_ORIGINS.append("https://" + os.environ["VERCEL_URL"])
 # Enable only behind a proxy that strips incoming X-Forwarded-Proto.
 if os.getenv("TRUST_PROXY") == "1":
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -168,3 +181,4 @@ RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "")
 RAZORPAY_WEBHOOK_SECRET = os.getenv("RAZORPAY_WEBHOOK_SECRET", "")
 CLAMAV_COMMAND = os.getenv("CLAMAV_COMMAND", "")
 CSRF_FAILURE_VIEW = "care.views.csrf_failure"
+CRON_SECRET = os.getenv("CRON_SECRET", "")

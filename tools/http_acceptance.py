@@ -59,7 +59,11 @@ def main():
     print("PASS 2: approved doctor publishes and retrieves calendar slots")
 
     directory = get(patient, "/doctors/?available=1")
-    path = re.search(r'href="(/book/\d+/)"', directory.text)[1]
+    # Other browser tests may add doctors. Select this fixture's doctor by
+    # identity instead of assuming the first available card belongs to it.
+    profile_link = re.search(r'href="(/doctors/(\d+)/)">Test Doctor</a>', directory.text)
+    assert profile_link, "The approved Test Doctor fixture is missing"
+    path = "/book/" + profile_link[2] + "/"
     booking = get(patient, path + "?date=" + day)
     slot = re.search(r'name="slot" value="(\d+)"', booking.text)[1]
     response = post(patient, path + "?date=" + day, {"slot": slot, "mode": "in_person", "reason": "Synthetic HTTP acceptance", "consent": "on"})

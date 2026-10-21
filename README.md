@@ -2,7 +2,7 @@
 
 A locally reviewable replacement for the supplied React/localStorage prototype. Frontend: HTML templates, CSS and vanilla JavaScript. Backend: Django 5.2.18 / Python. Database: MySQL. No Node.js, React, Firebase, Google sign-in or OTP login is required.
 
-**Start here:** `START_HERE.md`. Nothing has been hosted or published.
+**Start here:** `START_HERE.md`. Public homepage: `/`; workspaces: `/dashboard/` after login. Read `docs/REPAIR_AND_VERCEL_REPORT.md` for the current diagnosis/results and `docs/VERCEL_DEPLOYMENT.md` for the selected deployment target. No production site has been published.
 
 ## Implemented
 
@@ -21,7 +21,7 @@ A locally reviewable replacement for the supplied React/localStorage prototype. 
 
 ## Status and verification
 
-Updated audit (21 October 2026): see `docs/PROJECT_AUDIT.md`, `docs/FIXES_APPLIED.md`, `docs/TEST_REPORT.md`, `docs/DATABASE_SETUP.md`, `docs/DEPLOYMENT.md` and `docs/PRODUCTION_READINESS.md`. Local verification: 76 regression tests and eight actual HTTP acceptance scenarios passed. Production MySQL, two explicit MySQL concurrency tests, external integrations, authenticated browser acceptance and public deployment remain UNVERIFIED. No production-readiness claim is made. Earlier verification artifacts are historical.
+Updated audit (21 October 2026): see `docs/PROJECT_AUDIT.md`, `docs/FIXES_APPLIED.md`, `docs/TEST_REPORT.md`, `docs/DATABASE_SETUP.md`, `docs/DEPLOYMENT.md` and `docs/PRODUCTION_READINESS.md`. Latest verification: 87 regression tests and eight actual HTTP scenarios passed; main authenticated browser journeys, including prescriptions/dispensing and report upload/download, were executed. Production MySQL, the explicit MySQL concurrency suite, real provider integrations and Vercel deployment remain UNVERIFIED. Vercel project creation was blocked by account permission (HTTP 403). No production-readiness claim is made. Earlier verification artifacts are historical.
 
 Read `docs/SECURITY_REVIEW.md` for exact test results, scope and remaining checks. This is a review build, **not a claim of production readiness or a completed independent penetration test**. No actual patient records or credentials are bundled. The target MySQL server, Windows installer, live email, real two-device video, payment provider and mobile/desktop browser rendering require target-environment verification.
 

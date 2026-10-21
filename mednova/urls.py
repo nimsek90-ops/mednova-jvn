@@ -2,6 +2,7 @@ from django.urls import path
 from care import views as v
 
 urlpatterns = [
+    path("api/maintenance/cleanup/", v.cleanup, name="cleanup"),
     path("health/", v.health, name="health"),
     path("notifications/", v.notifications, name="notifications"),
     path("patients/", v.patients, name="patients"),
@@ -10,7 +11,10 @@ urlpatterns = [
     path("availability/<int:pk>/edit/", v.edit_slot, name="edit_slot"),
     path("admin/departments/<int:pk>/", v.department_edit, name="department_edit"),
     path("appointments/<uuid:pk>/check-in/", v.check_in, name="check_in"),
-    path("", v.sign_in, name="home"),
+    path("", v.home, name="home"),
+    path("departments/", v.public_departments, name="public_departments"),
+    path("doctors/<int:pk>/", v.doctor_detail, name="doctor_detail"),
+    path("appointments/<uuid:pk>/receipt/", v.receipt, name="receipt"),
     path("login/", v.sign_in, name="login"),
     path("register/", v.register, name="register"),
     path("logout/", v.sign_out, name="logout"),

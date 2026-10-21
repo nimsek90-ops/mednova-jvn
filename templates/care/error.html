@@ -1,1 +1,1 @@
-{% extends 'care/base.html' %}{% load translate %}{% block content %}<section class="card pending-card"><span class="eyebrow">MEDNOVA / {{ code }}</span><h1>{{ explanation }}</h1><a class="primary" href="/dashboard/">{{ 'Return to MedNova'|t:language }}</a></section>{% endblock %}
+{% extends 'care/base.html' %}{% load translate %}{% block content %}<section class="card pending-card"><span class="eyebrow">MEDNOVA / {{ code }}</span><h1>{{ explanation }}</h1><a class="primary" href="{% url 'home' %}">{{ 'Return to MedNova'|t:language }}</a></section>{% endblock %}

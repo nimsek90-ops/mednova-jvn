@@ -64,11 +64,13 @@ def roles(*allowed, pending=False):
         def wrapped(request, *a, **kw):
             u = request.user
             if not u.is_authenticated:
-                return redirect("login")
+                from django.contrib.auth.views import redirect_to_login
+                return redirect_to_login(request.get_full_path())
             if not u.is_active or (not pending and u.approval != "approved"):
                 return redirect("dashboard")
             if allowed and u.role not in allowed:
-                return HttpResponseForbidden("You do not have access to this area.")
+                from django.core.exceptions import PermissionDenied
+                raise PermissionDenied("You do not have access to this area.")
             return fn(request, *a, **kw)
 
         return wrapped

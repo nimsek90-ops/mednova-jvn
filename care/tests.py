@@ -932,3 +932,119 @@ class Workflows(TestCase):
         self.client.post(reverse('appointment_action', args=[appt.pk]), {'action': 'cancelled'})
         appt.refresh_from_db()
         self.assertEqual(appt.status, 'cancelled')
+
+    def test_home_and_public_navigation_are_available_without_login(self):
+        response = self.client.get('/')
+        self.assertContains(response, 'Your care, connected.')
+        for path in ('/departments/', '/doctors/', '/contact/', '/login/', '/register/'):
+            self.assertContains(response, f'href="{path}"')
+        self.assertContains(self.client.get('/departments/'), self.department.name)
+        self.assertContains(self.client.get(reverse('doctor_detail', args=[self.doctor.pk])), 'TEST-0')
+        self.assertEqual(self.client.get(reverse('doctor_detail', args=[self.pending.pk])).status_code, 404)
+
+    def test_browser_form_security_header_and_real_csrf_login(self):
+        c = Client(enforce_csrf_checks=True)
+        response = c.get('/login/')
+        self.assertEqual(response['Referrer-Policy'], 'same-origin')
+        token = c.cookies['csrftoken'].value
+        data = {'email': self.patient.email, 'password': 'Correct-Hospital-Pass12', 'csrfmiddlewaretoken': token}
+        self.assertEqual(c.post('/login/', data, HTTP_ORIGIN='https://attacker.invalid').status_code, 403)
+        self.assertEqual(c.post('/login/', data, HTTP_ORIGIN='null').status_code, 403)
+        self.assertEqual(c.post('/login/', data, HTTP_ORIGIN='http://testserver').status_code, 302)
+        self.assertEqual(c.get('/dashboard/').status_code, 200)
+
+    def test_login_returns_to_booking_without_open_redirect(self):
+        url = reverse('booking', args=[self.doctor.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('next=', response.url)
+        response = self.client.post('/login/', {'email': self.patient.email, 'password': 'Correct-Hospital-Pass12', 'next': url})
+        self.assertEqual(response.url, url)
+        self.client.post('/logout/')
+        response = self.client.post('/login/', {'email': self.patient.email, 'password': 'Correct-Hospital-Pass12', 'next': 'https://attacker.invalid'})
+        self.assertEqual(response.url, '/dashboard/')
+
+    def test_language_keeps_current_public_page_and_rejects_external_next(self):
+        response = self.client.post('/language/', {'language': 'mr', 'next': '/doctors/?available=1'})
+        self.assertEqual(response.url, '/doctors/?available=1')
+        response = self.client.post('/language/', {'language': 'en', 'next': 'https://attacker.invalid'})
+        self.assertEqual(response.url, '/')
+
+    def test_receipt_is_object_scoped(self):
+        url = reverse('receipt', args=[self.appt.pk])
+        self.sign(self.other)
+        self.assertEqual(self.client.get(url).status_code, 404)
+        self.sign(self.patient)
+        self.assertContains(self.client.get(url), '250.00')
+        self.sign(self.pharmacist)
+        self.assertEqual(self.client.get(url).status_code, 403)
+
+    @override_settings(PRIVATE_STORAGE_BACKEND='s3')
+    def test_private_s3_download_signs_only_after_authorization(self):
+        report = Report.objects.create(appointment=self.appt, uploaded_by=self.patient, title='Synthetic private report', extension='.jpg', file='reports/synthetic.jpg')
+        with patch.object(Report._meta.get_field('file'), 'storage') as report_storage:
+            sign_url = report_storage.url
+            sign_url.return_value = 'https://private.example.test/reports/synthetic.jpg?signature=test'
+            self.sign(self.other)
+            self.assertEqual(self.client.get(reverse('download', args=[report.pk])).status_code, 404)
+            sign_url.assert_not_called()
+            self.sign(self.patient)
+            response = self.client.get(reverse('download', args=[report.pk]))
+            self.assertEqual(response.status_code, 302)
+            self.assertIn('no-store', response['Cache-Control'])
+            self.assertEqual(sign_url.call_args.kwargs['expire'], 60)
+
+    @override_settings(REPORT_MAX_BYTES=3 * 1024 * 1024)
+    def test_vercel_upload_limit_is_enforced_before_storage(self):
+        form = UploadForm({'title': 'Synthetic'}, {'file': SimpleUploadedFile('oversize.jpg', b'x' * (3 * 1024 * 1024 + 1))})
+        self.assertFalse(form.is_valid())
+        self.assertIn('3 MB', str(form.errors))
+
+    @override_settings(CRON_SECRET='synthetic-cron-secret')
+    def test_cleanup_endpoint_requires_bearer_secret(self):
+        self.assertEqual(self.client.get('/api/maintenance/cleanup/').status_code, 403)
+        self.assertEqual(self.client.get('/api/maintenance/cleanup/', HTTP_AUTHORIZATION='Bearer wrong').status_code, 403)
+        with patch('django.core.management.call_command') as command:
+            response = self.client.get('/api/maintenance/cleanup/', HTTP_AUTHORIZATION='Bearer synthetic-cron-secret')
+        self.assertEqual(response.status_code, 200)
+        command.assert_called_once()
+
+    def test_vercel_configuration_fails_closed_for_missing_services(self):
+        from mednova.hosting import storage_config, validate_vercel
+        from django.core.exceptions import ImproperlyConfigured
+        with self.assertRaises(ImproperlyConfigured):
+            validate_vercel({})
+        with self.assertRaises(ImproperlyConfigured):
+            storage_config({}, vercel=True)
+        with self.assertRaises(ImproperlyConfigured):
+            storage_config({'PRIVATE_STORAGE_BACKEND': 's3', 'S3_BUCKET_NAME': 'synthetic', 'S3_REGION_NAME': 'test', 'AWS_ACCESS_KEY_ID': 'synthetic-test-key', 'AWS_SECRET_ACCESS_KEY': 'synthetic-test-secret', 'S3_ENDPOINT_URL': 'http://unsafe.invalid'})
+        backend, storages = storage_config({'PRIVATE_STORAGE_BACKEND': 's3', 'S3_BUCKET_NAME': 'synthetic', 'S3_REGION_NAME': 'test', 'AWS_ACCESS_KEY_ID': 'synthetic-test-key', 'AWS_SECRET_ACCESS_KEY': 'synthetic-test-secret'}, vercel=True)
+        options = storages['default']['OPTIONS']
+        self.assertEqual(backend, 's3')
+        self.assertIsNone(options['default_acl'])
+        self.assertTrue(options['verify'])
+        self.assertTrue(options['querystring_auth'])
+        self.assertEqual(options['querystring_expire'], 60)
+
+    def test_clinical_buttons_match_consultation_time_and_existing_prescription(self):
+        self.appt.status = 'confirmed'
+        self.appt.save()
+        self.sign(self.doctor)
+        url = reverse('appointment', args=[self.appt.pk])
+        self.assertNotContains(self.client.get(url), 'Issue prescription')
+        self.assertNotContains(self.client.get(url), 'Complete consultation')
+        self.slot.start = timezone.now() - timedelta(minutes=1)
+        self.slot.save()
+        self.assertContains(self.client.get(url), 'Issue prescription')
+        Prescription.objects.create(appointment=self.appt, instructions='Synthetic test note')
+        self.assertNotContains(self.client.get(url), 'Issue prescription')
+        self.assertContains(self.client.get(url), 'Complete consultation')
+
+    def test_storage_failure_never_reports_upload_success(self):
+        img = BytesIO()
+        Image.new('RGB', (16, 16), 'white').save(img, format='PNG')
+        self.sign(self.patient)
+        with patch('django.core.files.storage.filesystem.FileSystemStorage._save', side_effect=OSError('Synthetic storage outage')):
+            response = self.client.post(reverse('upload', args=[self.appt.pk]), {'title': 'Synthetic outage report', 'file': SimpleUploadedFile('test.png', img.getvalue())})
+        self.assertContains(response, 'Report storage is unavailable.')
+        self.assertFalse(Report.objects.exists())

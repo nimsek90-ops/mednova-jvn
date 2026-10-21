@@ -1,3 +1,7 @@
+# Current hosting note
+
+Vercel is now the selected target. Use VERCEL_DEPLOYMENT.md for its environment names, verified-identity MySQL TLS and private S3 storage. PRIVATE_MEDIA_ROOT describes the persistent-host alternative; never rely on Vercel temporary files for reports. Real managed MySQL and object-storage connectivity remain UNVERIFIED. The local test database has all 17 migrations applied, and 87 isolated regression tests passed.
+
 # Database setup and recovery
 
 Production uses Django's MySQL backend. SQLite results in TEST_REPORT.md are isolated verification only. No production connection was verified.
