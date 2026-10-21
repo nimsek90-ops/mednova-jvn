@@ -57,3 +57,30 @@ class MySQLBookingAcceptance(TransactionTestCase):
         self.assertEqual(appt.status, "cancelled")
         for slot in Slot.objects.filter(pk__in=[Workflows.slot.pk, slot_id]):
             self.assertEqual(slot.booked, Appointment.objects.filter(slot=slot).exclude(status="cancelled").exists())
+
+    def test_simultaneous_dispense_has_one_deduction(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from .models import Medicine, Prescription, PrescriptionItem, StockMovement
+        from .services import dispense
+        medicine = Medicine.objects.create(name='Synthetic concurrency item',batch='QA',expiry=timezone.localdate()+timedelta(days=30),stock=10,price=1)
+        rx = Prescription.objects.create(appointment=Workflows.appt,instructions='Synthetic')
+        PrescriptionItem.objects.create(prescription=rx,medicine=medicine,dose='Synthetic',quantity=2)
+        result = self.race([lambda: dispense(Prescription.objects.get(pk=rx.pk),User.objects.get(pk=Workflows.pharmacist.pk)) for _ in range(2)])
+        self.assertCountEqual(result,['ok','unavailable'])
+        medicine.refresh_from_db()
+        self.assertEqual(medicine.stock,8)
+        self.assertEqual(StockMovement.objects.filter(prescription=rx).count(),1)
+
+    def test_simultaneous_daily_queue_tokens_are_unique(self):
+        from .product import enqueue
+        from .models import QueueEntry
+        second = book(Workflows.other,Workflows.slot2.pk,'in_person','Synthetic queue test')
+        def add(pk):
+            from django.db import transaction
+            with transaction.atomic():
+                appt = Appointment.objects.select_for_update().get(pk=pk)
+                enqueue(appt)
+        result=self.race([lambda: add(Workflows.appt.pk),lambda: add(second.pk)])
+        self.assertEqual(result,['ok','ok'])
+        self.assertEqual(set(QueueEntry.objects.values_list('number',flat=True)),{1,2})

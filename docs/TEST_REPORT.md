@@ -1,3 +1,5 @@
+> Current product expansion: see PRODUCT_IMPLEMENTATION_REPORT.md. New additive migrations0003/0004; 108 MySQL tests and104 SQLite tests passed, including four real MySQL race tests. Older counts and statements below describe earlier checkpoints. Production deployment remains blocked.
+
 # Current verification — follow-up repair
 
 Latest results: **87 Django tests passed, 0 failures, 0 skips**, plus **8 real HTTP scenarios passed**. Actual browser journeys now include registration, staff approval, scheduling, booking, status changes, rescheduling/cancellation, check-in, receipts, prescription/dispensing, private report upload/download and restart persistence. See REPAIR_AND_VERCEL_REPORT.md and LOGIN_PREVIEW_DIAGNOSIS.md. The Origin: null problem was caused by application referrer policy and is fixed; older browser-blocker statements below are historical. Vercel project creation returned HTTP 403; production services remain unverified.

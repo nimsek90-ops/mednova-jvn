@@ -204,6 +204,8 @@ WORDS = {
 from care.translations_extra import EXTRA
 
 WORDS.update(EXTRA)
+from care.translations_product import PRODUCT
+WORDS.update(PRODUCT)
 
 
 @register.filter

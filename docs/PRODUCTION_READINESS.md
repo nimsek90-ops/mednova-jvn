@@ -1,3 +1,5 @@
+> Current product expansion: see PRODUCT_IMPLEMENTATION_REPORT.md. New additive migrations0003/0004; 108 MySQL tests and104 SQLite tests passed, including four real MySQL race tests. Older counts and statements below describe earlier checkpoints. Production deployment remains blocked.
+
 # Production readiness — NOT READY
 
 Local implementation and isolated tests have progressed; this is not a completed deployment or a claim of legal compliance.

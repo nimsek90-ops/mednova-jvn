@@ -1,3 +1,5 @@
+> Current product expansion: see PRODUCT_IMPLEMENTATION_REPORT.md. New additive migrations0003/0004; 108 MySQL tests and104 SQLite tests passed, including four real MySQL race tests. Older counts and statements below describe earlier checkpoints. Production deployment remains blocked.
+
 # MedNova repair and functional verification — 21 October 2026
 
 ## Outcome

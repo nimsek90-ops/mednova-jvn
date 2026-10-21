@@ -4,7 +4,7 @@
   "functions": {
     "mednova/wsgi.py": {
       "maxDuration": 60,
-      "excludeFiles": "{.git/**,.venv/**,.env,.env.*,docs/**,tools/**,care/tests.py,care/mysql_acceptance.py,**/*.sqlite3,private_uploads/**,backups/**}"
+      "excludeFiles": "{.git/**,.venv/**,.env,.env.*,.runtime/**,docs/**,tools/**,care/test*.py,care/mysql_acceptance.py,**/*.sqlite3,private_uploads/**,backups/**}"
     }
   },
   "crons": [

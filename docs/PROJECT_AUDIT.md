@@ -1,3 +1,5 @@
+> Current product expansion: see PRODUCT_IMPLEMENTATION_REPORT.md. New additive migrations0003/0004; 108 MySQL tests and104 SQLite tests passed, including four real MySQL race tests. Older counts and statements below describe earlier checkpoints. Production deployment remains blocked.
+
 # Initial project audit — 21 October 2026
 
 Scope: extracted Django project, not the historical React ZIP mentioned in README. Existing verification artifacts describe an earlier run and are not evidence of this environment. No .env, production database credentials or hosting target is provided. No production data has been modified.

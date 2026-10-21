@@ -49,7 +49,14 @@ def clean_phone(value):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ["name", "phone"]
+        fields = ["name", "phone", "date_of_birth"]
+        widgets = {"date_of_birth": forms.DateInput(attrs={"type": "date"})}
+
+    def clean_date_of_birth(self):
+        value = self.cleaned_data.get("date_of_birth")
+        if value and value > timezone.localdate():
+            raise forms.ValidationError("Date of birth cannot be in the future.")
+        return value
 
     def clean_phone(self):
         return clean_phone(self.cleaned_data.get("phone", ""))
@@ -145,6 +152,7 @@ class HospitalForm(forms.ModelForm):
         fields = [
             "name",
             "legal_name",
+            "opening_hours",
             "address",
             "phone",
             "ambulance",

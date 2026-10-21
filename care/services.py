@@ -10,10 +10,11 @@ class BookingError(Exception):
 
 
 def notify(appt, message):
-    Notification.objects.bulk_create([
-        Notification(recipient_id=pk, appointment=appt, message=message)
-        for pk in {appt.patient_id, appt.slot.doctor_id}
-    ])
+    from .delivery import publish
+    import uuid
+    event_id = uuid.uuid4().hex
+    for user in User.objects.filter(pk__in={appt.patient_id, appt.slot.doctor_id}):
+        publish(user, message, f'appointment:{event_id}:{user.pk}', appt)
 
 
 def cancellation_allowed(appt):
@@ -150,6 +151,8 @@ def change_status(appt, user, status):
     appt.status = status
     appt.save(update_fields=["status"])
     if status == "cancelled":
+        from .models import QueueEntry
+        QueueEntry.objects.filter(appointment=appt, status__in=["waiting", "called"]).update(status="cancelled", updated=timezone.now())
         Slot.objects.filter(pk=appt.slot_id).update(booked=False)
         Payment.objects.filter(appointment=appt, status="paid", amount__gt=0).update(
             status="refund_due"
@@ -180,6 +183,8 @@ def dispense(rx, user):
             )
         med.stock -= item.quantity
         med.save(update_fields=["stock"])
+        from .models import StockMovement
+        StockMovement.objects.create(medicine=med, actor=user, prescription=rx, quantity=-item.quantity, balance=med.stock, reason='Prescription dispensing')
     rx.dispensed = True
     rx.dispensed_by = user
     rx.dispensed_at = timezone.now()

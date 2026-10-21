@@ -35,6 +35,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=120)
     phone = models.CharField(max_length=20, blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
     role = models.CharField(max_length=20, choices=ROLES, default="patient")
     approval = models.CharField(
         max_length=12,
@@ -248,16 +249,107 @@ class Hospital(models.Model):
     privacy_email = models.EmailField(blank=True)
     legal_name = models.CharField(max_length=200, blank=True)
     retention_days = models.PositiveIntegerField(default=1095)
+    opening_hours = models.CharField(max_length=600, blank=True)
     cancellation_policy = models.TextField(max_length=2000, blank=True)
     cancellation_notice_minutes = models.PositiveIntegerField(default=0)
 
 
 class Notification(models.Model):
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notifications")
-    appointment = models.ForeignKey(Appointment, on_delete=models.PROTECT)
+    appointment = models.ForeignKey(Appointment, on_delete=models.PROTECT, null=True, blank=True)
     message = models.CharField(max_length=200)
     read = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ["-created", "-pk"]
+
+
+class WellnessEntry(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.PROTECT)
+    date = models.DateField()
+    sleep = models.DecimalField(max_digits=4, decimal_places=1, validators=[MinValueValidator(0), MaxValueValidator(24)])
+    water = models.DecimalField(max_digits=4, decimal_places=1, validators=[MinValueValidator(0), MaxValueValidator(30)])
+    exercise_days = models.PositiveSmallIntegerField(validators=[MaxValueValidator(7)])
+    stress = models.PositiveSmallIntegerField(validators=[MaxValueValidator(10)])
+    score = models.PositiveSmallIntegerField()
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['patient', 'date'], name='wellness_patient_date')]
+        ordering = ['-date']
+
+
+class WellnessRevision(models.Model):
+    entry = models.ForeignKey(WellnessEntry, on_delete=models.PROTECT, related_name='revisions')
+    values = models.JSONField()
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class HealthAssessment(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.PROTECT)
+    created = models.DateTimeField(auto_now_add=True)
+    answers = models.JSONField()
+    result = models.JSONField()
+
+    class Meta:
+        ordering = ['-created']
+
+
+class ClinicalNote(models.Model):
+    appointment = models.ForeignKey(Appointment, on_delete=models.PROTECT, related_name='notes')
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    complaint = models.TextField(max_length=3000)
+    examination = models.TextField(max_length=3000, blank=True)
+    assessment = models.TextField(max_length=3000, blank=True)
+    plan = models.TextField(max_length=3000)
+    follow_up = models.TextField(max_length=1500, blank=True)
+    correction_reason = models.CharField(max_length=300, blank=True)
+    version = models.PositiveIntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['appointment', 'version'], name='clinical_note_version')]
+        ordering = ['-version']
+
+
+class QueueCounter(models.Model):
+    date = models.DateField(unique=True)
+    number = models.PositiveIntegerField(default=0)
+
+
+class QueueEntry(models.Model):
+    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT, related_name='queue_entry')
+    date = models.DateField()
+    number = models.PositiveIntegerField()
+    status = models.CharField(max_length=12, default='waiting', choices=[('waiting', 'Waiting'), ('called', 'Called'), ('completed', 'Completed'), ('cancelled', 'Cancelled')])
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['date', 'number'], name='queue_daily_token')]
+        ordering = ['date', 'number']
+
+
+class StockMovement(models.Model):
+    medicine = models.ForeignKey(Medicine, on_delete=models.PROTECT, related_name='movements')
+    actor = models.ForeignKey(User, on_delete=models.PROTECT)
+    prescription = models.ForeignKey(Prescription, on_delete=models.PROTECT, null=True)
+    quantity = models.IntegerField()
+    balance = models.PositiveIntegerField()
+    reason = models.CharField(max_length=120)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created', '-pk']
+
+
+class DeliveryOutbox(models.Model):
+    notification = models.OneToOneField(Notification, on_delete=models.PROTECT)
+    dedupe_key = models.CharField(max_length=120, unique=True)
+    status = models.CharField(max_length=12, default='pending', choices=[('pending', 'Pending'), ('sending', 'Sending'), ('sent', 'Sent'), ('failed', 'Failed'), ('unavailable', 'Unavailable')])
+    attempts = models.PositiveSmallIntegerField(default=0)
+    lease_until = models.DateTimeField(null=True)
+    next_attempt = models.DateTimeField(default=timezone.now)
+    sent_at = models.DateTimeField(null=True)
+    last_error = models.CharField(max_length=120, blank=True)

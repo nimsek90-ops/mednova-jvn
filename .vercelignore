@@ -11,7 +11,7 @@ __pycache__
 **/__pycache__
 *.pyc
 tools
-care/tests.py
+care/test*.py
 care/mysql_acceptance.py
 
 *.log

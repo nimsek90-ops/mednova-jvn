@@ -1,7 +1,17 @@
 from django.urls import path
 from care import views as v
+from care import product as p
 
 urlpatterns = [
+    path('about/', p.public_information, {'kind': 'about'}, name='about'),
+    path('pharmacy/', p.public_information, {'kind': 'pharmacy'}, name='pharmacy_info'),
+    path('health-hub/', p.health_hub, name='health_hub'),
+    path('symptom-information/', p.symptoms, name='symptoms'),
+    path('wellness/', p.wellness, name='wellness'),
+    path('appointments/<uuid:pk>/notes/', p.notes, name='notes'),
+    path('patients/<int:patient_id>/timeline/', p.timeline, name='timeline'),
+    path('queue/', p.queue, name='queue'),
+    path('inventory/movements/', p.movements, name='movements'),
     path("api/maintenance/cleanup/", v.cleanup, name="cleanup"),
     path("health/", v.health, name="health"),
     path("notifications/", v.notifications, name="notifications"),

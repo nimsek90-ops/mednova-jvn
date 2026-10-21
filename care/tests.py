@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import timedelta, datetime, time
 from decimal import Decimal
 from io import BytesIO
 from tempfile import TemporaryDirectory
@@ -397,7 +397,8 @@ class Workflows(TestCase):
             r = self.client.get(reverse("download", args=[report.pk]))
             self.assertEqual(r.status_code, 200)
             self.assertIn("attachment", r["Content-Disposition"])
-            r.close()
+            downloaded = b"".join(r.streaming_content)
+            self.assertTrue(downloaded.startswith(b"\xff\xd8"))
 
     def medicine_and_rx(self):
         med = Medicine.objects.create(
@@ -708,7 +709,7 @@ class Workflows(TestCase):
             "/availability/", {"date": str(day), "start": "09:05", "end": "10:05"}
         )
         values = list(
-            Slot.objects.filter(doctor=self.doctor, start__date=day)
+            Slot.objects.filter(doctor=self.doctor, start__gte=timezone.make_aware(datetime.combine(day, time.min)), start__lt=timezone.make_aware(datetime.combine(day + timedelta(days=1), time.min)))
             .order_by("start")
             .values_list("start", flat=True)
         )
@@ -803,7 +804,8 @@ class Workflows(TestCase):
         self.assertEqual(med.stock, 10)
 
     def test_notifications_are_private_and_persistent(self):
-        self.assertEqual(Notification.objects.filter(recipient=self.patient).count(), 1)
+        self.assertEqual(Notification.objects.filter(recipient=self.patient, appointment=self.appt).count(), 1)
+        self.assertEqual(Notification.objects.filter(recipient=self.patient, appointment__isnull=True).count(), 1)
         self.sign(self.other)
         self.assertNotContains(self.client.get('/notifications/'), 'Appointment requested.')
         self.sign(self.patient)
@@ -1007,7 +1009,7 @@ class Workflows(TestCase):
         with patch('django.core.management.call_command') as command:
             response = self.client.get('/api/maintenance/cleanup/', HTTP_AUTHORIZATION='Bearer synthetic-cron-secret')
         self.assertEqual(response.status_code, 200)
-        command.assert_called_once()
+        self.assertEqual([call.args[0] for call in command.call_args_list], ["cleanup_transient", "process_notifications"])
 
     def test_vercel_configuration_fails_closed_for_missing_services(self):
         from mednova.hosting import storage_config, validate_vercel

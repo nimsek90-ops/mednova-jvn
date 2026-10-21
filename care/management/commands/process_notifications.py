@@ -1,0 +1,9 @@
+from django.core.management.base import BaseCommand
+from care.delivery import reminders, process_outbox
+
+class Command(BaseCommand):
+    help = 'Create deduplicated reminders and process a bounded email outbox.'
+    def handle(self, *args, **options):
+        reminders()
+        sent = process_outbox()
+        self.stdout.write(f'Email messages accepted by backend: {sent}. SMS provider is not configured.')

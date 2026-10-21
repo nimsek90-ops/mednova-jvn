@@ -1,3 +1,5 @@
+> Current product expansion: see docs/PRODUCT_IMPLEMENTATION_REPORT.md. New additive migrations0003/0004; 108 MySQL tests and104 SQLite tests passed, including four real MySQL race tests. Older counts and statements below describe earlier checkpoints. Production deployment remains blocked.
+
 # MedNova | Python + MySQL hospital portal
 
 A locally reviewable replacement for the supplied React/localStorage prototype. Frontend: HTML templates, CSS and vanilla JavaScript. Backend: Django 5.2.18 / Python. Database: MySQL. No Node.js, React, Firebase, Google sign-in or OTP login is required.

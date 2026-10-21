@@ -791,6 +791,8 @@ def inventory(request):
     form = MedicineForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         med = form.save()
+        from .models import StockMovement
+        StockMovement.objects.create(medicine=med, actor=request.user, quantity=med.stock, balance=med.stock, reason="Opening stock")
         audit(request.user, "inventory.created", med.pk)
         messages.success(request, "Medicine batch added.")
         return redirect("inventory")
@@ -799,6 +801,9 @@ def inventory(request):
         "care/inventory.html",
         {
             "form": form,
+            "low_stock_count": Medicine.objects.filter(stock__lte=10).count(),
+            "expired_count": Medicine.objects.filter(expiry__lt=timezone.localdate()).count(),
+            "expiring_count": Medicine.objects.filter(expiry__gte=timezone.localdate(), expiry__lte=timezone.localdate()+timedelta(days=30)).count(),
             "medicines": paged(request, Medicine.objects.order_by("name", "pk")),
             "pagination": paged(request, Medicine.objects.order_by("name", "pk")),
         },
@@ -824,6 +829,8 @@ def stock(request, pk):
                 raise ValueError()
             med.stock += change
             med.save(update_fields=["stock"])
+            from .models import StockMovement
+            StockMovement.objects.create(medicine=med, actor=request.user, quantity=change, balance=med.stock, reason=reason)
             audit(request.user, "inventory.adjusted", f"{pk}: {change}: {reason}")
         messages.success(request, "Stock updated.")
     except ValueError:
@@ -1253,6 +1260,10 @@ def check_in(request, pk):
             appt.save(update_fields=["checked_in_at"])
             audit(request.user, "appointment.checked_in", appt.pk)
             messages.success(request, "Patient checked in.")
+        if appt.checked_in_at and appt.status == 'confirmed' and appt.mode == 'in_person' and timezone.localdate(appt.slot.start) == timezone.localdate():
+            from .product import enqueue
+            entry = enqueue(appt)
+            messages.success(request, f"Queue token: {entry.number}")
     return redirect("appointment", pk=pk)
 
 
@@ -1402,4 +1413,5 @@ def cleanup(request):
     from django.core.management import call_command
     from io import StringIO
     call_command("cleanup_transient", stdout=StringIO())
+    call_command("process_notifications", stdout=StringIO())
     return JsonResponse({"ok": True})
