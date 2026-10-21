@@ -1,0 +1,22 @@
+{% load translate %}<span class="nav-heading">YOUR WORKSPACE</span>
+{% if request.user.approval == "approved" %}<a href="{% url 'dashboard' %}">{% include 'care/components/icon.html' with name='grid' %}<span>{{ 'Dashboard'|t:language }}</span></a>
+{% if request.user.role != 'pharmacist' %}<a href="{% url 'appointments' %}">{% include 'care/components/icon.html' with name='calendar' %}<span>{{ 'Appointments'|t:language }}</span></a>
+{% endif %}{% if request.user.role == 'patient' or request.user.role == 'receptionist' %}<a href="{% url 'doctors' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'Doctors'|t:language }}</span></a>
+{% endif %}{% if request.user.role == 'doctor' %}<a href="{% url 'availability' %}">{% include 'care/components/icon.html' with name='calendar' %}<span>{{ 'Availability'|t:language }}</span></a>
+{% endif %}{% if request.user.role == 'receptionist' or request.user.role == 'admin' %}<a href="{% url 'patients' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'Patients'|t:language }}</span></a>
+{% endif %}{% if request.user.role == 'receptionist' or request.user.role == 'admin' %}<a href="{% url 'queue' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'Patient queue'|t:language }}</span></a>
+{% endif %}{% if request.user.role == 'patient' or request.user.role == 'doctor' or request.user.role == 'pharmacist' %}<a href="{% url 'prescriptions' %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Prescriptions'|t:language }}</span></a>
+{% endif %}{% if request.user.role == 'pharmacist' or request.user.role == 'admin' %}<a href="{% url 'inventory' %}">{% include 'care/components/icon.html' with name='box' %}<span>{{ 'Inventory'|t:language }}</span></a>
+{% endif %}{% if request.user.role == 'pharmacist' or request.user.role == 'admin' %}<a href="{% url 'movements' %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Stock movements'|t:language }}</span></a>
+{% endif %}<span class="nav-heading">HEALTH &amp; WELLBEING</span>{% if request.user.role == 'patient' %}<a href="{% url 'wellness' %}">{% include 'care/components/icon.html' with name='heart' %}<span>{{ 'Wellness tracking'|t:language }}</span></a>
+<a href="{% url 'timeline' request.user.pk %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Medical timeline'|t:language }}</span></a>{% endif %}<a href="{% url 'health_hub' %}">{% include 'care/components/icon.html' with name='heart' %}<span>{{ 'Health Hub'|t:language }}</span></a>
+<a href="{% url 'symptoms' %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Symptom information'|t:language }}</span></a>
+{% if request.user.role == "admin" %}<span class="nav-heading">ADMINISTRATION</span><a href="{% url 'staff' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'Staff approvals'|t:language }}</span></a>
+<a href="{% url 'users' %}">{% include 'care/components/icon.html' with name='people' %}<span>{{ 'User management'|t:language }}</span></a>
+<a href="{% url 'departments' %}">{% include 'care/components/icon.html' with name='grid' %}<span>{{ 'Departments'|t:language }}</span></a>
+<a href="{% url 'operations' %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Operational report'|t:language }}</span></a>
+<a href="{% url 'settings' %}">{% include 'care/components/icon.html' with name='settings' %}<span>{{ 'Hospital settings'|t:language }}</span></a>
+<a href="{% url 'audit' %}">{% include 'care/components/icon.html' with name='document' %}<span>{{ 'Audit log'|t:language }}</span></a>
+{% endif %}{% endif %}<span class="nav-heading">ACCOUNT &amp; SUPPORT</span><a href="{% url 'notifications' %}">{% include 'care/components/icon.html' with name='bell' %}<span>{{ 'Notifications'|t:language }}</span></a>
+<a href="{% url 'profile' %}">{% include 'care/components/icon.html' with name='user' %}<span>{{ 'My profile'|t:language }}</span></a>
+<a href="{% url 'contact' %}">{% include 'care/components/icon.html' with name='heart' %}<span>{{ 'Contact hospital'|t:language }}</span></a>

@@ -1,3 +1,5 @@
+> UI redesign: see [UI_REDESIGN_REPORT.md](docs/UI_REDESIGN_REPORT.md) for the shared design system, all screen coverage,129 responsive checks and104 passing regression tests.
+
 > Current product expansion: see docs/PRODUCT_IMPLEMENTATION_REPORT.md. New additive migrations0003/0004; 108 MySQL tests and104 SQLite tests passed, including four real MySQL race tests. Older counts and statements below describe earlier checkpoints. Production deployment remains blocked.
 
 # MedNova | Python + MySQL hospital portal

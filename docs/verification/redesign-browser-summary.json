@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-21",
+  "environment": "Loopback Waitress; isolated synthetic SQLite data",
+  "measured_responsive_checks": 129,
+  "horizontal_overflow_cases": 0,
+  "viewport_widths": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1440,
+    1600
+  ],
+  "role_context_counts": {
+    "patient": 27,
+    "doctor": 9,
+    "receptionist": 9,
+    "pharmacist": 9,
+    "admin": 12,
+    "anonymous": 63
+  },
+  "public_screens_nine_widths": [
+    "home",
+    "login",
+    "about",
+    "health_hub",
+    "symptoms",
+    "doctors",
+    "register"
+  ],
+  "other_screens_sampled": [
+    "dashboard",
+    "wellness",
+    "appointments",
+    "profile",
+    "appointment_detail",
+    "availability",
+    "clinical_notes",
+    "queue",
+    "patients",
+    "inventory",
+    "prescriptions",
+    "staff_review",
+    "hospital_settings",
+    "audit"
+  ],
+  "keyboard_checks": [
+    "Public menu open and Escape close",
+    "Mobile drawer first-link focus",
+    "Closed mobile drawer inert attribute",
+    "Escape restores Menu focus",
+    "Skip link focuses main"
+  ],
+  "final_browser_console_errors_or_warnings": [],
+  "final_assets": "premium.css?v=6 and app.js?v=6",
+  "notes": [
+    "Counts describe actual viewport observations, not complete workflow execution at every width.",
+    "One rapid viewport transition reported the previous width; only actual reported widths were used.",
+    "Final phone login refinement and laptop dashboard additionally inspected after the matrix.",
+    "Screenshots were inspected inline in browser tool output; no saved screenshot file is claimed."
+  ]
+}
