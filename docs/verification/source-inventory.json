@@ -1,0 +1,392 @@
+[
+  {
+    "path": ".env.example",
+    "bytes": 553,
+    "sha256": "1b5e7f3eb04c0c18d4cf3d8a95cdaea31c4824a4538b07828126d5f87a00785a"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 119,
+    "sha256": "78e787045003e954ff310adabc47467a6eee01ec23494ff9e77b289204bac2bc"
+  },
+  {
+    "path": "configure.py",
+    "bytes": 4187,
+    "sha256": "b27e463b44f6914c5d788e2493c20c10bf056c3dacdd3398ee2220803bfbd984"
+  },
+  {
+    "path": "launch.py",
+    "bytes": 797,
+    "sha256": "ccf530209949f2bed4e6d43ddf309d4f5bad2c498d1370586fc90da67b976ab1"
+  },
+  {
+    "path": "manage.py",
+    "bytes": 249,
+    "sha256": "538824704e9f8e1b6d92e3d8ef98d32d1ff876ecd042e0fe9df461c6ca1c1fba"
+  },
+  {
+    "path": "README.md",
+    "bytes": 4122,
+    "sha256": "23fcc1b7f0eb00432c0761e9089d121ddcc73d99ad6103b4fe24d6701e86797f"
+  },
+  {
+    "path": "requirements.lock.txt",
+    "bytes": 354,
+    "sha256": "f5601a4abd8f04a7afc56623f6cb69893bf8092ed364c6655ba2b2e0ea8b347f"
+  },
+  {
+    "path": "requirements.txt",
+    "bytes": 121,
+    "sha256": "84398d6e1b5b401a9a9d1e97fdf369d2f8ce682859c599085d1e80e3a48e840e"
+  },
+  {
+    "path": "SETUP_WINDOWS.cmd",
+    "bytes": 881,
+    "sha256": "996ecd9d83a9cc4ca1d394ffbd9f3500d2b2cd5541a1fcc6be9d5acb7f0080d8"
+  },
+  {
+    "path": "SHA256SUMS.txt",
+    "bytes": 6930,
+    "sha256": "1828308c36886ff6f7c0348b7d4f01cae3bca43010dd446d094f9997eb8110ca"
+  },
+  {
+    "path": "START_HERE.md",
+    "bytes": 3298,
+    "sha256": "a6a4d3528560ed37aad9022859e3ac0c5d823ec228102bb5e9aa19fb822bcbce"
+  },
+  {
+    "path": "START_WINDOWS.cmd",
+    "bytes": 426,
+    "sha256": "7e698552c70e56f24980158da04a7fd453ae6da8788c1d28b37784fbe383adee"
+  },
+  {
+    "path": "care/context.py",
+    "bytes": 173,
+    "sha256": "b9e68a67d3d8eb5137ed55fdb5c761c37c7ac7ed2e4e80dbfbc5648f7cc563e3"
+  },
+  {
+    "path": "care/forms.py",
+    "bytes": 7492,
+    "sha256": "90f1cb463997ae4a35abd20be657cb95f5e95aa14a62681c09c4804ec469d000"
+  },
+  {
+    "path": "care/middleware.py",
+    "bytes": 1906,
+    "sha256": "9a955cf95b145e248a2ed633df6b4bce564659315313125ea2a2f92420a75fb2"
+  },
+  {
+    "path": "care/models.py",
+    "bytes": 8439,
+    "sha256": "d8bb3293ca4c59936384113e9a004ad1667ccc6424288c7ef58e482935f6d203"
+  },
+  {
+    "path": "care/security.py",
+    "bytes": 2421,
+    "sha256": "26f3bb254da52ae292988ed47580d8d0ec81995b22a521ed6ec6b1b819b36089"
+  },
+  {
+    "path": "care/services.py",
+    "bytes": 7636,
+    "sha256": "0035644b726a50ef7596b7d553a6332f6dc653d25d3076b23184e3ab8b5967ff"
+  },
+  {
+    "path": "care/tests.py",
+    "bytes": 27255,
+    "sha256": "cdbc8196cf666aee3d94a1e6175f35a7919bb76bb49b5197aaa01eed09e346b0"
+  },
+  {
+    "path": "care/translations_extra.py",
+    "bytes": 22970,
+    "sha256": "98f7ede40dd471a3f8f5e7de4d13434957f0d5025cb58ef7f122c6923de6937e"
+  },
+  {
+    "path": "care/views.py",
+    "bytes": 41444,
+    "sha256": "22b71a3ed4a6ad123a30f8eb3a5b10967bbe576bdd94c1a2aa6771b0cab93bdf"
+  },
+  {
+    "path": "care/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "database/README.md",
+    "bytes": 1490,
+    "sha256": "d4cdfc9ad9dc695d38fbe331631b827b2706bfa1e7494128de9a1e7128129f74"
+  },
+  {
+    "path": "docs/DEPLOYMENT.md",
+    "bytes": 3494,
+    "sha256": "e8c1e298b3958d784c414664ae0922ac72c770a9e8c1e39f2601974d54c4a4be"
+  },
+  {
+    "path": "docs/INTEGRATIONS.md",
+    "bytes": 4481,
+    "sha256": "2e81aaadb1662ac37b88fd9d580588ba13b78432d6d465ce97fe576424994ff4"
+  },
+  {
+    "path": "docs/PROJECT_AUDIT.md",
+    "bytes": 6260,
+    "sha256": "c659af3f7dbb2832085f4f3be778eb4123bbb1ef2abe71a5498ce40b6bef7d4b"
+  },
+  {
+    "path": "docs/SECURITY_REVIEW.md",
+    "bytes": 7577,
+    "sha256": "8591cedaa80d1aefb40f326b2adcd02a0bdd734c13d5ca130b1be213230554d0"
+  },
+  {
+    "path": "mednova/settings.py",
+    "bytes": 6222,
+    "sha256": "eaa6bf3f1bc11afe65db6ebb6b962d9d799b208ee5aaba2ddb4564eee3a44dcc"
+  },
+  {
+    "path": "mednova/urls.py",
+    "bytes": 2542,
+    "sha256": "ce7c6e8c390b31fdb374b67ce1ba68a37af6963dbcae94ad7ea76af1eb0b59cf"
+  },
+  {
+    "path": "mednova/wsgi.py",
+    "bytes": 167,
+    "sha256": "6c4036fb4b0a761ed2bcf66e9b3ffebfd448eac70b02370e99cb22c25ad7ff40"
+  },
+  {
+    "path": "mednova/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "templates/care/appointment.html",
+    "bytes": 3980,
+    "sha256": "ed9485c3d44f1e0aa4de26444af14eef3d4f9ce57b637b82ef22d62dedf00bf8"
+  },
+  {
+    "path": "templates/care/appointments.html",
+    "bytes": 865,
+    "sha256": "98f4712468031fc651ce32befbc7b6310c8c8eae8138d325d06d8c14810ae3ab"
+  },
+  {
+    "path": "templates/care/appointment_row.html",
+    "bytes": 643,
+    "sha256": "7b5311ff7abe2db9b698aed1c0dc24dec4cfdadbb8299152165a56e5842d9c5f"
+  },
+  {
+    "path": "templates/care/audit.html",
+    "bytes": 679,
+    "sha256": "ca77726a5f9f938d159144d38c2f7faf00739ba79e39cd5a56fe48a8f2839250"
+  },
+  {
+    "path": "templates/care/availability.html",
+    "bytes": 976,
+    "sha256": "955f7e108300c6bfd4ab8280a005efa2e88a8fe0db1f7ca048aa86095745fa77"
+  },
+  {
+    "path": "templates/care/base.html",
+    "bytes": 7402,
+    "sha256": "04fd0631ea9a5caf9ff3101849af8fe3397bdbe0a4d96a793fd6e440693ef68a"
+  },
+  {
+    "path": "templates/care/booking.html",
+    "bytes": 1928,
+    "sha256": "83934f803d028a44a04edba1394452f088aefdcc38f08866134c06bdbc974fd5"
+  },
+  {
+    "path": "templates/care/contact.html",
+    "bytes": 1085,
+    "sha256": "1ece59a7402e67edfa851fcd7fd033db2bb361c9d51affa3fd148d7e1daacacd"
+  },
+  {
+    "path": "templates/care/dashboard.html",
+    "bytes": 2717,
+    "sha256": "bce068a595ba516f023ded1db28284abd051120b249be2dde0ba1240ee21e473"
+  },
+  {
+    "path": "templates/care/doctors.html",
+    "bytes": 1604,
+    "sha256": "a8b23f695ea8673914b1a9f6be436023132b00f82fc67a3b36f6be925be5b37d"
+  },
+  {
+    "path": "templates/care/error.html",
+    "bytes": 282,
+    "sha256": "494db6e1b88fcc479a8ed4c3c52c9d38f001cf1c219208bd94a18d963e1e3ed1"
+  },
+  {
+    "path": "templates/care/fields.html",
+    "bytes": 738,
+    "sha256": "945818606f3f6301275cc05abaf46ea632384f7f4bc7b73447c6d55174e32cd5"
+  },
+  {
+    "path": "templates/care/forgot.html",
+    "bytes": 784,
+    "sha256": "bb5284f054007693b151aec46b300752b45310e248f3c9436d864b793276fdee"
+  },
+  {
+    "path": "templates/care/form.html",
+    "bytes": 1088,
+    "sha256": "07b1901237fa86f4a074d531e6a855d5bc114e47087783f19876773ac19f376c"
+  },
+  {
+    "path": "templates/care/inventory.html",
+    "bytes": 1485,
+    "sha256": "7d71bc60a3ef02a8f0b75886b2fc35d51070476802bfff2662f0b0b522eae198"
+  },
+  {
+    "path": "templates/care/legal.html",
+    "bytes": 7357,
+    "sha256": "76e75c76496f5d1e8639417e62cbf0fe134ac45dbf7353909571ed4982f0a7a5"
+  },
+  {
+    "path": "templates/care/login.html",
+    "bytes": 2910,
+    "sha256": "79fcecb0ddfad2e7a04b0bb0f7cefcf940864b5bc595a5fc601aae4f7a0d60b4"
+  },
+  {
+    "path": "templates/care/pagination.html",
+    "bytes": 583,
+    "sha256": "efd5a57af5dae3ae289bdf210156c9df73baadfa07c86fb6a5d0da4f5e3992ca"
+  },
+  {
+    "path": "templates/care/pay.html",
+    "bytes": 1031,
+    "sha256": "f3cd3e37e68e3ba8d3de0d471acdac20e7bf6195e6d1e94aacb72d74ba95833c"
+  },
+  {
+    "path": "templates/care/payment_record.html",
+    "bytes": 1050,
+    "sha256": "498cf2f5d849b1dd13dfafd8285863f039284cfcbe615d2ec57f7467e8660dcc"
+  },
+  {
+    "path": "templates/care/pending.html",
+    "bytes": 588,
+    "sha256": "695c82f91543c721e8ffdc02510bd9fb6832ae13fd96e2d30fd762bb6bb7aed6"
+  },
+  {
+    "path": "templates/care/prescribe.html",
+    "bytes": 1542,
+    "sha256": "77195816b60cc85e4fcbd63d266f676d62ee765a0544c7ce9950ce92edb66038"
+  },
+  {
+    "path": "templates/care/prescriptions.html",
+    "bytes": 1326,
+    "sha256": "5eb19a623795e5b1503c72b0c6d0b39c656048da4d02939201d0d0590473e1d5"
+  },
+  {
+    "path": "templates/care/staff.html",
+    "bytes": 1582,
+    "sha256": "eccc32f1a9a3590a9804f783cebff4d81268cb0791a80444e57ebba380b695ba"
+  },
+  {
+    "path": "templates/care/video.html",
+    "bytes": 1593,
+    "sha256": "713e4c91a852c5ab0e83adf289ef84eb1faccd9c282dd02631612fefbf4bff55"
+  },
+  {
+    "path": "static/css/app.css",
+    "bytes": 18397,
+    "sha256": "c334312c954af8f221cec2639dd44f0d9896c2c9819cdff3e1a16c6470ff094d"
+  },
+  {
+    "path": "static/fonts/inter-latin-400-normal.woff2",
+    "bytes": 23664,
+    "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+  },
+  {
+    "path": "static/fonts/inter-latin-600-normal.woff2",
+    "bytes": 24452,
+    "sha256": "f9a06e79cd3a2a20951c0f0e28f66dd0e6d3fda73911d640a2125c8fcb78f21a"
+  },
+  {
+    "path": "static/fonts/INTER-LICENSE.txt",
+    "bytes": 4477,
+    "sha256": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345"
+  },
+  {
+    "path": "static/img/logo.png",
+    "bytes": 981592,
+    "sha256": "99d2b26f6cc43e9504115917f17e47be8cca601cb70472f03286c249c64b12cd"
+  },
+  {
+    "path": "static/js/app.js",
+    "bytes": 1559,
+    "sha256": "2ec99031b6173bed3deddcc55a5a541727df809211013f97bca8c3fce4bc2a4d"
+  },
+  {
+    "path": "static/js/payment.js",
+    "bytes": 1081,
+    "sha256": "2674f1761d10be3741aa08908e3e4d80c749f2874af2950b50de7c40101a27cb"
+  },
+  {
+    "path": "static/js/video.js",
+    "bytes": 4793,
+    "sha256": "f7f44be779f3788f260687f44774d2d163a47f079154a76094a3dfd2d6247ad6"
+  },
+  {
+    "path": "docs/verification/dependencies.json",
+    "bytes": 991,
+    "sha256": "0e928fa493f73ae84e473379ec8346c0eac816ab072c3c92d0737991da98bab0"
+  },
+  {
+    "path": "docs/verification/deployment-settings.txt",
+    "bytes": 48,
+    "sha256": "1e3e63f221bde88816c4a4ef7367691607b20cc1d194028a02ec9ae0586cf9b1"
+  },
+  {
+    "path": "docs/verification/static-analysis.json",
+    "bytes": 13091,
+    "sha256": "881e065854ba7e9448f1585ad51a27651d538b713e5609d75425747569471163"
+  },
+  {
+    "path": "docs/verification/tests.txt",
+    "bytes": 477,
+    "sha256": "26a770568d84bcae7d44befebc481f9591908e2009d8e5f1c99d4b58902b99f5"
+  },
+  {
+    "path": "care/management/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "care/migrations/0001_initial.py",
+    "bytes": 21605,
+    "sha256": "06b5e9d19d02319eb905ddb9086c99cbfec1e4b631a09e7c7643d2fd421f6645"
+  },
+  {
+    "path": "care/migrations/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "care/templatetags/translate.py",
+    "bytes": 17607,
+    "sha256": "9ac3db49b006fd83f68b7189e012ca36f5099f81b1d6e96655e88f9d9fc49904"
+  },
+  {
+    "path": "care/templatetags/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "care/management/commands/check_database.py",
+    "bytes": 724,
+    "sha256": "dc1f61064e09157b70af9fdb6448629594be222a544450e292f09b3e9d1caf44"
+  },
+  {
+    "path": "care/management/commands/cleanup_transient.py",
+    "bytes": 771,
+    "sha256": "8fe1dc873ab3af6bd4a77aff89f0aa05ffa5972d79d618896bc7df6b05af8268"
+  },
+  {
+    "path": "care/management/commands/ensure_admin.py",
+    "bytes": 713,
+    "sha256": "43b884cb261f40a672fcd61508fad9732605470445eaf0fc21a833c8b619126d"
+  },
+  {
+    "path": "care/management/commands/launch_check.py",
+    "bytes": 2402,
+    "sha256": "cc18cf3c8ae5962cfedea1740deb3dd51e8f1c98f67b895fc6e0b011076f4051"
+  },
+  {
+    "path": "care/management/commands/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

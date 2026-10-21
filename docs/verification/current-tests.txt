@@ -1,0 +1,12 @@
+Creating test database for alias 'default'...
+
+...............Request rejected by CSRF protection (cookie missing).
+.............................................................
+----------------------------------------------------------------------
+Ran 76 tests in 4.972s
+
+OK
+Destroying test database for alias 'default'...
+
+Found 76 test(s).
+System check identified no issues (0 silenced).

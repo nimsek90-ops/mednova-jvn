@@ -1,0 +1,187 @@
+from datetime import timedelta
+from django.db import transaction
+from django.utils import timezone
+from .models import User, Slot, Appointment, Payment, Prescription, Medicine, Notification, Hospital
+from .security import audit
+
+
+class BookingError(Exception):
+    pass
+
+
+def notify(appt, message):
+    Notification.objects.bulk_create([
+        Notification(recipient_id=pk, appointment=appt, message=message)
+        for pk in {appt.patient_id, appt.slot.doctor_id}
+    ])
+
+
+def cancellation_allowed(appt):
+    hospital = Hospital.objects.first()
+    notice = hospital.cancellation_notice_minutes if hospital else 0
+    return appt.slot.start > timezone.now() + timedelta(minutes=notice)
+
+
+@transaction.atomic
+def book(patient, slot_id, mode, reason, existing=None):
+    if mode not in ("in_person", "video") or not isinstance(reason, str) or not reason.strip() or len(reason) > 400:
+        raise BookingError("Choose a valid consultation type and reason (up to 400 characters).")
+    # Serialize each patient's bookings and each doctor's calendar, including range overlap checks.
+    patient = User.objects.select_for_update().get(pk=patient.pk)
+    candidate = Slot.objects.get(pk=slot_id)
+    doctor_ids = {candidate.doctor_id}
+    if existing:
+        previous = Appointment.objects.get(pk=existing.pk)
+        if previous.patient_id != patient.pk:
+            raise BookingError("This appointment does not belong to this patient.")
+        doctor_ids.add(previous.slot.doctor_id)
+    locked_doctors = {u.pk: u for u in User.objects.select_for_update().filter(pk__in=doctor_ids).order_by("pk")}
+    doctor = locked_doctors[candidate.doctor_id]
+    slot = Slot.objects.select_for_update().get(pk=slot_id)
+    if slot.consultation_type not in ("both", mode):
+        raise BookingError("This slot does not support that consultation type.")
+    if (
+        patient.role != "patient"
+        or not patient.is_active
+        or patient.approval != "approved"
+    ):
+        raise BookingError("Patient account is unavailable.")
+    if doctor.role != "doctor" or not doctor.is_active or doctor.approval != "approved":
+        raise BookingError("This doctor is not available.")
+    if slot.booked or not slot.active or slot.start <= timezone.now():
+        raise BookingError("This slot is no longer available. Choose another time.")
+    if Appointment.objects.filter(slot=slot).exclude(status="cancelled").exists():
+        raise BookingError("This slot is no longer available. Choose another time.")
+    if Appointment.objects.filter(
+        slot__doctor=doctor, status__in=["pending", "confirmed"],
+        slot__start__gt=slot.start - timedelta(minutes=12),
+        slot__start__lt=slot.start + timedelta(minutes=12),
+    ).exclude(pk=existing.pk if existing else None).exists():
+        raise BookingError("The doctor already has an appointment at this time.")
+    if (
+        not hasattr(doctor, "doctor_profile")
+        or not doctor.doctor_profile.department
+        or not doctor.doctor_profile.department.active
+    ):
+        raise BookingError("The doctor profile is unavailable.")
+    overlapping = Appointment.objects.filter(
+        patient=patient,
+        status__in=["pending", "confirmed"],
+        slot__start__gt=slot.start - timedelta(minutes=12),
+        slot__start__lt=slot.start + timedelta(minutes=12),
+    )
+    if existing:
+        overlapping = overlapping.exclude(pk=existing.pk)
+    if overlapping.exists():
+        raise BookingError("You already have an appointment at this time.")
+    if existing:
+        appt = Appointment.objects.select_for_update().get(pk=existing.pk)
+        if (
+            appt.status not in ("pending", "confirmed")
+            or not cancellation_allowed(appt)
+        ):
+            raise BookingError("This appointment cannot be rescheduled.")
+        payment = Payment.objects.select_for_update().get(appointment=appt)
+        if payment.status != "unpaid" and slot.doctor_id != appt.slot.doctor_id:
+            raise BookingError(
+                "Paid visits can only be rescheduled with the same doctor."
+            )
+        Slot.objects.filter(pk=appt.slot_id).update(booked=False)
+        appt.slot = slot
+        appt.status = "pending"
+        appt.mode = mode
+        appt.reason = reason
+        if payment.status == "unpaid":
+            appt.fee = doctor.doctor_profile.fee
+            payment.amount = appt.fee
+            payment.order_id = ""
+            payment.save()
+        appt.save()
+        audit(patient, "appointment.rescheduled", appt.pk)
+    else:
+        appt = Appointment.objects.create(
+            patient=patient,
+            slot=slot,
+            mode=mode,
+            reason=reason,
+            fee=doctor.doctor_profile.fee,
+        )
+        Payment.objects.create(
+            appointment=appt,
+            amount=appt.fee,
+            status="paid" if appt.fee == 0 else "unpaid",
+            method="free" if appt.fee == 0 else "",
+        )
+        audit(patient, "appointment.created", appt.pk)
+    slot.booked = True
+    slot.save(update_fields=["booked"])
+    notify(appt, "Appointment rescheduled." if existing else "Appointment requested.")
+    return appt
+
+
+@transaction.atomic
+def change_status(appt, user, status):
+    User.objects.select_for_update().get(pk=appt.patient_id)
+    snapshot = Appointment.objects.select_related("slot").get(pk=appt.pk)
+    User.objects.select_for_update().get(pk=snapshot.slot.doctor_id)
+    appt = Appointment.objects.select_for_update().get(pk=appt.pk)
+    actor = User.objects.get(pk=user.pk)
+    allowed = {
+        "patient": {"cancelled"}, "doctor": {"confirmed", "cancelled", "completed"},
+        "receptionist": {"confirmed", "cancelled"}, "admin": {"confirmed", "cancelled"},
+    }
+    if (not actor.is_active or actor.approval != "approved"
+        or status not in allowed.get(actor.role, set())
+        or (actor.role == "patient" and actor.pk != appt.patient_id)
+        or (actor.role == "doctor" and actor.pk != appt.slot.doctor_id)):
+        raise BookingError("You cannot change this appointment.")
+    if actor.role == "patient" and not cancellation_allowed(appt):
+        raise BookingError("The cancellation notice period has passed. Contact the hospital.")
+    transitions = {
+        "pending": {"confirmed", "cancelled"},
+        "confirmed": {"completed", "cancelled"},
+    }
+    if status not in transitions.get(appt.status, set()):
+        raise BookingError("This status change is not available.")
+    if status == "confirmed" and appt.slot.start <= timezone.now():
+        raise BookingError("A past appointment cannot be confirmed.")
+    if status == "completed" and appt.slot.start > timezone.now():
+        raise BookingError("The consultation has not started yet.")
+    appt.status = status
+    appt.save(update_fields=["status"])
+    if status == "cancelled":
+        Slot.objects.filter(pk=appt.slot_id).update(booked=False)
+        Payment.objects.filter(appointment=appt, status="paid", amount__gt=0).update(
+            status="refund_due"
+        )
+    audit(user, "appointment." + status, appt.pk)
+    notify(appt, "Appointment " + status + ".")
+
+
+@transaction.atomic
+def dispense(rx, user):
+    actor = User.objects.get(pk=user.pk)
+    if actor.role != "pharmacist" or not actor.is_active or actor.approval != "approved":
+        raise BookingError("Only an approved pharmacist can dispense prescriptions.")
+    Appointment.objects.select_for_update().get(pk=rx.appointment_id)
+    rx = Prescription.objects.select_for_update().get(pk=rx.pk)
+    if rx.appointment.status == "cancelled":
+        raise BookingError("A cancelled appointment's prescription cannot be dispensed.")
+    if rx.dispensed:
+        raise BookingError("This prescription has already been dispensed.")
+    items = list(rx.items.order_by("medicine_id"))
+    if not items:
+        raise BookingError("There are no medicines to dispense.")
+    for item in items:
+        med = Medicine.objects.select_for_update().get(pk=item.medicine_id)
+        if med.stock < item.quantity or med.expiry < timezone.localdate():
+            raise BookingError(
+                "Stock unavailable or expired. No medicines were dispensed."
+            )
+        med.stock -= item.quantity
+        med.save(update_fields=["stock"])
+    rx.dispensed = True
+    rx.dispensed_by = user
+    rx.dispensed_at = timezone.now()
+    rx.save()
+    audit(user, "prescription.dispensed", rx.pk)
