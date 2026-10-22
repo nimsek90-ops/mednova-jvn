@@ -1,3 +1,5 @@
+> VS Code folder delivery: [OPEN_IN_VSCODE.md](OPEN_IN_VSCODE.md), [database viewer guide](docs/VSCODE_DATABASE.md), and [login/delivery report](docs/LOGIN_AND_FOLDER_DELIVERY.md).
+
 > New PostgreSQL/Supabase direction and Figma deliverables: [current transformation report](docs/PRODUCT_TRANSFORMATION_REPORT.md) and [migration/operations guide](docs/SUPABASE_MIGRATION_AND_OPERATIONS.md). The primary local app is still MySQL on8000; the already prepared PostgreSQL rehearsal is separate on8002.
 
 > This prepared laptop already has a verified local MySQL installation. From this folder run `.\.venv\Scripts\python.exe tools/local_mysql.py serve` and open http://127.0.0.1:8000/. Do not rerun setup to reset existing data. See [final report](docs/FINAL_SYSTEM_REPORT.md) and [database/admin operations](docs/MYSQL_OPERATIONS.md). The setup steps below apply to a fresh installation.

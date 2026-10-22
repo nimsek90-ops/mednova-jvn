@@ -1,0 +1,56 @@
+[
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "minTarget": 44,
+    "roleLinks": 5,
+    "scrollWidth": 1585,
+    "width": 1600
+  }
+]

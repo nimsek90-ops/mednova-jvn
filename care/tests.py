@@ -94,6 +94,10 @@ class Workflows(TestCase):
                 "role": "admin",
             },
         )
+        self.assertContains(r, "does not belong to the selected workspace")
+        self.assertNotIn("_auth_user_id", self.client.session)
+        r = self.client.post("/login/", {"email": "PATIENT@EXAMPLE.TEST",
+            "password": "Correct-Hospital-Pass12", "role": "patient"})
         self.assertRedirects(r, "/dashboard/")
         self.assertEqual(self.client.get("/admin/staff/").status_code, 403)
 

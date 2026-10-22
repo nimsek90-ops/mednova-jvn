@@ -131,24 +131,36 @@ def sign_in(request):
     if request.user.is_authenticated:
         return redirect("dashboard")
     error = ""
+    role_choices = User.ROLES
+    selected_role = request.POST.get("role", "") if request.method == "POST" else request.GET.get("role", "")
+    if selected_role not in dict(role_choices):
+        selected_role = ""
+    context = {"selected_role": selected_role, "role_choices": role_choices,
+               "next": safe_next(request), "email": ""}
     if request.method == "POST":
         email = request.POST.get("email", "").strip().lower()[:254]
         if limited("login-account:" + email, 12, 900):
             return render(
                 request,
                 "care/login.html",
-                {"error": "Too many attempts. Please wait 15 minutes."},
+                dict(context, error="Too many attempts. Please wait 15 minutes."),
                 status=429,
             )
         user = authenticate(
             request, username=email, password=request.POST.get("password", "")[:256]
         )
-        if user:
+        context["email"] = email
+        if user and selected_role and user.role != selected_role:
+            error = "This account does not belong to the selected workspace. Choose your assigned role."
+        elif user and user.role not in dict(role_choices):
+            error = "This account has no supported workspace. Contact your hospital administrator."
+        elif user:
             login(request, user)
             audit(user, "session.login")
             return redirect(safe_next(request))
-        error = "Email or password is incorrect."
-    return render(request, "care/login.html", {"error": error, "next": safe_next(request)})
+        if not error:
+            error = "Email or password is incorrect, or the account is inactive."
+    return render(request, "care/login.html", dict(context, error=error))
 
 
 @require_http_methods(["GET", "POST"])
