@@ -363,6 +363,8 @@ def doctors(request):
     profiles = DoctorProfile.objects.select_related("user", "department").filter(
         user__role="doctor", user__approval="approved", user__is_active=True, department__active=True
     )
+    from django.db.models import Min
+    profiles = profiles.annotate(next_slot=Min('user__slots__start', filter=Q(user__slots__active=True, user__slots__booked=False, user__slots__start__gt=timezone.now(), user__slots__start__lt=timezone.now()+timedelta(days=90))))
     query = request.GET.get("q", "").strip()[:100]
     if query:
         profiles = profiles.filter(
@@ -372,7 +374,7 @@ def doctors(request):
     if department:
         profiles = profiles.filter(department_id=integer_id(department))
     if request.GET.get("available") == "1":
-        profiles = profiles.filter(user__slots__active=True, user__slots__booked=False, user__slots__start__gt=timezone.now()).distinct()
+        profiles = profiles.filter(user__slots__active=True, user__slots__booked=False, user__slots__start__gt=timezone.now(), user__slots__start__lt=timezone.now()+timedelta(days=90)).distinct()
     return render(
         request,
         "care/doctors.html",

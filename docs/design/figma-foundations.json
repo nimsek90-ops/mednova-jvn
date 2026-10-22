@@ -1,0 +1,528 @@
+{
+  "createdNodeIds": [
+    "2:395",
+    "2:396",
+    "2:397",
+    "2:398",
+    "2:399",
+    "2:400",
+    "2:401",
+    "2:402",
+    "2:403",
+    "2:404",
+    "2:405",
+    "2:406",
+    "2:407",
+    "2:408",
+    "2:409",
+    "2:410",
+    "2:411",
+    "2:412",
+    "2:413",
+    "2:414",
+    "2:415",
+    "2:416",
+    "2:417",
+    "2:418",
+    "2:419",
+    "2:420",
+    "2:421",
+    "2:422",
+    "2:423",
+    "2:424",
+    "2:425",
+    "2:426",
+    "2:427",
+    "2:428",
+    "2:429",
+    "2:430",
+    "2:431",
+    "2:432",
+    "2:433",
+    "2:434",
+    "2:435",
+    "2:436",
+    "2:437",
+    "2:438",
+    "2:439",
+    "2:440",
+    "2:441",
+    "2:442",
+    "2:443",
+    "2:444",
+    "2:445",
+    "2:446",
+    "2:447",
+    "2:448",
+    "2:449",
+    "2:450",
+    "2:451",
+    "2:452",
+    "2:453",
+    "2:454",
+    "2:455",
+    "2:456",
+    "2:457",
+    "2:458",
+    "2:459",
+    "2:460",
+    "2:461",
+    "2:462",
+    "2:463",
+    "2:464",
+    "2:465",
+    "2:466",
+    "2:467",
+    "2:468",
+    "2:469",
+    "2:470",
+    "2:471",
+    "2:472",
+    "2:473",
+    "2:474",
+    "2:475",
+    "2:476",
+    "2:477",
+    "2:478",
+    "2:479",
+    "2:480",
+    "2:481",
+    "2:482",
+    "2:483",
+    "2:484",
+    "2:485",
+    "2:486",
+    "2:487",
+    "2:488",
+    "2:489",
+    "2:490",
+    "2:491",
+    "2:492",
+    "2:493",
+    "2:494",
+    "2:495",
+    "2:496",
+    "2:497",
+    "2:498",
+    "2:499",
+    "2:500",
+    "2:501",
+    "2:502",
+    "2:503",
+    "2:504",
+    "2:505",
+    "2:506",
+    "2:507",
+    "2:508",
+    "2:509",
+    "2:510",
+    "2:511",
+    "2:512",
+    "2:513",
+    "2:514",
+    "2:515",
+    "2:516",
+    "2:517",
+    "2:518",
+    "2:519",
+    "2:520",
+    "2:521",
+    "2:522",
+    "2:523",
+    "2:524",
+    "2:525",
+    "2:526",
+    "2:527",
+    "2:528",
+    "2:529",
+    "2:530",
+    "2:531",
+    "2:532",
+    "2:533",
+    "2:534",
+    "2:535",
+    "2:536",
+    "2:537",
+    "2:538",
+    "2:539",
+    "2:540",
+    "2:541",
+    "2:542",
+    "2:543",
+    "2:544",
+    "2:545",
+    "2:546",
+    "2:547",
+    "2:548",
+    "2:549",
+    "2:550",
+    "2:551",
+    "2:552",
+    "2:553",
+    "2:554",
+    "2:555",
+    "2:556",
+    "2:557",
+    "2:558",
+    "2:559",
+    "2:560",
+    "2:561",
+    "2:562",
+    "2:563",
+    "2:564",
+    "2:565",
+    "2:566",
+    "2:567",
+    "2:568",
+    "2:569"
+  ],
+  "pageId": "0:1",
+  "collections": [
+    "VariableCollectionId:2:356",
+    "VariableCollectionId:2:357"
+  ],
+  "variables": {
+    "primitive/white": "VariableID:2:358",
+    "primitive/navy": "VariableID:2:359",
+    "primitive/rail": "VariableID:2:360",
+    "primitive/ink": "VariableID:2:361",
+    "primitive/muted": "VariableID:2:362",
+    "primitive/teal": "VariableID:2:363",
+    "primitive/hover": "VariableID:2:364",
+    "primitive/canvas": "VariableID:2:365",
+    "primitive/line": "VariableID:2:366",
+    "primitive/soft": "VariableID:2:367",
+    "primitive/red": "VariableID:2:368",
+    "primitive/warning": "VariableID:2:369",
+    "surface": "VariableID:2:370",
+    "navy": "VariableID:2:371",
+    "rail": "VariableID:2:372",
+    "ink": "VariableID:2:373",
+    "muted": "VariableID:2:374",
+    "teal": "VariableID:2:375",
+    "hover": "VariableID:2:376",
+    "bg": "VariableID:2:377",
+    "line": "VariableID:2:378",
+    "soft-teal": "VariableID:2:379",
+    "danger": "VariableID:2:380",
+    "warning": "VariableID:2:381",
+    "space-1": "VariableID:2:382",
+    "space-2": "VariableID:2:383",
+    "space-3": "VariableID:2:384",
+    "space-4": "VariableID:2:385",
+    "space-6": "VariableID:2:386",
+    "space-8": "VariableID:2:387",
+    "radius": "VariableID:2:388",
+    "radius-sm": "VariableID:2:389"
+  },
+  "styles": {
+    "Display": "S:766031ed878c589ce65625bd91712ece7444415f,",
+    "Heading": "S:d26ca23de27c76e63bb992e689a70a400ad43cf6,",
+    "Section": "S:55c3de62604a6f65ae9fca25a858e446424fb9c5,",
+    "Body": "S:c53f3e9e0a0d4d3644dff82171dd771207e25e1f,",
+    "Label": "S:b8badf8a076272f153a44f0d28d191a403cf2761,"
+  },
+  "components": {
+    "Button": {
+      "id": "2:434",
+      "variants": [
+        {
+          "id": "2:424",
+          "name": "State=Default"
+        },
+        {
+          "id": "2:426",
+          "name": "State=Hover"
+        },
+        {
+          "id": "2:428",
+          "name": "State=Focus"
+        },
+        {
+          "id": "2:430",
+          "name": "State=Loading"
+        },
+        {
+          "id": "2:432",
+          "name": "State=Disabled"
+        }
+      ]
+    },
+    "SecondaryButton": {
+      "id": "2:443",
+      "variants": [
+        {
+          "id": "2:435",
+          "name": "State=Default"
+        },
+        {
+          "id": "2:437",
+          "name": "State=Hover"
+        },
+        {
+          "id": "2:439",
+          "name": "State=Focus"
+        },
+        {
+          "id": "2:441",
+          "name": "State=Disabled"
+        }
+      ]
+    },
+    "Field": {
+      "id": "2:456",
+      "variants": [
+        {
+          "id": "2:444",
+          "name": "State=Default"
+        },
+        {
+          "id": "2:447",
+          "name": "State=Focus"
+        },
+        {
+          "id": "2:450",
+          "name": "State=Error"
+        },
+        {
+          "id": "2:453",
+          "name": "State=Disabled"
+        }
+      ]
+    },
+    "Badge": {
+      "id": "2:465",
+      "variants": [
+        {
+          "id": "2:457",
+          "name": "State=Pending"
+        },
+        {
+          "id": "2:459",
+          "name": "State=Confirmed"
+        },
+        {
+          "id": "2:461",
+          "name": "State=Completed"
+        },
+        {
+          "id": "2:463",
+          "name": "State=Cancelled"
+        }
+      ]
+    },
+    "Alert": {
+      "id": "2:472",
+      "variants": [
+        {
+          "id": "2:466",
+          "name": "State=Information"
+        },
+        {
+          "id": "2:468",
+          "name": "State=Success"
+        },
+        {
+          "id": "2:470",
+          "name": "State=Error"
+        }
+      ]
+    },
+    "Dropdown": {
+      "id": "2:479",
+      "variants": [
+        {
+          "id": "2:473",
+          "name": "State=Default"
+        },
+        {
+          "id": "2:476",
+          "name": "State=Expanded"
+        }
+      ]
+    },
+    "Tabs": {
+      "id": "2:484",
+      "variants": [
+        {
+          "id": "2:480",
+          "name": "State=Active"
+        },
+        {
+          "id": "2:482",
+          "name": "State=Inactive"
+        }
+      ]
+    },
+    "Tooltip": {
+      "id": "2:487",
+      "variants": [
+        {
+          "id": "2:485",
+          "name": "State=Visible"
+        }
+      ]
+    },
+    "Dialog": {
+      "id": "2:492",
+      "variants": [
+        {
+          "id": "2:488",
+          "name": "State=Confirm"
+        }
+      ]
+    },
+    "Sidebar": {
+      "id": "2:501",
+      "variants": [
+        {
+          "id": "2:493",
+          "name": "State=Desktop"
+        }
+      ]
+    },
+    "Header": {
+      "id": "2:505",
+      "variants": [
+        {
+          "id": "2:502",
+          "name": "State=Desktop"
+        }
+      ]
+    },
+    "MobileNavigation": {
+      "id": "2:510",
+      "variants": [
+        {
+          "id": "2:506",
+          "name": "State=Closed"
+        },
+        {
+          "id": "2:508",
+          "name": "State=Open"
+        }
+      ]
+    },
+    "Breadcrumbs": {
+      "id": "2:513",
+      "variants": [
+        {
+          "id": "2:511",
+          "name": "State=Default"
+        }
+      ]
+    },
+    "DashboardCard": {
+      "id": "2:520",
+      "variants": [
+        {
+          "id": "2:514",
+          "name": "State=Populated"
+        },
+        {
+          "id": "2:517",
+          "name": "State=Empty"
+        }
+      ]
+    },
+    "Chart": {
+      "id": "2:527",
+      "variants": [
+        {
+          "id": "2:521",
+          "name": "State=Recorded"
+        },
+        {
+          "id": "2:524",
+          "name": "State=Empty"
+        }
+      ]
+    },
+    "Table": {
+      "id": "2:534",
+      "variants": [
+        {
+          "id": "2:528",
+          "name": "State=Populated"
+        },
+        {
+          "id": "2:531",
+          "name": "State=Empty"
+        }
+      ]
+    },
+    "Filters": {
+      "id": "2:537",
+      "variants": [
+        {
+          "id": "2:535",
+          "name": "State=Default"
+        }
+      ]
+    },
+    "Pagination": {
+      "id": "2:540",
+      "variants": [
+        {
+          "id": "2:538",
+          "name": "State=Default"
+        }
+      ]
+    },
+    "EmptyState": {
+      "id": "2:544",
+      "variants": [
+        {
+          "id": "2:541",
+          "name": "State=Default"
+        }
+      ]
+    },
+    "Calendar": {
+      "id": "2:551",
+      "variants": [
+        {
+          "id": "2:545",
+          "name": "State=Available"
+        },
+        {
+          "id": "2:548",
+          "name": "State=Selected"
+        }
+      ]
+    },
+    "DoctorProfile": {
+      "id": "2:557",
+      "variants": [
+        {
+          "id": "2:552",
+          "name": "State=Default"
+        }
+      ]
+    },
+    "Timeline": {
+      "id": "2:562",
+      "variants": [
+        {
+          "id": "2:558",
+          "name": "State=Default"
+        }
+      ]
+    },
+    "Notification": {
+      "id": "2:569",
+      "variants": [
+        {
+          "id": "2:563",
+          "name": "State=Unread"
+        },
+        {
+          "id": "2:566",
+          "name": "State=Read"
+        }
+      ]
+    }
+  },
+  "specimenId": "2:395",
+  "componentFamilies": 23
+}

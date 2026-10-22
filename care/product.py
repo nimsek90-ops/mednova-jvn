@@ -265,3 +265,45 @@ def data_management(request):
         entities.sort(key=lambda item:item['name'])
     audit(request.user,'admin.data_management.viewed')
     return render(request,'care/data_management.html',{'entities':entities,'q':query,'sort':request.GET.get('sort','name')})
+
+
+@roles('admin')
+@require_http_methods(['GET'])
+def schema_explorer(request):
+    """Metadata only. Record editing remains in explicit validated workflows."""
+    from django.apps import apps
+    from django.db import connection
+    permitted = {m._meta.db_table: m for m in apps.get_models(include_auto_created=True)}
+    permitted['django_migrations'] = None
+    query = request.GET.get('q', '').strip()[:100]
+    selected = request.GET.get('table', '')
+    with connection.cursor() as cursor:
+        actual = set(connection.introspection.table_names(cursor))
+        names = sorted(name for name in permitted if name in actual)
+        if selected and selected not in names:
+            from django.http import Http404
+            raise Http404()
+        tables = [{'name': name, 'purpose': permitted[name]._meta.verbose_name if permitted[name] else 'Migration history'}
+                  for name in names if query.casefold() in name.casefold()]
+        columns, constraints = [], {}
+        if selected:
+            # Django get_table_description() issues SELECT * LIMIT 1. Catalogs
+            # provide everything needed here without sampling private records.
+            if connection.vendor == 'mysql':
+                cursor.execute('SELECT COLUMN_NAME,COLUMN_TYPE,IS_NULLABLE FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=%s AND TABLE_NAME=%s ORDER BY ORDINAL_POSITION',[connection.settings_dict['NAME'],selected])
+                columns = [{'name': name, 'type': kind, 'nullable': nullable=='YES'}
+                           for name,kind,nullable in cursor.fetchall()]
+            elif connection.vendor == 'postgresql':
+                cursor.execute('SELECT a.attname,format_type(a.atttypid,a.atttypmod),NOT a.attnotnull FROM pg_attribute a JOIN pg_class c ON c.oid=a.attrelid JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname=current_schema() AND c.relname=%s AND a.attnum>0 AND NOT a.attisdropped ORDER BY a.attnum',[selected])
+                columns = [{'name': name, 'type': kind, 'nullable': nullable}
+                           for name,kind,nullable in cursor.fetchall()]
+            else:
+                cursor.execute('PRAGMA table_xinfo(%s)' % connection.ops.quote_name(selected))
+                columns = [{'name': row[1], 'type': row[2], 'nullable': not(row[3] or row[5])}
+                           for row in cursor.fetchall()]
+            from .schema import metadata_constraints
+            constraints = metadata_constraints(cursor, selected)
+    audit(request.user, 'admin.schema.viewed', selected or 'inventory')
+    return render(request, 'care/schema_explorer.html', {'tables': tables,
+        'columns': columns, 'constraints': constraints, 'selected': selected,
+        'vendor': connection.vendor, 'q': query})

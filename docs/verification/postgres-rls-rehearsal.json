@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "Local simulated API roles, including a NOLOGIN BYPASSRLS service_role. Not hosted Supabase JWT/advisor tests.",
+  "tables_protected": 31,
+  "checks": [
+    {
+      "role": "mednova_pg_runtime",
+      "backend_read": "PASS",
+      "superuser": false,
+      "bypassrls": false
+    },
+    {
+      "role": "anon",
+      "private_schema_access": "denied",
+      "bypassrls": false
+    },
+    {
+      "role": "authenticated",
+      "private_schema_access": "denied",
+      "bypassrls": false
+    },
+    {
+      "role": "service_role",
+      "private_schema_access": "denied",
+      "bypassrls": true
+    }
+  ],
+  "authorization": "Django sessions/role/object checks; no browser DB access",
+  "isolated_restore_rls_defense_check": [
+    {
+      "role": "anon",
+      "temporary_read_grants": true,
+      "rls_result": "zero rows",
+      "grants_rolled_back": true
+    },
+    {
+      "role": "authenticated",
+      "temporary_read_grants": true,
+      "rls_result": "zero rows",
+      "grants_rolled_back": true
+    },
+    {
+      "role": "service_role",
+      "temporary_read_grants": true,
+      "rls_result": "bypassed as expected; privileged keys must remain server-side",
+      "grants_rolled_back": true
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "method": "Actual CUA browser, viewport override and fresh AX observation before DOM geometry measurements",
+  "runtime": "MySQL app on8000",
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1440,
+    1600
+  ],
+  "height": 1000,
+  "page_role_combinations": 23,
+  "checks": 207,
+  "document_overflow": 0,
+  "missing_h1": 0,
+  "groups": {
+    "anonymous": [
+      "/",
+      "/doctors/",
+      "/doctors/3/",
+      "/login/",
+      "/contact/"
+    ],
+    "patient": [
+      "/dashboard/",
+      "/book/3/",
+      "/wellness/",
+      "/profile/",
+      "/appointments/"
+    ],
+    "doctor": [
+      "/dashboard/",
+      "/availability/",
+      "/prescriptions/"
+    ],
+    "receptionist": [
+      "/dashboard/",
+      "/queue/"
+    ],
+    "pharmacist": [
+      "/dashboard/",
+      "/inventory/",
+      "/inventory/movements/"
+    ],
+    "admin": [
+      "/dashboard/",
+      "/admin/data/",
+      "/admin/data/schema/",
+      "/admin/data/schema/?table=care_user",
+      "/admin/operations/"
+    ]
+  },
+  "interactions": [
+    "Doctor name and available-slot filter persisted and returned1 actual matching doctor",
+    "Admin schema search returned1 table; department columns/keys displayed",
+    "After final source restart native SQL types confirmed at390px and1440px",
+    "Mobile Menu keyboard Enter moved focus to Dashboard; Escape closed and returned focus to Menu; visible solid2.4px outline"
+  ],
+  "console_errors": [],
+  "screenshots": [
+    "docs/design/screenshots/doctor-directory-desktop-app.png",
+    "docs/design/screenshots/doctor-directory-mobile-app.png"
+  ],
+  "limits": [
+    "Not a real-device or assistive-technology certification",
+    "Full individual visual review of every Figma study not performed",
+    "Reduced-motion CSS implemented; OS-preference emulation not performed"
+  ]
+}

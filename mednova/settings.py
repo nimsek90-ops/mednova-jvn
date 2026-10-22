@@ -99,7 +99,13 @@ DATABASES = {
 if os.getenv("MYSQL_SSL_CA"):
     DATABASES["default"]["OPTIONS"]["ssl"] = {"ca": os.environ["MYSQL_SSL_CA"]}
     DATABASES["default"]["OPTIONS"]["ssl_mode"] = "VERIFY_IDENTITY"
-if TESTING and os.getenv("MEDNOVA_TEST_MYSQL") != "1":
+DATABASE_VENDOR = os.getenv('DATABASE_VENDOR', 'mysql')
+if DATABASE_VENDOR == 'postgresql':
+    from .database import postgres_database
+    DATABASES = {'default': postgres_database(os.environ, local=LOCAL)}
+elif DATABASE_VENDOR != 'mysql':
+    raise ImproperlyConfigured('DATABASE_VENDOR must be mysql or postgresql.')
+if TESTING and os.getenv("MEDNOVA_TEST_MYSQL") != "1" and os.getenv('MEDNOVA_TEST_POSTGRES') != '1':
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",

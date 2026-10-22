@@ -1,0 +1,40 @@
+{
+  "method": "WCAG relative luminance calculation for selected authored palette pairs; not a whole-page audit",
+  "pairs": [
+    {
+      "pair": "Primary button",
+      "foreground": "#ffffff",
+      "background": "#087e73",
+      "ratio": 4.95,
+      "normal_text_4_5": true
+    },
+    {
+      "pair": "Body text",
+      "foreground": "#243c49",
+      "background": "#ffffff",
+      "ratio": 11.55,
+      "normal_text_4_5": true
+    },
+    {
+      "pair": "Muted on white",
+      "foreground": "#61747c",
+      "background": "#ffffff",
+      "ratio": 4.89,
+      "normal_text_4_5": true
+    },
+    {
+      "pair": "Muted on canvas",
+      "foreground": "#61747c",
+      "background": "#f5f7f8",
+      "ratio": 4.55,
+      "normal_text_4_5": true
+    },
+    {
+      "pair": "Sidebar links",
+      "foreground": "#d1dfe5",
+      "background": "#142f3e",
+      "ratio": 10.22,
+      "normal_text_4_5": true
+    }
+  ]
+}

@@ -187,7 +187,7 @@ class ProductWorkflows(TestCase):
         from django.urls import get_resolver
         all_roles = {'patient','doctor','receptionist','pharmacist','admin'}
         policy = {
-            'data_management':{'admin'},'notifications':all_roles,'patients':{'receptionist','admin'},'users':{'admin'},'operations':{'admin'},
+            'schema_explorer':{'admin'},'data_management':{'admin'},'notifications':all_roles,'patients':{'receptionist','admin'},'users':{'admin'},'operations':{'admin'},
             'edit_slot':{'doctor'},'department_edit':{'admin'},'check_in':{'receptionist','admin'},
             'receipt':{'patient','receptionist','admin'},'password':all_roles,'dashboard':all_roles,'profile':all_roles,
             'availability':{'doctor'},'remove_slot':{'doctor'},'booking':{'patient','receptionist'},

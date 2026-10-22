@@ -9,7 +9,8 @@ import uuid
 from datetime import date, timedelta
 import requests
 
-ORIGIN = "http://127.0.0.1:8000"
+ORIGIN = os.getenv('MEDNOVA_HTTP_ORIGIN', 'http://127.0.0.1:8000')
+assert ORIGIN in ('http://127.0.0.1:8000','http://127.0.0.1:8002'), 'Only designated loopback rehearsal servers are allowed.'
 PASSWORD = "Correct-Hospital-Pass12"  # Synthetic test fixture only.
 
 
@@ -38,8 +39,9 @@ def sign(email):
 def main():
     sqlite_fixture = os.getenv('MEDNOVA_TESTING') == '1' and os.getenv('MEDNOVA_TEST_DB') == 'browser_acceptance.sqlite3'
     mysql_fixture = (os.getenv('MEDNOVA_HTTP_MYSQL') == '1' and os.getenv('MEDNOVA_DEMO') == '1' and os.getenv('MYSQL_HOST') == '127.0.0.1' and os.getenv('MYSQL_DATABASE') == 'mednova_local')
-    if os.getenv('APP_ENV') != 'local' or not (sqlite_fixture or mysql_fixture):
-        raise SystemExit('Refusing mutations: use the explicitly isolated SQLite fixture or the local MySQL demo helper.')
+    postgres_fixture = (os.getenv('MEDNOVA_HTTP_POSTGRES') == '1' and os.getenv('MEDNOVA_DEMO') == '1' and os.getenv('PGHOST') == '127.0.0.1' and os.getenv('PGDATABASE') == 'mednova_pg_rehearsal')
+    if os.getenv('APP_ENV') != 'local' or not (sqlite_fixture or mysql_fixture or postgres_fixture):
+        raise SystemExit('Refusing mutations: use a designated isolated loopback fixture.')
     patient = requests.Session()
     email = f"synthetic-{uuid.uuid4().hex[:12]}@example.test"
     response = post(patient, "/register/", {"name": "Synthetic HTTP Patient", "email": email, "role": "patient", "password1": PASSWORD, "password2": PASSWORD, "consent": "on"})
@@ -103,7 +105,10 @@ def main():
     admin = sign("admin@example.test")
     assert "User management" in get(admin, "/admin/users/").text
     assert "Operational report" in get(admin, "/admin/operations/").text
-    print("PASS 7: administrator account and operational pages")
+    metadata = get(admin, "/admin/data/schema/?table=care_department")
+    assert "SQL type" in metadata.text and "care_department" in metadata.text
+    assert patient.get(ORIGIN + "/admin/data/schema/", timeout=10).status_code == 403
+    print("PASS 7: administrator operational pages and actual schema metadata; patient denied")
 
     assert get(patient, "/health/").json() == {"status": "ok"}
     assert "Appointment cancelled." in get(patient, "/notifications/").text

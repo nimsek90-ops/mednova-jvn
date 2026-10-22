@@ -3,6 +3,7 @@ from care import views as v
 from care import product as p
 
 urlpatterns = [
+    path("admin/data/schema/", p.schema_explorer, name="schema_explorer"),
     path("admin/data/", p.data_management, name="data_management"),
     path('about/', p.public_information, {'kind': 'about'}, name='about'),
     path('pharmacy/', p.public_information, {'kind': 'pharmacy'}, name='pharmacy_info'),

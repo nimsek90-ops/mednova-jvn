@@ -1,0 +1,80 @@
+[
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py check",
+    "exit_code": 0,
+    "output": "System check identified no issues (0 silenced).\n"
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_postgres.py check",
+    "exit_code": 0,
+    "output": "System check identified no issues (0 silenced).\n"
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py makemigrations --check --dry-run",
+    "exit_code": 0,
+    "output": "No changes detected\n"
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_postgres.py makemigrations --check --dry-run",
+    "exit_code": 0,
+    "output": "No changes detected\n"
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_postgres.py showmigrations --plan",
+    "exit_code": 0,
+    "output": "[X]  contenttypes.0001_initial\n[X]  contenttypes.0002_remove_content_type_name\n[X]  auth.0001_initial\n[X]  auth.0002_alter_permission_name_max_length\n[X]  auth.0003_alter_user_email_max_length\n[X]  auth.0004_alter_user_username_opts\n[X]  auth.0005_alter_user_last_login_null\n[X]  auth.0006_require_contenttypes_0002\n[X]  auth.0007_alter_validators_add_error_messages\n[X]  auth.0008_alter_user_username_max_length\n[X]  auth.0009_alter_user_last_name_max_length\n[X]  auth.0010_alter_group_name_max_length\n[X]  auth.0011_update_proxy_permissions\n[X]  auth.0012_alter_user_first_name_max_length\n[X]  care.0001_initial\n[X]  care.0002_appointment_checked_in_at_and_more\n[X]  care.0003_queuecounter_hospital_opening_hours_and_more\n[X]  care.0004_alter_notification_appointment_deliveryoutbox\n[X]  care.0005_user_must_change_password\n[X]  sessions.0001_initial\n"
+  },
+  {
+    "command": ".venv/Scripts/python.exe tools/local_mysql.py collectstatic --noinput",
+    "exit_code": 0,
+    "output": "\n1 static file copied to 'C:\\Users\\Niraj\\Downloads\\mednova-redesign\\MedNova-Python-MySQL\\staticfiles', 11 unmodified.\n"
+  },
+  {
+    "command": ".venv/Scripts/python.exe -m pip check",
+    "exit_code": 0,
+    "output": "No broken requirements found.\n"
+  },
+  {
+    "command": ".venv/Scripts/python.exe -m compileall -q care mednova tools",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "node --check static/js/app.js",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "node --check static/js/video.js",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "node --check static/js/payment.js",
+    "exit_code": 0,
+    "output": ""
+  },
+  {
+    "command": "git diff --check",
+    "exit_code": 0,
+    "output": "warning: in the working copy of 'care/test_final_audit.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'mednova/settings.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'requirements.txt', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  {
+    "command": "manage.py check --deploy --fail-level WARNING",
+    "vendor": "mysql",
+    "scope": "Synthetic production settings only; no hosted connectivity or CA validation performed",
+    "exit_code": 0,
+    "output": "System check identified no issues (0 silenced).\n"
+  },
+  {
+    "command": "manage.py check --deploy --fail-level WARNING",
+    "vendor": "postgresql",
+    "scope": "Synthetic production settings only; no hosted connectivity or CA validation performed",
+    "exit_code": 0,
+    "output": "System check identified no issues (0 silenced).\n"
+  },
+  {
+    "command": "Final configuration tests (2), Python compilation, HTTP health on 8000/8002; final HTTP workflows (8 per database)",
+    "exit_code": 0
+  }
+]

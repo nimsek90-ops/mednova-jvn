@@ -19,3 +19,9 @@ care/mysql_acceptance.py
 **/*.pem
 !certs/mysql-ca.pem
 .runtime
+
+care/postgres_acceptance.py
+design
+docs/design
+
+!certs/postgres-ca.pem

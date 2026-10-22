@@ -32,6 +32,7 @@ def storage_config(env, vercel=False):
                 "querystring_expire": 60,
                 "custom_domain": None,
                 "signature_version": "s3v4",
+                "addressing_style": "path" if endpoint else "auto",
                 "file_overwrite": False,
                 "verify": True,
                 "object_parameters": {"CacheControl": "private, no-store"},
@@ -41,14 +42,18 @@ def storage_config(env, vercel=False):
 
 
 def validate_vercel(env):
-    if env.get("APP_ENV") != "production" or any(env.get(name) for name in ("MEDNOVA_TESTING", "MEDNOVA_TEST_DB", "MEDNOVA_TEST_MYSQL")):
+    if env.get("APP_ENV") != "production" or any(env.get(name) for name in ("MEDNOVA_TESTING", "MEDNOVA_TEST_DB", "MEDNOVA_TEST_MYSQL", "MEDNOVA_TEST_POSTGRES")):
         raise ImproperlyConfigured("Vercel requires APP_ENV=production and no MEDNOVA_TEST* variables.")
-    required = ("MYSQL_HOST", "MYSQL_DATABASE", "MYSQL_USER", "MYSQL_PASSWORD", "MYSQL_SSL_CA", "PUBLIC_ORIGIN", "ALLOWED_HOSTS")
+    postgres = env.get('DATABASE_VENDOR') == 'postgresql'
+    if postgres:
+        from .database import postgres_database
+        postgres_database(env)
+    required = ("PUBLIC_ORIGIN", "ALLOWED_HOSTS") if postgres else ("MYSQL_HOST", "MYSQL_DATABASE", "MYSQL_USER", "MYSQL_PASSWORD", "MYSQL_SSL_CA", "PUBLIC_ORIGIN", "ALLOWED_HOSTS")
     missing = [name for name in required if not env.get(name)]
     if missing:
         raise ImproperlyConfigured("Missing Vercel settings: " + ", ".join(missing))
-    if env["MYSQL_HOST"].lower() in ("localhost", "127.0.0.1", "::1"):
-        raise ImproperlyConfigured("Vercel requires a remote managed MySQL service.")
+    if env.get('PGHOST' if postgres else 'MYSQL_HOST', '').lower() in ("localhost", "127.0.0.1", "::1"):
+        raise ImproperlyConfigured("Vercel requires a remote managed database service.")
     origin = urlparse(env["PUBLIC_ORIGIN"])
     if origin.scheme != "https" or not origin.hostname or origin.path not in ("", "/") or origin.query or origin.fragment or origin.username:
         raise ImproperlyConfigured("PUBLIC_ORIGIN must be an HTTPS origin without a path or credentials.")

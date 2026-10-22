@@ -1,3 +1,5 @@
+>22 October update: explicit DATABASE_VENDOR=postgresql is now supported with verified-TLS PG* settings and a private mednova schema. See [Supabase migration/operations](SUPABASE_MIGRATION_AND_OPERATIONS.md) for this proposed target and local120-test PostgreSQL evidence. MySQL remains default. No Supabase/Vercel target was provisioned or deployed; earlier MySQL-only instructions below describe the retained path.
+
 # Vercel deployment — prepared, NOT DEPLOYED
 
 Official documentation reviewed on 21 October 2026:

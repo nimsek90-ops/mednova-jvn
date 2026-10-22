@@ -1,0 +1,46 @@
+{
+  "fileKey": "3VZ4B2Z0G66KCRFAaGseNB",
+  "fileUrl": "https://www.figma.com/design/3VZ4B2Z0G66KCRFAaGseNB",
+  "runId": "mednova-20261022",
+  "scope": "full library and desktop/mobile screen designs",
+  "pages": {
+    "foundations": "0:1",
+    "studies": "5:2",
+    "implementedDirectory": "16:2"
+  },
+  "step": "verified editable library and directory; screen studies require product sign-off",
+  "discovery": {
+    "codeConnect": "No files present",
+    "existingScreens": "New empty dedicated file",
+    "font": "Inter Regular / Semi Bold",
+    "libraries": "SDS available; inspecting reusable assets"
+  },
+  "foundationsEvidence": "figma-foundations.json",
+  "screenEvidence": "figma-screens.json",
+  "captures": {},
+  "validation": {
+    "componentFamilies": 23,
+    "screenVariants": 64,
+    "visualFixes": [
+      "Horizontal frame height sizing",
+      "Hug component instance height",
+      "Booking field semantics",
+      "Role-specific navigation",
+      "Structured table rows and chart marks"
+    ]
+  },
+  "componentFamilies": 24,
+  "variables": 44,
+  "styles": 5,
+  "finalFrames": [
+    "17:620",
+    "17:834"
+  ],
+  "removedReferenceNodes": [
+    "3:2",
+    "8:2",
+    "10:2",
+    "12:2"
+  ],
+  "verification": "figma-final-verification.json"
+}

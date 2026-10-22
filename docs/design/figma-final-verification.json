@@ -1,0 +1,1254 @@
+{
+  "foundations": {
+    "pageId": "0:1",
+    "variables": [
+      {
+        "id": "VariableID:2:358",
+        "name": "white",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-white)"
+        },
+        "values": {
+          "2:0": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:359",
+        "name": "navy",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-navy)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.08235294371843338,
+            "g": 0.1764705926179886,
+            "b": 0.23137255012989044,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:360",
+        "name": "rail",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-rail)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.0784313753247261,
+            "g": 0.18431372940540314,
+            "b": 0.24313725531101227,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:361",
+        "name": "ink",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-ink)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.1411764770746231,
+            "g": 0.23529411852359772,
+            "b": 0.2862745225429535,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:362",
+        "name": "muted",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-muted)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.3803921639919281,
+            "g": 0.45490196347236633,
+            "b": 0.48627451062202454,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:363",
+        "name": "teal",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-teal)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.0313725508749485,
+            "g": 0.4941176474094391,
+            "b": 0.45098039507865906,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:364",
+        "name": "hover",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-hover)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.0235294122248888,
+            "g": 0.4000000059604645,
+            "b": 0.3686274588108063,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:365",
+        "name": "canvas",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-canvas)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.9607843160629272,
+            "g": 0.9686274528503418,
+            "b": 0.9725490212440491,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:366",
+        "name": "line",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-line)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.8784313725490196,
+            "g": 0.9058823529411765,
+            "b": 0.9098039215686274
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:367",
+        "name": "soft",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-soft)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.9137254953384399,
+            "g": 0.9607843160629272,
+            "b": 0.9450980424880981,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:368",
+        "name": "red",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-red)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.6470588445663452,
+            "g": 0.1725490242242813,
+            "b": 0.2078431397676468,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:369",
+        "name": "warning",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--palette-warning)"
+        },
+        "values": {
+          "2:0": {
+            "r": 0.5254902243614197,
+            "g": 0.34117648005485535,
+            "b": 0.03529411926865578,
+            "a": 1
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:370",
+        "name": "color/surface",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--surface)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:358"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:371",
+        "name": "color/navy",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--navy)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:359"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:372",
+        "name": "color/rail",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--rail)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:360"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:373",
+        "name": "color/ink",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--ink)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:361"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:374",
+        "name": "color/muted",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--muted)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:362"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:375",
+        "name": "color/teal",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--teal)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:363"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:376",
+        "name": "color/hover",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--hover)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:364"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:377",
+        "name": "color/bg",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--bg)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:365"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:378",
+        "name": "color/line",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--line)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:366"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:379",
+        "name": "color/soft-teal",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--soft-teal)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:367"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:380",
+        "name": "color/danger",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--danger)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:368"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:381",
+        "name": "color/warning",
+        "scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL",
+          "TEXT_FILL",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--warning)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2:369"
+          }
+        }
+      },
+      {
+        "id": "VariableID:2:382",
+        "name": "space-1",
+        "scopes": [
+          "GAP"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--space-1)"
+        },
+        "values": {
+          "2:1": 4
+        }
+      },
+      {
+        "id": "VariableID:2:383",
+        "name": "space-2",
+        "scopes": [
+          "GAP"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--space-2)"
+        },
+        "values": {
+          "2:1": 8
+        }
+      },
+      {
+        "id": "VariableID:2:384",
+        "name": "space-3",
+        "scopes": [
+          "GAP"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--space-3)"
+        },
+        "values": {
+          "2:1": 12
+        }
+      },
+      {
+        "id": "VariableID:2:385",
+        "name": "space-4",
+        "scopes": [
+          "GAP"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--space-4)"
+        },
+        "values": {
+          "2:1": 16
+        }
+      },
+      {
+        "id": "VariableID:2:386",
+        "name": "space-6",
+        "scopes": [
+          "GAP"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--space-6)"
+        },
+        "values": {
+          "2:1": 24
+        }
+      },
+      {
+        "id": "VariableID:2:387",
+        "name": "space-8",
+        "scopes": [
+          "GAP"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--space-8)"
+        },
+        "values": {
+          "2:1": 32
+        }
+      },
+      {
+        "id": "VariableID:2:388",
+        "name": "radius",
+        "scopes": [
+          "CORNER_RADIUS"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--radius)"
+        },
+        "values": {
+          "2:1": 14
+        }
+      },
+      {
+        "id": "VariableID:2:389",
+        "name": "radius-sm",
+        "scopes": [
+          "CORNER_RADIUS"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--radius-sm)"
+        },
+        "values": {
+          "2:1": 9
+        }
+      },
+      {
+        "id": "VariableID:18:2",
+        "name": "typography/font-family",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--font-family)"
+        },
+        "values": {
+          "2:0": "Inter"
+        }
+      },
+      {
+        "id": "VariableID:18:3",
+        "name": "font-family",
+        "scopes": [
+          "FONT_FAMILY"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--font-family)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:18:2"
+          }
+        }
+      },
+      {
+        "id": "VariableID:18:4",
+        "name": "typography/font-label",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--font-label)"
+        },
+        "values": {
+          "2:0": 12
+        }
+      },
+      {
+        "id": "VariableID:18:5",
+        "name": "font-label",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--font-label)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:18:4"
+          }
+        }
+      },
+      {
+        "id": "VariableID:18:6",
+        "name": "typography/font-body",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--font-body)"
+        },
+        "values": {
+          "2:0": 14
+        }
+      },
+      {
+        "id": "VariableID:18:7",
+        "name": "font-body",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--font-body)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:18:6"
+          }
+        }
+      },
+      {
+        "id": "VariableID:18:8",
+        "name": "typography/font-section",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--font-section)"
+        },
+        "values": {
+          "2:0": 20
+        }
+      },
+      {
+        "id": "VariableID:18:9",
+        "name": "font-section",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--font-section)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:18:8"
+          }
+        }
+      },
+      {
+        "id": "VariableID:18:10",
+        "name": "typography/font-heading",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--font-heading)"
+        },
+        "values": {
+          "2:0": 28
+        }
+      },
+      {
+        "id": "VariableID:18:11",
+        "name": "font-heading",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--font-heading)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:18:10"
+          }
+        }
+      },
+      {
+        "id": "VariableID:18:12",
+        "name": "typography/font-display",
+        "scopes": [],
+        "codeSyntax": {
+          "WEB": "var(--font-display)"
+        },
+        "values": {
+          "2:0": 40
+        }
+      },
+      {
+        "id": "VariableID:18:13",
+        "name": "font-display",
+        "scopes": [
+          "FONT_SIZE"
+        ],
+        "codeSyntax": {
+          "WEB": "var(--font-display)"
+        },
+        "values": {
+          "2:1": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:18:12"
+          }
+        }
+      }
+    ],
+    "styles": [
+      {
+        "id": "S:766031ed878c589ce65625bd91712ece7444415f,",
+        "name": "MedNova/Display"
+      },
+      {
+        "id": "S:d26ca23de27c76e63bb992e689a70a400ad43cf6,",
+        "name": "MedNova/Heading"
+      },
+      {
+        "id": "S:55c3de62604a6f65ae9fca25a858e446424fb9c5,",
+        "name": "MedNova/Section"
+      },
+      {
+        "id": "S:c53f3e9e0a0d4d3644dff82171dd771207e25e1f,",
+        "name": "MedNova/Body"
+      },
+      {
+        "id": "S:b8badf8a076272f153a44f0d28d191a403cf2761,",
+        "name": "MedNova/Label"
+      }
+    ],
+    "components": [
+      {
+        "id": "2:434",
+        "name": "MedNova/Button",
+        "variants": 5
+      },
+      {
+        "id": "2:443",
+        "name": "MedNova/SecondaryButton",
+        "variants": 4
+      },
+      {
+        "id": "2:456",
+        "name": "MedNova/Field",
+        "variants": 4
+      },
+      {
+        "id": "2:465",
+        "name": "MedNova/Badge",
+        "variants": 4
+      },
+      {
+        "id": "2:472",
+        "name": "MedNova/Alert",
+        "variants": 3
+      },
+      {
+        "id": "2:479",
+        "name": "MedNova/Dropdown",
+        "variants": 2
+      },
+      {
+        "id": "2:484",
+        "name": "MedNova/Tabs",
+        "variants": 2
+      },
+      {
+        "id": "2:487",
+        "name": "MedNova/Tooltip",
+        "variants": 1
+      },
+      {
+        "id": "2:492",
+        "name": "MedNova/Dialog",
+        "variants": 1
+      },
+      {
+        "id": "2:501",
+        "name": "MedNova/Sidebar",
+        "variants": 1
+      },
+      {
+        "id": "2:505",
+        "name": "MedNova/Header",
+        "variants": 1
+      },
+      {
+        "id": "2:510",
+        "name": "MedNova/MobileNavigation",
+        "variants": 2
+      },
+      {
+        "id": "2:513",
+        "name": "MedNova/Breadcrumbs",
+        "variants": 1
+      },
+      {
+        "id": "2:520",
+        "name": "MedNova/DashboardCard",
+        "variants": 2
+      },
+      {
+        "id": "2:527",
+        "name": "MedNova/Chart",
+        "variants": 2
+      },
+      {
+        "id": "2:534",
+        "name": "MedNova/Table",
+        "variants": 2
+      },
+      {
+        "id": "2:537",
+        "name": "MedNova/Filters",
+        "variants": 1
+      },
+      {
+        "id": "2:540",
+        "name": "MedNova/Pagination",
+        "variants": 1
+      },
+      {
+        "id": "2:544",
+        "name": "MedNova/EmptyState",
+        "variants": 1
+      },
+      {
+        "id": "2:551",
+        "name": "MedNova/Calendar",
+        "variants": 2
+      },
+      {
+        "id": "2:557",
+        "name": "MedNova/DoctorProfile",
+        "variants": 1
+      },
+      {
+        "id": "2:562",
+        "name": "MedNova/Timeline",
+        "variants": 1
+      },
+      {
+        "id": "2:569",
+        "name": "MedNova/Notification",
+        "variants": 2
+      }
+    ],
+    "flatUiImages": []
+  },
+  "studies": {
+    "pageId": "5:2",
+    "frames": [
+      {
+        "id": "5:3",
+        "name": "Public landing / Desktop",
+        "width": 1440,
+        "height": 942
+      },
+      {
+        "id": "5:24",
+        "name": "Public landing / Mobile",
+        "width": 390,
+        "height": 910
+      },
+      {
+        "id": "5:45",
+        "name": "Sign in / Desktop",
+        "width": 1440,
+        "height": 606
+      },
+      {
+        "id": "5:63",
+        "name": "Sign in / Mobile",
+        "width": 390,
+        "height": 574
+      },
+      {
+        "id": "5:81",
+        "name": "Patient dashboard / Desktop",
+        "width": 1440,
+        "height": 812
+      },
+      {
+        "id": "5:109",
+        "name": "Patient dashboard / Mobile",
+        "width": 390,
+        "height": 780
+      },
+      {
+        "id": "5:129",
+        "name": "Profile / Desktop",
+        "width": 1440,
+        "height": 624
+      },
+      {
+        "id": "5:155",
+        "name": "Profile / Mobile",
+        "width": 390,
+        "height": 592
+      },
+      {
+        "id": "5:173",
+        "name": "Wellness / Desktop",
+        "width": 1440,
+        "height": 742
+      },
+      {
+        "id": "5:199",
+        "name": "Wellness / Mobile",
+        "width": 390,
+        "height": 710
+      },
+      {
+        "id": "5:217",
+        "name": "Health Hub / Desktop",
+        "width": 1440,
+        "height": 624
+      },
+      {
+        "id": "5:243",
+        "name": "Health Hub / Mobile",
+        "width": 390,
+        "height": 592
+      },
+      {
+        "id": "5:261",
+        "name": "Symptom information / Desktop",
+        "width": 1440,
+        "height": 592
+      },
+      {
+        "id": "5:278",
+        "name": "Symptom information / Mobile",
+        "width": 390,
+        "height": 560
+      },
+      {
+        "id": "5:295",
+        "name": "Doctor directory / Desktop",
+        "width": 1440,
+        "height": 728
+      },
+      {
+        "id": "5:325",
+        "name": "Doctor directory / Mobile",
+        "width": 390,
+        "height": 696
+      },
+      {
+        "id": "5:347",
+        "name": "Doctor profile / Desktop",
+        "width": 1440,
+        "height": 673
+      },
+      {
+        "id": "5:375",
+        "name": "Doctor profile / Mobile",
+        "width": 390,
+        "height": 641
+      },
+      {
+        "id": "5:395",
+        "name": "Book appointment / Desktop",
+        "width": 1440,
+        "height": 738
+      },
+      {
+        "id": "5:424",
+        "name": "Book appointment / Mobile",
+        "width": 390,
+        "height": 706
+      },
+      {
+        "id": "5:445",
+        "name": "Appointments / Desktop",
+        "width": 1440,
+        "height": 880
+      },
+      {
+        "id": "5:472",
+        "name": "Appointments / Mobile",
+        "width": 390,
+        "height": 660
+      },
+      {
+        "id": "5:491",
+        "name": "Appointment detail / Desktop",
+        "width": 1440,
+        "height": 744
+      },
+      {
+        "id": "5:520",
+        "name": "Appointment detail / Mobile",
+        "width": 390,
+        "height": 712
+      },
+      {
+        "id": "5:541",
+        "name": "Medical timeline / Desktop",
+        "width": 1440,
+        "height": 780
+      },
+      {
+        "id": "5:566",
+        "name": "Medical timeline / Mobile",
+        "width": 390,
+        "height": 560
+      },
+      {
+        "id": "5:583",
+        "name": "Medical reports / Desktop",
+        "width": 1440,
+        "height": 906
+      },
+      {
+        "id": "5:611",
+        "name": "Medical reports / Mobile",
+        "width": 390,
+        "height": 686
+      },
+      {
+        "id": "5:631",
+        "name": "Prescriptions / Desktop",
+        "width": 1440,
+        "height": 798
+      },
+      {
+        "id": "5:656",
+        "name": "Prescriptions / Mobile",
+        "width": 390,
+        "height": 578
+      },
+      {
+        "id": "5:673",
+        "name": "Doctor dashboard / Desktop",
+        "width": 1440,
+        "height": 862
+      },
+      {
+        "id": "5:700",
+        "name": "Doctor dashboard / Mobile",
+        "width": 390,
+        "height": 642
+      },
+      {
+        "id": "5:719",
+        "name": "Availability / Desktop",
+        "width": 1440,
+        "height": 706
+      },
+      {
+        "id": "5:747",
+        "name": "Availability / Mobile",
+        "width": 390,
+        "height": 674
+      },
+      {
+        "id": "5:767",
+        "name": "Clinical notes / Desktop",
+        "width": 1440,
+        "height": 738
+      },
+      {
+        "id": "5:796",
+        "name": "Clinical notes / Mobile",
+        "width": 390,
+        "height": 706
+      },
+      {
+        "id": "5:817",
+        "name": "Reception dashboard / Desktop",
+        "width": 1440,
+        "height": 862
+      },
+      {
+        "id": "5:844",
+        "name": "Reception dashboard / Mobile",
+        "width": 390,
+        "height": 642
+      },
+      {
+        "id": "5:863",
+        "name": "Patient queue / Desktop",
+        "width": 1440,
+        "height": 798
+      },
+      {
+        "id": "5:888",
+        "name": "Patient queue / Mobile",
+        "width": 390,
+        "height": 578
+      },
+      {
+        "id": "5:905",
+        "name": "Pharmacy dashboard / Desktop",
+        "width": 1440,
+        "height": 830
+      },
+      {
+        "id": "5:931",
+        "name": "Pharmacy dashboard / Mobile",
+        "width": 390,
+        "height": 610
+      },
+      {
+        "id": "5:949",
+        "name": "Medicine inventory / Desktop",
+        "width": 1440,
+        "height": 906
+      },
+      {
+        "id": "5:977",
+        "name": "Medicine inventory / Mobile",
+        "width": 390,
+        "height": 686
+      },
+      {
+        "id": "5:997",
+        "name": "Dispensing / Desktop",
+        "width": 1440,
+        "height": 792
+      },
+      {
+        "id": "5:1022",
+        "name": "Dispensing / Mobile",
+        "width": 390,
+        "height": 572
+      },
+      {
+        "id": "5:1039",
+        "name": "Admin dashboard / Desktop",
+        "width": 1440,
+        "height": 862
+      },
+      {
+        "id": "5:1066",
+        "name": "Admin dashboard / Mobile",
+        "width": 390,
+        "height": 642
+      },
+      {
+        "id": "5:1085",
+        "name": "Data management / Desktop",
+        "width": 1440,
+        "height": 798
+      },
+      {
+        "id": "5:1110",
+        "name": "Data management / Mobile",
+        "width": 390,
+        "height": 578
+      },
+      {
+        "id": "5:1127",
+        "name": "Database explorer / Desktop",
+        "width": 1440,
+        "height": 789
+      },
+      {
+        "id": "5:1152",
+        "name": "Database explorer / Mobile",
+        "width": 390,
+        "height": 578
+      },
+      {
+        "id": "5:1169",
+        "name": "Hospital settings / Desktop",
+        "width": 1440,
+        "height": 738
+      },
+      {
+        "id": "5:1198",
+        "name": "Hospital settings / Mobile",
+        "width": 390,
+        "height": 706
+      },
+      {
+        "id": "5:1219",
+        "name": "Staff review / Desktop",
+        "width": 1440,
+        "height": 647
+      },
+      {
+        "id": "5:1246",
+        "name": "Staff review / Mobile",
+        "width": 390,
+        "height": 615
+      },
+      {
+        "id": "5:1265",
+        "name": "Payment record / Desktop",
+        "width": 1440,
+        "height": 706
+      },
+      {
+        "id": "5:1293",
+        "name": "Payment record / Mobile",
+        "width": 390,
+        "height": 674
+      },
+      {
+        "id": "5:1313",
+        "name": "Notifications / Desktop",
+        "width": 1440,
+        "height": 630
+      },
+      {
+        "id": "5:1339",
+        "name": "Notifications / Mobile",
+        "width": 390,
+        "height": 598
+      },
+      {
+        "id": "5:1357",
+        "name": "Video consultation / Desktop",
+        "width": 1440,
+        "height": 598
+      },
+      {
+        "id": "5:1382",
+        "name": "Video consultation / Mobile",
+        "width": 390,
+        "height": 566
+      },
+      {
+        "id": "5:1399",
+        "name": "Contact and emergency / Desktop",
+        "width": 1440,
+        "height": 598
+      },
+      {
+        "id": "5:1416",
+        "name": "Contact and emergency / Mobile",
+        "width": 390,
+        "height": 566
+      }
+    ],
+    "instances": 236,
+    "textNodes": 1028,
+    "flatUiImages": []
+  },
+  "implemented": {
+    "pageId": "16:2",
+    "frames": [
+      {
+        "id": "17:619",
+        "name": "MedNova/DoctorDirectory",
+        "type": "COMPONENT_SET",
+        "width": 1790,
+        "height": 2650
+      },
+      {
+        "id": "17:620",
+        "name": "Implemented directory / Desktop1280",
+        "type": "FRAME",
+        "width": 1280,
+        "height": 1399
+      },
+      {
+        "id": "17:834",
+        "name": "Implemented directory / Mobile390",
+        "type": "FRAME",
+        "width": 390,
+        "height": 2579
+      }
+    ],
+    "textNodes": 276,
+    "autoLayoutFrames": 414,
+    "flatUiImages": [],
+    "semanticBoundNodes": 208
+  }
+}

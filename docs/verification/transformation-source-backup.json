@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "database": "mednova_local",
+  "engine": "MySQL",
+  "private_backup": ".runtime/backups/mednova-current-preserved.sql",
+  "sha256": "19c3fa1a683ccbbd802c35a211f2c7c9547403c7d56129150d0ece64210f54b9",
+  "scope": "Current source snapshot preserved privately. Earlier MySQL restore and current PostgreSQL restore are separate recorded rehearsals.",
+  "no_source_reset": true
+}

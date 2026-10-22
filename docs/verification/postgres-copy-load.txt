@@ -1,0 +1,2 @@
+Local isolated migration rehearsal. Source MySQL remains unchanged.
+Installed 596 object(s) from 1 fixture(s)

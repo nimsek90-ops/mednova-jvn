@@ -90,13 +90,14 @@ class FinalAuditWorkflows(TestCase):
     def test_schema_inventory_uses_actual_backend_and_no_row_contents(self):
         with TemporaryDirectory() as folder:
             output=Path(folder)/'schema.json'
-            if connection.vendor!='mysql':
+            if connection.vendor not in ('mysql','postgresql'):
                 with self.assertRaises(CommandError):call_command('database_inventory',output=str(output),stdout=StringIO())
                 self.assertFalse(output.exists())
             else:
-                call_command('database_inventory',output=str(output),stdout=StringIO())
+                with patch.object(connection.introspection, 'get_table_description', side_effect=AssertionError('Metadata export must not sample records')):
+                    call_command('database_inventory',output=str(output),stdout=StringIO())
                 report=json.loads(output.read_text())
-                self.assertEqual(report['engine'],'mysql')
+                self.assertEqual(report['engine'],connection.vendor)
                 self.assertTrue(any(t['table']=='care_user' for t in report['tables']))
                 self.assertNotIn(self.patient.email,output.read_text())
                 self.assertNotIn(self.appt.reason,output.read_text())

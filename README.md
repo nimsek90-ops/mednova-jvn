@@ -1,3 +1,5 @@
+> Latest22 October transformation: [PRODUCT_TRANSFORMATION_REPORT.md](docs/PRODUCT_TRANSFORMATION_REPORT.md). Editable Figma system, new directory/schema explorer,116 SQLite tests and120 tests each on MySQL/PostgreSQL. Primary MySQL is preserved; PostgreSQL migration rehearsed locally. Supabase/Vercel targets and complete design sign-off remain blocked/outstanding.
+
 > Latest final audit: [FINAL_SYSTEM_REPORT.md](docs/FINAL_SYSTEM_REPORT.md). The running local app now uses actual MySQL `mednova_local` (31 tables). 111 SQLite tests,115 MySQL tests,8 HTTP scenarios and261 responsive checks passed. Human administrator provisioning and hosted production verification remain blocked. Earlier counts below are historical.
 
 > UI redesign: see [UI_REDESIGN_REPORT.md](docs/UI_REDESIGN_REPORT.md) for the shared design system, all screen coverage,129 responsive checks and104 passing regression tests.

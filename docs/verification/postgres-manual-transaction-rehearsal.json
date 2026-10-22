@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "database": "mednova_pg_restore_qa",
+  "update_affected_rows": 1,
+  "scratch_insert_delete_rows": 1,
+  "all_record_changes_rolled_back": true,
+  "sequence_gaps_expected": true,
+  "source_databases_untouched": true
+}

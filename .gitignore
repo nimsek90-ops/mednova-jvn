@@ -17,3 +17,7 @@ backups/
 .checkpoints/
 
 .runtime/
+
+!certs/mysql-ca.pem
+
+!certs/postgres-ca.pem

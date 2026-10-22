@@ -1,0 +1,1355 @@
+[
+  {
+    "name": "schema_explorer",
+    "route": "admin/data/schema/",
+    "backend": "care.product.schema_explorer",
+    "source": "care\\product.py",
+    "line": 270,
+    "screens": [
+      "care/schema_explorer.html"
+    ],
+    "feature_group": "schema",
+    "workflow_tables": [
+      "Authorized schema metadata only; no record values"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "data_management",
+    "route": "admin/data/",
+    "backend": "care.product.data_management",
+    "source": "care\\product.py",
+    "line": 245,
+    "screens": [
+      "care/data_management.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_medicine",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "about",
+    "route": "about/",
+    "backend": "care.product.public_information",
+    "source": "care\\product.py",
+    "line": 130,
+    "screens": [
+      "care/information.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "pharmacy_info",
+    "route": "pharmacy/",
+    "backend": "care.product.public_information",
+    "source": "care\\product.py",
+    "line": 130,
+    "screens": [
+      "care/information.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "health_hub",
+    "route": "health-hub/",
+    "backend": "care.product.health_hub",
+    "source": "care\\product.py",
+    "line": 95,
+    "screens": [
+      "care/health_hub.html",
+      "care/form.html"
+    ],
+    "feature_group": "wellness",
+    "workflow_tables": [
+      "care_healthassessment"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "symptoms",
+    "route": "symptom-information/",
+    "backend": "care.product.symptoms",
+    "source": "care\\product.py",
+    "line": 120,
+    "screens": [
+      "care/symptoms.html"
+    ],
+    "feature_group": "wellness",
+    "workflow_tables": [
+      "Educational content; no saved symptom rows"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "wellness",
+    "route": "wellness/",
+    "backend": "care.product.wellness",
+    "source": "care\\product.py",
+    "line": 39,
+    "screens": [
+      "care/wellness.html",
+      "care/form.html"
+    ],
+    "feature_group": "wellness",
+    "workflow_tables": [
+      "care_wellnessentry",
+      "care_wellnessrevision",
+      "care_healthassessment"
+    ],
+    "roles": [
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "notes",
+    "route": "appointments/<uuid:pk>/notes/",
+    "backend": "care.product.notes",
+    "source": "care\\product.py",
+    "line": 149,
+    "screens": [
+      "care/notes.html"
+    ],
+    "feature_group": "clinical",
+    "workflow_tables": [
+      "care_appointment",
+      "care_clinicalnote",
+      "care_report",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_medicine",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor",
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "timeline",
+    "route": "patients/<int:patient_id>/timeline/",
+    "backend": "care.product.timeline",
+    "source": "care\\product.py",
+    "line": 185,
+    "screens": [
+      "care/timeline.html"
+    ],
+    "feature_group": "clinical",
+    "workflow_tables": [
+      "care_appointment",
+      "care_clinicalnote",
+      "care_report",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_medicine",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor",
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "queue",
+    "route": "queue/",
+    "backend": "care.product.queue",
+    "source": "care\\product.py",
+    "line": 214,
+    "screens": [
+      "care/queue.html"
+    ],
+    "feature_group": "queue",
+    "workflow_tables": [
+      "care_appointment",
+      "care_queuecounter",
+      "care_queueentry",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "movements",
+    "route": "inventory/movements/",
+    "backend": "care.product.movements",
+    "source": "care\\product.py",
+    "line": 240,
+    "screens": [
+      "care/movements.html"
+    ],
+    "feature_group": "pharmacy",
+    "workflow_tables": [
+      "care_medicine",
+      "care_stockmovement",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "pharmacist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "cleanup",
+    "route": "api/maintenance/cleanup/",
+    "backend": "care.views.cleanup",
+    "source": "care\\views.py",
+    "line": 1426,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "maintenance",
+    "workflow_tables": [
+      "care_signal",
+      "care_ratebucket",
+      "care_notification",
+      "care_deliveryoutbox"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "health",
+    "route": "health/",
+    "backend": "care.views.health",
+    "source": "care\\views.py",
+    "line": 80,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "health",
+    "workflow_tables": [
+      "Database connectivity probe; no clinical rows"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "notifications",
+    "route": "notifications/",
+    "backend": "care.views.notifications",
+    "source": "care\\views.py",
+    "line": 1258,
+    "screens": [
+      "care/notifications.html"
+    ],
+    "feature_group": "notification",
+    "workflow_tables": [
+      "care_notification"
+    ],
+    "roles": [
+      "admin",
+      "doctor",
+      "patient",
+      "pharmacist",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "patients",
+    "route": "patients/",
+    "backend": "care.views.patients",
+    "source": "care\\views.py",
+    "line": 1330,
+    "screens": [
+      "care/patients.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "users",
+    "route": "admin/users/",
+    "backend": "care.views.users",
+    "source": "care\\views.py",
+    "line": 1352,
+    "screens": [
+      "care/users.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "operations",
+    "route": "admin/operations/",
+    "backend": "care.views.operational_report",
+    "source": "care\\views.py",
+    "line": 1413,
+    "screens": [
+      "care/operations.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "edit_slot",
+    "route": "availability/<int:pk>/edit/",
+    "backend": "care.views.edit_slot",
+    "source": "care\\views.py",
+    "line": 1388,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "department_edit",
+    "route": "admin/departments/<int:pk>/",
+    "backend": "care.views.department_edit",
+    "source": "care\\views.py",
+    "line": 1375,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "check_in",
+    "route": "appointments/<uuid:pk>/check-in/",
+    "backend": "care.views.check_in",
+    "source": "care\\views.py",
+    "line": 1268,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "home",
+    "route": "",
+    "backend": "care.views.home",
+    "source": "care\\views.py",
+    "line": 56,
+    "screens": [
+      "care/home.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "public_departments",
+    "route": "departments/",
+    "backend": "care.views.public_departments",
+    "source": "care\\views.py",
+    "line": 64,
+    "screens": [
+      "care/public_departments.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "doctor_detail",
+    "route": "doctors/<int:pk>/",
+    "backend": "care.views.doctor_detail",
+    "source": "care\\views.py",
+    "line": 71,
+    "screens": [
+      "care/doctor_detail.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "receipt",
+    "route": "appointments/<uuid:pk>/receipt/",
+    "backend": "care.views.receipt",
+    "source": "care\\views.py",
+    "line": 1420,
+    "screens": [
+      "care/receipt.html"
+    ],
+    "feature_group": "payments",
+    "workflow_tables": [
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "patient",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "login",
+    "route": "login/",
+    "backend": "care.views.sign_in",
+    "source": "care\\views.py",
+    "line": 128,
+    "screens": [
+      "care/login.html"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "register",
+    "route": "register/",
+    "backend": "care.views.register",
+    "source": "care\\views.py",
+    "line": 154,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "logout",
+    "route": "logout/",
+    "backend": "care.views.sign_out",
+    "source": "care\\views.py",
+    "line": 173,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "language",
+    "route": "language/",
+    "backend": "care.views.language",
+    "source": "care\\views.py",
+    "line": 181,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "forgot",
+    "route": "forgot-password/",
+    "backend": "care.views.forgot",
+    "source": "care\\views.py",
+    "line": 189,
+    "screens": [
+      "care/forgot.html"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "reset",
+    "route": "reset/<str:uid>/<str:token>/",
+    "backend": "care.views.reset",
+    "source": "care\\views.py",
+    "line": 221,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "password",
+    "route": "password/",
+    "backend": "care.views.password",
+    "source": "care\\views.py",
+    "line": 343,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "doctor",
+      "patient",
+      "pharmacist",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "dashboard",
+    "route": "dashboard/",
+    "backend": "care.views.dashboard",
+    "source": "care\\views.py",
+    "line": 250,
+    "screens": [
+      "care/dashboard.html",
+      "care/pending.html"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_appointment",
+      "care_slot",
+      "care_medicine",
+      "care_prescription",
+      "care_notification",
+      "care_wellnessentry"
+    ],
+    "roles": [
+      "admin",
+      "doctor",
+      "patient",
+      "pharmacist",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "profile",
+    "route": "profile/",
+    "backend": "care.views.profile",
+    "source": "care\\views.py",
+    "line": 297,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "identity",
+    "workflow_tables": [
+      "care_user",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "doctor",
+      "patient",
+      "pharmacist",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "doctors",
+    "route": "doctors/",
+    "backend": "care.views.doctors",
+    "source": "care\\views.py",
+    "line": 361,
+    "screens": [
+      "care/doctors.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "availability",
+    "route": "availability/",
+    "backend": "care.views.availability",
+    "source": "care\\views.py",
+    "line": 392,
+    "screens": [
+      "care/availability.html"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "remove_slot",
+    "route": "availability/<int:pk>/remove/",
+    "backend": "care.views.remove_slot",
+    "source": "care\\views.py",
+    "line": 458,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "booking",
+    "route": "book/<int:doctor_id>/",
+    "backend": "care.views.booking",
+    "source": "care\\views.py",
+    "line": 475,
+    "screens": [
+      "care/booking.html"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "patient",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "appointments",
+    "route": "appointments/",
+    "backend": "care.views.appointments",
+    "source": "care\\views.py",
+    "line": 577,
+    "screens": [
+      "care/appointments.html"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "doctor",
+      "patient",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "appointment",
+    "route": "appointments/<uuid:pk>/",
+    "backend": "care.views.appointment",
+    "source": "care\\views.py",
+    "line": 598,
+    "screens": [
+      "care/appointment.html"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "doctor",
+      "patient",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "appointment_action",
+    "route": "appointments/<uuid:pk>/action/",
+    "backend": "care.views.appointment_action",
+    "source": "care\\views.py",
+    "line": 629,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "scheduling",
+    "workflow_tables": [
+      "care_appointment",
+      "care_slot",
+      "care_user",
+      "care_doctorprofile",
+      "care_payment",
+      "care_notification",
+      "care_deliveryoutbox",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "doctor",
+      "patient",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "upload",
+    "route": "appointments/<uuid:pk>/upload/",
+    "backend": "care.views.upload",
+    "source": "care\\views.py",
+    "line": 654,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "clinical",
+    "workflow_tables": [
+      "care_appointment",
+      "care_clinicalnote",
+      "care_report",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_medicine",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor",
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "download",
+    "route": "reports/<uuid:pk>/download/",
+    "backend": "care.views.download",
+    "source": "care\\views.py",
+    "line": 683,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "clinical",
+    "workflow_tables": [
+      "care_appointment",
+      "care_clinicalnote",
+      "care_report",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_medicine",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor",
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "prescribe",
+    "route": "appointments/<uuid:pk>/prescribe/",
+    "backend": "care.views.prescribe",
+    "source": "care\\views.py",
+    "line": 709,
+    "screens": [
+      "care/prescribe.html"
+    ],
+    "feature_group": "clinical",
+    "workflow_tables": [
+      "care_appointment",
+      "care_clinicalnote",
+      "care_report",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_medicine",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "prescriptions",
+    "route": "prescriptions/",
+    "backend": "care.views.prescriptions",
+    "source": "care\\views.py",
+    "line": 774,
+    "screens": [
+      "care/prescriptions.html"
+    ],
+    "feature_group": "clinical",
+    "workflow_tables": [
+      "care_appointment",
+      "care_clinicalnote",
+      "care_report",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_medicine",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor",
+      "patient",
+      "pharmacist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "dispense",
+    "route": "prescriptions/<uuid:pk>/dispense/",
+    "backend": "care.views.dispense_rx",
+    "source": "care\\views.py",
+    "line": 793,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "clinical",
+    "workflow_tables": [
+      "care_appointment",
+      "care_clinicalnote",
+      "care_report",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_medicine",
+      "care_auditevent"
+    ],
+    "roles": [
+      "pharmacist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "inventory",
+    "route": "inventory/",
+    "backend": "care.views.inventory",
+    "source": "care\\views.py",
+    "line": 805,
+    "screens": [
+      "care/inventory.html"
+    ],
+    "feature_group": "pharmacy",
+    "workflow_tables": [
+      "care_medicine",
+      "care_stockmovement",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "pharmacist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "stock",
+    "route": "inventory/<int:pk>/adjust/",
+    "backend": "care.views.stock",
+    "source": "care\\views.py",
+    "line": 830,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "pharmacy",
+    "workflow_tables": [
+      "care_medicine",
+      "care_stockmovement",
+      "care_prescription",
+      "care_prescriptionitem",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "pharmacist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "staff",
+    "route": "admin/staff/",
+    "backend": "care.views.staff",
+    "source": "care\\views.py",
+    "line": 861,
+    "screens": [
+      "care/staff.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "departments",
+    "route": "admin/departments/",
+    "backend": "care.views.departments",
+    "source": "care\\views.py",
+    "line": 904,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "settings",
+    "route": "admin/settings/",
+    "backend": "care.views.hospital_settings",
+    "source": "care\\views.py",
+    "line": 917,
+    "screens": [
+      "care/form.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "audit",
+    "route": "admin/audit/",
+    "backend": "care.views.audit_log",
+    "source": "care\\views.py",
+    "line": 935,
+    "screens": [
+      "care/audit.html"
+    ],
+    "feature_group": "operations",
+    "workflow_tables": [
+      "care_user",
+      "care_doctorprofile",
+      "care_department",
+      "care_hospital",
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "payment_record",
+    "route": "appointments/<uuid:pk>/payment-record/",
+    "backend": "care.views.payment_record",
+    "source": "care\\views.py",
+    "line": 947,
+    "screens": [
+      "care/payment_record.html"
+    ],
+    "feature_group": "payments",
+    "workflow_tables": [
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "admin",
+      "receptionist"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "pay",
+    "route": "appointments/<uuid:pk>/pay/",
+    "backend": "care.views.pay",
+    "source": "care\\views.py",
+    "line": 980,
+    "screens": [
+      "care/pay.html",
+      "care/form.html"
+    ],
+    "feature_group": "payments",
+    "workflow_tables": [
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "payment_verify",
+    "route": "api/payments/<uuid:pk>/verify/",
+    "backend": "care.views.payment_verify",
+    "source": "care\\views.py",
+    "line": 1062,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "payments",
+    "workflow_tables": [
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "webhook",
+    "route": "api/payments/webhook/",
+    "backend": "care.views.webhook",
+    "source": "care\\views.py",
+    "line": 1098,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "payments",
+    "workflow_tables": [
+      "care_appointment",
+      "care_payment",
+      "care_auditevent"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "video",
+    "route": "appointments/<uuid:pk>/video/",
+    "backend": "care.views.video",
+    "source": "care\\views.py",
+    "line": 1158,
+    "screens": [
+      "care/video.html",
+      "care/form.html"
+    ],
+    "feature_group": "video",
+    "workflow_tables": [
+      "care_appointment",
+      "care_signal",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor",
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "signal",
+    "route": "api/appointments/<uuid:pk>/signals/",
+    "backend": "care.views.signal",
+    "source": "care\\views.py",
+    "line": 1201,
+    "screens": [
+      "JSON/file/action redirect; shared destination screen"
+    ],
+    "feature_group": "video",
+    "workflow_tables": [
+      "care_appointment",
+      "care_signal",
+      "care_ratebucket",
+      "care_auditevent"
+    ],
+    "roles": [
+      "doctor",
+      "patient"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "legal",
+    "route": "legal/<str:kind>/",
+    "backend": "care.views.legal",
+    "source": "care\\views.py",
+    "line": 1248,
+    "screens": [
+      "care/legal.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  },
+  {
+    "name": "contact",
+    "route": "contact/",
+    "backend": "care.views.contact",
+    "source": "care\\views.py",
+    "line": 1254,
+    "screens": [
+      "care/contact.html"
+    ],
+    "feature_group": "directory",
+    "workflow_tables": [
+      "care_department",
+      "care_doctorprofile",
+      "care_user",
+      "care_slot",
+      "care_hospital"
+    ],
+    "roles": [
+      "public / special token policy"
+    ],
+    "scope_note": "Role list is not record access: assigned-patient/doctor, token, method, CSRF and state rules also apply."
+  }
+]

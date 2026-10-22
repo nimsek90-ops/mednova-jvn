@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "path": "/register/",
+      "status": 200
+    },
+    {
+      "path": "/about/",
+      "status": 200
+    },
+    {
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "path": "/health-hub/",
+      "status": 200
+    },
+    {
+      "path": "/symptom-information/",
+      "status": 200
+    },
+    {
+      "path": "/pharmacy/",
+      "status": 200
+    },
+    {
+      "path": "/contact/",
+      "status": 200
+    },
+    {
+      "path": "/legal/privacy/",
+      "status": 200
+    },
+    {
+      "path": "/legal/terms/",
+      "status": 200
+    },
+    {
+      "path": "/forgot-password/",
+      "status": 200
+    },
+    {
+      "path": "/static/css/app.css",
+      "status": 200
+    },
+    {
+      "path": "/static/fonts/inter-latin-400-normal.woff2",
+      "status": 200
+    },
+    {
+      "path": "/static/fonts/inter-latin-600-normal.woff2",
+      "status": 200
+    },
+    {
+      "path": "/static/css/premium.css?v=6",
+      "status": 200
+    },
+    {
+      "path": "/static/css/product.css?v=1",
+      "status": 200
+    },
+    {
+      "path": "/static/css/workflows.css?v=2",
+      "status": 200
+    },
+    {
+      "path": "/static/img/hospital-line.svg",
+      "status": 200
+    },
+    {
+      "path": "/static/img/logo.png",
+      "status": 200
+    },
+    {
+      "path": "/static/js/app.js?v=7",
+      "status": 200
+    },
+    {
+      "path": "/.env",
+      "status": 404
+    },
+    {
+      "path": "/.runtime/local_mysql.json",
+      "status": 404
+    },
+    {
+      "path": "/.runtime/postgres-local.json",
+      "status": 404
+    },
+    {
+      "path": "/browser_acceptance.sqlite3",
+      "status": 404
+    },
+    {
+      "path": "/private_uploads/",
+      "status": 404
+    }
+  ],
+  "local_html_response_median_ms": 34.39,
+  "local_html_response_max_ms": 59.74,
+  "performance_scope": "Single sequential loopback smoke pass; not a load/production/browser rendering benchmark"
+}

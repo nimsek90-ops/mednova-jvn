@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "cluster": "isolated loopback PostgreSQL",
+  "startup": "tools/local_postgres.py serve started already initialized cluster",
+  "tables_compared": 31,
+  "all_row_counts_preserved": true,
+  "runtime_identity": "mednova_pg_runtime (non-superuser/no BYPASSRLS)",
+  "health_after_restart": 200,
+  "scope": "local process restart; not hosted deployment persistence"
+}
