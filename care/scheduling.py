@@ -28,11 +28,13 @@ def slot_restriction(slot, include_urgent=False):
     return ''
 
 
-def available_slots(doctor=None, include_urgent=False):
+def available_slots(doctor=None, include_urgent=False, doctor_ids=None):
     qs = Slot.objects.filter(active=True, booked=False, start__gt=timezone.now(),
                              start__lt=timezone.now()+timedelta(days=90)).select_related('session', 'doctor__doctor_profile')
     if doctor is not None:
         qs = qs.filter(doctor=doctor)
+    if doctor_ids is not None:
+        qs = qs.filter(doctor_id__in=doctor_ids)
     # Bounded publishing horizon; server-side booking rechecks all rules under locks.
     rejected = []
     doctor_ids = qs.values_list('doctor_id', flat=True).distinct()
@@ -41,14 +43,16 @@ def available_slots(doctor=None, include_urgent=False):
         blocks.setdefault(block.doctor_id, []).append(block)
     visits = Appointment.objects.filter(slot__doctor_id__in=doctor_ids,
         slot__start__gt=timezone.now()-timedelta(days=1), slot__start__lt=timezone.now()+timedelta(days=91)).exclude(status='cancelled')
-    daily, sessions = {}, {}
-    for doctor_id, session_id, starts in visits.values_list('slot__doctor_id','slot__session_id','slot__start'):
+    daily, sessions, occupied = {}, {}, {}
+    for doctor_id, session_id, starts, duration, buffer in visits.values_list('slot__doctor_id','slot__session_id','slot__start','slot__duration','slot__buffer'):
+        occupied.setdefault(doctor_id, []).append((starts, starts + timedelta(minutes=duration+buffer)))
         day = timezone.localdate(starts)
         daily[(doctor_id,day)] = daily.get((doctor_id,day),0)+1
         sessions[(session_id,day)] = sessions.get((session_id,day),0)+1
     for slot in qs:
         if (slot.session_id and (not slot.session.active or (slot.session.visit_type=='urgent' and not include_urgent))) or any(
-                overlaps(slot.start,slot_end(slot),block.start,block.end) for block in blocks.get(slot.doctor_id,[])):
+                  overlaps(slot.start,slot_end(slot),block.start,block.end) for block in blocks.get(slot.doctor_id,[])) or any(
+                  overlaps(slot.start,slot_end(slot),start,end) for start,end in occupied.get(slot.doctor_id, [])):
             rejected.append(slot.pk)
             continue
         day = timezone.localdate(slot.start)

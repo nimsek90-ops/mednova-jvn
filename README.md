@@ -1,4 +1,6 @@
-> Current hospital upgrade (23 October): [implemented workflows, migrations, tests and remaining scope](docs/HOSPITAL_UPGRADE_REPORT.md). Primary MySQL now has46 tables; older reports are historical.
+> Current patient assistant (23 October): [patient queries, consented handoff, staff support queue, tests and run instructions](docs/PATIENT_ASSISTANT_REPORT.md). Primary MySQL has 48 tables. Earlier reports below describe historical checkpoints.
+>
+> Hospital upgrade checkpoint: [implemented workflows and migrations](docs/HOSPITAL_UPGRADE_REPORT.md).
 
 > VS Code folder delivery: [OPEN_IN_VSCODE.md](OPEN_IN_VSCODE.md), [database viewer guide](docs/VSCODE_DATABASE.md), and [login/delivery report](docs/LOGIN_AND_FOLDER_DELIVERY.md).
 

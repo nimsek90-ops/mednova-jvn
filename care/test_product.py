@@ -187,6 +187,8 @@ class ProductWorkflows(TestCase):
         from django.urls import get_resolver
         all_roles = {'patient','doctor','receptionist','pharmacist','admin'}
         policy = {
+            'reception_desk':{'receptionist','admin'},'reception_register':{'receptionist','admin'},'reception_booking':{'receptionist'},'reception_patient':{'receptionist','admin'},'specialty_create':{'admin'},'specialty_edit':{'admin'},'doctor_specialties':{'admin'},
+            'support_create':{'patient'},'support_queue':all_roles,'support_case':all_roles,
             'waiting_list':{'patient','receptionist'},'worklist':{'doctor','receptionist','pharmacist','admin'},'schedule_rules':{'doctor'},'registration_card':{'patient','receptionist','admin'},'admissions':{'patient','doctor','receptionist','admin'},'bed_catalogue':{'admin'},'purchasing':{'pharmacist','admin'},'partial_issue':{'pharmacist'},'batch_safety':{'pharmacist','admin'},'clinical_work':{'patient','doctor'},'assistant_admin':{'admin'},
             'schema_explorer':{'admin'},'data_management':{'admin'},'notifications':all_roles,'patients':{'receptionist','admin'},'users':{'admin'},'operations':{'admin'},
             'edit_slot':{'doctor'},'department_edit':{'admin'},'check_in':{'receptionist','admin'},

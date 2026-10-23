@@ -1,4 +1,4 @@
-> Current hospital upgrade (23 October): [implemented workflows, migrations, tests and remaining scope](docs/HOSPITAL_UPGRADE_REPORT.md). Primary MySQL now has46 tables; older reports are historical.
+> Current patient assistant (23 October): [patient services, support handoff, tests and run instructions](docs/PATIENT_ASSISTANT_REPORT.md). Primary MySQL now has 48 tables; older reports are historical.
 
 # Open and run the complete MedNova source
 

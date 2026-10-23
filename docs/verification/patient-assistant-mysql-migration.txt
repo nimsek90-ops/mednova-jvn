@@ -1,0 +1,11 @@
+Planned operations:
+care.0010_patient_support_cases
+    Create model SupportCase
+    Create model SupportMessage
+    Create index support_queue_idx on field(s) category, status of model supportcase
+Operations to perform:
+  Apply all migrations: auth, care, contenttypes, sessions
+Running migrations:
+  Applying care.0010_patient_support_cases... OK
+Private backup saved. SHA256: f7866ae8932e13f1b70c0b17437cfb7c54db6cb34a1136a10ff2b74c81337f90
+Migrations complete. Runtime application credentials were not changed. Restart the application.

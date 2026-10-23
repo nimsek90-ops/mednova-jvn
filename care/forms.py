@@ -102,6 +102,12 @@ class DoctorForm(forms.ModelForm):
     def clean_daily_limit(self):
         return self.cleaned_data.get('daily_limit') or 0
 
+    def clean(self):
+        data=super().clean()
+        if self.instance.pk and data.get('department') and self.instance.specialties.exclude(departments=data['department']).exists():
+            self.add_error('department','Ask an administrator to update your verified specialty assignments before changing department.')
+        return data
+
 
 class AvailabilityForm(forms.Form):
     duration = forms.IntegerField(min_value=5, max_value=180, required=False, initial=12, label='Consultation minutes')

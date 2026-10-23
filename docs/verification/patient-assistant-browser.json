@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-23",
+  "database": "isolated synthetic SQLite QA on port 8003; primary MySQL not used for mutations",
+  "patientResponsive": [
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 320,
+      "path": "/support/5f761f66-88e2-4f03-8c17-34f8a844c9ab/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 390,
+      "path": "/support/5f761f66-88e2-4f03-8c17-34f8a844c9ab/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 768,
+      "path": "/support/5f761f66-88e2-4f03-8c17-34f8a844c9ab/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 1280,
+      "path": "/support/5f761f66-88e2-4f03-8c17-34f8a844c9ab/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 320,
+      "path": "/support/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 390,
+      "path": "/support/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 768,
+      "path": "/support/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 1280,
+      "path": "/support/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 320,
+      "path": "/support/new/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 390,
+      "path": "/support/new/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 768,
+      "path": "/support/new/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 1280,
+      "path": "/support/new/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 320,
+      "path": "/assistant/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 390,
+      "path": "/assistant/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 768,
+      "path": "/assistant/"
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 1280,
+      "path": "/assistant/"
+    }
+  ],
+  "staffResponsive": [
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 1280
+    }
+  ],
+  "administratorPrivacy": {
+    "clinicalReplyHidden": true,
+    "metadataVisible": true,
+    "summaryHidden": true
+  },
+  "journey": [
+    "synthetic patient login",
+    "reports and investigations",
+    "prescriptions",
+    "billing",
+    "unresolved report issue",
+    "review summary",
+    "consent and create case",
+    "assigned doctor queue",
+    "portal staff reply",
+    "status update",
+    "patient receives reply",
+    "internal notes hidden",
+    "administrator metadata only"
+  ]
+}

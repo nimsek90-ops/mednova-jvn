@@ -14,6 +14,22 @@ from .services import book, change_status, BookingError
 
 
 class MySQLBookingAcceptance(TransactionTestCase):
+    def test_simultaneous_support_retries_create_one_case(self):
+        import uuid
+        from django.test import Client
+        from django.urls import reverse
+        from .models import SupportCase
+        clients = [Client(), Client()]
+        for client in clients:
+            client.force_login(Workflows.patient)
+        payload = {'category':'technical','summary':'Synthetic concurrent support submission',
+                   'consent':'on','request_key':str(uuid.uuid4())}
+        def submit(client):
+            response = client.post(reverse('support_create'), payload)
+            self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.race([lambda c=c:submit(c) for c in clients]), ['ok','ok'])
+        self.assertEqual(SupportCase.objects.count(), 1)
+
     def setUp(self):
         if connection.vendor != "mysql":
             self.fail("This acceptance suite requires a dedicated MySQL test database.")

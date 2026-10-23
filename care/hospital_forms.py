@@ -35,7 +35,7 @@ class PublishForm(forms.Form):
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = PatientRegistration
-        fields = ['emergency_name', 'emergency_phone', 'guardian', 'consent']
+        fields = ['address', 'emergency_name', 'emergency_phone', 'guardian', 'consent']
 
     def clean_emergency_phone(self):
         return clean_phone(self.cleaned_data.get('emergency_phone',''))

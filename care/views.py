@@ -72,8 +72,14 @@ def public_departments(request):
 @require_http_methods(["GET"])
 def doctor_detail(request, pk):
     doctor = get_object_or_404(approved_profiles(), user_id=pk)
+    selected_patient = None
+    if request.user.is_authenticated and request.user.role == 'receptionist' and request.GET.get('patient'):
+        selected_patient=get_object_or_404(User,pk=integer_id(request.GET['patient']),role='patient',is_active=True,approval='approved')
     return render(request, "care/doctor_detail.html", {
         "doc": doctor,
+        "selected_patient":selected_patient,
+        "specialties":doctor.specialties.filter(active=True),
+        "sessions":doctor.user.schedulesession_set.filter(active=True),
         "slots": available_slots(doctor=doctor.user)[:12],
     })
 
@@ -266,6 +272,9 @@ def dashboard(request):
     u = request.user
     if u.approval != "approved":
         return render(request, "care/pending.html")
+    if u.role == 'receptionist':
+        from .reception import desk
+        return desk(request)
     qs = visible_appointments(u)
     future = qs.filter(
         status__in=["pending", "confirmed"], slot__start__gte=timezone.now()
@@ -373,21 +382,28 @@ def password(request):
 
 @require_http_methods(["GET"])
 def doctors(request):
+    from .models import Specialty
     profiles = DoctorProfile.objects.select_related("user", "department").filter(
         user__role="doctor", user__approval="approved", user__is_active=True, department__active=True
     )
     from django.db.models import Min
     from .scheduling import available_slots
     available = available_slots(include_urgent=request.user.is_authenticated and request.user.role == 'receptionist')
-    profiles = profiles.annotate(next_slot=Min('user__slots__start', filter=Q(user__slots__pk__in=available.values('pk'))))
+    profiles = profiles.prefetch_related('specialties').annotate(next_slot=Min('user__slots__start', filter=Q(user__slots__pk__in=available.values('pk'))))
     query = request.GET.get("q", "").strip()[:100]
     if query:
         profiles = profiles.filter(
-            Q(user__name__icontains=query) | Q(department__name__icontains=query)
-        )
+            Q(user__name__icontains=query) | Q(department__name__icontains=query) | Q(specialties__name__icontains=query, specialties__active=True)
+        ).distinct()
     department = request.GET.get("department", "")
     if department:
         profiles = profiles.filter(department_id=integer_id(department))
+    specialty = request.GET.get('specialty','')
+    if specialty:
+        profiles = profiles.filter(specialties__pk=integer_id(specialty), specialties__active=True)
+    selected_patient = None
+    if request.user.is_authenticated and request.user.role == 'receptionist' and request.GET.get('patient'):
+        selected_patient = get_object_or_404(User,pk=integer_id(request.GET['patient']),role='patient',is_active=True,approval='approved')
     if request.GET.get("available") == "1":
         profiles = profiles.filter(user__slots__pk__in=available.values("pk")).distinct()
     return render(
@@ -397,6 +413,9 @@ def doctors(request):
             "doctors": paged(request, profiles.order_by("user__name", "pk")),
             "pagination": paged(request, profiles.order_by("user__name", "pk")),
             "selected_department": department,
+            "selected_specialty": specialty,
+            "specialties": Specialty.objects.filter(active=True, departments__pk=integer_id(department)).distinct() if department else Specialty.objects.filter(active=True),
+            "selected_patient":selected_patient,
             "available_only": request.GET.get("available") == "1",
             "q": query,
             "departments": Department.objects.filter(active=True),
@@ -492,6 +511,9 @@ def remove_slot(request, pk):
 @require_http_methods(["GET", "POST"])
 @rate_limit("booking", 40, 60)
 def booking(request, doctor_id):
+    selected_patient = None
+    if request.user.role == 'receptionist' and request.GET.get('patient'):
+        selected_patient = get_object_or_404(User, pk=integer_id(request.GET['patient']), role='patient',is_active=True,approval='approved')
     doctor = get_object_or_404(
         User, pk=doctor_id, role="doctor", approval="approved", is_active=True
     )
@@ -530,6 +552,9 @@ def booking(request, doctor_id):
             start__gte=day_start, start__lt=day_start + timedelta(days=1)
         )
     slots = list(slots[:150])
+    reception_patients = list(User.objects.filter(role='patient',is_active=True,approval='approved').order_by('name')[:300]) if request.user.role == 'receptionist' else []
+    if selected_patient and all(p.pk != selected_patient.pk for p in reception_patients):
+        reception_patients.insert(0, selected_patient)
     from itertools import groupby
     slot_days = [(day, list(items)) for day, items in groupby(slots, key=lambda item: timezone.localdate(item.start))]
     if request.method == "POST" and form.is_valid():
@@ -573,14 +598,9 @@ def booking(request, doctor_id):
             "chosen_date": chosen_date,
             "available_dates": available_dates,
             "slot_days": slot_days,
-            "selected_slot": request.POST.get('slot', ''),
-            "patients": (
-                User.objects.filter(role="patient", is_active=True).order_by("name")[
-                    :300
-                ]
-                if request.user.role == "receptionist"
-                else []
-            ),
+            "selected_slot": request.POST.get('slot', '') if request.method == 'POST' else request.GET.get('slot', '')[:20],
+            "patients": reception_patients,
+            "selected_patient_id": str(selected_patient.pk) if selected_patient else request.POST.get('patient',''),
         },
     )
 
@@ -1416,6 +1436,8 @@ def patients(request):
     records = User.objects.filter(role="patient").order_by("name", "pk")
     if query:
         records = records.filter(Q(name__icontains=query) | Q(email__icontains=query) | Q(phone__icontains=query))
+        from .reception import matching_patients
+        records = records | matching_patients(query,query,query,query)
     mrn_query = query.removeprefix('MN-').replace('-','')
     if len(mrn_query)==32:
         try:
@@ -1424,7 +1446,7 @@ def patients(request):
         except ValueError:
             pass
     pagination = paged(request, records.select_related('registration'))
-    return render(request, "care/patients.html", {"form": form, "patients": pagination, "pagination": pagination, "q": query})
+    return render(request, "care/patient_directory.html", {"form": form, "patients": pagination, "pagination": pagination, "q": query})
 
 
 @roles("admin")

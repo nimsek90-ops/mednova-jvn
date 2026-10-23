@@ -2,8 +2,23 @@ from django.urls import path
 from care import views as v
 from care import product as p
 from care import hospital_views as h
+from care import chatbot
+from care import support
+from care import reception
 
 urlpatterns = [
+    path('reception/', reception.desk, name='reception_desk'),
+    path('reception/register/', reception.register, name='reception_register'),
+    path('reception/book/', reception.booking_start, name='reception_booking'),
+    path('reception/patients/<int:patient_id>/', reception.patient_detail, name='reception_patient'),
+    path('specialties/', reception.catalogue, name='specialty_catalogue'),
+    path('admin/specialties/new/', reception.specialty_edit, name='specialty_create'),
+    path('admin/specialties/<int:pk>/', reception.specialty_edit, name='specialty_edit'),
+    path('admin/doctors/<int:doctor_id>/specialties/', reception.doctor_specialties, name='doctor_specialties'),
+    path('support/', support.queue, name='support_queue'),
+    path('support/new/', support.create, name='support_create'),
+    path('support/<uuid:pk>/', support.detail, name='support_case'),
+    path('api/assistant/', chatbot.api, name='assistant_api'),
     path('waiting-list/', h.waiting_list, name='waiting_list'),
     path('worklist/', h.worklist, name='worklist'),
     path('schedule/rules/', h.schedule, name='schedule_rules'),

@@ -249,8 +249,9 @@ def movements(request):
 @roles('admin')
 @require_http_methods(['GET'])
 def data_management(request):
-    from .models import Department, DoctorProfile, Medicine, Payment, AuditEvent, DeliveryOutbox, Admission, PurchaseOrder, AssistantEscalation
+    from .models import Department, DoctorProfile, Medicine, Payment, AuditEvent, DeliveryOutbox, Admission, PurchaseOrder, AssistantEscalation, SupportCase
     entities = [
+        {'name':'Patient support cases','count':SupportCase.objects.exclude(status__in=['resolved','closed']).count(),'purpose':'Consented support cases, portal replies and restricted team routing. Medical conversations are hidden from administrators.','route':'support_queue'},
         {'name':'Admissions and beds','count':Admission.objects.count(),'purpose':'Operational allocation and responsible-doctor discharge readiness.','route':'admissions'},
         {'name':'Suppliers and purchases','count':PurchaseOrder.objects.count(),'purpose':'Approved requisitions and verified goods receipts.','route':'purchasing'},
         {'name':'Assistant knowledge and support','count':AssistantEscalation.objects.filter(resolved=False).count(),'purpose':'Approved FAQs and topic-only unresolved support requests.','route':'assistant_admin'},

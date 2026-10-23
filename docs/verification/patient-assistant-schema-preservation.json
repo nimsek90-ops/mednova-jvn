@@ -1,0 +1,10 @@
+{
+  "original_table_count": 46,
+  "current_table_count": 48,
+  "added_tables": [
+    "care_supportcase",
+    "care_supportmessage"
+  ],
+  "all_original_column_definitions_unchanged": true,
+  "foreign_key_orphans": 0
+}

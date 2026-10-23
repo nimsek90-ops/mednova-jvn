@@ -365,7 +365,7 @@ def assistant(request):
     if request.method == 'POST':
         history = (history + [answer])[-8:]
         request.session['assistant_service_history'] = history
-    return render(request,'care/assistant.html',{'form':form,'history':history,'answer':answer,'links':links,'slots':slots,'visits':visits,'faqs':faqs,'patient_access':patient})
+    return render(request,'care/assistant.html' if request.method=='POST' else 'care/chatbot.html',{'form':form,'history':history,'answer':answer,'links':links,'slots':slots,'visits':visits,'faqs':faqs,'patient_access':patient})
 
 
 @roles('doctor','receptionist','pharmacist','admin')

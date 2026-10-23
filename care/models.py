@@ -5,6 +5,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils import timezone
 
 
+def specialty_key(value):
+    return ' '.join(value.casefold().split()).replace('orthopaed','orthoped').replace('paediatr','pediatr').replace('gynaec','gynec').replace('counselling','counseling').replace('anaesthe','anesthe')
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra):
         user = self.model(email=self.normalize_email(email).lower(), **extra)
@@ -81,6 +85,25 @@ class DoctorProfile(models.Model):
     )
     daily_limit = models.PositiveSmallIntegerField(default=0, validators=[MaxValueValidator(500)])
     location = models.CharField(max_length=160, blank=True)
+    specialties = models.ManyToManyField('Specialty', blank=True, related_name='doctors')
+
+
+class Specialty(models.Model):
+    name = models.CharField(max_length=120, unique=True)
+    normalized_name = models.CharField(max_length=120, unique=True, editable=False)
+    departments = models.ManyToManyField(Department, related_name='specialties')
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def save(self, *args, **kwargs):
+        self.name = ' '.join(self.name.split())
+        self.normalized_name = specialty_key(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
 
 
 class Slot(models.Model):
@@ -417,6 +440,7 @@ class PatientRegistration(models.Model):
     patient = models.OneToOneField(User, on_delete=models.PROTECT, related_name='registration')
     mrn = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     emergency_name = models.CharField(max_length=120, blank=True)
+    address = models.CharField(max_length=600, blank=True)
     emergency_phone = models.CharField(max_length=20, blank=True)
     guardian = models.CharField(max_length=120, blank=True)
     consent = models.BooleanField(default=False)
@@ -527,6 +551,45 @@ class AssistantEscalation(models.Model):
     topic = models.CharField(max_length=24, choices=[('appointment', 'Appointments'), ('billing', 'Billing'), ('technical', 'Technical support'), ('clinical', 'Contact clinical team')])
     resolved = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+
+
+class SupportCase(models.Model):
+    CATEGORIES = [('appointments', 'Appointments / reception'), ('reports', 'Reports / assigned clinician'),
+        ('pharmacy', 'Pharmacy'), ('billing', 'Billing'), ('clinical', 'Clinical team'),
+        ('privacy', 'Privacy / administrator'), ('technical', 'Portal technical support')]
+    STATUSES = [(v, v.replace('_', ' ').title()) for v in
+        ['open', 'assigned', 'in_progress', 'waiting_for_patient', 'escalated', 'resolved', 'closed']]
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    patient = models.ForeignKey(User, on_delete=models.PROTECT, related_name='support_cases')
+    category = models.CharField(max_length=16, choices=CATEGORIES)
+    priority = models.CharField(max_length=8, default='routine', choices=[('routine', 'Routine'), ('priority', 'Priority')])
+    status = models.CharField(max_length=20, choices=STATUSES, default='open')
+    summary = models.TextField(max_length=2000)
+    appointment = models.ForeignKey(Appointment, on_delete=models.PROTECT, null=True, blank=True)
+    assigned_to = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, related_name='assigned_support_cases')
+    consented_at = models.DateTimeField()
+    request_key = models.UUIDField(unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-updated']
+        indexes = [models.Index(fields=['category', 'status'], name='support_queue_idx')]
+
+    @property
+    def reference(self):
+        return 'MN-' + str(self.pk).upper()
+
+
+class SupportMessage(models.Model):
+    case = models.ForeignKey(SupportCase, on_delete=models.PROTECT, related_name='messages')
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    text = models.TextField(max_length=2000)
+    internal = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created', 'pk']
 
 
 class VideoAttendance(models.Model):

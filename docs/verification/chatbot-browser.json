@@ -1,0 +1,36 @@
+{
+  "responsive": [
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 320
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 390
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "duplicates": [],
+      "overflow": false,
+      "width": 1280
+    }
+  ],
+  "controls": [
+    "send",
+    "suggestions",
+    "enter",
+    "clear",
+    "close",
+    "reopen",
+    "authentication prompt",
+    "server outage",
+    "retry recovery"
+  ],
+  "date": "2026-10-23"
+}
