@@ -1,10 +1,9 @@
 """Consented persistent handoff. Team access does not grant clinical-record access."""
 import uuid
-from functools import wraps
+from .http import database_error_page
 from django import forms
 from django.contrib import messages
-from django.db import transaction, DatabaseError
-from django.db.models import Q
+from django.db import transaction
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.views.decorators.http import require_http_methods
@@ -18,16 +17,7 @@ TEAM_ROLES = {
 }
 
 
-def database_errors(view):
-    @wraps(view)
-    def wrapped(request, *args, **kwargs):
-        try:
-            return view(request, *args, **kwargs)
-        except DatabaseError:
-            response = render(request, 'care/support_unavailable.html', status=503)
-            response['Retry-After'] = '60'
-            return response
-    return wrapped
+database_errors = database_error_page('care/support_unavailable.html', retry_after=60)
 
 
 def can_read(user, case):

@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 from threading import Barrier
 from django.db import connection, connections, close_old_connections
 from django.test import TransactionTestCase
-from .tests import Workflows
+from . import tests as fixtures
 from .models import User, Slot, Appointment
 from .services import book, change_status, BookingError
 
@@ -21,7 +21,7 @@ class MySQLBookingAcceptance(TransactionTestCase):
         from .models import SupportCase
         clients = [Client(), Client()]
         for client in clients:
-            client.force_login(Workflows.patient)
+            client.force_login(fixtures.Workflows.patient)
         payload = {'category':'technical','summary':'Synthetic concurrent support submission',
                    'consent':'on','request_key':str(uuid.uuid4())}
         def submit(client):
@@ -33,7 +33,7 @@ class MySQLBookingAcceptance(TransactionTestCase):
     def setUp(self):
         if connection.vendor != "mysql":
             self.fail("This acceptance suite requires a dedicated MySQL test database.")
-        Workflows.setUpTestData()
+        fixtures.Workflows.setUpTestData()
 
     def race(self, functions):
         barrier = Barrier(len(functions))
@@ -53,8 +53,8 @@ class MySQLBookingAcceptance(TransactionTestCase):
             return list(executor.map(run, functions))
 
     def test_simultaneous_same_slot_has_one_winner(self):
-        slot_id = Workflows.slot2.pk
-        patients = [Workflows.patient.pk, Workflows.other.pk]
+        slot_id = fixtures.Workflows.slot2.pk
+        patients = [fixtures.Workflows.patient.pk, fixtures.Workflows.other.pk]
         results = self.race([
             lambda pk=pk: book(User.objects.get(pk=pk), slot_id, "in_person", "Synthetic concurrency test")
             for pk in patients
@@ -64,14 +64,14 @@ class MySQLBookingAcceptance(TransactionTestCase):
         self.assertTrue(Slot.objects.get(pk=slot_id).booked)
 
     def test_cancellation_racing_reschedule_keeps_slot_flags_consistent(self):
-        patient_id, appointment_id, slot_id = Workflows.patient.pk, Workflows.appt.pk, Workflows.slot2.pk
+        patient_id, appointment_id, slot_id = fixtures.Workflows.patient.pk, fixtures.Workflows.appt.pk, fixtures.Workflows.slot2.pk
         self.race([
             lambda: book(User.objects.get(pk=patient_id), slot_id, "video", "Synthetic reschedule", Appointment.objects.get(pk=appointment_id)),
             lambda: change_status(Appointment.objects.get(pk=appointment_id), User.objects.get(pk=patient_id), "cancelled"),
         ])
         appt = Appointment.objects.get(pk=appointment_id)
         self.assertEqual(appt.status, "cancelled")
-        for slot in Slot.objects.filter(pk__in=[Workflows.slot.pk, slot_id]):
+        for slot in Slot.objects.filter(pk__in=[fixtures.Workflows.slot.pk, slot_id]):
             self.assertEqual(slot.booked, Appointment.objects.filter(slot=slot).exclude(status="cancelled").exists())
 
     def test_simultaneous_dispense_has_one_deduction(self):
@@ -80,9 +80,9 @@ class MySQLBookingAcceptance(TransactionTestCase):
         from .models import Medicine, Prescription, PrescriptionItem, StockMovement
         from .services import dispense
         medicine = Medicine.objects.create(name='Synthetic concurrency item',batch='QA',expiry=timezone.localdate()+timedelta(days=30),stock=10,price=1)
-        rx = Prescription.objects.create(appointment=Workflows.appt,instructions='Synthetic')
+        rx = Prescription.objects.create(appointment=fixtures.Workflows.appt,instructions='Synthetic')
         PrescriptionItem.objects.create(prescription=rx,medicine=medicine,dose='Synthetic',quantity=2)
-        result = self.race([lambda: dispense(Prescription.objects.get(pk=rx.pk),User.objects.get(pk=Workflows.pharmacist.pk)) for _ in range(2)])
+        result = self.race([lambda: dispense(Prescription.objects.get(pk=rx.pk),User.objects.get(pk=fixtures.Workflows.pharmacist.pk)) for _ in range(2)])
         self.assertCountEqual(result,['ok','unavailable'])
         medicine.refresh_from_db()
         self.assertEqual(medicine.stock,8)
@@ -91,13 +91,13 @@ class MySQLBookingAcceptance(TransactionTestCase):
     def test_simultaneous_daily_queue_tokens_are_unique(self):
         from .product import enqueue
         from .models import QueueEntry
-        second = book(Workflows.other,Workflows.slot2.pk,'in_person','Synthetic queue test')
+        second = book(fixtures.Workflows.other,fixtures.Workflows.slot2.pk,'in_person','Synthetic queue test')
         def add(pk):
             from django.db import transaction
             with transaction.atomic():
                 appt = Appointment.objects.select_for_update().get(pk=pk)
                 enqueue(appt)
-        result=self.race([lambda: add(Workflows.appt.pk),lambda: add(second.pk)])
+        result=self.race([lambda: add(fixtures.Workflows.appt.pk),lambda: add(second.pk)])
         self.assertEqual(result,['ok','ok'])
         self.assertEqual(set(QueueEntry.objects.values_list('number',flat=True)),{1,2})
 
@@ -108,9 +108,9 @@ class MySQLBookingAcceptance(TransactionTestCase):
         from .models import Medicine, Prescription, PrescriptionItem, DispensingEvent
         from .hospital_services import partial_dispense
         med=Medicine.objects.create(name='Synthetic partial race',batch='QA',expiry=timezone.localdate()+timedelta(days=30),stock=10,price=1)
-        rx=Prescription.objects.create(appointment=Workflows.appt,instructions='Synthetic')
+        rx=Prescription.objects.create(appointment=fixtures.Workflows.appt,instructions='Synthetic')
         item=PrescriptionItem.objects.create(prescription=rx,medicine=med,dose='Synthetic',quantity=5)
-        result=self.race([lambda:partial_dispense(item.pk,4,uuid.uuid4(),Workflows.pharmacist) for _ in range(2)])
+        result=self.race([lambda:partial_dispense(item.pk,4,uuid.uuid4(),fixtures.Workflows.pharmacist) for _ in range(2)])
         self.assertCountEqual(result,['ok','unavailable'])
         med.refresh_from_db();item.refresh_from_db()
         self.assertEqual((med.stock,item.dispensed_quantity),(6,4))
@@ -123,8 +123,8 @@ class MySQLBookingAcceptance(TransactionTestCase):
         from .hospital_services import receive_purchase
         med=Medicine.objects.create(name='Synthetic receipt race',batch='QA',expiry=timezone.localdate()+timedelta(days=30),stock=0,price=1)
         supplier=Supplier.objects.create(name='Synthetic race supplier')
-        order=PurchaseOrder.objects.create(supplier=supplier,medicine=med,quantity=10,status='approved',requested_by=Workflows.pharmacist,approved_by=Workflows.admin)
-        result=self.race([lambda:receive_purchase(order.pk,10,'SYNTHETIC-RACE-GRN',Workflows.pharmacist) for _ in range(2)])
+        order=PurchaseOrder.objects.create(supplier=supplier,medicine=med,quantity=10,status='approved',requested_by=fixtures.Workflows.pharmacist,approved_by=fixtures.Workflows.admin)
+        result=self.race([lambda:receive_purchase(order.pk,10,'SYNTHETIC-RACE-GRN',fixtures.Workflows.pharmacist) for _ in range(2)])
         self.assertEqual(result,['ok','ok'])
         med.refresh_from_db();self.assertEqual(med.stock,10)
         self.assertEqual(GoodsReceipt.objects.filter(order=order).count(),1)
@@ -133,19 +133,19 @@ class MySQLBookingAcceptance(TransactionTestCase):
         from .models import Bed, Admission
         from .hospital_services import update_admission
         bed=Bed.objects.create(label='Synthetic race bed',ward='QA',room_type='General')
-        requests=[Admission.objects.create(patient=p,doctor=Workflows.doctor,department=Workflows.department) for p in [Workflows.patient,Workflows.other]]
-        result=self.race([lambda pk=a.pk:update_admission(pk,'allocate',Workflows.reception,bed.pk) for a in requests])
+        requests=[Admission.objects.create(patient=p,doctor=fixtures.Workflows.doctor,department=fixtures.Workflows.department) for p in [fixtures.Workflows.patient,fixtures.Workflows.other]]
+        result=self.race([lambda pk=a.pk:update_admission(pk,'allocate',fixtures.Workflows.reception,bed.pk) for a in requests])
         self.assertCountEqual(result,['ok','unavailable'])
         self.assertEqual(Admission.objects.filter(bed=bed).count(),1)
 
     def test_simultaneous_distinct_slots_respect_daily_cap(self):
         from datetime import timedelta
-        profile=Workflows.doctor.doctor_profile
+        profile=fixtures.Workflows.doctor.doctor_profile
         profile.daily_limit=2
         profile.save()
         patient=User.objects.create_user('synthetic-cap-race@example.test','Synthetic-Cap-Password-928!',name='Synthetic cap patient')
-        third=Slot.objects.create(doctor=Workflows.doctor,start=Workflows.slot2.start+timedelta(minutes=12))
-        result=self.race([lambda:book(Workflows.other,Workflows.slot2.pk,'in_person','Synthetic cap race'),
+        third=Slot.objects.create(doctor=fixtures.Workflows.doctor,start=fixtures.Workflows.slot2.start+timedelta(minutes=12))
+        result=self.race([lambda:book(fixtures.Workflows.other,fixtures.Workflows.slot2.pk,'in_person','Synthetic cap race'),
             lambda:book(patient,third.pk,'in_person','Synthetic cap race')])
         self.assertCountEqual(result,['ok','unavailable'])
         self.assertEqual(Appointment.objects.count(),2)

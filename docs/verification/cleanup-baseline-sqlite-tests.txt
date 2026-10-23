@@ -1,0 +1,62 @@
+Creating test database for alias 'default'...
+
+E....F............Request rejected by CSRF protection (origin).
+Request rejected by CSRF protection (origin).
+........Request rejected by CSRF protection (cookie missing).
+...........................................................Private report storage is unavailable.
+...............F....................Request rejected by CSRF protection (cookie missing).
+.......................................Request rejected by CSRF protection (cookie missing).
+.C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\views.py:111: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'care.models.User'> QuerySet.
+  return Paginator(qs, size).get_page(request.GET.get("page", 1))
+....F..
+======================================================================
+ERROR: setUpClass (care.test_chatbot.ChatbotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_chatbot.py", line 15, in setUpTestData
+    cls.department, _ = Department.objects.get_or_create(name='Cardiology')
+                        ^^^^^^^^^^
+NameError: name 'Department' is not defined
+
+======================================================================
+FAIL: test_data_portal_scoping_search_sort_and_no_clinical_data (care.test_final_audit.FinalAuditWorkflows.test_data_portal_scoping_search_sort_and_no_clinical_data)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_final_audit.py", line 75, in test_data_portal_scoping_search_sort_and_no_clinical_data
+    self.assertEqual(response.context['entities'][0]['count'],1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 21 != 1
+
+======================================================================
+FAIL: test_buffer_overlap_daily_limit_and_mode (care.test_hospital_upgrade.HospitalUpgrade.test_buffer_overlap_daily_limit_and_mode)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_hospital_upgrade.py", line 65, in test_buffer_overlap_daily_limit_and_mode
+    self.assertFalse(available_slots(self.doctor).filter(pk=free.pk).exists())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_schema_search_and_actual_directory_availability (care.test_transformation.ProductTransformation.test_schema_search_and_actual_directory_availability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_transformation.py", line 60, in test_schema_search_and_actual_directory_availability
+    self.assertEqual([t['name'] for t in response.context['tables']],['care_department'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['care_department', 'care_specialty_departments'] != ['care_department']
+
+First list contains 1 additional elements.
+First extra element 1:
+'care_specialty_departments'
+
+- ['care_department', 'care_specialty_departments']
++ ['care_department']
+
+----------------------------------------------------------------------
+Ran 167 tests in 34.996s
+
+FAILED (failures=3, errors=1)
+Destroying test database for alias 'default'...
+
+Found 179 test(s).
+System check identified no issues (0 silenced).

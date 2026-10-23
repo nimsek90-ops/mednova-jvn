@@ -1,29 +1,20 @@
 """Operational front desk; no clinical-record or schedule editing privileges."""
 import re
 import uuid
-from functools import wraps
 from django import forms
 from django.contrib import messages
-from django.db import transaction, DatabaseError, IntegrityError
+from django.db import transaction, IntegrityError
 from django.db.models import Q, Count
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_http_methods
 from .models import User, PatientRegistration, Appointment, QueueEntry, Department, Specialty, DoctorProfile
 from .security import roles, audit, rate_limit
 from .scheduling import day_bounds
-from .views import paged, integer_id
+from .http import database_error_page, paged
 
 
-def db_errors(view):
-    @wraps(view)
-    def wrapped(request, *args, **kwargs):
-        try:
-            return view(request, *args, **kwargs)
-        except DatabaseError:
-            return render(request, 'care/reception_unavailable.html', status=503)
-    return wrapped
+db_errors = database_error_page('care/reception_unavailable.html')
 
 
 def phone_key(value):

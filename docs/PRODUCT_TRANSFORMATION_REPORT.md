@@ -72,7 +72,7 @@ Evidence: [copy comparison](verification/postgres-migration-rehearsal.json), [RL
 | Same regression suite + PostgreSQLBookingAcceptance; dedicated PostgreSQL test DB | PASS120 | transformation-postgres-tests.txt |
 | Four SQL transaction races | PASS on MySQL and PostgreSQL | Same-slot booking, cancellation/reschedule, single dispensing deduction, unique daily queue tokens |
 | Route/role matrices | PASS354 GET probes per backend | transformation-*-role-matrix.json; GET coverage alone is not write-workflow coverage |
-| Actual PostgreSQL HTTP against non-owner runtime/RLS | PASS8 scenarios | transformation-postgres-http.txt |
+| Actual PostgreSQL HTTP against non-owner runtime/RLS | PASS8 scenarios | upgrade-postgres-http.txt |
 | Real browser directory/schema interactions and207 responsive checks | PASS within scope | transformation-browser-summary.json |
 | Public assets, private-path denial, checks/migrations/static/dependencies/JS syntax | Recorded in final local-check ledger | transformation-local-checks.json and related HTTP evidence |
 

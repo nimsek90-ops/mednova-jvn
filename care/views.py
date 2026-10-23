@@ -1,4 +1,5 @@
 import base64
+from .http import integer_id, paged
 import hashlib
 import hmac
 import json
@@ -14,7 +15,6 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
-from django.core.paginator import Paginator
 from django.db import transaction, IntegrityError
 from django.db.models import Q, Count, F
 from django.http import (
@@ -95,20 +95,6 @@ def health(request):
     except DatabaseError:
         return JsonResponse({"status": "unavailable"}, status=503)
     return JsonResponse({"status": "ok"})
-
-
-def integer_id(value):
-    try:
-        n = int(value)
-        if n <= 0:
-            raise ValueError()
-        return n
-    except (ValueError, TypeError, OverflowError):
-        raise Http404()
-
-
-def paged(request, qs, size=30):
-    return Paginator(qs, size).get_page(request.GET.get("page", 1))
 
 
 def page(request, title, form=None, **context):
@@ -1445,7 +1431,7 @@ def patients(request):
             records = User.objects.filter(role='patient',registration__mrn=uuid.UUID(mrn_query))
         except ValueError:
             pass
-    pagination = paged(request, records.select_related('registration'))
+    pagination = paged(request, records.select_related('registration').order_by('name','pk'))
     return render(request, "care/patient_directory.html", {"form": form, "patients": pagination, "pagination": pagination, "q": query})
 
 

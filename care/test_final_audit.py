@@ -10,13 +10,13 @@ from django.core.management.base import CommandError
 from django.db import connection
 from django.test import TestCase
 from django.urls import reverse
-from .tests import Workflows
+from . import tests as fixtures
 from .models import User, Appointment
 
 class FinalAuditWorkflows(TestCase):
     @classmethod
     def setUpTestData(cls):
-        Workflows.setUpTestData.__func__(cls)
+        fixtures.Workflows.setUpTestData.__func__(cls)
 
     def test_targeted_admin_is_idempotent_and_requires_change(self):
         first=secrets.token_urlsafe(28)
@@ -72,7 +72,8 @@ class FinalAuditWorkflows(TestCase):
         self.assertNotContains(response,self.appt.reason)
         self.assertEqual(self.client.post(reverse('data_management'),{}).status_code,405)
         self.assertEqual(len(response.context['entities']),1)
-        self.assertEqual(response.context['entities'][0]['count'],1)
+        from .models import Department
+        self.assertEqual(response.context['entities'][0]['count'],Department.objects.count())
 
     def test_booking_date_groups_and_real_task_context(self):
         self.client.force_login(self.patient)

@@ -56,7 +56,7 @@ No new model schema change was needed in this repair. Existing migrations 0001 a
 | MySQL concurrency suite | Two explicit threaded tests exist; NOT RUN, no dedicated MySQL service/credentials |
 | Actual Vercel project/deployment | Project creation failed HTTP 403; no deployment/build ran |
 
-Raw results: docs/verification/repair-tests.txt, repair-http.txt and repair-route-map.json. A production settings check is not evidence of a real deployment, TLS connection or S3 operation.
+Raw results: docs/verification/repair-tests.txt, final-http-mysql.txt and repair-route-map.json. A production settings check is not evidence of a real deployment, TLS connection or S3 operation.
 
 Intermediate failures were investigated: the first sandbox run hit two existing upload-test temporary-directory permission errors; rerunning with required access resolved them. The first new S3 test mocked the shared filesystem URL method and also intercepted static URLs; its mock was narrowed to the Report file field. An HTTP rerun initially chose a newly added browser-test doctor instead of its own fixture; the harness now selects the intended Test Doctor identity. Final suites passed after these corrections. A standalone persistence diagnostic initially omitted its SQLite file setting and queried an empty in-memory DB; rerunning with the explicit isolated file passed. These were not hidden or counted as successful checks.
 

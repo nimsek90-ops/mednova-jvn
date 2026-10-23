@@ -1,0 +1,14 @@
+Planned operations:
+care.0011_reception_specialty_catalogue
+    Add field address to patientregistration
+    Create model Specialty
+    Add field specialties to doctorprofile
+care.0012_seed_possible_specialties
+    Raw Python operation
+Operations to perform:
+  Apply all migrations: auth, care, contenttypes, sessions
+Running migrations:
+  Applying care.0011_reception_specialty_catalogue... OK
+  Applying care.0012_seed_possible_specialties... OK
+Private backup saved. SHA256: a5e8078830c4e483d632107bbd44d65e00c8430b9436f261d84b0b3e3746fee4
+Migrations complete. Runtime application credentials were not changed. Restart the application.

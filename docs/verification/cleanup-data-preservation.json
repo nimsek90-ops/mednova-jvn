@@ -1,0 +1,9 @@
+{
+  "all_original_rows_and_columns_unchanged": true,
+  "verified_original_tables": 46,
+  "mutable_session_rate_tables_excluded": [
+    "django_session",
+    "care_ratebucket"
+  ],
+  "failed_tables": []
+}

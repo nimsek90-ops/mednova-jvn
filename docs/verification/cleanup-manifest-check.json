@@ -1,0 +1,5 @@
+{
+  "all_hashes_match": true,
+  "manifest": "SHA256SUMS.txt",
+  "manifest_excludes_itself": true
+}

@@ -5,7 +5,7 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from django.utils import timezone
 from . import tests as fixtures
-from .models import Appointment, ScheduleBlock, HospitalFAQ, AssistantEscalation
+from .models import Appointment, Department, ScheduleBlock, HospitalFAQ, AssistantEscalation
 
 
 class ChatbotTests(TestCase):

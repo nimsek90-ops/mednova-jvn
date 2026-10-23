@@ -1,10 +1,4 @@
-> Current hospital upgrade (23 October): [implemented workflows, migrations, tests and remaining scope](docs/HOSPITAL_UPGRADE_REPORT.md). Primary MySQL now has46 tables; older reports are historical.
-
-> VS Code folder delivery: [OPEN_IN_VSCODE.md](OPEN_IN_VSCODE.md), [database viewer guide](docs/VSCODE_DATABASE.md), and [login/delivery report](docs/LOGIN_AND_FOLDER_DELIVERY.md).
-
-> New PostgreSQL/Supabase direction and Figma deliverables: [current transformation report](docs/PRODUCT_TRANSFORMATION_REPORT.md) and [migration/operations guide](docs/SUPABASE_MIGRATION_AND_OPERATIONS.md). The primary local app is still MySQL on8000; the already prepared PostgreSQL rehearsal is separate on8002.
-
-> This prepared laptop already has a verified local MySQL installation. From this folder run `.\.venv\Scripts\python.exe tools/local_mysql.py serve` and open http://127.0.0.1:8000/. Do not rerun setup to reset existing data. See [final report](docs/FINAL_SYSTEM_REPORT.md) and [database/admin operations](docs/MYSQL_OPERATIONS.md). The setup steps below apply to a fresh installation.
+> Current run command and documentation index: [README.md](README.md). This prepared laptop already has its working MySQL database. Use the existing-data path in [OPEN_IN_VSCODE.md](OPEN_IN_VSCODE.md); do not rerun new-database setup against existing records. The installation steps below are for a fresh installation.
 
 # Open MedNova on your Windows laptop
 

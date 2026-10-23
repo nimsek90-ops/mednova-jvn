@@ -1,0 +1,37 @@
+[
+  {
+    "file": "static/css/app.css",
+    "bytes": 19708,
+    "leaf_rule_blocks": 315,
+    "identical_leaf_rule_occurrences": 2,
+    "decision": "Retained: layered cascade and responsive/media context; no source CSS or assets removed."
+  },
+  {
+    "file": "static/css/chatbot.css",
+    "bytes": 2414,
+    "leaf_rule_blocks": 38,
+    "identical_leaf_rule_occurrences": 0,
+    "decision": "Retained: layered cascade and responsive/media context; no source CSS or assets removed."
+  },
+  {
+    "file": "static/css/premium.css",
+    "bytes": 24920,
+    "leaf_rule_blocks": 413,
+    "identical_leaf_rule_occurrences": 4,
+    "decision": "Retained: layered cascade and responsive/media context; no source CSS or assets removed."
+  },
+  {
+    "file": "static/css/product.css",
+    "bytes": 8378,
+    "leaf_rule_blocks": 106,
+    "identical_leaf_rule_occurrences": 5,
+    "decision": "Retained: layered cascade and responsive/media context; no source CSS or assets removed."
+  },
+  {
+    "file": "static/css/workflows.css",
+    "bytes": 9974,
+    "leaf_rule_blocks": 157,
+    "identical_leaf_rule_occurrences": 0,
+    "decision": "Retained: layered cascade and responsive/media context; no source CSS or assets removed."
+  }
+]

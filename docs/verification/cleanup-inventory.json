@@ -1,0 +1,1772 @@
+{
+  "source_files": [
+    {
+      "path": ".env.example",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": ".gitignore",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": ".python-version",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": ".vercelignore",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": ".vscode/extensions.json",
+      "classification": "keep",
+      "reason": "Keep: editor interpreter, tasks and workspace entry points."
+    },
+    {
+      "path": ".vscode/settings.json",
+      "classification": "keep",
+      "reason": "Keep: editor interpreter, tasks and workspace entry points."
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "classification": "keep",
+      "reason": "Keep: editor interpreter, tasks and workspace entry points."
+    },
+    {
+      "path": "Admin-MedNova.ps1",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "MEDNOVA_IMPLEMENTATION_PLAN.md",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "MedNova.code-workspace",
+      "classification": "keep",
+      "reason": "Keep: editor interpreter, tasks and workspace entry points."
+    },
+    {
+      "path": "OPEN_IN_VSCODE.md",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "README.md",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "SETUP_WINDOWS.cmd",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "SHA256SUMS.txt",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "START_HERE.md",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "START_WINDOWS.cmd",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "Setup-MedNova.ps1",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "Start-MedNova.ps1",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "care/__init__.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/apps.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/chatbot.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/context.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/delivery.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/forms.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/hospital_forms.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/hospital_services.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/hospital_views.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/http.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/__init__.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/__init__.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/check_database.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/cleanup_transient.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/database_inventory.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/ensure_admin.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/launch_check.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/process_notifications.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/management/commands/secure_postgres.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/middleware.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/migrations/0001_initial.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0002_appointment_checked_in_at_and_more.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0003_queuecounter_hospital_opening_hours_and_more.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0004_alter_notification_appointment_deliveryoutbox.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0005_user_must_change_password.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0006_bed_hospitalfaq_supplier_doctorprofile_daily_limit_and_more.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0007_prescriptionitem_issue_not_above_prescribed_and_more.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0008_preserve_registration_and_dispensing.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0009_appointment_cancellation_reason_and_more.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0010_patient_support_cases.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0011_reception_specialty_catalogue.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/0012_seed_possible_specialties.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/migrations/__init__.py",
+      "classification": "keep",
+      "reason": "Keep: immutable Django schema/reference-data history and package discovery."
+    },
+    {
+      "path": "care/models.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/mysql_acceptance.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/patient_assistant.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/postgres_acceptance.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/product.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/reception.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/scheduling.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/schema.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/security.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/services.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/signals.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/support.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/templatetags/__init__.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/templatetags/translate.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/test_chatbot.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/test_final_audit.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/test_hospital_upgrade.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/test_login_delivery.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/test_patient_assistant.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/test_product.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/test_reception.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/test_transformation.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/tests.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "care/translations_extra.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/translations_product.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "care/views.py",
+      "classification": "keep",
+      "reason": "Keep: active Django model, view, service, helper, management or template-tag module."
+    },
+    {
+      "path": "certs/README.md",
+      "classification": "keep",
+      "reason": "Keep: public database TLS CA certificate, not a private key."
+    },
+    {
+      "path": "configure.py",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "database/README.md",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "design/figma/build-foundations.js",
+      "classification": "keep",
+      "reason": "Keep: editable Figma construction source referenced by project design documentation."
+    },
+    {
+      "path": "design/figma/build-screens.js",
+      "classification": "keep",
+      "reason": "Keep: editable Figma construction source referenced by project design documentation."
+    },
+    {
+      "path": "docs/CHATBOT_IMPLEMENTATION.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/CLEANUP_REPORT.md",
+      "classification": "keep",
+      "reason": "Cleanup verification evidence, documentation or shared HTTP helper; see CLEANUP_REPORT.md."
+    },
+    {
+      "path": "docs/DATABASE_SETUP.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/FEATURE_SCREEN_DATABASE_MAP.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/FINAL_AUDIT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/FINAL_SYSTEM_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/FIXES_APPLIED.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/HOSPITAL_UPGRADE_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/INTEGRATIONS.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/LOGIN_AND_FOLDER_DELIVERY.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/LOGIN_PREVIEW_DIAGNOSIS.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/MYSQL_OPERATIONS.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/MYSQL_SCHEMA_INVENTORY.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/PATIENT_ASSISTANT_INTENTS.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/PATIENT_ASSISTANT_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/POSTGRES_SCHEMA_INVENTORY.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/PRODUCTION_READINESS.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/PRODUCT_IMPLEMENTATION_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/PRODUCT_TRANSFORMATION_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/PROJECT_AUDIT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/README.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/REPAIR_AND_VERCEL_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/SECURITY_REVIEW.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/SUPABASE_MIGRATION_AND_OPERATIONS.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/TEST_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/TRANSFORMATION_FEATURE_MAP.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/UI_REDESIGN_REPORT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/UPGRADE_SCHEMA_INVENTORY.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/VERCEL_DEPLOYMENT.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/VSCODE_DATABASE.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/README.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/figma-final-verification.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/figma-foundations.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/figma-implemented-directory.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/figma-screens.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/figma-state.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/booking-mobile-figma.png",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/button-states.png",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/dashboard-desktop-figma.png",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/directory-desktop-figma.png",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/directory-mobile-figma.png",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/doctor-directory-desktop-app.png",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/doctor-directory-mobile-app.png",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/login-admin-delivery.jpg",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/upgrade-assistant-desktop.jpg",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/upgrade-assistant-mobile.jpg",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/upgrade-purchasing-desktop.jpg",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/design/screenshots/upgrade-schedule-desktop.jpg",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/EVIDENCE_INDEX.md",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/chatbot-browser.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/chatbot-desktop.jpg",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/chatbot-mysql-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/chatbot-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-baseline-sqlite-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-baseline-sqlite-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-data-preservation.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-http.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-inventory.json",
+      "classification": "keep",
+      "reason": "Cleanup verification evidence, documentation or shared HTTP helper; see CLEANUP_REPORT.md."
+    },
+    {
+      "path": "docs/verification/cleanup-manifest-check.json",
+      "classification": "keep",
+      "reason": "Cleanup verification evidence, documentation or shared HTTP helper; see CLEANUP_REPORT.md."
+    },
+    {
+      "path": "docs/verification/cleanup-mysql-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-pending-migrations.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-postgres-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-postgres-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-removals.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-sqlite-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-sqlite-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-static-references.json",
+      "classification": "keep",
+      "reason": "Cleanup verification evidence, documentation or shared HTTP helper; see CLEANUP_REPORT.md."
+    },
+    {
+      "path": "docs/verification/cleanup-styles-review.json",
+      "classification": "keep",
+      "reason": "Cleanup verification evidence, documentation or shared HTTP helper; see CLEANUP_REPORT.md."
+    },
+    {
+      "path": "docs/verification/cleanup-test-discovery.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/cleanup-working-server.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/current-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/dependencies.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/deployment-settings.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-backup-restore.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-browser-summary.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-data-preservation.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-feature-inventory.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-http-mysql.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-local-checks.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-mysql-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-production-settings-check.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-public-link-assets.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-role-route-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-runtime-database.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/final-sqlite-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-focused-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-mysql-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-postgres-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-postgres-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-responsive.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-sqlite-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/login-delivery-sqlite-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/mysql-targeted-0.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/mysql-targeted-1.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-after-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-before-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-browser.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-handoff.jpg",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-mysql-migration.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-mysql-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/patient-assistant-schema-preservation.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-backup-restore.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-binary-provenance.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-copy-load.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-manual-transaction-rehearsal.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-migration-rehearsal.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-migrations.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-rehearsal-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-restart-persistence.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/postgres-rls-rehearsal.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/product-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/product-mysql-upgrade.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/product-role-route-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/product-route-inventory.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/product-sqlite-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/product-trends-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/redesign-browser-summary.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/redesign-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/repair-route-map.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/repair-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/route-map.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/source-inventory.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/static-analysis.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-browser-summary.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-contrast.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-feature-inventory.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-local-checks.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-mysql-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-mysql-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-postgres-configuration-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-postgres-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-postgres-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-public-checks.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-source-backup.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-sqlite-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/transformation-sqlite-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-browser-responsive.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-changed-files.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-collectstatic.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-data-preservation.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-final-checks.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-focused-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-mysql-hospital-http.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-mysql-http.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-mysql-migrations.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-mysql-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-mysql-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-mysql-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-postgres-hospital-http.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-postgres-http.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-postgres-migrations.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-postgres-rls.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-postgres-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-postgres-schema.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-postgres-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-sqlite-role-matrix.json",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "docs/verification/upgrade-sqlite-tests.txt",
+      "classification": "keep",
+      "reason": "Keep: operational guide, dated audit/design evidence, verification output or provenance index."
+    },
+    {
+      "path": "launch.py",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "manage.py",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "mednova/__init__.py",
+      "classification": "keep",
+      "reason": "Keep: application configuration, URL/WSGI entry point and database/hosting adapters."
+    },
+    {
+      "path": "mednova/database.py",
+      "classification": "keep",
+      "reason": "Keep: application configuration, URL/WSGI entry point and database/hosting adapters."
+    },
+    {
+      "path": "mednova/hosting.py",
+      "classification": "keep",
+      "reason": "Keep: application configuration, URL/WSGI entry point and database/hosting adapters."
+    },
+    {
+      "path": "mednova/settings.py",
+      "classification": "keep",
+      "reason": "Keep: application configuration, URL/WSGI entry point and database/hosting adapters."
+    },
+    {
+      "path": "mednova/urls.py",
+      "classification": "keep",
+      "reason": "Keep: application configuration, URL/WSGI entry point and database/hosting adapters."
+    },
+    {
+      "path": "mednova/wsgi.py",
+      "classification": "keep",
+      "reason": "Keep: application configuration, URL/WSGI entry point and database/hosting adapters."
+    },
+    {
+      "path": "pyproject.toml",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "requirements.lock.txt",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "requirements.txt",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    },
+    {
+      "path": "static/css/app.css",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/css/chatbot.css",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/css/premium.css",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/css/product.css",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/css/workflows.css",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/fonts/INTER-LICENSE.txt",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/fonts/inter-latin-400-normal.woff2",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/fonts/inter-latin-600-normal.woff2",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/img/hospital-line.svg",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/img/logo.png",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/js/app.js",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/js/chatbot.js",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/js/payment.js",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/js/reception.js",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "static/js/video.js",
+      "classification": "keep",
+      "reason": "Keep: canonical runtime CSS, JavaScript, image/font asset or required font license."
+    },
+    {
+      "path": "templates/care/admissions.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/appointment.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/appointment_row.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/appointments.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/assistant.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/assistant_admin.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/audit.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/availability.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/base.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/booking.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/chatbot.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/clinical_work.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/components/icon.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/components/navigation.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/contact.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/dashboard.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/data_management.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/doctor_detail.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/doctor_specialties.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/doctors.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/error.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/fields.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/forgot.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/form.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/health_hub.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/home.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/information.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/inventory.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/legal.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/login.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/movements.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/notes.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/notifications.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/operations.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/pagination.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/patient_directory.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/patients.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/pay.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/payment_record.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/pending.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/prescribe.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/prescriptions.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/public_departments.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/purchasing.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/queue.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/receipt.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/reception_booking.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/reception_desk.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/reception_patient.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/reception_register.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/reception_unavailable.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/registration_card.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/schedule_rules.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/schema_explorer.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/specialties.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/specialty_edit.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/staff.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/support_create.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/support_detail.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/support_queue.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/support_unavailable.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/symptoms.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/timeline.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/users.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/video.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/waiting_list.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/wellness.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "templates/care/worklist.html",
+      "classification": "keep",
+      "reason": "Keep: direct or dynamic Django template lookup, inheritance/includes or compatibility alias."
+    },
+    {
+      "path": "tools/hospital_http.py",
+      "classification": "keep",
+      "reason": "Keep: explicit operational/startup, migration or guarded HTTP acceptance utility."
+    },
+    {
+      "path": "tools/http_acceptance.py",
+      "classification": "keep",
+      "reason": "Keep: regression, role/security and SQL concurrency verification."
+    },
+    {
+      "path": "tools/local_mysql.py",
+      "classification": "keep",
+      "reason": "Keep: explicit operational/startup, migration or guarded HTTP acceptance utility."
+    },
+    {
+      "path": "tools/local_postgres.py",
+      "classification": "keep",
+      "reason": "Keep: explicit operational/startup, migration or guarded HTTP acceptance utility."
+    },
+    {
+      "path": "tools/migrate_mysql.py",
+      "classification": "keep",
+      "reason": "Keep: explicit operational/startup, migration or guarded HTTP acceptance utility."
+    },
+    {
+      "path": "vercel.json",
+      "classification": "keep",
+      "reason": "Keep: source manifest, pinned dependency/configuration file, platform entry point or canonical setup guide."
+    }
+  ],
+  "protected_untracked": [
+    {
+      "path": ".runtime/",
+      "classification": "keep",
+      "reason": "Private database configuration, portable engines, private backups and isolated QA files."
+    },
+    {
+      "path": ".venv/",
+      "classification": "keep",
+      "reason": "Installed application runtime dependencies."
+    },
+    {
+      "path": "private_uploads/",
+      "classification": "keep",
+      "reason": "Private report files; never inspected or removed for deduplication."
+    },
+    {
+      "path": "staticfiles/",
+      "classification": "keep",
+      "reason": "Generated WhiteNoise/deployment assets; collectstatic remains the canonical generation step."
+    },
+    {
+      "path": "browser_acceptance.sqlite3",
+      "classification": "keep",
+      "reason": "Investigate: legacy ignored database whose contents must not be assumed disposable."
+    },
+    {
+      "path": ".git/",
+      "classification": "keep",
+      "reason": "Recovery checkpoint and source history."
+    }
+  ],
+  "removed_manifest": "cleanup-removals.json"
+}

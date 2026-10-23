@@ -1,0 +1,42 @@
+{
+  "origin": "http://127.0.0.1:8003",
+  "database": "isolated synthetic QA SQLite; no working hospital data mutated",
+  "checks": [
+    {
+      "check": "patient login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "doctor login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "receptionist login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "pharmacist login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "admin login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "reception registration page, patient selection, doctor profile and real booking form preserve selected patient",
+      "passed": true
+    },
+    {
+      "check": "authenticated assistant JSON and owned report metadata",
+      "passed": true
+    },
+    {
+      "check": "pharmacy, schema metadata, empty specialty, role boundaries and actual CSRF rejection",
+      "passed": true
+    },
+    {
+      "check": "isolated live HTTP health",
+      "passed": true
+    }
+  ]
+}

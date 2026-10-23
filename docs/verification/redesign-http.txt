@@ -1,8 +1,0 @@
-PASS 1: registration, profile, logout, email login and persisted profile
-PASS 2: approved doctor publishes and retrieves calendar slots
-PASS 3: discovery, booking and saved appointment confirmation
-PASS 4: duplicate booking rejected and object access isolated
-PASS 5: doctor confirms, patient sees status and cancellation releases slot
-PASS 6: receptionist and pharmacist role boundaries
-PASS 7: administrator account and operational pages
-PASS 8: health, saved notifications and actual HTTP CSRF rejection

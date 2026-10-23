@@ -38,8 +38,8 @@ The existing Django/MySQL application was preserved. No earlier React source was
 - Existing local synthetic SQLite migrated additively to care0004; no DB reset.
 - Following history-pagination/trend refinements, focused wellness/questionnaire tests passed; `verification/product-trends-tests.txt`. Final follow-up checks are recorded beside this report.
 - `manage.py check`, `makemigrations --check --dry-run`, `collectstatic --noinput`, Python compile, `pip check`, and `git diff --check` executed.
-- The eight live HTTP scenarios passed again against the final running Waitress application; `verification/product-http.txt`.
-- Earlier verified core flow evidence remains in REPAIR_AND_VERCEL_REPORT.md and repair-http.txt; it is historical evidence, not a new provider acceptance run.
+- The eight live HTTP scenarios passed again against the final running Waitress application; `verification/final-http-mysql.txt`.
+- Earlier verified core flow evidence remains in REPAIR_AND_VERCEL_REPORT.md and final-http-mysql.txt; it is historical evidence, not a new provider acceptance run.
 
 MySQL setup: official portable8.4.13 Windows archive, MD5 matched vendor7b94489d5524dea9b27097068bea25a8. Isolated loopback3307, random password stored only in ignored .runtime, dedicated synthetic databases, no Windows service. This is not managed production connectivity or production TLS verification. The local test instance may be stopped after verification; files remain private/ignored for recovery.
 

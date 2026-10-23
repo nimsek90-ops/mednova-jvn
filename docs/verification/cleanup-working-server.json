@@ -1,0 +1,34 @@
+{
+  "origin": "http://127.0.0.1:8000",
+  "checks": [
+    {
+      "path": "/health/",
+      "status": 200
+    },
+    {
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "path": "/assistant/",
+      "status": 200
+    },
+    {
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "path": "/specialties/",
+      "status": 200
+    },
+    {
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "path": "/api/assistant/",
+      "status": 200
+    }
+  ],
+  "mode": "read-only; no working patient records changed"
+}

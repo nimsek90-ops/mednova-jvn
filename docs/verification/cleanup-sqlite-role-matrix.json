@@ -1,0 +1,2990 @@
+[
+  {
+    "name": "reception_desk",
+    "url": "/reception/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "reception_desk",
+    "url": "/reception/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "reception_desk",
+    "url": "/reception/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "reception_desk",
+    "url": "/reception/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "reception_desk",
+    "url": "/reception/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "reception_desk",
+    "url": "/reception/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "reception_register",
+    "url": "/reception/register/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "reception_register",
+    "url": "/reception/register/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "reception_register",
+    "url": "/reception/register/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "reception_register",
+    "url": "/reception/register/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "reception_register",
+    "url": "/reception/register/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "reception_register",
+    "url": "/reception/register/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "reception_booking",
+    "url": "/reception/book/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "reception_booking",
+    "url": "/reception/book/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "reception_booking",
+    "url": "/reception/book/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "reception_booking",
+    "url": "/reception/book/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "reception_booking",
+    "url": "/reception/book/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "reception_booking",
+    "url": "/reception/book/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "reception_patient",
+    "url": "/reception/patients/1/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "reception_patient",
+    "url": "/reception/patients/1/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "reception_patient",
+    "url": "/reception/patients/1/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "reception_patient",
+    "url": "/reception/patients/1/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "reception_patient",
+    "url": "/reception/patients/1/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "reception_patient",
+    "url": "/reception/patients/1/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "specialty_catalogue",
+    "url": "/specialties/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "specialty_catalogue",
+    "url": "/specialties/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "specialty_catalogue",
+    "url": "/specialties/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "specialty_catalogue",
+    "url": "/specialties/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "specialty_catalogue",
+    "url": "/specialties/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "specialty_catalogue",
+    "url": "/specialties/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "specialty_create",
+    "url": "/admin/specialties/new/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "specialty_create",
+    "url": "/admin/specialties/new/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "specialty_create",
+    "url": "/admin/specialties/new/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "specialty_create",
+    "url": "/admin/specialties/new/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "specialty_create",
+    "url": "/admin/specialties/new/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "specialty_create",
+    "url": "/admin/specialties/new/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "specialty_edit",
+    "url": "/admin/specialties/1/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "specialty_edit",
+    "url": "/admin/specialties/1/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "specialty_edit",
+    "url": "/admin/specialties/1/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "specialty_edit",
+    "url": "/admin/specialties/1/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "specialty_edit",
+    "url": "/admin/specialties/1/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "specialty_edit",
+    "url": "/admin/specialties/1/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "doctor_specialties",
+    "url": "/admin/doctors/3/specialties/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "doctor_specialties",
+    "url": "/admin/doctors/3/specialties/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "doctor_specialties",
+    "url": "/admin/doctors/3/specialties/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "doctor_specialties",
+    "url": "/admin/doctors/3/specialties/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "doctor_specialties",
+    "url": "/admin/doctors/3/specialties/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "doctor_specialties",
+    "url": "/admin/doctors/3/specialties/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "support_queue",
+    "url": "/support/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "support_queue",
+    "url": "/support/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "support_queue",
+    "url": "/support/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "support_queue",
+    "url": "/support/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "support_queue",
+    "url": "/support/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "support_queue",
+    "url": "/support/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "support_create",
+    "url": "/support/new/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "support_create",
+    "url": "/support/new/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "support_create",
+    "url": "/support/new/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "support_create",
+    "url": "/support/new/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "support_create",
+    "url": "/support/new/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "support_create",
+    "url": "/support/new/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "support_case",
+    "url": "/support/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "support_case",
+    "url": "/support/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "patient",
+    "status": 404
+  },
+  {
+    "name": "support_case",
+    "url": "/support/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "doctor",
+    "status": 404
+  },
+  {
+    "name": "support_case",
+    "url": "/support/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "receptionist",
+    "status": 404
+  },
+  {
+    "name": "support_case",
+    "url": "/support/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "pharmacist",
+    "status": 404
+  },
+  {
+    "name": "support_case",
+    "url": "/support/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "admin",
+    "status": 404
+  },
+  {
+    "name": "assistant_api",
+    "url": "/api/assistant/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "assistant_api",
+    "url": "/api/assistant/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "assistant_api",
+    "url": "/api/assistant/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "assistant_api",
+    "url": "/api/assistant/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "assistant_api",
+    "url": "/api/assistant/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "assistant_api",
+    "url": "/api/assistant/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "waiting_list",
+    "url": "/waiting-list/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "waiting_list",
+    "url": "/waiting-list/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "waiting_list",
+    "url": "/waiting-list/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "waiting_list",
+    "url": "/waiting-list/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "waiting_list",
+    "url": "/waiting-list/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "waiting_list",
+    "url": "/waiting-list/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "worklist",
+    "url": "/worklist/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "worklist",
+    "url": "/worklist/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "worklist",
+    "url": "/worklist/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "worklist",
+    "url": "/worklist/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "worklist",
+    "url": "/worklist/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "worklist",
+    "url": "/worklist/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "schedule_rules",
+    "url": "/schedule/rules/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "schedule_rules",
+    "url": "/schedule/rules/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "schedule_rules",
+    "url": "/schedule/rules/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "schedule_rules",
+    "url": "/schedule/rules/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "schedule_rules",
+    "url": "/schedule/rules/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "schedule_rules",
+    "url": "/schedule/rules/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "registration_card",
+    "url": "/patients/1/registration/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "registration_card",
+    "url": "/patients/1/registration/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "registration_card",
+    "url": "/patients/1/registration/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "registration_card",
+    "url": "/patients/1/registration/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "registration_card",
+    "url": "/patients/1/registration/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "registration_card",
+    "url": "/patients/1/registration/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "admissions",
+    "url": "/admissions/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "admissions",
+    "url": "/admissions/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "admissions",
+    "url": "/admissions/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "admissions",
+    "url": "/admissions/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "admissions",
+    "url": "/admissions/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "admissions",
+    "url": "/admissions/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "bed_catalogue",
+    "url": "/admin/beds/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "bed_catalogue",
+    "url": "/admin/beds/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "bed_catalogue",
+    "url": "/admin/beds/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "bed_catalogue",
+    "url": "/admin/beds/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "bed_catalogue",
+    "url": "/admin/beds/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "bed_catalogue",
+    "url": "/admin/beds/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "purchasing",
+    "url": "/purchasing/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "purchasing",
+    "url": "/purchasing/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "purchasing",
+    "url": "/purchasing/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "purchasing",
+    "url": "/purchasing/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "purchasing",
+    "url": "/purchasing/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "purchasing",
+    "url": "/purchasing/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "partial_issue",
+    "url": "/prescriptions/items/1/issue/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "partial_issue",
+    "url": "/prescriptions/items/1/issue/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "partial_issue",
+    "url": "/prescriptions/items/1/issue/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "partial_issue",
+    "url": "/prescriptions/items/1/issue/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "partial_issue",
+    "url": "/prescriptions/items/1/issue/",
+    "role": "pharmacist",
+    "status": 404
+  },
+  {
+    "name": "partial_issue",
+    "url": "/prescriptions/items/1/issue/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "batch_safety",
+    "url": "/inventory/1/safety/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "batch_safety",
+    "url": "/inventory/1/safety/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "batch_safety",
+    "url": "/inventory/1/safety/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "batch_safety",
+    "url": "/inventory/1/safety/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "batch_safety",
+    "url": "/inventory/1/safety/",
+    "role": "pharmacist",
+    "status": 404
+  },
+  {
+    "name": "batch_safety",
+    "url": "/inventory/1/safety/",
+    "role": "admin",
+    "status": 404
+  },
+  {
+    "name": "clinical_work",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/clinical-work/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "clinical_work",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/clinical-work/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "clinical_work",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/clinical-work/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "clinical_work",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/clinical-work/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "clinical_work",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/clinical-work/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "clinical_work",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/clinical-work/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "assistant",
+    "url": "/assistant/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "assistant",
+    "url": "/assistant/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "assistant",
+    "url": "/assistant/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "assistant",
+    "url": "/assistant/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "assistant",
+    "url": "/assistant/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "assistant",
+    "url": "/assistant/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "assistant_admin",
+    "url": "/admin/assistant/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "assistant_admin",
+    "url": "/admin/assistant/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "assistant_admin",
+    "url": "/admin/assistant/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "assistant_admin",
+    "url": "/admin/assistant/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "assistant_admin",
+    "url": "/admin/assistant/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "assistant_admin",
+    "url": "/admin/assistant/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "schema_explorer",
+    "url": "/admin/data/schema/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "schema_explorer",
+    "url": "/admin/data/schema/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "schema_explorer",
+    "url": "/admin/data/schema/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "schema_explorer",
+    "url": "/admin/data/schema/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "schema_explorer",
+    "url": "/admin/data/schema/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "schema_explorer",
+    "url": "/admin/data/schema/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "data_management",
+    "url": "/admin/data/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "data_management",
+    "url": "/admin/data/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "data_management",
+    "url": "/admin/data/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "data_management",
+    "url": "/admin/data/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "data_management",
+    "url": "/admin/data/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "data_management",
+    "url": "/admin/data/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "about",
+    "url": "/about/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "about",
+    "url": "/about/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "about",
+    "url": "/about/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "about",
+    "url": "/about/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "about",
+    "url": "/about/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "about",
+    "url": "/about/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "pharmacy_info",
+    "url": "/pharmacy/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "pharmacy_info",
+    "url": "/pharmacy/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "pharmacy_info",
+    "url": "/pharmacy/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "pharmacy_info",
+    "url": "/pharmacy/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "pharmacy_info",
+    "url": "/pharmacy/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "pharmacy_info",
+    "url": "/pharmacy/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "health_hub",
+    "url": "/health-hub/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "health_hub",
+    "url": "/health-hub/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "health_hub",
+    "url": "/health-hub/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "health_hub",
+    "url": "/health-hub/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "health_hub",
+    "url": "/health-hub/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "health_hub",
+    "url": "/health-hub/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "symptoms",
+    "url": "/symptom-information/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "symptoms",
+    "url": "/symptom-information/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "symptoms",
+    "url": "/symptom-information/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "symptoms",
+    "url": "/symptom-information/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "symptoms",
+    "url": "/symptom-information/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "symptoms",
+    "url": "/symptom-information/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "wellness",
+    "url": "/wellness/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "wellness",
+    "url": "/wellness/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "wellness",
+    "url": "/wellness/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "wellness",
+    "url": "/wellness/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "wellness",
+    "url": "/wellness/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "wellness",
+    "url": "/wellness/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "notes",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/notes/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "notes",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/notes/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "notes",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/notes/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "notes",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/notes/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "notes",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/notes/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "notes",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/notes/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "timeline",
+    "url": "/patients/1/timeline/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "timeline",
+    "url": "/patients/1/timeline/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "timeline",
+    "url": "/patients/1/timeline/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "timeline",
+    "url": "/patients/1/timeline/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "timeline",
+    "url": "/patients/1/timeline/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "timeline",
+    "url": "/patients/1/timeline/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "queue",
+    "url": "/queue/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "queue",
+    "url": "/queue/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "queue",
+    "url": "/queue/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "queue",
+    "url": "/queue/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "queue",
+    "url": "/queue/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "queue",
+    "url": "/queue/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "movements",
+    "url": "/inventory/movements/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "movements",
+    "url": "/inventory/movements/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "movements",
+    "url": "/inventory/movements/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "movements",
+    "url": "/inventory/movements/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "movements",
+    "url": "/inventory/movements/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "movements",
+    "url": "/inventory/movements/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "cleanup",
+    "url": "/api/maintenance/cleanup/",
+    "role": "anonymous",
+    "status": 403
+  },
+  {
+    "name": "cleanup",
+    "url": "/api/maintenance/cleanup/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "cleanup",
+    "url": "/api/maintenance/cleanup/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "cleanup",
+    "url": "/api/maintenance/cleanup/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "cleanup",
+    "url": "/api/maintenance/cleanup/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "cleanup",
+    "url": "/api/maintenance/cleanup/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "health",
+    "url": "/health/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "health",
+    "url": "/health/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "health",
+    "url": "/health/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "health",
+    "url": "/health/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "health",
+    "url": "/health/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "health",
+    "url": "/health/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "notifications",
+    "url": "/notifications/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "notifications",
+    "url": "/notifications/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "notifications",
+    "url": "/notifications/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "notifications",
+    "url": "/notifications/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "notifications",
+    "url": "/notifications/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "notifications",
+    "url": "/notifications/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "patients",
+    "url": "/patients/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "patients",
+    "url": "/patients/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "patients",
+    "url": "/patients/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "patients",
+    "url": "/patients/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "patients",
+    "url": "/patients/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "patients",
+    "url": "/patients/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "users",
+    "url": "/admin/users/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "users",
+    "url": "/admin/users/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "users",
+    "url": "/admin/users/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "users",
+    "url": "/admin/users/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "users",
+    "url": "/admin/users/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "users",
+    "url": "/admin/users/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "operations",
+    "url": "/admin/operations/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "operations",
+    "url": "/admin/operations/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "operations",
+    "url": "/admin/operations/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "operations",
+    "url": "/admin/operations/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "operations",
+    "url": "/admin/operations/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "operations",
+    "url": "/admin/operations/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "edit_slot",
+    "url": "/availability/1/edit/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "edit_slot",
+    "url": "/availability/1/edit/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "edit_slot",
+    "url": "/availability/1/edit/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "edit_slot",
+    "url": "/availability/1/edit/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "edit_slot",
+    "url": "/availability/1/edit/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "edit_slot",
+    "url": "/availability/1/edit/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "department_edit",
+    "url": "/admin/departments/21/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "department_edit",
+    "url": "/admin/departments/21/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "department_edit",
+    "url": "/admin/departments/21/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "department_edit",
+    "url": "/admin/departments/21/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "department_edit",
+    "url": "/admin/departments/21/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "department_edit",
+    "url": "/admin/departments/21/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "check_in",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/check-in/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "check_in",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/check-in/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "check_in",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/check-in/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "check_in",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/check-in/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "check_in",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/check-in/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "check_in",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/check-in/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "home",
+    "url": "/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "home",
+    "url": "/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "home",
+    "url": "/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "home",
+    "url": "/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "home",
+    "url": "/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "home",
+    "url": "/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "public_departments",
+    "url": "/departments/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "public_departments",
+    "url": "/departments/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "public_departments",
+    "url": "/departments/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "public_departments",
+    "url": "/departments/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "public_departments",
+    "url": "/departments/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "public_departments",
+    "url": "/departments/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "doctor_detail",
+    "url": "/doctors/1/",
+    "role": "anonymous",
+    "status": 404
+  },
+  {
+    "name": "doctor_detail",
+    "url": "/doctors/1/",
+    "role": "patient",
+    "status": 404
+  },
+  {
+    "name": "doctor_detail",
+    "url": "/doctors/1/",
+    "role": "doctor",
+    "status": 404
+  },
+  {
+    "name": "doctor_detail",
+    "url": "/doctors/1/",
+    "role": "receptionist",
+    "status": 404
+  },
+  {
+    "name": "doctor_detail",
+    "url": "/doctors/1/",
+    "role": "pharmacist",
+    "status": 404
+  },
+  {
+    "name": "doctor_detail",
+    "url": "/doctors/1/",
+    "role": "admin",
+    "status": 404
+  },
+  {
+    "name": "receipt",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/receipt/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "receipt",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/receipt/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "receipt",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/receipt/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "receipt",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/receipt/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "receipt",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/receipt/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "receipt",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/receipt/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "login",
+    "url": "/login/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "login",
+    "url": "/login/",
+    "role": "patient",
+    "status": 302
+  },
+  {
+    "name": "login",
+    "url": "/login/",
+    "role": "doctor",
+    "status": 302
+  },
+  {
+    "name": "login",
+    "url": "/login/",
+    "role": "receptionist",
+    "status": 302
+  },
+  {
+    "name": "login",
+    "url": "/login/",
+    "role": "pharmacist",
+    "status": 302
+  },
+  {
+    "name": "login",
+    "url": "/login/",
+    "role": "admin",
+    "status": 302
+  },
+  {
+    "name": "register",
+    "url": "/register/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "register",
+    "url": "/register/",
+    "role": "patient",
+    "status": 302
+  },
+  {
+    "name": "register",
+    "url": "/register/",
+    "role": "doctor",
+    "status": 302
+  },
+  {
+    "name": "register",
+    "url": "/register/",
+    "role": "receptionist",
+    "status": 302
+  },
+  {
+    "name": "register",
+    "url": "/register/",
+    "role": "pharmacist",
+    "status": 302
+  },
+  {
+    "name": "register",
+    "url": "/register/",
+    "role": "admin",
+    "status": 302
+  },
+  {
+    "name": "logout",
+    "url": "/logout/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "logout",
+    "url": "/logout/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "logout",
+    "url": "/logout/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "logout",
+    "url": "/logout/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "logout",
+    "url": "/logout/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "logout",
+    "url": "/logout/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "language",
+    "url": "/language/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "language",
+    "url": "/language/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "language",
+    "url": "/language/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "language",
+    "url": "/language/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "language",
+    "url": "/language/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "language",
+    "url": "/language/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "forgot",
+    "url": "/forgot-password/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "forgot",
+    "url": "/forgot-password/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "forgot",
+    "url": "/forgot-password/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "forgot",
+    "url": "/forgot-password/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "forgot",
+    "url": "/forgot-password/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "forgot",
+    "url": "/forgot-password/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "reset",
+    "url": "/reset/invalid/invalid/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "reset",
+    "url": "/reset/invalid/invalid/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "reset",
+    "url": "/reset/invalid/invalid/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "reset",
+    "url": "/reset/invalid/invalid/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "reset",
+    "url": "/reset/invalid/invalid/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "reset",
+    "url": "/reset/invalid/invalid/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "password",
+    "url": "/password/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "password",
+    "url": "/password/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "password",
+    "url": "/password/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "password",
+    "url": "/password/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "password",
+    "url": "/password/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "password",
+    "url": "/password/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "dashboard",
+    "url": "/dashboard/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "profile",
+    "url": "/profile/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "profile",
+    "url": "/profile/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "profile",
+    "url": "/profile/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "profile",
+    "url": "/profile/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "profile",
+    "url": "/profile/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "profile",
+    "url": "/profile/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "doctors",
+    "url": "/doctors/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "doctors",
+    "url": "/doctors/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "doctors",
+    "url": "/doctors/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "doctors",
+    "url": "/doctors/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "doctors",
+    "url": "/doctors/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "doctors",
+    "url": "/doctors/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "availability",
+    "url": "/availability/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "availability",
+    "url": "/availability/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "availability",
+    "url": "/availability/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "availability",
+    "url": "/availability/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "availability",
+    "url": "/availability/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "availability",
+    "url": "/availability/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "remove_slot",
+    "url": "/availability/1/remove/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "remove_slot",
+    "url": "/availability/1/remove/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "remove_slot",
+    "url": "/availability/1/remove/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "remove_slot",
+    "url": "/availability/1/remove/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "remove_slot",
+    "url": "/availability/1/remove/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "remove_slot",
+    "url": "/availability/1/remove/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "booking",
+    "url": "/book/3/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "booking",
+    "url": "/book/3/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "booking",
+    "url": "/book/3/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "booking",
+    "url": "/book/3/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "booking",
+    "url": "/book/3/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "booking",
+    "url": "/book/3/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "appointments",
+    "url": "/appointments/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "appointments",
+    "url": "/appointments/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "appointments",
+    "url": "/appointments/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "appointments",
+    "url": "/appointments/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "appointments",
+    "url": "/appointments/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "appointments",
+    "url": "/appointments/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "appointment",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "appointment",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "appointment",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "appointment",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "appointment",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "appointment",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "appointment_action",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/action/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "appointment_action",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/action/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "appointment_action",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/action/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "appointment_action",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/action/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "appointment_action",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/action/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "appointment_action",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/action/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "upload",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/upload/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "upload",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/upload/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "upload",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/upload/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "upload",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/upload/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "upload",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/upload/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "upload",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/upload/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "download",
+    "url": "/reports/b99267e1-3036-454e-9196-5b4be4b7e4fc/download/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "download",
+    "url": "/reports/b99267e1-3036-454e-9196-5b4be4b7e4fc/download/",
+    "role": "patient",
+    "status": 404
+  },
+  {
+    "name": "download",
+    "url": "/reports/b99267e1-3036-454e-9196-5b4be4b7e4fc/download/",
+    "role": "doctor",
+    "status": 404
+  },
+  {
+    "name": "download",
+    "url": "/reports/b99267e1-3036-454e-9196-5b4be4b7e4fc/download/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "download",
+    "url": "/reports/b99267e1-3036-454e-9196-5b4be4b7e4fc/download/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "download",
+    "url": "/reports/b99267e1-3036-454e-9196-5b4be4b7e4fc/download/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "prescribe",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/prescribe/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "prescribe",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/prescribe/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "prescribe",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/prescribe/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "prescribe",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/prescribe/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "prescribe",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/prescribe/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "prescribe",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/prescribe/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "prescriptions",
+    "url": "/prescriptions/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "prescriptions",
+    "url": "/prescriptions/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "prescriptions",
+    "url": "/prescriptions/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "prescriptions",
+    "url": "/prescriptions/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "prescriptions",
+    "url": "/prescriptions/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "prescriptions",
+    "url": "/prescriptions/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "dispense",
+    "url": "/prescriptions/b99267e1-3036-454e-9196-5b4be4b7e4fc/dispense/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "dispense",
+    "url": "/prescriptions/b99267e1-3036-454e-9196-5b4be4b7e4fc/dispense/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "dispense",
+    "url": "/prescriptions/b99267e1-3036-454e-9196-5b4be4b7e4fc/dispense/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "dispense",
+    "url": "/prescriptions/b99267e1-3036-454e-9196-5b4be4b7e4fc/dispense/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "dispense",
+    "url": "/prescriptions/b99267e1-3036-454e-9196-5b4be4b7e4fc/dispense/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "dispense",
+    "url": "/prescriptions/b99267e1-3036-454e-9196-5b4be4b7e4fc/dispense/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "inventory",
+    "url": "/inventory/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "inventory",
+    "url": "/inventory/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "inventory",
+    "url": "/inventory/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "inventory",
+    "url": "/inventory/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "inventory",
+    "url": "/inventory/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "inventory",
+    "url": "/inventory/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "stock",
+    "url": "/inventory/1/adjust/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "stock",
+    "url": "/inventory/1/adjust/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "stock",
+    "url": "/inventory/1/adjust/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "stock",
+    "url": "/inventory/1/adjust/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "stock",
+    "url": "/inventory/1/adjust/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "stock",
+    "url": "/inventory/1/adjust/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "staff",
+    "url": "/admin/staff/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "staff",
+    "url": "/admin/staff/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "staff",
+    "url": "/admin/staff/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "staff",
+    "url": "/admin/staff/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "staff",
+    "url": "/admin/staff/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "staff",
+    "url": "/admin/staff/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "departments",
+    "url": "/admin/departments/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "departments",
+    "url": "/admin/departments/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "departments",
+    "url": "/admin/departments/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "departments",
+    "url": "/admin/departments/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "departments",
+    "url": "/admin/departments/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "departments",
+    "url": "/admin/departments/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "settings",
+    "url": "/admin/settings/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "settings",
+    "url": "/admin/settings/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "settings",
+    "url": "/admin/settings/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "settings",
+    "url": "/admin/settings/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "settings",
+    "url": "/admin/settings/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "settings",
+    "url": "/admin/settings/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "audit",
+    "url": "/admin/audit/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "audit",
+    "url": "/admin/audit/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "audit",
+    "url": "/admin/audit/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "audit",
+    "url": "/admin/audit/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "audit",
+    "url": "/admin/audit/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "audit",
+    "url": "/admin/audit/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "payment_record",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/payment-record/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "payment_record",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/payment-record/",
+    "role": "patient",
+    "status": 403
+  },
+  {
+    "name": "payment_record",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/payment-record/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "payment_record",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/payment-record/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "payment_record",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/payment-record/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "payment_record",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/payment-record/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "pay",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/pay/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "pay",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/pay/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "pay",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/pay/",
+    "role": "doctor",
+    "status": 403
+  },
+  {
+    "name": "pay",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/pay/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "pay",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/pay/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "pay",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/pay/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "payment_verify",
+    "url": "/api/payments/b99267e1-3036-454e-9196-5b4be4b7e4fc/verify/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "payment_verify",
+    "url": "/api/payments/b99267e1-3036-454e-9196-5b4be4b7e4fc/verify/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "payment_verify",
+    "url": "/api/payments/b99267e1-3036-454e-9196-5b4be4b7e4fc/verify/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "payment_verify",
+    "url": "/api/payments/b99267e1-3036-454e-9196-5b4be4b7e4fc/verify/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "payment_verify",
+    "url": "/api/payments/b99267e1-3036-454e-9196-5b4be4b7e4fc/verify/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "payment_verify",
+    "url": "/api/payments/b99267e1-3036-454e-9196-5b4be4b7e4fc/verify/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "webhook",
+    "url": "/api/payments/webhook/",
+    "role": "anonymous",
+    "status": 405
+  },
+  {
+    "name": "webhook",
+    "url": "/api/payments/webhook/",
+    "role": "patient",
+    "status": 405
+  },
+  {
+    "name": "webhook",
+    "url": "/api/payments/webhook/",
+    "role": "doctor",
+    "status": 405
+  },
+  {
+    "name": "webhook",
+    "url": "/api/payments/webhook/",
+    "role": "receptionist",
+    "status": 405
+  },
+  {
+    "name": "webhook",
+    "url": "/api/payments/webhook/",
+    "role": "pharmacist",
+    "status": 405
+  },
+  {
+    "name": "webhook",
+    "url": "/api/payments/webhook/",
+    "role": "admin",
+    "status": 405
+  },
+  {
+    "name": "video",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/video/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "video",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/video/",
+    "role": "patient",
+    "status": 404
+  },
+  {
+    "name": "video",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/video/",
+    "role": "doctor",
+    "status": 404
+  },
+  {
+    "name": "video",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/video/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "video",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/video/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "video",
+    "url": "/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/video/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "signal",
+    "url": "/api/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/signals/",
+    "role": "anonymous",
+    "status": 302
+  },
+  {
+    "name": "signal",
+    "url": "/api/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/signals/",
+    "role": "patient",
+    "status": 404
+  },
+  {
+    "name": "signal",
+    "url": "/api/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/signals/",
+    "role": "doctor",
+    "status": 404
+  },
+  {
+    "name": "signal",
+    "url": "/api/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/signals/",
+    "role": "receptionist",
+    "status": 403
+  },
+  {
+    "name": "signal",
+    "url": "/api/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/signals/",
+    "role": "pharmacist",
+    "status": 403
+  },
+  {
+    "name": "signal",
+    "url": "/api/appointments/b99267e1-3036-454e-9196-5b4be4b7e4fc/signals/",
+    "role": "admin",
+    "status": 403
+  },
+  {
+    "name": "legal",
+    "url": "/legal/privacy/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "legal",
+    "url": "/legal/privacy/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "legal",
+    "url": "/legal/privacy/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "legal",
+    "url": "/legal/privacy/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "legal",
+    "url": "/legal/privacy/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "legal",
+    "url": "/legal/privacy/",
+    "role": "admin",
+    "status": 200
+  },
+  {
+    "name": "contact",
+    "url": "/contact/",
+    "role": "anonymous",
+    "status": 200
+  },
+  {
+    "name": "contact",
+    "url": "/contact/",
+    "role": "patient",
+    "status": 200
+  },
+  {
+    "name": "contact",
+    "url": "/contact/",
+    "role": "doctor",
+    "status": 200
+  },
+  {
+    "name": "contact",
+    "url": "/contact/",
+    "role": "receptionist",
+    "status": 200
+  },
+  {
+    "name": "contact",
+    "url": "/contact/",
+    "role": "pharmacist",
+    "status": 200
+  },
+  {
+    "name": "contact",
+    "url": "/contact/",
+    "role": "admin",
+    "status": 200
+  }
+]

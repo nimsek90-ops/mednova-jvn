@@ -4,7 +4,7 @@ from unittest.mock import patch
 from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
-from .tests import Workflows
+from . import tests as fixtures
 from .models import *
 from .product import wellness_score
 from .services import dispense, change_status
@@ -14,7 +14,7 @@ from .delivery import reminders, process_outbox
 class ProductWorkflows(TestCase):
     @classmethod
     def setUpTestData(cls):
-        Workflows.setUpTestData.__func__(cls)
+        fixtures.Workflows.setUpTestData.__func__(cls)
 
     def login(self, user):
         self.client.force_login(user)

@@ -1,7 +1,7 @@
 from django.test import TestCase, SimpleTestCase
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse
-from .tests import Workflows
+from . import tests as fixtures
 from mednova.database import postgres_database
 from mednova.hosting import validate_vercel
 
@@ -32,7 +32,7 @@ class PostgreSQLConfiguration(SimpleTestCase):
 class ProductTransformation(TestCase):
     @classmethod
     def setUpTestData(cls):
-        Workflows.setUpTestData.__func__(cls)
+        fixtures.Workflows.setUpTestData.__func__(cls)
 
     def test_schema_explorer_permissions_and_no_record_contents(self):
         url = reverse('schema_explorer')
@@ -57,7 +57,7 @@ class ProductTransformation(TestCase):
     def test_schema_search_and_actual_directory_availability(self):
         self.client.force_login(self.admin)
         response = self.client.get(reverse('schema_explorer'), {'q':'department'})
-        self.assertEqual([t['name'] for t in response.context['tables']],['care_department'])
+        self.assertEqual([t['name'] for t in response.context['tables']],['care_department','care_specialty_departments'])
         self.client.logout()
         response = self.client.get(reverse('doctors'))
         profile = next(doc for doc in response.context['doctors'] if doc.user_id==self.doctor.pk)

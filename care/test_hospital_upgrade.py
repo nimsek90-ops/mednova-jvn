@@ -52,6 +52,11 @@ class HospitalUpgrade(TestCase):
         self.assertFalse(ScheduleBlock.objects.exists())
 
     def test_buffer_overlap_daily_limit_and_mode(self):
+        # Keep both visits on the same hospital day, including runs near midnight.
+        self.slot.start=timezone.make_aware(datetime.combine(timezone.localdate()+timedelta(days=1),time(9)))
+        self.slot.save()
+        self.slot2.start=self.slot.start+timedelta(minutes=12)
+        self.slot2.save()
         self.slot.duration,self.slot.buffer=15,5
         self.slot.save()
         with self.assertRaises(BookingError):

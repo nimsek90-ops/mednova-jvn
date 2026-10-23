@@ -1,4 +1,4 @@
-> Current patient assistant (23 October): [patient services, support handoff, tests and run instructions](docs/PATIENT_ASSISTANT_REPORT.md). Primary MySQL now has 48 tables; older reports are historical.
+> Current project state, verification and safe recovery: [README.md](README.md) and [cleanup report](docs/CLEANUP_REPORT.md). The working MySQL schema has 51 tables; earlier reports describe historical checkpoints.
 
 # Open and run the complete MedNova source
 
@@ -31,7 +31,7 @@ Install Python 3.12 x64 and MySQL first. For a NEW empty local database only, us
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Admin-MedNova.ps1 -Email 'jayesh@gmail.com'
 ```
 
-The command prompts twice for a NEW password with hidden input. It creates an absent admin with mandatory initial password replacement, preserves an existing valid admin, and refuses a conflicting non-admin account. No password is bundled or reset silently. Then open `/login/?role=admin`. The intended account was absent when inspected; provisioning awaits your private terminal input. For an existing admin needing recovery, use the configured Django `changepassword` command deliberately; never reuse an exposed bootstrap password.
+The command prompts twice for a NEW password with hidden input. It creates an absent admin with mandatory initial password replacement, preserves an existing valid admin, and refuses a conflicting non-admin account. No password is bundled or reset silently. Then open `/login/?role=admin`. The earlier absence finding is historical. Existing administrator accounts are preserved; do not rerun provisioning merely to start the website. For an existing admin needing recovery, use the configured Django `changepassword` command deliberately; never reuse an exposed bootstrap password.
 
 ## Work in VS Code
 

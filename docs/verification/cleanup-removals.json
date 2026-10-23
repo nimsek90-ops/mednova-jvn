@@ -1,0 +1,72 @@
+[
+  {
+    "removed": "docs/verification/current-http.txt",
+    "canonical": "docs/verification/final-http-mysql.txt",
+    "sha256": "9110084f47d272ee2f22d98907b646c736a532eae2c2c8c108902f7f7cf1dd0e",
+    "bytes": 515,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/product-http.txt",
+    "canonical": "docs/verification/final-http-mysql.txt",
+    "sha256": "9110084f47d272ee2f22d98907b646c736a532eae2c2c8c108902f7f7cf1dd0e",
+    "bytes": 515,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/redesign-http.txt",
+    "canonical": "docs/verification/final-http-mysql.txt",
+    "sha256": "9110084f47d272ee2f22d98907b646c736a532eae2c2c8c108902f7f7cf1dd0e",
+    "bytes": 515,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/repair-http.txt",
+    "canonical": "docs/verification/final-http-mysql.txt",
+    "sha256": "9110084f47d272ee2f22d98907b646c736a532eae2c2c8c108902f7f7cf1dd0e",
+    "bytes": 515,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/login-delivery-mysql-http.txt",
+    "canonical": "docs/verification/upgrade-mysql-http.txt",
+    "sha256": "bb1bf00761d6af4bdd505687c2afcdcd0c9022f9318effd503c9fa898e870977",
+    "bytes": 546,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/transformation-mysql-http.txt",
+    "canonical": "docs/verification/upgrade-mysql-http.txt",
+    "sha256": "bb1bf00761d6af4bdd505687c2afcdcd0c9022f9318effd503c9fa898e870977",
+    "bytes": 546,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/login-delivery-postgres-http.txt",
+    "canonical": "docs/verification/upgrade-postgres-http.txt",
+    "sha256": "bb1bf00761d6af4bdd505687c2afcdcd0c9022f9318effd503c9fa898e870977",
+    "bytes": 546,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/transformation-postgres-http.txt",
+    "canonical": "docs/verification/upgrade-postgres-http.txt",
+    "sha256": "bb1bf00761d6af4bdd505687c2afcdcd0c9022f9318effd503c9fa898e870977",
+    "bytes": 546,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "docs/verification/upgrade-baseline-mysql-tests.txt",
+    "canonical": "docs/verification/login-delivery-mysql-tests.txt",
+    "sha256": "5582b574751146aeba8152d60541042e86e1c10b6e8476e11b7cb389124b232b",
+    "bytes": 588,
+    "reason": "Exact content duplicate; historical filename retained as an alias; canonical files remain separate for MySQL and PostgreSQL."
+  },
+  {
+    "removed": "care/catalogue.py",
+    "canonical": "care/migrations/0012_seed_possible_specialties.py",
+    "sha256": "c41807d390fe5855f0229d18bb138ffed474e30e87dd09d33b2697eace517807",
+    "bytes": 3639,
+    "reason": "Unused runtime catalogue/helper. Its catalogue literal exactly matches the frozen data migration; all UI reads the database."
+  }
+]
