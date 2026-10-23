@@ -1,0 +1,22 @@
+FROM python:3.14-slim-bookworm AS builder
+RUN apt-get update && apt-get install -y --no-install-recommends gcc pkg-config default-libmysqlclient-dev && rm -rf /var/lib/apt/lists/*
+WORKDIR /build
+COPY requirements.lock.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.lock.txt
+
+FROM python:3.14-slim-bookworm
+RUN apt-get update && apt-get install -y --no-install-recommends libmariadb3 ca-certificates && rm -rf /var/lib/apt/lists/* && useradd --create-home --uid 10001 mednova
+COPY --from=builder /install /usr/local
+WORKDIR /app
+COPY --chown=mednova:mednova care ./care
+COPY --chown=mednova:mednova mednova ./mednova
+COPY --chown=mednova:mednova templates ./templates
+COPY --chown=mednova:mednova static ./static
+COPY --chown=mednova:mednova certs ./certs
+COPY --chown=mednova:mednova deployment/render ./deployment/render
+COPY --chown=mednova:mednova manage.py requirements.lock.txt ./
+RUN chown mednova:mednova /app
+USER mednova
+ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
+EXPOSE 10000
+CMD ["python", "deployment/render/start.py"]

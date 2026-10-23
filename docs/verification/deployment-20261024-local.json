@@ -1,0 +1,12 @@
+{
+  "entrypoint": "deployment/render/start.py",
+  "database": "isolated MySQL audit schema",
+  "port": 10001,
+  "health_status": 200,
+  "health_body": {
+    "status": "ok"
+  },
+  "cloud_deployment_tested": false,
+  "frontend_fixture_build": "passed",
+  "frontend_live_backend_tested": false
+}

@@ -1,0 +1,91 @@
+{
+  "services": [
+    {
+      "type": "web",
+      "name": "mednova-jvn-backend",
+      "runtime": "docker",
+      "plan": "free",
+      "dockerfilePath": "./Dockerfile.render",
+      "dockerContext": ".",
+      "healthCheckPath": "/health/",
+      "envVars": [
+        {
+          "key": "DJANGO_SECRET_KEY",
+          "sync": false
+        },
+        {
+          "key": "ALLOWED_HOSTS",
+          "sync": false
+        },
+        {
+          "key": "PUBLIC_ORIGIN",
+          "sync": false
+        },
+        {
+          "key": "CSRF_TRUSTED_ORIGINS",
+          "sync": false
+        },
+        {
+          "key": "MYSQL_HOST",
+          "sync": false
+        },
+        {
+          "key": "MYSQL_PORT",
+          "sync": false
+        },
+        {
+          "key": "MYSQL_DATABASE",
+          "sync": false
+        },
+        {
+          "key": "MYSQL_USER",
+          "sync": false
+        },
+        {
+          "key": "MYSQL_PASSWORD",
+          "sync": false
+        },
+        {
+          "key": "MYSQL_SSL_CA",
+          "sync": false
+        },
+        {
+          "key": "S3_BUCKET_NAME",
+          "sync": false
+        },
+        {
+          "key": "S3_REGION_NAME",
+          "sync": false
+        },
+        {
+          "key": "S3_ENDPOINT_URL",
+          "sync": false
+        },
+        {
+          "key": "AWS_ACCESS_KEY_ID",
+          "sync": false
+        },
+        {
+          "key": "AWS_SECRET_ACCESS_KEY",
+          "sync": false
+        },
+        {
+          "key": "APP_ENV",
+          "value": "production"
+        },
+        {
+          "key": "DATABASE_VENDOR",
+          "value": "mysql"
+        },
+        {
+          "key": "PRIVATE_STORAGE_BACKEND",
+          "value": "s3"
+        },
+        {
+          "key": "TRUST_PROXY",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}
