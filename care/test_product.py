@@ -108,7 +108,7 @@ class ProductWorkflows(TestCase):
             self.assertEqual(self.client.get(url).status_code, expected)
 
     def test_queue_checkin_idempotency_and_transitions(self):
-        self.appt.slot.start = timezone.now()+timedelta(minutes=5)
+        self.appt.slot.start = timezone.localtime().replace(hour=12, minute=0, second=0, microsecond=0)
         self.appt.slot.save()
         self.appt.mode = 'in_person'
         self.appt.status = 'confirmed'
@@ -195,7 +195,7 @@ class ProductWorkflows(TestCase):
             'receipt':{'patient','receptionist','admin'},'password':all_roles,'dashboard':all_roles,'profile':all_roles,
             'availability':{'doctor'},'remove_slot':{'doctor'},'booking':{'patient','receptionist'},
             'appointments':{'patient','doctor','receptionist','admin'},'appointment':{'patient','doctor','receptionist','admin'},
-            'appointment_review':{'patient'},'appointment_action':{'patient','doctor','receptionist','admin'},'upload':{'patient','doctor'},'download':{'patient','doctor'},
+            'appointment_payment':{'patient'},'payment_verification':{'receptionist','doctor','admin'},'payment_verification_detail':{'receptionist','doctor','admin'},'payment_screenshot':{'patient','receptionist','doctor','admin'},'appointment_review':{'patient'},'appointment_action':{'patient','doctor','receptionist','admin'},'upload':{'patient','doctor'},'download':{'patient','doctor'},
             'prescribe':{'doctor'},'prescriptions':{'patient','doctor','pharmacist'},'dispense':{'pharmacist'},
             'inventory':{'pharmacist','admin'},'stock':{'pharmacist','admin'},'staff':{'admin'},'departments':{'admin'},
             'settings':{'admin'},'audit':{'admin'},'payment_record':{'receptionist','admin'},'pay':{'patient'},

@@ -218,7 +218,7 @@ class Workflows(TestCase):
         self.assertEqual(self.appt.status, "pending")
 
     def test_cancellation_releases_slot_and_marks_refund(self):
-        Payment.objects.filter(appointment=self.appt).update(status="paid")
+        Payment.objects.filter(appointment=self.appt).update(status="paid", received_by=self.reception)
         change_status(self.appt, self.patient, "cancelled")
         self.slot.refresh_from_db()
         self.assertFalse(self.slot.booked)
@@ -447,6 +447,7 @@ class Workflows(TestCase):
         )
 
     def test_video_only_assigned_participants_at_time(self):
+        Payment.objects.filter(appointment=self.appt).update(status="paid", received_by=self.reception)
         self.appt.status = "confirmed"
         self.appt.save()
         self.slot.start = timezone.now()
@@ -465,6 +466,7 @@ class Workflows(TestCase):
         )
 
     def test_video_before_window_blocked(self):
+        Payment.objects.filter(appointment=self.appt).update(status="paid", received_by=self.reception)
         self.appt.status = "confirmed"
         self.appt.save()
         self.sign(self.patient)
@@ -473,6 +475,7 @@ class Workflows(TestCase):
         )
 
     def test_patient_cannot_send_doctor_offer(self):
+        Payment.objects.filter(appointment=self.appt).update(status="paid", received_by=self.reception)
         self.appt.status = "confirmed"
         self.appt.save()
         self.slot.start = timezone.now()
@@ -486,6 +489,7 @@ class Workflows(TestCase):
         self.assertEqual(r.status_code, 400)
 
     def test_signal_exchange_authorized(self):
+        Payment.objects.filter(appointment=self.appt).update(status="paid", received_by=self.reception)
         self.appt.status = "confirmed"
         self.appt.save()
         self.slot.start = timezone.now()
@@ -532,6 +536,9 @@ class Workflows(TestCase):
             )
 
     def test_payment_receipt_recorded_by_reception(self):
+        self.appt.mode = "in_person"
+        self.appt.status = "confirmed"
+        self.appt.save(update_fields=["mode", "status"])
         self.sign(self.reception)
         self.client.post(
             reverse("payment_record", args=[self.appt.pk]),
@@ -753,7 +760,7 @@ class Workflows(TestCase):
         self.assertEqual(Prescription.objects.count(), 1)
 
     def test_paid_appointment_cannot_switch_doctor(self):
-        Payment.objects.filter(appointment=self.appt).update(status="paid")
+        Payment.objects.filter(appointment=self.appt).update(status="paid", received_by=self.reception)
         slot = Slot.objects.create(doctor=self.doctor2, start=self.slot2.start)
         with self.assertRaises(BookingError):
             book(self.patient, slot.pk, "video", "Test", self.appt)
@@ -919,6 +926,10 @@ class Workflows(TestCase):
         self.assertEqual(self.client.get(reverse('edit_slot', args=[self.slot.pk])).status_code, 403)
 
     def test_calendar_day_week_month(self):
+        start = timezone.make_aware(datetime.combine(timezone.localdate() + timedelta(days=1), time(9)))
+        for slot, offset in [(self.slot, 0), (self.slot2, 12)]:
+            slot.start = start + timedelta(minutes=offset)
+            slot.save(update_fields=['start'])
         self.sign(self.doctor)
         day = str(timezone.localdate(self.slot.start))
         for period in ('day', 'week', 'month'):

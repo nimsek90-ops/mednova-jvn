@@ -1,0 +1,27 @@
+{
+  "origin": "http://127.0.0.1:8000",
+  "checks": [
+    {
+      "path": "/health/",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "path": "/payments/verification/",
+      "status": 302,
+      "result": "anonymous redirected to login"
+    }
+  ],
+  "method": "read-only; no working hospital records modified"
+}

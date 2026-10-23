@@ -258,6 +258,7 @@ def reset(request, uid, token):
 @roles(pending=True)
 def dashboard(request):
     from .models import WellnessEntry
+    from .payments import verification_queue
     u = request.user
     if u.approval != "approved":
         return render(request, "care/pending.html")
@@ -288,6 +289,7 @@ def dashboard(request):
         request,
         "care/dashboard.html",
         {
+            "payment_queue": verification_queue(u)[:5] if u.role in ("doctor", "admin") else [],
             "appointments": future[:5],
             "next_appointment": future.first(),
             "unread_notifications": Notification.objects.filter(recipient=u, read=False).count(),
@@ -1003,13 +1005,15 @@ def payment_record(request, pk):
     if request.method == "POST":
         reference = request.POST.get("reference", "").strip()[:120]
         method = request.POST.get("method", "")
+        if method != "refund" and (appt.mode == "video" or appt.payment.method in ("online", "offline")):
+            return redirect("payment_verification_detail", pk=pk)
         if reference and method in ("cash", "bank", "refund"):
             with transaction.atomic():
                 appt = Appointment.objects.select_for_update().get(pk=pk)
                 p = Payment.objects.select_for_update().get(appointment=appt)
                 if (
                     p.status == "unpaid"
-                    and appt.status != "cancelled"
+                    and appt.status == "confirmed"
                     and method != "refund"
                 ):
                     p.status = "paid"
@@ -1021,7 +1025,11 @@ def payment_record(request, pk):
                     return redirect("appointment", pk=pk)
                 p.reference = reference
                 p.received_by = request.user
+                p.verified_at = timezone.now()
+                p.verification_version += 1
                 p.save()
+                from .delivery import publish
+                publish(appt.patient, "Your payment record was updated. Open your appointment for details.", f"payment:{p.pk}:{p.verification_version}", appt)
                 audit(request.user, "payment.recorded", p.pk)
             messages.success(request, "Payment record saved.")
             return redirect("appointment", pk=pk)
@@ -1034,8 +1042,10 @@ def payment_record(request, pk):
 @rate_limit("payment-create", 10, 600)
 def pay(request, pk):
     appt = get_object_or_404(
-        visible_appointments(request.user), pk=pk, status__in=["pending", "confirmed"]
+        visible_appointments(request.user), pk=pk, status="confirmed"
     )
+    if appt.payment.method in ("online", "offline"):
+        return redirect("appointment_payment", pk=pk)
     if not settings.RAZORPAY_KEY_ID or not settings.RAZORPAY_KEY_SECRET:
         return page(
             request,
@@ -1195,6 +1205,8 @@ def call_access(request, pk):
     appt = clinical_appointment(request.user, pk)
     if appt.mode != "video" or appt.status != "confirmed":
         raise Http404()
+    if appt.payment.status != "paid" or (appt.payment.amount > 0 and not appt.payment.received_by_id):
+        raise Http404("Payment must be confirmed before the video consultation can open.")
     if VideoAttendance.objects.filter(appointment=appt, ended_at__isnull=False).exists():
         raise Http404('This consultation room has ended.')
     now = timezone.now()

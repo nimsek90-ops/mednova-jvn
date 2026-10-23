@@ -1,0 +1,39 @@
+{
+  "origin": "http://127.0.0.1:8003",
+  "database": "isolated synthetic QA SQLite; no working hospital data mutated",
+  "checks": [
+    {
+      "check": "patient login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "doctor login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "receptionist login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "patient login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "video screenshot remains pending; room and signalling locked; screenshot access restricted",
+      "passed": true
+    },
+    {
+      "check": "doctor rejected; patient resubmitted; reception confirmed; patient notified; eligible video room unlocked",
+      "passed": true
+    },
+    {
+      "check": "offline hospital visit: reception payment remains pending until reception confirms",
+      "passed": true
+    },
+    {
+      "check": "offline hospital visit online upload and assigned doctor verification; actual CSRF denial",
+      "passed": true
+    }
+  ],
+  "email": "Local hospital recipient and SMTP are unconfigured; unavailable state verified. Attachment delivery and retry tested with Django locmem backend."
+}

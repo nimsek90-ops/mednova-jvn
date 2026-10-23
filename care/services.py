@@ -84,6 +84,10 @@ def book(patient, slot_id, mode, reason, existing=None, actor=None):
         ):
             raise BookingError("This appointment cannot be rescheduled.")
         payment = Payment.objects.select_for_update().get(appointment=appt)
+        if payment.status == "awaiting":
+            raise BookingError("Payment verification is pending. Contact reception before rescheduling.")
+        if mode == 'video' and payment.status == 'paid' and payment.amount > 0 and payment.method in ('cash', 'offline'):
+            raise BookingError('Video appointments require online payment. Contact reception before changing a cash-paid visit to video.')
         if payment.status != "unpaid" and slot.doctor_id != appt.slot.doctor_id:
             raise BookingError(
                 "Paid visits can only be rescheduled with the same doctor."
@@ -93,7 +97,15 @@ def book(patient, slot_id, mode, reason, existing=None, actor=None):
         appt.status = "pending"
         appt.mode = mode
         appt.reason = reason
-        if payment.status == "unpaid":
+        if payment.status in ("unpaid", "rejected"):
+            payment.status = "unpaid"
+            payment.current_proof = None
+            payment.received_by = None
+            payment.verified_at = None
+            payment.rejection_reason = ""
+            payment.verification_version += 1
+            if mode == "video" and payment.method == "offline":
+                payment.method = ""
             appt.fee = doctor.doctor_profile.fee
             payment.amount = appt.fee
             payment.order_id = ""

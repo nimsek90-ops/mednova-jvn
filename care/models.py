@@ -251,8 +251,10 @@ class Payment(models.Model):
         max_length=16,
         default="unpaid",
         choices=[
-            ("unpaid", "Unpaid"),
-            ("paid", "Paid"),
+            ("unpaid", "Payment Pending"),
+            ("awaiting", "Payment Pending Verification"),
+            ("paid", "Payment Confirmed"),
+            ("rejected", "Payment Rejected"),
             ("refund_due", "Refund due"),
             ("refunded", "Refunded"),
         ],
@@ -264,7 +266,27 @@ class Payment(models.Model):
     received_by = models.ForeignKey(
         User, on_delete=models.PROTECT, null=True, related_name="+"
     )
+    current_proof = models.ForeignKey('PaymentProof', on_delete=models.PROTECT, null=True, blank=True, related_name='+')
+    verification_version = models.PositiveIntegerField(default=0)
+    verified_at = models.DateTimeField(null=True, blank=True)
+    rejection_reason = models.CharField(max_length=300, blank=True)
     updated = models.DateTimeField(auto_now=True)
+
+
+def payment_proof_path(instance, filename):
+    return f'payment-proofs/{uuid.uuid4().hex}.png'
+
+
+class PaymentProof(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    payment = models.ForeignKey(Payment, on_delete=models.PROTECT, related_name='proofs')
+    image = models.FileField(upload_to=payment_proof_path)
+    amount = models.DecimalField(max_digits=8, decimal_places=2)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    email_status = models.CharField(max_length=12, default='pending', choices=[('pending', 'Pending'), ('sending', 'Sending'), ('sent', 'Sent'), ('failed', 'Failed'), ('unavailable', 'Unavailable')])
+    email_attempts = models.PositiveIntegerField(default=0)
+    email_lease_until = models.DateTimeField(null=True, blank=True)
+    emailed_at = models.DateTimeField(null=True, blank=True)
 
 
 class AuditEvent(models.Model):

@@ -1,0 +1,42 @@
+{
+  "database": "isolated synthetic QA SQLite only",
+  "checks": [
+    {
+      "case": "video",
+      "status": "paid",
+      "method": "online",
+      "verified_by_role": "receptionist",
+      "proof_count": 2,
+      "verified_at": "2026-10-23T18:18:54.432028+00:00",
+      "appointment_status": "confirmed"
+    },
+    {
+      "case": "offline",
+      "status": "paid",
+      "method": "offline",
+      "verified_by_role": "receptionist",
+      "proof_count": 0,
+      "verified_at": "2026-10-23T18:18:54.872346+00:00",
+      "appointment_status": "confirmed"
+    },
+    {
+      "case": "offline_online",
+      "status": "paid",
+      "method": "online",
+      "verified_by_role": "doctor",
+      "proof_count": 1,
+      "verified_at": "2026-10-23T18:18:55.230598+00:00",
+      "appointment_status": "confirmed"
+    },
+    {
+      "case": "browser",
+      "status": "paid",
+      "method": "online",
+      "verified_by_role": "receptionist",
+      "proof_count": 1,
+      "verified_at": "2026-10-23T18:24:05.965200+00:00",
+      "appointment_status": "confirmed"
+    }
+  ],
+  "browser": "Reception dashboard preview, confirm/reject detail and actual Confirm Payment submission verified; desktop and 375px mobile inspected; viewport reset."
+}

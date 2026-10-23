@@ -214,6 +214,7 @@ class HospitalUpgrade(TestCase):
         self.assertEqual(AssistantEscalation.objects.filter(patient=self.other).count(),1)
 
     def test_video_consent_waiting_room_admission_and_expiry(self):
+        Payment.objects.filter(appointment=self.appt).update(status="paid", received_by=self.reception)
         self.slot.start=timezone.now();self.slot.save()
         self.appt.status='confirmed';self.appt.save()
         room=reverse('video',args=[self.appt.pk]);signal=reverse('signal',args=[self.appt.pk])

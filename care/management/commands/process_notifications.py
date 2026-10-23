@@ -6,4 +6,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         reminders()
         sent = process_outbox()
+        from care.payments import retry_proof_emails
+        proof_sent = retry_proof_emails()
         self.stdout.write(f'Email messages accepted by backend: {sent}. SMS provider is not configured.')
+        self.stdout.write(f'Hospital payment-proof emails accepted by backend: {proof_sent}.')

@@ -6,8 +6,13 @@ from care import chatbot
 from care import support
 from care import reception
 from care import reviews
+from care import payments
 
 urlpatterns = [
+    path('appointments/<uuid:pk>/payment/', payments.instructions, name='appointment_payment'),
+    path('payments/verification/', payments.verification, name='payment_verification'),
+    path('payments/verification/<uuid:pk>/', payments.verification, name='payment_verification_detail'),
+    path('payments/proofs/<uuid:pk>/', payments.screenshot, name='payment_screenshot'),
     path('appointments/<uuid:pk>/review/', reviews.edit, name='appointment_review'),
     path('reception/', reception.desk, name='reception_desk'),
     path('reception/register/', reception.register, name='reception_register'),

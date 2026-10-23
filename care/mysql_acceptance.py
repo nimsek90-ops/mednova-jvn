@@ -43,6 +43,26 @@ class MySQLBookingAcceptance(TransactionTestCase):
         self.assertEqual(results, ['ok', 'ok'])
         self.assertEqual(AppointmentReview.objects.filter(appointment=appointment).count(), 1)
 
+    def test_concurrent_staff_payment_confirmation_has_one_winner(self):
+        from django import forms
+        from .models import Payment, PaymentProof, Notification
+        from .payments import verify_payment
+        appointment = fixtures.Workflows.appt
+        Appointment.objects.filter(pk=appointment.pk).update(status='confirmed')
+        payment = Payment.objects.get(appointment=appointment)
+        proof = PaymentProof.objects.create(payment=payment, amount=payment.amount, image='synthetic-private-placeholder.png')
+        Payment.objects.filter(pk=payment.pk).update(method='online', status='awaiting', current_proof=proof, verification_version=1)
+        def confirm(actor_id):
+            try:
+                verify_payment(User.objects.get(pk=actor_id), appointment.pk, action='confirm', version=1)
+            except forms.ValidationError as error:
+                raise BookingError(str(error))
+        results = self.race([lambda: confirm(fixtures.Workflows.reception.pk), lambda: confirm(fixtures.Workflows.doctor.pk)])
+        self.assertCountEqual(results, ['ok', 'unavailable'])
+        self.assertEqual(Notification.objects.filter(message__startswith='Payment confirmed').count(), 1)
+        payment.refresh_from_db()
+        self.assertEqual((payment.status, payment.verification_version), ('paid', 2))
+
     def setUp(self):
         if connection.vendor != "mysql":
             self.fail("This acceptance suite requires a dedicated MySQL test database.")
@@ -152,7 +172,12 @@ class MySQLBookingAcceptance(TransactionTestCase):
         self.assertEqual(Admission.objects.filter(bed=bed).count(),1)
 
     def test_simultaneous_distinct_slots_respect_daily_cap(self):
-        from datetime import timedelta
+        from datetime import timedelta, datetime, time
+        from django.utils import timezone
+        start = timezone.make_aware(datetime.combine(timezone.localdate() + timedelta(days=1), time(9)))
+        for slot, offset in [(fixtures.Workflows.slot, 0), (fixtures.Workflows.slot2, 12)]:
+            slot.start = start + timedelta(minutes=offset)
+            slot.save(update_fields=['start'])
         profile=fixtures.Workflows.doctor.doctor_profile
         profile.daily_limit=2
         profile.save()

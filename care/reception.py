@@ -96,10 +96,11 @@ class PatientForm(forms.Form):
 @roles('receptionist','admin')
 @require_http_methods(['GET'])
 def desk(request):
+    from .payments import verification_queue
     first,last=day_bounds(timezone.localdate())
     visits=Appointment.objects.filter(slot__start__gte=first,slot__start__lt=last).select_related('patient','slot__doctor','payment')
     counts=dict(visits.values('status').annotate(total=Count('pk')).values_list('status','total'))
-    return render(request,'care/reception_desk.html',{'visits':visits.order_by('slot__start')[:12], 'today_total':sum(counts.values()),
+    return render(request,'care/reception_desk.html',{'payment_queue':verification_queue(request.user)[:5], 'visits':visits.order_by('slot__start')[:12], 'today_total':sum(counts.values()),
         'counts':counts,'waiting':QueueEntry.objects.filter(date=timezone.localdate(),status__in=['waiting','called']).count(),
         'recent':User.objects.filter(role='patient').select_related('registration').order_by('-date_joined')[:8]})
 

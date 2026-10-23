@@ -43,7 +43,7 @@ class PatientAssistantTests(TestCase):
         result = self.ask('My prescription and outstanding bill').json()
         self.assertIn('SYNTHETIC CLINICIAN INSTRUCTIONS', str(result))
         self.assertIn('₹250.00', result['text'])
-        self.assertIn('Unpaid', str(result))
+        self.assertIn('Payment Pending', str(result))
         self.client.force_login(self.other)
         result = self.ask('My prescription and outstanding bill').json()
         self.assertNotIn('SYNTHETIC CLINICIAN', str(result))
