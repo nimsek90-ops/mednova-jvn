@@ -1,3 +1,5 @@
+> Current hospital upgrade (23 October): [implemented workflows, migrations, tests and remaining scope](docs/HOSPITAL_UPGRADE_REPORT.md). Primary MySQL now has46 tables; older reports are historical.
+
 > VS Code folder delivery: [OPEN_IN_VSCODE.md](OPEN_IN_VSCODE.md), [database viewer guide](docs/VSCODE_DATABASE.md), and [login/delivery report](docs/LOGIN_AND_FOLDER_DELIVERY.md).
 
 > Latest22 October transformation: [PRODUCT_TRANSFORMATION_REPORT.md](docs/PRODUCT_TRANSFORMATION_REPORT.md). Editable Figma system, new directory/schema explorer,116 SQLite tests and120 tests each on MySQL/PostgreSQL. Primary MySQL is preserved; PostgreSQL migration rehearsed locally. Supabase/Vercel targets and complete design sign-off remain blocked/outstanding.

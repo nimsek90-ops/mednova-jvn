@@ -1,3 +1,5 @@
+> Current hospital upgrade (23 October): [implemented workflows, migrations, tests and remaining scope](docs/HOSPITAL_UPGRADE_REPORT.md). Primary MySQL now has46 tables; older reports are historical.
+
 > VS Code folder delivery: [OPEN_IN_VSCODE.md](OPEN_IN_VSCODE.md), [database viewer guide](docs/VSCODE_DATABASE.md), and [login/delivery report](docs/LOGIN_AND_FOLDER_DELIVERY.md).
 
 > New PostgreSQL/Supabase direction and Figma deliverables: [current transformation report](docs/PRODUCT_TRANSFORMATION_REPORT.md) and [migration/operations guide](docs/SUPABASE_MIGRATION_AND_OPERATIONS.md). The primary local app is still MySQL on8000; the already prepared PostgreSQL rehearsal is separate on8002.

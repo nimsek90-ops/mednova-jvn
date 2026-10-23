@@ -23,3 +23,5 @@ if(sidebar&&menu){const narrow=window.matchMedia('(max-width:820px)');const sync
 
 // Booking feedback reflects a real selected radio; reservation remains server-side.
 document.querySelectorAll('.booking-form input[name="slot"]').forEach(input=>input.addEventListener('change',()=>{const summary=document.querySelector('.booking-selection');if(summary){summary.querySelector('strong').textContent=input.dataset.label;summary.querySelector('p').textContent='Selected time. Complete your visit details to request this appointment.';}}));
+
+document.querySelectorAll('.print-page').forEach(button=>button.addEventListener('click',()=>window.print()));

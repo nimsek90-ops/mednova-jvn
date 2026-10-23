@@ -1,0 +1,7 @@
+Operations to perform:
+  Apply all migrations: auth, care, contenttypes, sessions
+Running migrations:
+  Applying care.0006_bed_hospitalfaq_supplier_doctorprofile_daily_limit_and_more... OK
+  Applying care.0007_prescriptionitem_issue_not_above_prescribed_and_more... OK
+  Applying care.0008_preserve_registration_and_dispensing... OK
+  Applying care.0009_appointment_cancellation_reason_and_more... OK

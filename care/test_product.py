@@ -187,6 +187,7 @@ class ProductWorkflows(TestCase):
         from django.urls import get_resolver
         all_roles = {'patient','doctor','receptionist','pharmacist','admin'}
         policy = {
+            'waiting_list':{'patient','receptionist'},'worklist':{'doctor','receptionist','pharmacist','admin'},'schedule_rules':{'doctor'},'registration_card':{'patient','receptionist','admin'},'admissions':{'patient','doctor','receptionist','admin'},'bed_catalogue':{'admin'},'purchasing':{'pharmacist','admin'},'partial_issue':{'pharmacist'},'batch_safety':{'pharmacist','admin'},'clinical_work':{'patient','doctor'},'assistant_admin':{'admin'},
             'schema_explorer':{'admin'},'data_management':{'admin'},'notifications':all_roles,'patients':{'receptionist','admin'},'users':{'admin'},'operations':{'admin'},
             'edit_slot':{'doctor'},'department_edit':{'admin'},'check_in':{'receptionist','admin'},
             'receipt':{'patient','receptionist','admin'},'password':all_roles,'dashboard':all_roles,'profile':all_roles,
@@ -208,6 +209,7 @@ class ProductWorkflows(TestCase):
             for key,converter in pattern.pattern.converters.items():
                 if key=='patient_id': value=self.patient.pk
                 elif key=='doctor_id': value=self.doctor.pk
+                elif key in ('medicine_id','item_id'): value=1
                 elif key=='kind': value='privacy'
                 elif key=='uid': value='invalid'
                 elif key=='token': value='invalid'

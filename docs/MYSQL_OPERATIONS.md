@@ -1,3 +1,5 @@
+> Current23 October upgrade:46 tables and migrations0006–0009 are applied. See [upgrade report](HOSPITAL_UPGRADE_REPORT.md) and [current schema](UPGRADE_SCHEMA_INVENTORY.md); older audit snapshots below are historical.
+
 # MySQL and administrator operations — Windows
 
 Local verification: PASS. The running application uses MySQL 8.4.13, schema `mednova_local`, at `127.0.0.1:3307`. It does not use SQLite. The runtime identity `mednova_local_app` has SELECT/INSERT/UPDATE/DELETE on that schema only. Migration/backup privileges belong to a separate operator. Private connection configuration is in the ignored `.runtime/local_mysql.json`; never share it. This loopback development connection has no verified TLS identity and is not a production connection.

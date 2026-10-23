@@ -1,0 +1,2 @@
+
+1 static file copied to 'C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\staticfiles', 11 unmodified.

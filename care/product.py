@@ -155,7 +155,11 @@ def notes(request, pk):
     latest = appt.notes.first()
     version = latest.version if latest else 0
     can_write = request.user.role == 'doctor' and appt.status in ('confirmed', 'completed') and appt.slot.start <= timezone.now()
-    form = NoteForm(request.POST if request.method == 'POST' else None, initial={**({field: getattr(latest, field) for field in ['complaint', 'examination', 'assessment', 'plan', 'follow_up']} if latest else {}), 'expected_version': version})
+    source = latest
+    if request.GET.get('draft') == '1' and can_write:
+        from .models import ClinicalDraft
+        source = ClinicalDraft.objects.filter(appointment=appt).first() or latest
+    form = NoteForm(request.POST if request.method == 'POST' else None, initial={**({field: getattr(source, field) for field in ['complaint', 'examination', 'assessment', 'plan', 'follow_up']} if source else {}), 'expected_version': version})
     if request.method == 'POST':
         if not can_write:
             raise PermissionDenied
@@ -225,7 +229,7 @@ def queue(request):
             appt = Appointment.objects.select_for_update().get(pk=entry.appointment_id)
             entry = QueueEntry.objects.select_for_update().get(pk=entry.pk)
             target = request.POST.get('status')
-            transitions = {'waiting': {'called', 'cancelled'}, 'called': {'completed', 'cancelled'}}
+            transitions = {'waiting': {'called', 'cancelled'}, 'called': {'in_consultation', 'completed', 'cancelled'}, 'in_consultation': {'completed','cancelled'}}
             if target not in transitions.get(entry.status, set()) or appt.status == 'cancelled':
                 messages.error(request, 'This queue transition is unavailable.')
             else:
@@ -245,8 +249,11 @@ def movements(request):
 @roles('admin')
 @require_http_methods(['GET'])
 def data_management(request):
-    from .models import Department, DoctorProfile, Medicine, Payment, AuditEvent, DeliveryOutbox
+    from .models import Department, DoctorProfile, Medicine, Payment, AuditEvent, DeliveryOutbox, Admission, PurchaseOrder, AssistantEscalation
     entities = [
+        {'name':'Admissions and beds','count':Admission.objects.count(),'purpose':'Operational allocation and responsible-doctor discharge readiness.','route':'admissions'},
+        {'name':'Suppliers and purchases','count':PurchaseOrder.objects.count(),'purpose':'Approved requisitions and verified goods receipts.','route':'purchasing'},
+        {'name':'Assistant knowledge and support','count':AssistantEscalation.objects.filter(resolved=False).count(),'purpose':'Approved FAQs and topic-only unresolved support requests.','route':'assistant_admin'},
         {'name':'Users and access','count':User.objects.count(),'purpose':'Search accounts, review status and revoke access. Passwords and private clinical records are excluded.','route':'users'},
         {'name':'Staff review','count':User.objects.exclude(role='patient').filter(approval='pending').count(),'purpose':'Review pending staff credentials before granting access.','route':'staff'},
         {'name':'Departments','count':Department.objects.count(),'purpose':'Create departments and edit validated service descriptions.','route':'departments'},

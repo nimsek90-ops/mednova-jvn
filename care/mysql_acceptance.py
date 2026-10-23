@@ -84,3 +84,52 @@ class MySQLBookingAcceptance(TransactionTestCase):
         result=self.race([lambda: add(Workflows.appt.pk),lambda: add(second.pk)])
         self.assertEqual(result,['ok','ok'])
         self.assertEqual(set(QueueEntry.objects.values_list('number',flat=True)),{1,2})
+
+    def test_simultaneous_partial_issues_cannot_overdispense(self):
+        import uuid
+        from datetime import timedelta
+        from django.utils import timezone
+        from .models import Medicine, Prescription, PrescriptionItem, DispensingEvent
+        from .hospital_services import partial_dispense
+        med=Medicine.objects.create(name='Synthetic partial race',batch='QA',expiry=timezone.localdate()+timedelta(days=30),stock=10,price=1)
+        rx=Prescription.objects.create(appointment=Workflows.appt,instructions='Synthetic')
+        item=PrescriptionItem.objects.create(prescription=rx,medicine=med,dose='Synthetic',quantity=5)
+        result=self.race([lambda:partial_dispense(item.pk,4,uuid.uuid4(),Workflows.pharmacist) for _ in range(2)])
+        self.assertCountEqual(result,['ok','unavailable'])
+        med.refresh_from_db();item.refresh_from_db()
+        self.assertEqual((med.stock,item.dispensed_quantity),(6,4))
+        self.assertEqual(DispensingEvent.objects.filter(item=item).count(),1)
+
+    def test_simultaneous_same_receipt_only_adds_stock_once(self):
+        from datetime import timedelta
+        from django.utils import timezone
+        from .models import Medicine, Supplier, PurchaseOrder, GoodsReceipt
+        from .hospital_services import receive_purchase
+        med=Medicine.objects.create(name='Synthetic receipt race',batch='QA',expiry=timezone.localdate()+timedelta(days=30),stock=0,price=1)
+        supplier=Supplier.objects.create(name='Synthetic race supplier')
+        order=PurchaseOrder.objects.create(supplier=supplier,medicine=med,quantity=10,status='approved',requested_by=Workflows.pharmacist,approved_by=Workflows.admin)
+        result=self.race([lambda:receive_purchase(order.pk,10,'SYNTHETIC-RACE-GRN',Workflows.pharmacist) for _ in range(2)])
+        self.assertEqual(result,['ok','ok'])
+        med.refresh_from_db();self.assertEqual(med.stock,10)
+        self.assertEqual(GoodsReceipt.objects.filter(order=order).count(),1)
+
+    def test_simultaneous_bed_allocation_has_one_winner(self):
+        from .models import Bed, Admission
+        from .hospital_services import update_admission
+        bed=Bed.objects.create(label='Synthetic race bed',ward='QA',room_type='General')
+        requests=[Admission.objects.create(patient=p,doctor=Workflows.doctor,department=Workflows.department) for p in [Workflows.patient,Workflows.other]]
+        result=self.race([lambda pk=a.pk:update_admission(pk,'allocate',Workflows.reception,bed.pk) for a in requests])
+        self.assertCountEqual(result,['ok','unavailable'])
+        self.assertEqual(Admission.objects.filter(bed=bed).count(),1)
+
+    def test_simultaneous_distinct_slots_respect_daily_cap(self):
+        from datetime import timedelta
+        profile=Workflows.doctor.doctor_profile
+        profile.daily_limit=2
+        profile.save()
+        patient=User.objects.create_user('synthetic-cap-race@example.test','Synthetic-Cap-Password-928!',name='Synthetic cap patient')
+        third=Slot.objects.create(doctor=Workflows.doctor,start=Workflows.slot2.start+timedelta(minutes=12))
+        result=self.race([lambda:book(Workflows.other,Workflows.slot2.pk,'in_person','Synthetic cap race'),
+            lambda:book(patient,third.pk,'in_person','Synthetic cap race')])
+        self.assertCountEqual(result,['ok','unavailable'])
+        self.assertEqual(Appointment.objects.count(),2)

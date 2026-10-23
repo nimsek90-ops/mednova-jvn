@@ -1,0 +1,226 @@
+{
+  "status": "PASS",
+  "database": "mednova_local",
+  "before_tables": 31,
+  "after_tables": 46,
+  "tables": [
+    {
+      "table": "auth_group",
+      "before_count": 0,
+      "after_count": 0,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "auth_group_permissions",
+      "before_count": 0,
+      "after_count": 0,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "auth_permission",
+      "before_count": 108,
+      "after_count": 168,
+      "original_column_values_preserved": true,
+      "expected_additions": true
+    },
+    {
+      "table": "care_appointment",
+      "before_count": 18,
+      "after_count": 18,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_auditevent",
+      "before_count": 355,
+      "after_count": 355,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_clinicalnote",
+      "before_count": 2,
+      "after_count": 2,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_deliveryoutbox",
+      "before_count": 78,
+      "after_count": 78,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_department",
+      "before_count": 2,
+      "after_count": 2,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_doctorprofile",
+      "before_count": 7,
+      "after_count": 7,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_healthassessment",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_hospital",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_medicine",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_notification",
+      "before_count": 116,
+      "after_count": 116,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_payment",
+      "before_count": 18,
+      "after_count": 18,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_prescription",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_prescriptionitem",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_queuecounter",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_queueentry",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_ratebucket",
+      "before_count": 135,
+      "after_count": 135,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_report",
+      "before_count": 1,
+      "after_count": 1,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_signal",
+      "before_count": 0,
+      "after_count": 0,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_slot",
+      "before_count": 52,
+      "after_count": 52,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_stockmovement",
+      "before_count": 5,
+      "after_count": 5,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_user",
+      "before_count": 31,
+      "after_count": 31,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_user_groups",
+      "before_count": 0,
+      "after_count": 0,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_user_user_permissions",
+      "before_count": 0,
+      "after_count": 0,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_wellnessentry",
+      "before_count": 2,
+      "after_count": 2,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "care_wellnessrevision",
+      "before_count": 3,
+      "after_count": 3,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    },
+    {
+      "table": "django_content_type",
+      "before_count": 27,
+      "after_count": 42,
+      "original_column_values_preserved": true,
+      "expected_additions": true
+    },
+    {
+      "table": "django_migrations",
+      "before_count": 20,
+      "after_count": 24,
+      "original_column_values_preserved": true,
+      "expected_additions": true
+    },
+    {
+      "table": "django_session",
+      "before_count": 72,
+      "after_count": 72,
+      "original_column_values_preserved": true,
+      "expected_additions": false
+    }
+  ],
+  "scope": "Before synthetic HTTP testing: original values in all 31 existing tables preserved. Django migration/content-type/permission registry rows appended as expected; new fields/tables added. No resets."
+}

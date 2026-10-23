@@ -12,6 +12,9 @@ def user_event(sender, instance, created, raw=False, **kwargs):
     if raw:
         return
     if created:
+        if instance.role == 'patient':
+            from .models import PatientRegistration
+            PatientRegistration.objects.get_or_create(patient=instance)
         publish(instance, 'Your account has been registered. Staff access requires approval.', f'registration:{instance.pk}')
     elif instance._previous_approval != instance.approval:
         publish(instance, 'Your staff approval status changed. Sign in to review it.', f'approval:{instance.pk}:{instance.approval}:{__import__("hashlib").sha256(instance.review_note.encode()).hexdigest()[:24]}')

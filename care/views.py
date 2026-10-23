@@ -16,7 +16,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.db import transaction, IntegrityError
-from django.db.models import Q, Count
+from django.db.models import Q, Count, F
 from django.http import (
     FileResponse,
     Http404,
@@ -35,6 +35,7 @@ from .models import *
 from .forms import *
 from .security import roles, rate_limit, limited, audit
 from .services import book, change_status, dispense, BookingError
+from .scheduling import available_slots, overlaps, slot_end
 
 logger = logging.getLogger(__name__)
 
@@ -73,7 +74,7 @@ def doctor_detail(request, pk):
     doctor = get_object_or_404(approved_profiles(), user_id=pk)
     return render(request, "care/doctor_detail.html", {
         "doc": doctor,
-        "slots": Slot.objects.filter(doctor_id=pk, active=True, booked=False, start__gt=timezone.now())[:12],
+        "slots": available_slots(doctor=doctor.user)[:12],
     })
 
 
@@ -283,7 +284,7 @@ def dashboard(request):
                 Prescription.objects.filter(dispensed=False).exclude(appointment__status="cancelled").count(),
             ),
             ("Medicine batches", Medicine.objects.count()),
-            ("Low stock", Medicine.objects.filter(stock__lt=10).count()),
+            ("Low stock", Medicine.objects.filter(stock__lte=F('reorder_level')).count()),
         ]
     return render(
         request,
@@ -298,7 +299,7 @@ def dashboard(request):
             .exclude(role="patient")
             .count(),
             "low_stock": (
-                Medicine.objects.filter(stock__lt=10)[:6]
+                Medicine.objects.filter(stock__lte=F('reorder_level')).order_by('expiry','pk')[:6]
                 if u.role == "pharmacist"
                 else []
             ),
@@ -376,7 +377,9 @@ def doctors(request):
         user__role="doctor", user__approval="approved", user__is_active=True, department__active=True
     )
     from django.db.models import Min
-    profiles = profiles.annotate(next_slot=Min('user__slots__start', filter=Q(user__slots__active=True, user__slots__booked=False, user__slots__start__gt=timezone.now(), user__slots__start__lt=timezone.now()+timedelta(days=90))))
+    from .scheduling import available_slots
+    available = available_slots(include_urgent=request.user.is_authenticated and request.user.role == 'receptionist')
+    profiles = profiles.annotate(next_slot=Min('user__slots__start', filter=Q(user__slots__pk__in=available.values('pk'))))
     query = request.GET.get("q", "").strip()[:100]
     if query:
         profiles = profiles.filter(
@@ -386,7 +389,7 @@ def doctors(request):
     if department:
         profiles = profiles.filter(department_id=integer_id(department))
     if request.GET.get("available") == "1":
-        profiles = profiles.filter(user__slots__active=True, user__slots__booked=False, user__slots__start__gt=timezone.now(), user__slots__start__lt=timezone.now()+timedelta(days=90)).distinct()
+        profiles = profiles.filter(user__slots__pk__in=available.values("pk")).distinct()
     return render(
         request,
         "care/doctors.html",
@@ -409,32 +412,33 @@ def availability(request):
         d = form.cleaned_data
         start = timezone.make_aware(datetime.combine(d["date"], d["start"]))
         end = timezone.make_aware(datetime.combine(d["date"], d["end"]))
+        duration, buffer = d.get("duration") or 12, d.get("buffer") or 0
+        step = duration + buffer
         created = 0
         with transaction.atomic():
             User.objects.select_for_update().get(pk=request.user.pk)
-            while start + timedelta(minutes=12) <= end:
+            while start + timedelta(minutes=step) <= end:
                 if (
                     start > timezone.now()
-                    and not Slot.objects.filter(
-                        doctor=request.user,
-                        active=True,
-                        start__gt=start - timedelta(minutes=12),
-                        start__lt=start + timedelta(minutes=12),
-                    ).exists()
+                    and not any(overlaps(start, start+timedelta(minutes=step), other.start, other.start+timedelta(minutes=other.duration+other.buffer))
+                        for other in Slot.objects.filter(doctor=request.user, active=True, start__gt=start-timedelta(hours=5), start__lt=start+timedelta(minutes=step)))
+                    and not ScheduleBlock.objects.filter(doctor=request.user,start__lt=start+timedelta(minutes=step),end__gt=start).exists()
                 ):
                     slot, new = Slot.objects.get_or_create(
                         doctor=request.user, start=start,
-                        defaults={"consultation_type": d.get("consultation_type") or "both"},
+                        defaults={"consultation_type": d.get("consultation_type") or "both", "duration":duration,"buffer":buffer},
                     )
                     if not slot.booked:
                         slot.active = True
-                        slot.save(update_fields=["active"])
+                        slot.duration, slot.buffer = duration, buffer
+                        slot.consultation_type = d.get('consultation_type') or 'both'
+                        slot.save(update_fields=["active",'duration','buffer','consultation_type'])
                         created += 1
-                start += timedelta(minutes=12)
+                start += timedelta(minutes=step)
             audit(request.user, "availability.added", str(created))
         messages.success(
             request,
-            f"{created} appointment slots added. Each consultation is 12 minutes.",
+            f"{created} appointment slots added. Consultation {duration} minutes plus {buffer} minutes buffer.",
         )
         return redirect("availability")
     period = request.GET.get("period", "week")
@@ -510,13 +514,8 @@ def booking(request, doctor_id):
         request.POST or None,
         initial={"reason": appt.reason, "mode": appt.mode} if appt else {},
     )
-    slots = Slot.objects.filter(
-        doctor=doctor,
-        active=True,
-        booked=False,
-        start__gt=timezone.now(),
-        start__lt=timezone.now() + timedelta(days=90),
-    )
+    from .scheduling import available_slots
+    slots = available_slots(doctor=doctor, include_urgent=request.user.role == 'receptionist')
     available_dates = sorted({timezone.localdate(start) for start in slots.values_list('start', flat=True)[:3000]})[:14]
     chosen_date = request.GET.get("date", "")
     if chosen_date:
@@ -553,7 +552,7 @@ def booking(request, doctor_id):
                 slot.pk,
                 form.cleaned_data["mode"],
                 form.cleaned_data["reason"],
-                existing=appt,
+                existing=appt, actor=request.user,
             )
             if request.user != patient:
                 audit(request.user, "reception.booking", obj.pk)
@@ -592,8 +591,29 @@ def appointments(request):
     query = request.GET.get("q", "").strip()[:100]
     if query:
         qs = qs.filter(Q(patient__name__icontains=query) | Q(patient__email__icontains=query) | Q(slot__doctor__name__icontains=query))
+    chosen_date = request.GET.get('date', '')
+    period = request.GET.get('period', 'day')
+    if chosen_date:
+        try:
+            day = datetime.strptime(chosen_date, '%Y-%m-%d').date()
+        except ValueError:
+            raise Http404('Choose a valid calendar date.')
+        if period == 'month':
+            first = day.replace(day=1)
+            last = (first+timedelta(days=32)).replace(day=1)
+        elif period == 'week':
+            first = day-timedelta(days=day.weekday())
+            last = first+timedelta(days=7)
+        else:
+            first, last = day, day+timedelta(days=1)
+        start = timezone.make_aware(datetime.combine(first, datetime.min.time()))
+        end = timezone.make_aware(datetime.combine(last, datetime.min.time()))
+        qs = qs.filter(slot__start__gte=start,slot__start__lt=end)
+    department = request.GET.get('department','')
+    if department:
+        qs = qs.filter(slot__doctor__doctor_profile__department_id=integer_id(department))
     status = request.GET.get("status", "")
-    if status in ("pending", "confirmed", "completed", "cancelled"):
+    if status in ("pending", "confirmed", "completed", "cancelled", "no_show"):
         qs = qs.filter(status=status)
     return render(
         request,
@@ -602,6 +622,8 @@ def appointments(request):
             "appointments": paged(request, qs),
             "pagination": paged(request, qs),
             "status": status,
+            "chosen_date": chosen_date, "period":period,
+            "departments":Department.objects.filter(active=True),
             "q": query,
         },
     )
@@ -645,9 +667,9 @@ def appointment_action(request, pk):
     action = request.POST.get("action", "")
     allowed = {
         "patient": ["cancelled"],
-        "doctor": ["confirmed", "cancelled", "completed"],
-        "receptionist": ["confirmed", "cancelled"],
-        "admin": ["confirmed", "cancelled"],
+        "doctor": ["confirmed", "cancelled", "completed", "no_show"],
+        "receptionist": ["confirmed", "cancelled", "no_show"],
+        "admin": ["confirmed", "cancelled", "no_show"],
     }
     if action not in allowed[request.user.role]:
         return HttpResponseForbidden()
@@ -656,7 +678,7 @@ def appointment_action(request, pk):
             "Contact the hospital to amend a past appointment."
         )
     try:
-        change_status(appt, request.user, action)
+        change_status(appt, request.user, action, request.POST.get("cancellation_reason", "").strip())
         messages.success(request, "Appointment updated.")
     except BookingError as e:
         messages.error(request, str(e))
@@ -733,6 +755,7 @@ def prescribe(request, pk):
     if request.method == "POST":
         instructions = request.POST.get("instructions", "").strip()
         lines = []
+        structured = {}
         try:
             if not instructions or len(instructions) > 3000:
                 raise ValueError("Enter instructions, up to 3000 characters.")
@@ -740,13 +763,20 @@ def prescribe(request, pk):
                 mid = request.POST.get(f"medicine_{i}", "")
                 if not mid:
                     continue
-                med = Medicine.objects.get(pk=mid, expiry__gte=timezone.localdate())
+                med = Medicine.objects.get(pk=mid, expiry__gte=timezone.localdate(), safety_status="available")
                 dose = request.POST.get(f"dose_{i}", "").strip()
                 quantity = int(request.POST.get(f"quantity_{i}", "0"))
                 if not dose or len(dose) > 200 or not 1 <= quantity <= 1000:
                     raise ValueError("Provide a dose and quantity for every medicine.")
                 if any(m.pk == med.pk for m, _, _ in lines):
                     raise ValueError("Each medicine batch may appear only once.")
+                extra = {}
+                for field, limit in [('route',60),('frequency',100),('duration_text',100)]:
+                    value = request.POST.get(f'{field}_{i}', '').strip()
+                    if len(value) > limit:
+                        raise ValueError('Prescription field exceeds its maximum length.')
+                    extra[field] = value
+                structured[med.pk] = extra
                 lines.append((med, dose, quantity))
             with transaction.atomic():
                 appt = Appointment.objects.select_for_update().get(pk=pk)
@@ -761,7 +791,7 @@ def prescribe(request, pk):
                 )
                 for med, dose, quantity in lines:
                     PrescriptionItem.objects.create(
-                        prescription=rx, medicine=med, dose=dose, quantity=quantity
+                        prescription=rx, medicine=med, dose=dose, quantity=quantity, **structured[med.pk]
                     )
                 audit(request.user, "prescription.issued", rx.pk)
             return redirect("appointment", pk=pk)
@@ -776,7 +806,7 @@ def prescribe(request, pk):
             "appt": appt,
             "error": error,
             "medicines": Medicine.objects.filter(
-                expiry__gte=timezone.localdate()
+                expiry__gte=timezone.localdate(), safety_status="available"
             ).order_by("name"),
             "rows": range(1, 6),
         },
@@ -830,11 +860,11 @@ def inventory(request):
         "care/inventory.html",
         {
             "form": form,
-            "low_stock_count": Medicine.objects.filter(stock__lte=10).count(),
+            "low_stock_count": Medicine.objects.filter(stock__lte=F('reorder_level')).count(),
             "expired_count": Medicine.objects.filter(expiry__lt=timezone.localdate()).count(),
             "expiring_count": Medicine.objects.filter(expiry__gte=timezone.localdate(), expiry__lte=timezone.localdate()+timedelta(days=30)).count(),
-            "medicines": paged(request, Medicine.objects.order_by("name", "pk")),
-            "pagination": paged(request, Medicine.objects.order_by("name", "pk")),
+            "medicines": paged(request, Medicine.objects.order_by("expiry", "name", "pk")),
+            "pagination": paged(request, Medicine.objects.order_by("expiry", "name", "pk")),
         },
     )
 
@@ -1155,21 +1185,42 @@ def call_access(request, pk):
     appt = clinical_appointment(request.user, pk)
     if appt.mode != "video" or appt.status != "confirmed":
         raise Http404()
+    if VideoAttendance.objects.filter(appointment=appt, ended_at__isnull=False).exists():
+        raise Http404('This consultation room has ended.')
     now = timezone.now()
     if (
         not appt.slot.start - timedelta(minutes=10)
         <= now
-        <= appt.slot.start + timedelta(minutes=30)
+        <= appt.slot.start + timedelta(minutes=max(30, appt.slot.duration+appt.slot.buffer+15))
     ):
         raise Http404(
-            "The call opens 10 minutes before your appointment and closes 30 minutes after its start."
+            "The call opens 10 minutes before your appointment and closes after its scheduled consultation and grace period."
         )
     return appt
 
 
 @roles("patient", "doctor")
+@require_http_methods(['GET','POST'])
 def video(request, pk):
     appt = call_access(request, pk)
+    attendance, _ = VideoAttendance.objects.get_or_create(appointment=appt)
+    if request.method == 'POST':
+        with transaction.atomic():
+            attendance = VideoAttendance.objects.select_for_update().get(pk=attendance.pk)
+            action = request.POST.get('action')
+            if action == 'consent' and request.user.role == 'patient' and request.POST.get('consent') == 'on':
+                attendance.patient_consented_at = attendance.patient_consented_at or timezone.now()
+                audit(request.user, 'video.consented', pk)
+            elif action == 'admit' and request.user.role == 'doctor' and attendance.patient_consented_at:
+                attendance.admitted_at = attendance.admitted_at or timezone.now()
+                audit(request.user, 'video.patient_admitted', pk)
+            elif action == 'close' and request.user.role == 'doctor':
+                attendance.ended_at = timezone.now()
+                audit(request.user, 'video.room_closed', pk)
+            else:
+                return HttpResponseForbidden('Consent or admission action is not available.')
+            attendance.save()
+        return redirect('appointment' if action == 'close' else 'video', pk=pk)
     config = {"iceServers": [], "iceTransportPolicy": "all"}
     if settings.TURN_URL and settings.TURN_SECRET:
         username = f"{int(timezone.now().timestamp())+3600}:{request.user.pk}"
@@ -1200,6 +1251,8 @@ def video(request, pk):
         "care/video.html",
         {
             "appt": appt,
+            "attendance": attendance,
+            "room_ready": bool(attendance.patient_consented_at and attendance.admitted_at),
             "call_data": {
                 "config": config,
                 "signal_url": reverse("signal", args=[pk]),
@@ -1215,6 +1268,9 @@ def video(request, pk):
 @rate_limit("video-signals", 180, 60)
 def signal(request, pk):
     appt = call_access(request, pk)
+    admitted = VideoAttendance.objects.filter(appointment=appt, patient_consented_at__isnull=False, admitted_at__isnull=False, ended_at__isnull=True).exists()
+    if request.method == 'GET' and not admitted and request.user.role == 'patient':
+        return JsonResponse({'signals': [], 'waiting': True})
     if request.method == "POST":
         if len(request.body) > 30000:
             return JsonResponse({"error": "Payload too large"}, status=413)
@@ -1235,6 +1291,8 @@ def signal(request, pk):
                 raise ValueError()
             if kind == "answer" and request.user.role != "patient":
                 raise ValueError()
+            if request.user.role == 'patient' and not admitted:
+                return JsonResponse({'error':'Patient consent and doctor admission are required.'}, status=409)
             Signal.objects.create(
                 appointment=appt, sender=request.user, kind=kind, payload=payload
             )
@@ -1347,6 +1405,7 @@ def patients(request):
         try:
             with transaction.atomic():
                 patient = form.save()
+                PatientRegistration.objects.get_or_create(patient=patient)
                 audit(request.user, "reception.patient_registered", patient.pk)
         except IntegrityError:
             form.add_error("email", "This email is already registered.")
@@ -1357,7 +1416,14 @@ def patients(request):
     records = User.objects.filter(role="patient").order_by("name", "pk")
     if query:
         records = records.filter(Q(name__icontains=query) | Q(email__icontains=query) | Q(phone__icontains=query))
-    pagination = paged(request, records)
+    mrn_query = query.removeprefix('MN-').replace('-','')
+    if len(mrn_query)==32:
+        try:
+            import uuid
+            records = User.objects.filter(role='patient',registration__mrn=uuid.UUID(mrn_query))
+        except ValueError:
+            pass
+    pagination = paged(request, records.select_related('registration'))
     return render(request, "care/patients.html", {"form": form, "patients": pagination, "pagination": pagination, "q": query})
 
 
@@ -1403,12 +1469,14 @@ def edit_slot(request, pk):
     with transaction.atomic():
         User.objects.select_for_update().get(pk=request.user.pk)
         slot = get_object_or_404(Slot.objects.select_for_update(), pk=pk, doctor=request.user, active=True)
-        if slot.booked or slot.start <= timezone.now() or slot.appointments.exclude(status="cancelled").exists():
+        if slot.booked or slot.session_id or slot.start <= timezone.now() or slot.appointments.exclude(status="cancelled").exists():
             return HttpResponseForbidden("Only unused future slots may be edited.")
         form = SlotEditForm(request.POST or None, instance=slot)
         if request.method == "POST" and form.is_valid():
             start = form.cleaned_data["start"]
-            if Slot.objects.filter(doctor=request.user, active=True, start__gt=start-timedelta(minutes=12), start__lt=start+timedelta(minutes=12)).exclude(pk=pk).exists():
+            if ScheduleBlock.objects.filter(doctor=request.user,start__lt=start+timedelta(minutes=slot.duration+slot.buffer),end__gt=start).exists() or any(
+                    overlaps(start,start+timedelta(minutes=slot.duration+slot.buffer),other.start,slot_end(other))
+                    for other in Slot.objects.filter(doctor=request.user,active=True,start__gt=start-timedelta(hours=5),start__lt=start+timedelta(minutes=slot.duration+slot.buffer)).exclude(pk=pk)):
                 form.add_error("start", "This time overlaps another slot.")
             else:
                 try:

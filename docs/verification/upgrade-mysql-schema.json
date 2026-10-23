@@ -1,0 +1,5920 @@
+{
+  "engine": "mysql",
+  "database": "mednova_local",
+  "tables": [
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "auth_group",
+      "purpose": "auth.Group",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "name",
+          "type": "varchar(150)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "name": {
+          "columns": [
+            "name"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `auth_group` (\n  `id` int NOT NULL AUTO_INCREMENT,\n  `name` varchar(150) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `name` (`name`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "auth_group_permissions",
+      "purpose": "auth.Group_permissions",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "group_id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "permission_id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "auth_group_permissio_permission_id_84c5c92e_fk_auth_perm": {
+          "columns": [
+            "permission_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "auth_permission",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "auth_group_permissions_group_id_b120cbf9_fk_auth_group_id": {
+          "columns": [
+            "group_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "auth_group",
+            "id"
+          ]
+        },
+        "auth_group_permissions_group_id_permission_id_0cd325b0_uniq": {
+          "columns": [
+            "group_id",
+            "permission_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `auth_group_permissions` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `group_id` int NOT NULL,\n  `permission_id` int NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `auth_group_permissions_group_id_permission_id_0cd325b0_uniq` (`group_id`,`permission_id`),\n  KEY `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` (`permission_id`),\n  CONSTRAINT `auth_group_permissio_permission_id_84c5c92e_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),\n  CONSTRAINT `auth_group_permissions_group_id_b120cbf9_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "auth_group_permissio_permission_id_84c5c92e_fk_auth_perm",
+          "count": 0
+        },
+        {
+          "constraint": "auth_group_permissions_group_id_b120cbf9_fk_auth_group_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "auth_permission",
+      "purpose": "auth.Permission",
+      "engine": "InnoDB",
+      "approximate_rows": 168,
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "name",
+          "type": "varchar(255)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "content_type_id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "codename",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "auth_permission_content_type_id_2f476e4b_fk_django_co": {
+          "columns": [
+            "content_type_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "django_content_type",
+            "id"
+          ]
+        },
+        "auth_permission_content_type_id_codename_01ab375a_uniq": {
+          "columns": [
+            "content_type_id",
+            "codename"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `auth_permission` (\n  `id` int NOT NULL AUTO_INCREMENT,\n  `name` varchar(255) NOT NULL,\n  `content_type_id` int NOT NULL,\n  `codename` varchar(100) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),\n  CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "auth_permission_content_type_id_2f476e4b_fk_django_co",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_admission",
+      "purpose": "care.Admission",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "status",
+          "type": "varchar(16)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "last_bed",
+          "type": "varchar(200)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "updated",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "department_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "bed_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "bed_id": {
+          "columns": [
+            "bed_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_admission_bed_id_fecf2e36_fk_care_bed_id": {
+          "columns": [
+            "bed_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_bed",
+            "id"
+          ]
+        },
+        "care_admission_department_id_a690c14f_fk_care_department_id": {
+          "columns": [
+            "department_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_department",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_admission_doctor_id_b52f18e7_fk_care_user_id": {
+          "columns": [
+            "doctor_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_admission_patient_id_e820bc3b_fk_care_user_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_admission` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `status` varchar(16) NOT NULL,\n  `last_bed` varchar(200) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `updated` datetime(6) NOT NULL,\n  `department_id` bigint NOT NULL,\n  `doctor_id` bigint NOT NULL,\n  `patient_id` bigint NOT NULL,\n  `bed_id` bigint DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `bed_id` (`bed_id`),\n  KEY `care_admission_department_id_a690c14f_fk_care_department_id` (`department_id`),\n  KEY `care_admission_doctor_id_b52f18e7_fk_care_user_id` (`doctor_id`),\n  KEY `care_admission_patient_id_e820bc3b_fk_care_user_id` (`patient_id`),\n  CONSTRAINT `care_admission_bed_id_fecf2e36_fk_care_bed_id` FOREIGN KEY (`bed_id`) REFERENCES `care_bed` (`id`),\n  CONSTRAINT `care_admission_department_id_a690c14f_fk_care_department_id` FOREIGN KEY (`department_id`) REFERENCES `care_department` (`id`),\n  CONSTRAINT `care_admission_doctor_id_b52f18e7_fk_care_user_id` FOREIGN KEY (`doctor_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_admission_patient_id_e820bc3b_fk_care_user_id` FOREIGN KEY (`patient_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_admission_bed_id_fecf2e36_fk_care_bed_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_admission_department_id_a690c14f_fk_care_department_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_admission_doctor_id_b52f18e7_fk_care_user_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_admission_patient_id_e820bc3b_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_appointment",
+      "purpose": "care.Appointment",
+      "engine": "InnoDB",
+      "approximate_rows": 18,
+      "columns": [
+        {
+          "name": "id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": ""
+        },
+        {
+          "name": "mode",
+          "type": "varchar(10)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "status",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "reason",
+          "type": "varchar(400)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "fee",
+          "type": "decimal(8,2)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "slot_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "checked_in_at",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "cancellation_reason",
+          "type": "varchar(300)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_appointment_patient_id_b4175725_fk_care_user_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_appointment_slot_id_0e47ae40_fk_care_slot_id": {
+          "columns": [
+            "slot_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_slot",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_appointment` (\n  `id` char(32) NOT NULL,\n  `mode` varchar(10) NOT NULL,\n  `status` varchar(12) NOT NULL,\n  `reason` varchar(400) NOT NULL,\n  `fee` decimal(8,2) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `patient_id` bigint NOT NULL,\n  `slot_id` bigint NOT NULL,\n  `checked_in_at` datetime(6) DEFAULT NULL,\n  `cancellation_reason` varchar(300) NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_appointment_slot_id_0e47ae40_fk_care_slot_id` (`slot_id`),\n  KEY `care_appointment_patient_id_b4175725_fk_care_user_id` (`patient_id`),\n  CONSTRAINT `care_appointment_patient_id_b4175725_fk_care_user_id` FOREIGN KEY (`patient_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_appointment_slot_id_0e47ae40_fk_care_slot_id` FOREIGN KEY (`slot_id`) REFERENCES `care_slot` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_appointment_patient_id_b4175725_fk_care_user_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_appointment_slot_id_0e47ae40_fk_care_slot_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_assistantescalation",
+      "purpose": "care.AssistantEscalation",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "topic",
+          "type": "varchar(24)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "resolved",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_assistantescalation_patient_id_2c05a23b_fk_care_user_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_assistantescalation` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `topic` varchar(24) NOT NULL,\n  `resolved` tinyint(1) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `patient_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_assistantescalation_patient_id_2c05a23b_fk_care_user_id` (`patient_id`),\n  CONSTRAINT `care_assistantescalation_patient_id_2c05a23b_fk_care_user_id` FOREIGN KEY (`patient_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_assistantescalation_patient_id_2c05a23b_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_auditevent",
+      "purpose": "care.AuditEvent",
+      "engine": "InnoDB",
+      "approximate_rows": 342,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "action",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "target",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "actor_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_auditevent_actor_id_66dff823_fk_care_user_id": {
+          "columns": [
+            "actor_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_auditevent` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `action` varchar(100) NOT NULL,\n  `target` varchar(120) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `actor_id` bigint DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_auditevent_actor_id_66dff823_fk_care_user_id` (`actor_id`),\n  CONSTRAINT `care_auditevent_actor_id_66dff823_fk_care_user_id` FOREIGN KEY (`actor_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=356 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_auditevent_actor_id_66dff823_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_bed",
+      "purpose": "care.Bed",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "label",
+          "type": "varchar(80)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "ward",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "room_type",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "active",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "label": {
+          "columns": [
+            "label"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_bed` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `label` varchar(80) NOT NULL,\n  `ward` varchar(100) NOT NULL,\n  `room_type` varchar(100) NOT NULL,\n  `active` tinyint(1) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `label` (`label`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_clinicaldraft",
+      "purpose": "care.ClinicalDraft",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "complaint",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "examination",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "assessment",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "plan",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "follow_up",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "revision",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "updated",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "author_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_clinicaldraft_appointment_id_198e23b1_fk_care_appo": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ]
+        },
+        "care_clinicaldraft_author_id_4eff61f6_fk_care_user_id": {
+          "columns": [
+            "author_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_clinicaldraft_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_clinicaldraft` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `complaint` longtext NOT NULL,\n  `examination` longtext NOT NULL,\n  `assessment` longtext NOT NULL,\n  `plan` longtext NOT NULL,\n  `follow_up` longtext NOT NULL,\n  `revision` int unsigned NOT NULL,\n  `updated` datetime(6) NOT NULL,\n  `appointment_id` char(32) NOT NULL,\n  `author_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `appointment_id` (`appointment_id`),\n  KEY `care_clinicaldraft_author_id_4eff61f6_fk_care_user_id` (`author_id`),\n  CONSTRAINT `care_clinicaldraft_appointment_id_198e23b1_fk_care_appo` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_clinicaldraft_author_id_4eff61f6_fk_care_user_id` FOREIGN KEY (`author_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_clinicaldraft_chk_1` CHECK ((`revision` >= 0))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_clinicaldraft_appointment_id_198e23b1_fk_care_appo",
+          "count": 0
+        },
+        {
+          "constraint": "care_clinicaldraft_author_id_4eff61f6_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_clinicalnote",
+      "purpose": "care.ClinicalNote",
+      "engine": "InnoDB",
+      "approximate_rows": 2,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "complaint",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "examination",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "assessment",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "plan",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "follow_up",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "correction_reason",
+          "type": "varchar(300)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "version",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "author_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_clinicalnote_appointment_id_f5da14e4_fk_care_appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ]
+        },
+        "care_clinicalnote_author_id_91e035dd_fk_care_user_id": {
+          "columns": [
+            "author_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_clinicalnote_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "clinical_note_version": {
+          "columns": [
+            "appointment_id",
+            "version"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_clinicalnote` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `complaint` longtext NOT NULL,\n  `examination` longtext NOT NULL,\n  `assessment` longtext NOT NULL,\n  `plan` longtext NOT NULL,\n  `follow_up` longtext NOT NULL,\n  `correction_reason` varchar(300) NOT NULL,\n  `version` int unsigned NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `appointment_id` char(32) NOT NULL,\n  `author_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `clinical_note_version` (`appointment_id`,`version`),\n  KEY `care_clinicalnote_author_id_91e035dd_fk_care_user_id` (`author_id`),\n  CONSTRAINT `care_clinicalnote_appointment_id_f5da14e4_fk_care_appointment_id` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_clinicalnote_author_id_91e035dd_fk_care_user_id` FOREIGN KEY (`author_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_clinicalnote_chk_1` CHECK ((`version` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_clinicalnote_appointment_id_f5da14e4_fk_care_appointment_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_clinicalnote_author_id_91e035dd_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_deliveryoutbox",
+      "purpose": "care.DeliveryOutbox",
+      "engine": "InnoDB",
+      "approximate_rows": 77,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "dedupe_key",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "status",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "attempts",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "lease_until",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "next_attempt",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "sent_at",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "last_error",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "notification_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_deliveryoutbox_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_deliveryoutbox_notification_id_831511e8_fk_care_noti": {
+          "columns": [
+            "notification_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_notification",
+            "id"
+          ]
+        },
+        "dedupe_key": {
+          "columns": [
+            "dedupe_key"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "notification_id": {
+          "columns": [
+            "notification_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_deliveryoutbox` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `dedupe_key` varchar(120) NOT NULL,\n  `status` varchar(12) NOT NULL,\n  `attempts` smallint unsigned NOT NULL,\n  `lease_until` datetime(6) DEFAULT NULL,\n  `next_attempt` datetime(6) NOT NULL,\n  `sent_at` datetime(6) DEFAULT NULL,\n  `last_error` varchar(120) NOT NULL,\n  `notification_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `dedupe_key` (`dedupe_key`),\n  UNIQUE KEY `notification_id` (`notification_id`),\n  CONSTRAINT `care_deliveryoutbox_notification_id_831511e8_fk_care_noti` FOREIGN KEY (`notification_id`) REFERENCES `care_notification` (`id`),\n  CONSTRAINT `care_deliveryoutbox_chk_1` CHECK ((`attempts` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_deliveryoutbox_notification_id_831511e8_fk_care_noti",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_department",
+      "purpose": "care.Department",
+      "engine": "InnoDB",
+      "approximate_rows": 2,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "name",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "description",
+          "type": "varchar(400)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "active",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "name": {
+          "columns": [
+            "name"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_department` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `name` varchar(100) NOT NULL,\n  `description` varchar(400) NOT NULL,\n  `active` tinyint(1) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `name` (`name`)\n) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_dispensingevent",
+      "purpose": "care.DispensingEvent",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "key",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "quantity",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "item_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "pharmacist_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_dispensingevent_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_dispensingevent_item_id_bb96344c_fk_care_pres": {
+          "columns": [
+            "item_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_prescriptionitem",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_dispensingevent_pharmacist_id_21d9d1a2_fk_care_user_id": {
+          "columns": [
+            "pharmacist_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "key": {
+          "columns": [
+            "key"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_dispensingevent` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `key` char(32) NOT NULL,\n  `quantity` smallint unsigned NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `item_id` bigint NOT NULL,\n  `pharmacist_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `key` (`key`),\n  KEY `care_dispensingevent_item_id_bb96344c_fk_care_pres` (`item_id`),\n  KEY `care_dispensingevent_pharmacist_id_21d9d1a2_fk_care_user_id` (`pharmacist_id`),\n  CONSTRAINT `care_dispensingevent_item_id_bb96344c_fk_care_pres` FOREIGN KEY (`item_id`) REFERENCES `care_prescriptionitem` (`id`),\n  CONSTRAINT `care_dispensingevent_pharmacist_id_21d9d1a2_fk_care_user_id` FOREIGN KEY (`pharmacist_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_dispensingevent_chk_1` CHECK ((`quantity` >= 0))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_dispensingevent_item_id_bb96344c_fk_care_pres",
+          "count": 0
+        },
+        {
+          "constraint": "care_dispensingevent_pharmacist_id_21d9d1a2_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_doctorprofile",
+      "purpose": "care.DoctorProfile",
+      "engine": "InnoDB",
+      "approximate_rows": 7,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "qualification",
+          "type": "varchar(200)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "registration_number",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "experience",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "bio",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "fee",
+          "type": "decimal(8,2)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "department_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "daily_limit",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "location",
+          "type": "varchar(160)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_doctorprofile_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_doctorprofile_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_doctorprofile_department_id_82a25853_fk_care_department_id": {
+          "columns": [
+            "department_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_department",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_doctorprofile_user_id_86bd5dae_fk_care_user_id": {
+          "columns": [
+            "user_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "registration_number": {
+          "columns": [
+            "registration_number"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "user_id": {
+          "columns": [
+            "user_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_doctorprofile` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `qualification` varchar(200) NOT NULL,\n  `registration_number` varchar(100) NOT NULL,\n  `experience` smallint unsigned NOT NULL,\n  `bio` longtext NOT NULL,\n  `fee` decimal(8,2) NOT NULL,\n  `department_id` bigint DEFAULT NULL,\n  `user_id` bigint NOT NULL,\n  `daily_limit` smallint unsigned NOT NULL,\n  `location` varchar(160) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `registration_number` (`registration_number`),\n  UNIQUE KEY `user_id` (`user_id`),\n  KEY `care_doctorprofile_department_id_82a25853_fk_care_department_id` (`department_id`),\n  CONSTRAINT `care_doctorprofile_department_id_82a25853_fk_care_department_id` FOREIGN KEY (`department_id`) REFERENCES `care_department` (`id`),\n  CONSTRAINT `care_doctorprofile_user_id_86bd5dae_fk_care_user_id` FOREIGN KEY (`user_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_doctorprofile_chk_1` CHECK ((`experience` >= 0)),\n  CONSTRAINT `care_doctorprofile_chk_2` CHECK ((`daily_limit` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_doctorprofile_department_id_82a25853_fk_care_department_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_doctorprofile_user_id_86bd5dae_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_goodsreceipt",
+      "purpose": "care.GoodsReceipt",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "reference",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "quantity",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "received_by_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "order_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_goodsreceipt_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_goodsreceipt_order_id_6a376b81_fk_care_purchaseorder_id": {
+          "columns": [
+            "order_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_purchaseorder",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_goodsreceipt_received_by_id_526f1d87_fk_care_user_id": {
+          "columns": [
+            "received_by_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "reference": {
+          "columns": [
+            "reference"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_goodsreceipt` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `reference` varchar(120) NOT NULL,\n  `quantity` int unsigned NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `received_by_id` bigint NOT NULL,\n  `order_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `reference` (`reference`),\n  KEY `care_goodsreceipt_received_by_id_526f1d87_fk_care_user_id` (`received_by_id`),\n  KEY `care_goodsreceipt_order_id_6a376b81_fk_care_purchaseorder_id` (`order_id`),\n  CONSTRAINT `care_goodsreceipt_order_id_6a376b81_fk_care_purchaseorder_id` FOREIGN KEY (`order_id`) REFERENCES `care_purchaseorder` (`id`),\n  CONSTRAINT `care_goodsreceipt_received_by_id_526f1d87_fk_care_user_id` FOREIGN KEY (`received_by_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_goodsreceipt_chk_1` CHECK ((`quantity` >= 0))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_goodsreceipt_order_id_6a376b81_fk_care_purchaseorder_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_goodsreceipt_received_by_id_526f1d87_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_healthassessment",
+      "purpose": "care.HealthAssessment",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "answers",
+          "type": "json",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "result",
+          "type": "json",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_healthassessment_patient_id_97a9f22a_fk_care_user_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_healthassessment` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `created` datetime(6) NOT NULL,\n  `answers` json NOT NULL,\n  `result` json NOT NULL,\n  `patient_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_healthassessment_patient_id_97a9f22a_fk_care_user_id` (`patient_id`),\n  CONSTRAINT `care_healthassessment_patient_id_97a9f22a_fk_care_user_id` FOREIGN KEY (`patient_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_healthassessment_patient_id_97a9f22a_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_hospital",
+      "purpose": "care.Hospital",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "name",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "address",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "phone",
+          "type": "varchar(20)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "ambulance",
+          "type": "varchar(20)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "email",
+          "type": "varchar(254)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "privacy_email",
+          "type": "varchar(254)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "legal_name",
+          "type": "varchar(200)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "retention_days",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "cancellation_policy",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "cancellation_notice_minutes",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "opening_hours",
+          "type": "varchar(600)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_hospital_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_hospital_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_hospital` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `name` varchar(120) NOT NULL,\n  `address` longtext NOT NULL,\n  `phone` varchar(20) NOT NULL,\n  `ambulance` varchar(20) NOT NULL,\n  `email` varchar(254) NOT NULL,\n  `privacy_email` varchar(254) NOT NULL,\n  `legal_name` varchar(200) NOT NULL,\n  `retention_days` int unsigned NOT NULL,\n  `cancellation_policy` longtext NOT NULL,\n  `cancellation_notice_minutes` int unsigned NOT NULL,\n  `opening_hours` varchar(600) NOT NULL,\n  PRIMARY KEY (`id`),\n  CONSTRAINT `care_hospital_chk_1` CHECK ((`retention_days` >= 0)),\n  CONSTRAINT `care_hospital_chk_2` CHECK ((`cancellation_notice_minutes` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_hospitalfaq",
+      "purpose": "care.HospitalFAQ",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "question",
+          "type": "varchar(200)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "answer",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "language",
+          "type": "varchar(2)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "approved",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "updated",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_hospitalfaq` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `question` varchar(200) NOT NULL,\n  `answer` longtext NOT NULL,\n  `language` varchar(2) NOT NULL,\n  `approved` tinyint(1) NOT NULL,\n  `updated` datetime(6) NOT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_investigation",
+      "purpose": "care.Investigation",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "category",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(180)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "status",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "result",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "critical",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "acknowledged_at",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "ordered_by_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_investigation_appointment_id_80a3dcca_fk_care_appo": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_investigation_ordered_by_id_b7e67b80_fk_care_user_id": {
+          "columns": [
+            "ordered_by_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_investigation` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `category` varchar(12) NOT NULL,\n  `name` varchar(180) NOT NULL,\n  `status` varchar(12) NOT NULL,\n  `result` longtext NOT NULL,\n  `critical` tinyint(1) NOT NULL,\n  `acknowledged_at` datetime(6) DEFAULT NULL,\n  `created` datetime(6) NOT NULL,\n  `appointment_id` char(32) NOT NULL,\n  `ordered_by_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_investigation_appointment_id_80a3dcca_fk_care_appo` (`appointment_id`),\n  KEY `care_investigation_ordered_by_id_b7e67b80_fk_care_user_id` (`ordered_by_id`),\n  CONSTRAINT `care_investigation_appointment_id_80a3dcca_fk_care_appo` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_investigation_ordered_by_id_b7e67b80_fk_care_user_id` FOREIGN KEY (`ordered_by_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_investigation_appointment_id_80a3dcca_fk_care_appo",
+          "count": 0
+        },
+        {
+          "constraint": "care_investigation_ordered_by_id_b7e67b80_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_medicine",
+      "purpose": "care.Medicine",
+      "engine": "InnoDB",
+      "approximate_rows": 1,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "name",
+          "type": "varchar(150)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "batch",
+          "type": "varchar(60)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "expiry",
+          "type": "date",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "stock",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "price",
+          "type": "decimal(8,2)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "barcode",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "dosage_form",
+          "type": "varchar(80)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "generic_name",
+          "type": "varchar(150)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "location",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "manufacturer",
+          "type": "varchar(150)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "purchase_price",
+          "type": "decimal(8,2)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "reorder_level",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "safety_status",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "strength",
+          "type": "varchar(80)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_medicine_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_medicine_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "unique_medicine_batch": {
+          "columns": [
+            "name",
+            "batch"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_medicine` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `name` varchar(150) NOT NULL,\n  `batch` varchar(60) NOT NULL,\n  `expiry` date NOT NULL,\n  `stock` int unsigned NOT NULL,\n  `price` decimal(8,2) NOT NULL,\n  `barcode` varchar(100) NOT NULL,\n  `dosage_form` varchar(80) NOT NULL,\n  `generic_name` varchar(150) NOT NULL,\n  `location` varchar(120) NOT NULL,\n  `manufacturer` varchar(150) NOT NULL,\n  `purchase_price` decimal(8,2) NOT NULL,\n  `reorder_level` int unsigned NOT NULL,\n  `safety_status` varchar(12) NOT NULL,\n  `strength` varchar(80) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `unique_medicine_batch` (`name`,`batch`),\n  CONSTRAINT `care_medicine_chk_1` CHECK ((`stock` >= 0)),\n  CONSTRAINT `care_medicine_chk_2` CHECK ((`reorder_level` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_notification",
+      "purpose": "care.Notification",
+      "engine": "InnoDB",
+      "approximate_rows": 115,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "message",
+          "type": "varchar(200)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "read",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "recipient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_notification_appointment_id_48aa7bec_fk_care_appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_notification_recipient_id_cbd51a5f_fk_care_user_id": {
+          "columns": [
+            "recipient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_notification` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `message` varchar(200) NOT NULL,\n  `read` tinyint(1) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `appointment_id` char(32) DEFAULT NULL,\n  `recipient_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_notification_recipient_id_cbd51a5f_fk_care_user_id` (`recipient_id`),\n  KEY `care_notification_appointment_id_48aa7bec_fk_care_appointment_id` (`appointment_id`),\n  CONSTRAINT `care_notification_appointment_id_48aa7bec_fk_care_appointment_id` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_notification_recipient_id_cbd51a5f_fk_care_user_id` FOREIGN KEY (`recipient_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_notification_appointment_id_48aa7bec_fk_care_appointment_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_notification_recipient_id_cbd51a5f_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_patientregistration",
+      "purpose": "care.PatientRegistration",
+      "engine": "InnoDB",
+      "approximate_rows": 17,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "mrn",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "emergency_name",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "emergency_phone",
+          "type": "varchar(20)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "guardian",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "consent",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_patientregistration_patient_id_92f99ed7_fk_care_user_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "mrn": {
+          "columns": [
+            "mrn"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "patient_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_patientregistration` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `mrn` char(32) NOT NULL,\n  `emergency_name` varchar(120) NOT NULL,\n  `emergency_phone` varchar(20) NOT NULL,\n  `guardian` varchar(120) NOT NULL,\n  `consent` tinyint(1) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `patient_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `mrn` (`mrn`),\n  UNIQUE KEY `patient_id` (`patient_id`),\n  CONSTRAINT `care_patientregistration_patient_id_92f99ed7_fk_care_user_id` FOREIGN KEY (`patient_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_patientregistration_patient_id_92f99ed7_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_payment",
+      "purpose": "care.Payment",
+      "engine": "InnoDB",
+      "approximate_rows": 16,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "amount",
+          "type": "decimal(8,2)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "status",
+          "type": "varchar(16)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "method",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "order_id",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "provider_id",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "reference",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "updated",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "received_by_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_payment_appointment_id_eb858144_fk_care_appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ]
+        },
+        "care_payment_received_by_id_926e2a05_fk_care_user_id": {
+          "columns": [
+            "received_by_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_payment` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `amount` decimal(8,2) NOT NULL,\n  `status` varchar(16) NOT NULL,\n  `method` varchar(12) NOT NULL,\n  `order_id` varchar(100) NOT NULL,\n  `provider_id` varchar(100) NOT NULL,\n  `reference` varchar(120) NOT NULL,\n  `updated` datetime(6) NOT NULL,\n  `appointment_id` char(32) NOT NULL,\n  `received_by_id` bigint DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `appointment_id` (`appointment_id`),\n  KEY `care_payment_received_by_id_926e2a05_fk_care_user_id` (`received_by_id`),\n  CONSTRAINT `care_payment_appointment_id_eb858144_fk_care_appointment_id` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_payment_received_by_id_926e2a05_fk_care_user_id` FOREIGN KEY (`received_by_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_payment_appointment_id_eb858144_fk_care_appointment_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_payment_received_by_id_926e2a05_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_prescription",
+      "purpose": "care.Prescription",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": ""
+        },
+        {
+          "name": "instructions",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "dispensed",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "dispensed_at",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "dispensed_by_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_prescription_appointment_id_6bcdfad5_fk_care_appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ]
+        },
+        "care_prescription_dispensed_by_id_550e91d1_fk_care_user_id": {
+          "columns": [
+            "dispensed_by_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_prescription` (\n  `id` char(32) NOT NULL,\n  `instructions` longtext NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `dispensed` tinyint(1) NOT NULL,\n  `dispensed_at` datetime(6) DEFAULT NULL,\n  `appointment_id` char(32) NOT NULL,\n  `dispensed_by_id` bigint DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `appointment_id` (`appointment_id`),\n  KEY `care_prescription_dispensed_by_id_550e91d1_fk_care_user_id` (`dispensed_by_id`),\n  CONSTRAINT `care_prescription_appointment_id_6bcdfad5_fk_care_appointment_id` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_prescription_dispensed_by_id_550e91d1_fk_care_user_id` FOREIGN KEY (`dispensed_by_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_prescription_appointment_id_6bcdfad5_fk_care_appointment_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_prescription_dispensed_by_id_550e91d1_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_prescriptionitem",
+      "purpose": "care.PrescriptionItem",
+      "engine": "InnoDB",
+      "approximate_rows": 1,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "dose",
+          "type": "varchar(200)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "quantity",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "medicine_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "prescription_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "dispensed_quantity",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "duration_text",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "frequency",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "route",
+          "type": "varchar(60)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_prescriptionite_prescription_id_c40868da_fk_care_pres": {
+          "columns": [
+            "prescription_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_prescription",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_prescriptionitem_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_prescriptionitem_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_prescriptionitem_medicine_id_078b2732_fk_care_medicine_id": {
+          "columns": [
+            "medicine_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_medicine",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "issue_not_above_prescribed": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_prescriptionitem` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `dose` varchar(200) NOT NULL,\n  `quantity` smallint unsigned NOT NULL,\n  `medicine_id` bigint NOT NULL,\n  `prescription_id` char(32) NOT NULL,\n  `dispensed_quantity` smallint unsigned NOT NULL,\n  `duration_text` varchar(100) NOT NULL,\n  `frequency` varchar(100) NOT NULL,\n  `route` varchar(60) NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_prescriptionitem_medicine_id_078b2732_fk_care_medicine_id` (`medicine_id`),\n  KEY `care_prescriptionite_prescription_id_c40868da_fk_care_pres` (`prescription_id`),\n  CONSTRAINT `care_prescriptionite_prescription_id_c40868da_fk_care_pres` FOREIGN KEY (`prescription_id`) REFERENCES `care_prescription` (`id`),\n  CONSTRAINT `care_prescriptionitem_medicine_id_078b2732_fk_care_medicine_id` FOREIGN KEY (`medicine_id`) REFERENCES `care_medicine` (`id`),\n  CONSTRAINT `care_prescriptionitem_chk_1` CHECK ((`quantity` >= 0)),\n  CONSTRAINT `care_prescriptionitem_chk_2` CHECK ((`dispensed_quantity` >= 0)),\n  CONSTRAINT `issue_not_above_prescribed` CHECK ((`dispensed_quantity` <= `quantity`))\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_prescriptionite_prescription_id_c40868da_fk_care_pres",
+          "count": 0
+        },
+        {
+          "constraint": "care_prescriptionitem_medicine_id_078b2732_fk_care_medicine_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_purchaseorder",
+      "purpose": "care.PurchaseOrder",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "quantity",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "received",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "status",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "approved_by_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "medicine_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "requested_by_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "supplier_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_purchaseorder_approved_by_id_a278bb6a_fk_care_user_id": {
+          "columns": [
+            "approved_by_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_purchaseorder_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_purchaseorder_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_purchaseorder_medicine_id_c7277a1b_fk_care_medicine_id": {
+          "columns": [
+            "medicine_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_medicine",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_purchaseorder_requested_by_id_f36839c1_fk_care_user_id": {
+          "columns": [
+            "requested_by_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_purchaseorder_supplier_id_602fdae7_fk_care_supplier_id": {
+          "columns": [
+            "supplier_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_supplier",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "receipt_not_above_order": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        }
+      },
+      "create_table": "CREATE TABLE `care_purchaseorder` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `quantity` int unsigned NOT NULL,\n  `received` int unsigned NOT NULL,\n  `status` varchar(12) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `approved_by_id` bigint DEFAULT NULL,\n  `medicine_id` bigint NOT NULL,\n  `requested_by_id` bigint NOT NULL,\n  `supplier_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_purchaseorder_approved_by_id_a278bb6a_fk_care_user_id` (`approved_by_id`),\n  KEY `care_purchaseorder_medicine_id_c7277a1b_fk_care_medicine_id` (`medicine_id`),\n  KEY `care_purchaseorder_requested_by_id_f36839c1_fk_care_user_id` (`requested_by_id`),\n  KEY `care_purchaseorder_supplier_id_602fdae7_fk_care_supplier_id` (`supplier_id`),\n  CONSTRAINT `care_purchaseorder_approved_by_id_a278bb6a_fk_care_user_id` FOREIGN KEY (`approved_by_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_purchaseorder_medicine_id_c7277a1b_fk_care_medicine_id` FOREIGN KEY (`medicine_id`) REFERENCES `care_medicine` (`id`),\n  CONSTRAINT `care_purchaseorder_requested_by_id_f36839c1_fk_care_user_id` FOREIGN KEY (`requested_by_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_purchaseorder_supplier_id_602fdae7_fk_care_supplier_id` FOREIGN KEY (`supplier_id`) REFERENCES `care_supplier` (`id`),\n  CONSTRAINT `care_purchaseorder_chk_1` CHECK ((`quantity` >= 0)),\n  CONSTRAINT `care_purchaseorder_chk_2` CHECK ((`received` >= 0)),\n  CONSTRAINT `receipt_not_above_order` CHECK (((`quantity` >= 1) and (`received` <= `quantity`)))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_purchaseorder_approved_by_id_a278bb6a_fk_care_user_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_purchaseorder_medicine_id_c7277a1b_fk_care_medicine_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_purchaseorder_requested_by_id_f36839c1_fk_care_user_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_purchaseorder_supplier_id_602fdae7_fk_care_supplier_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_queuecounter",
+      "purpose": "care.QueueCounter",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "number",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_queuecounter_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "date": {
+          "columns": [
+            "date"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_queuecounter` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `date` date NOT NULL,\n  `number` int unsigned NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `date` (`date`),\n  CONSTRAINT `care_queuecounter_chk_1` CHECK ((`number` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_queueentry",
+      "purpose": "care.QueueEntry",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "number",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "status",
+          "type": "varchar(20)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "updated",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_queueentry_appointment_id_b3b1fbc1_fk_care_appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ]
+        },
+        "care_queueentry_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "queue_daily_token": {
+          "columns": [
+            "date",
+            "number"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_queueentry` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `date` date NOT NULL,\n  `number` int unsigned NOT NULL,\n  `status` varchar(20) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `updated` datetime(6) NOT NULL,\n  `appointment_id` char(32) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `appointment_id` (`appointment_id`),\n  UNIQUE KEY `queue_daily_token` (`date`,`number`),\n  CONSTRAINT `care_queueentry_appointment_id_b3b1fbc1_fk_care_appointment_id` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_queueentry_chk_1` CHECK ((`number` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_queueentry_appointment_id_b3b1fbc1_fk_care_appointment_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_ratebucket",
+      "purpose": "care.RateBucket",
+      "engine": "InnoDB",
+      "approximate_rows": 135,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "key",
+          "type": "varchar(64)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "count",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "expires",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_ratebucket_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "key": {
+          "columns": [
+            "key"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_ratebucket` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `key` varchar(64) NOT NULL,\n  `count` int unsigned NOT NULL,\n  `expires` datetime(6) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `key` (`key`),\n  CONSTRAINT `care_ratebucket_chk_1` CHECK ((`count` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_report",
+      "purpose": "care.Report",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": ""
+        },
+        {
+          "name": "title",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "extension",
+          "type": "varchar(5)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "file",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "uploaded_by_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_report_appointment_id_d1306e85_fk_care_appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_report_uploaded_by_id_ccabd984_fk_care_user_id": {
+          "columns": [
+            "uploaded_by_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_report` (\n  `id` char(32) NOT NULL,\n  `title` varchar(120) NOT NULL,\n  `extension` varchar(5) NOT NULL,\n  `file` varchar(100) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `appointment_id` char(32) NOT NULL,\n  `uploaded_by_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_report_appointment_id_d1306e85_fk_care_appointment_id` (`appointment_id`),\n  KEY `care_report_uploaded_by_id_ccabd984_fk_care_user_id` (`uploaded_by_id`),\n  CONSTRAINT `care_report_appointment_id_d1306e85_fk_care_appointment_id` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_report_uploaded_by_id_ccabd984_fk_care_user_id` FOREIGN KEY (`uploaded_by_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_report_appointment_id_d1306e85_fk_care_appointment_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_report_uploaded_by_id_ccabd984_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_scheduleblock",
+      "purpose": "care.ScheduleBlock",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "start",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "end",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "reason",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_scheduleblock_doctor_id_1e9fa32e_fk_care_user_id": {
+          "columns": [
+            "doctor_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "schedule_positive_block": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        }
+      },
+      "create_table": "CREATE TABLE `care_scheduleblock` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `start` datetime(6) NOT NULL,\n  `end` datetime(6) NOT NULL,\n  `reason` varchar(120) NOT NULL,\n  `doctor_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_scheduleblock_doctor_id_1e9fa32e_fk_care_user_id` (`doctor_id`),\n  CONSTRAINT `care_scheduleblock_doctor_id_1e9fa32e_fk_care_user_id` FOREIGN KEY (`doctor_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `schedule_positive_block` CHECK ((`end` > `start`))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_scheduleblock_doctor_id_1e9fa32e_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_schedulesession",
+      "purpose": "care.ScheduleSession",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "weekday",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "start",
+          "type": "time(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "end",
+          "type": "time(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "duration",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "buffer",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "mode",
+          "type": "varchar(10)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "visit_type",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "capacity",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "active",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_schedulesession_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_schedulesession_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_schedulesession_chk_3": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_schedulesession_chk_4": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_schedulesession_doctor_id_73794033_fk_care_user_id": {
+          "columns": [
+            "doctor_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "schedule_doctor_day_start": {
+          "columns": [
+            "doctor_id",
+            "weekday",
+            "start"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "schedule_positive_session": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "schedule_valid_limits": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        }
+      },
+      "create_table": "CREATE TABLE `care_schedulesession` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `weekday` smallint unsigned NOT NULL,\n  `start` time(6) NOT NULL,\n  `end` time(6) NOT NULL,\n  `duration` smallint unsigned NOT NULL,\n  `buffer` smallint unsigned NOT NULL,\n  `mode` varchar(10) NOT NULL,\n  `visit_type` varchar(12) NOT NULL,\n  `capacity` smallint unsigned NOT NULL,\n  `active` tinyint(1) NOT NULL,\n  `doctor_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `schedule_doctor_day_start` (`doctor_id`,`weekday`,`start`),\n  CONSTRAINT `care_schedulesession_doctor_id_73794033_fk_care_user_id` FOREIGN KEY (`doctor_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_schedulesession_chk_1` CHECK ((`weekday` >= 0)),\n  CONSTRAINT `care_schedulesession_chk_2` CHECK ((`duration` >= 0)),\n  CONSTRAINT `care_schedulesession_chk_3` CHECK ((`buffer` >= 0)),\n  CONSTRAINT `care_schedulesession_chk_4` CHECK ((`capacity` >= 0)),\n  CONSTRAINT `schedule_positive_session` CHECK ((`end` > `start`)),\n  CONSTRAINT `schedule_valid_limits` CHECK (((`buffer` <= 120) and (`capacity` >= 1) and (`duration` >= 5) and (`duration` <= 180) and (`weekday` <= 6)))\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_schedulesession_doctor_id_73794033_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_signal",
+      "purpose": "care.Signal",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "kind",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "payload",
+          "type": "json",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "sender_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_signal_appointment_id_2c345e47_fk_care_appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_signal_sender_id_b00c5bf3_fk_care_user_id": {
+          "columns": [
+            "sender_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_signal` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `kind` varchar(12) NOT NULL,\n  `payload` json NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `appointment_id` char(32) NOT NULL,\n  `sender_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_signal_appointment_id_2c345e47_fk_care_appointment_id` (`appointment_id`),\n  KEY `care_signal_sender_id_b00c5bf3_fk_care_user_id` (`sender_id`),\n  CONSTRAINT `care_signal_appointment_id_2c345e47_fk_care_appointment_id` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`),\n  CONSTRAINT `care_signal_sender_id_b00c5bf3_fk_care_user_id` FOREIGN KEY (`sender_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_signal_appointment_id_2c345e47_fk_care_appointment_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_signal_sender_id_b00c5bf3_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_slot",
+      "purpose": "care.Slot",
+      "engine": "InnoDB",
+      "approximate_rows": 52,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "start",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "booked",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "active",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "consultation_type",
+          "type": "varchar(10)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "buffer",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "duration",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "session_id",
+          "type": "bigint",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_slot_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_slot_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_slot_doctor_id_0ea3cf91_fk_care_user_id": {
+          "columns": [
+            "doctor_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "care_slot_session_id_e0272692_fk_care_schedulesession_id": {
+          "columns": [
+            "session_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_schedulesession",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "unique_doctor_slot": {
+          "columns": [
+            "doctor_id",
+            "start"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_slot` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `start` datetime(6) NOT NULL,\n  `booked` tinyint(1) NOT NULL,\n  `active` tinyint(1) NOT NULL,\n  `doctor_id` bigint NOT NULL,\n  `consultation_type` varchar(10) NOT NULL,\n  `buffer` smallint unsigned NOT NULL,\n  `duration` smallint unsigned NOT NULL,\n  `session_id` bigint DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `unique_doctor_slot` (`doctor_id`,`start`),\n  KEY `care_slot_session_id_e0272692_fk_care_schedulesession_id` (`session_id`),\n  CONSTRAINT `care_slot_doctor_id_0ea3cf91_fk_care_user_id` FOREIGN KEY (`doctor_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_slot_session_id_e0272692_fk_care_schedulesession_id` FOREIGN KEY (`session_id`) REFERENCES `care_schedulesession` (`id`),\n  CONSTRAINT `care_slot_chk_1` CHECK ((`buffer` >= 0)),\n  CONSTRAINT `care_slot_chk_2` CHECK ((`duration` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_slot_doctor_id_0ea3cf91_fk_care_user_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_slot_session_id_e0272692_fk_care_schedulesession_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_stockmovement",
+      "purpose": "care.StockMovement",
+      "engine": "InnoDB",
+      "approximate_rows": 4,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "quantity",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "balance",
+          "type": "int unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "reason",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "actor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "medicine_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "prescription_id",
+          "type": "char(32)",
+          "nullable": "YES",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_stockmovement_actor_id_bc85711e_fk_care_user_id": {
+          "columns": [
+            "actor_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_stockmovement_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_stockmovement_medicine_id_7e30d52f_fk_care_medicine_id": {
+          "columns": [
+            "medicine_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_medicine",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_stockmovement_prescription_id_12ea9f64_fk_care_pres": {
+          "columns": [
+            "prescription_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_prescription",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_stockmovement` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `quantity` int NOT NULL,\n  `balance` int unsigned NOT NULL,\n  `reason` varchar(120) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `actor_id` bigint NOT NULL,\n  `medicine_id` bigint NOT NULL,\n  `prescription_id` char(32) DEFAULT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_stockmovement_actor_id_bc85711e_fk_care_user_id` (`actor_id`),\n  KEY `care_stockmovement_medicine_id_7e30d52f_fk_care_medicine_id` (`medicine_id`),\n  KEY `care_stockmovement_prescription_id_12ea9f64_fk_care_pres` (`prescription_id`),\n  CONSTRAINT `care_stockmovement_actor_id_bc85711e_fk_care_user_id` FOREIGN KEY (`actor_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_stockmovement_medicine_id_7e30d52f_fk_care_medicine_id` FOREIGN KEY (`medicine_id`) REFERENCES `care_medicine` (`id`),\n  CONSTRAINT `care_stockmovement_prescription_id_12ea9f64_fk_care_pres` FOREIGN KEY (`prescription_id`) REFERENCES `care_prescription` (`id`),\n  CONSTRAINT `care_stockmovement_chk_1` CHECK ((`balance` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_stockmovement_actor_id_bc85711e_fk_care_user_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_stockmovement_medicine_id_7e30d52f_fk_care_medicine_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_stockmovement_prescription_id_12ea9f64_fk_care_pres",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_supplier",
+      "purpose": "care.Supplier",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "name",
+          "type": "varchar(150)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "contact",
+          "type": "varchar(160)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "active",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "name": {
+          "columns": [
+            "name"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_supplier` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `name` varchar(150) NOT NULL,\n  `contact` varchar(160) NOT NULL,\n  `active` tinyint(1) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `name` (`name`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_user",
+      "purpose": "care.User",
+      "engine": "InnoDB",
+      "approximate_rows": 31,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "password",
+          "type": "varchar(128)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "last_login",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "is_superuser",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "first_name",
+          "type": "varchar(150)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "last_name",
+          "type": "varchar(150)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "is_staff",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "is_active",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "date_joined",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "email",
+          "type": "varchar(254)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(120)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "phone",
+          "type": "varchar(20)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "role",
+          "type": "varchar(20)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "approval",
+          "type": "varchar(12)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "review_note",
+          "type": "varchar(300)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "date_of_birth",
+          "type": "date",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "must_change_password",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "email": {
+          "columns": [
+            "email"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_user` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `password` varchar(128) NOT NULL,\n  `last_login` datetime(6) DEFAULT NULL,\n  `is_superuser` tinyint(1) NOT NULL,\n  `first_name` varchar(150) NOT NULL,\n  `last_name` varchar(150) NOT NULL,\n  `is_staff` tinyint(1) NOT NULL,\n  `is_active` tinyint(1) NOT NULL,\n  `date_joined` datetime(6) NOT NULL,\n  `email` varchar(254) NOT NULL,\n  `name` varchar(120) NOT NULL,\n  `phone` varchar(20) NOT NULL,\n  `role` varchar(20) NOT NULL,\n  `approval` varchar(12) NOT NULL,\n  `review_note` varchar(300) NOT NULL,\n  `date_of_birth` date DEFAULT NULL,\n  `must_change_password` tinyint(1) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `email` (`email`)\n) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_user_groups",
+      "purpose": "care.User_groups",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "group_id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_user_groups_group_id_453e3af7_fk_auth_group_id": {
+          "columns": [
+            "group_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "auth_group",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_user_groups_user_id_41d4ff38_fk_care_user_id": {
+          "columns": [
+            "user_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "care_user_groups_user_id_group_id_1eda340c_uniq": {
+          "columns": [
+            "user_id",
+            "group_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_user_groups` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `user_id` bigint NOT NULL,\n  `group_id` int NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `care_user_groups_user_id_group_id_1eda340c_uniq` (`user_id`,`group_id`),\n  KEY `care_user_groups_group_id_453e3af7_fk_auth_group_id` (`group_id`),\n  CONSTRAINT `care_user_groups_group_id_453e3af7_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),\n  CONSTRAINT `care_user_groups_user_id_41d4ff38_fk_care_user_id` FOREIGN KEY (`user_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_user_groups_group_id_453e3af7_fk_auth_group_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_user_groups_user_id_41d4ff38_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_user_user_permissions",
+      "purpose": "care.User_user_permissions",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "permission_id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_user_user_permi_permission_id_db02c1d5_fk_auth_perm": {
+          "columns": [
+            "permission_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "auth_permission",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_user_user_permissions_user_id_81986f5f_fk_care_user_id": {
+          "columns": [
+            "user_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "care_user_user_permissions_user_id_permission_id_a4bcbb7c_uniq": {
+          "columns": [
+            "user_id",
+            "permission_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_user_user_permissions` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `user_id` bigint NOT NULL,\n  `permission_id` int NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `care_user_user_permissions_user_id_permission_id_a4bcbb7c_uniq` (`user_id`,`permission_id`),\n  KEY `care_user_user_permi_permission_id_db02c1d5_fk_auth_perm` (`permission_id`),\n  CONSTRAINT `care_user_user_permi_permission_id_db02c1d5_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),\n  CONSTRAINT `care_user_user_permissions_user_id_81986f5f_fk_care_user_id` FOREIGN KEY (`user_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_user_user_permi_permission_id_db02c1d5_fk_auth_perm",
+          "count": 0
+        },
+        {
+          "constraint": "care_user_user_permissions_user_id_81986f5f_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_videoattendance",
+      "purpose": "care.VideoAttendance",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "patient_consented_at",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "admitted_at",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "ended_at",
+          "type": "datetime(6)",
+          "nullable": "YES",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "appointment_id",
+          "type": "char(32)",
+          "nullable": "NO",
+          "default": null,
+          "key": "UNI",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "appointment_id": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_videoattendance_appointment_id_f33b37fa_fk_care_appo": {
+          "columns": [
+            "appointment_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_appointment",
+            "id"
+          ]
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_videoattendance` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `patient_consented_at` datetime(6) DEFAULT NULL,\n  `admitted_at` datetime(6) DEFAULT NULL,\n  `ended_at` datetime(6) DEFAULT NULL,\n  `appointment_id` char(32) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `appointment_id` (`appointment_id`),\n  CONSTRAINT `care_videoattendance_appointment_id_f33b37fa_fk_care_appo` FOREIGN KEY (`appointment_id`) REFERENCES `care_appointment` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_videoattendance_appointment_id_f33b37fa_fk_care_appo",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_waitinglist",
+      "purpose": "care.WaitingList",
+      "engine": "InnoDB",
+      "approximate_rows": 0,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "mode",
+          "type": "varchar(10)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "active",
+          "type": "tinyint(1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "doctor_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_waitinglist_doctor_id_bb065168_fk_care_user_id": {
+          "columns": [
+            "doctor_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "care_waitinglist_patient_id_32d307f8_fk_care_user_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "waiting_patient_doctor_mode": {
+          "columns": [
+            "patient_id",
+            "doctor_id",
+            "mode"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_waitinglist` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `mode` varchar(10) NOT NULL,\n  `active` tinyint(1) NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `doctor_id` bigint NOT NULL,\n  `patient_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `waiting_patient_doctor_mode` (`patient_id`,`doctor_id`,`mode`),\n  KEY `care_waitinglist_doctor_id_bb065168_fk_care_user_id` (`doctor_id`),\n  CONSTRAINT `care_waitinglist_doctor_id_bb065168_fk_care_user_id` FOREIGN KEY (`doctor_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_waitinglist_patient_id_32d307f8_fk_care_user_id` FOREIGN KEY (`patient_id`) REFERENCES `care_user` (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_waitinglist_doctor_id_bb065168_fk_care_user_id",
+          "count": 0
+        },
+        {
+          "constraint": "care_waitinglist_patient_id_32d307f8_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_wellnessentry",
+      "purpose": "care.WellnessEntry",
+      "engine": "InnoDB",
+      "approximate_rows": 2,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "sleep",
+          "type": "decimal(4,1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "water",
+          "type": "decimal(4,1)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "exercise_days",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "stress",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "score",
+          "type": "smallint unsigned",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "updated",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_wellnessentry_chk_1": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_wellnessentry_chk_2": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_wellnessentry_chk_3": {
+          "columns": [],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": true,
+          "foreign_key": null
+        },
+        "care_wellnessentry_patient_id_42b3bcb5_fk_care_user_id": {
+          "columns": [
+            "patient_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": false,
+          "check": false,
+          "foreign_key": [
+            "care_user",
+            "id"
+          ]
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "wellness_patient_date": {
+          "columns": [
+            "patient_id",
+            "date"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_wellnessentry` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `date` date NOT NULL,\n  `sleep` decimal(4,1) NOT NULL,\n  `water` decimal(4,1) NOT NULL,\n  `exercise_days` smallint unsigned NOT NULL,\n  `stress` smallint unsigned NOT NULL,\n  `score` smallint unsigned NOT NULL,\n  `updated` datetime(6) NOT NULL,\n  `patient_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `wellness_patient_date` (`patient_id`,`date`),\n  CONSTRAINT `care_wellnessentry_patient_id_42b3bcb5_fk_care_user_id` FOREIGN KEY (`patient_id`) REFERENCES `care_user` (`id`),\n  CONSTRAINT `care_wellnessentry_chk_1` CHECK ((`exercise_days` >= 0)),\n  CONSTRAINT `care_wellnessentry_chk_2` CHECK ((`stress` >= 0)),\n  CONSTRAINT `care_wellnessentry_chk_3` CHECK ((`score` >= 0))\n) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_wellnessentry_patient_id_42b3bcb5_fk_care_user_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "care_wellnessrevision",
+      "purpose": "care.WellnessRevision",
+      "engine": "InnoDB",
+      "approximate_rows": 3,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "values",
+          "type": "json",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "created",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "entry_id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "care_wellnessrevision_entry_id_70499e0a_fk_care_wellnessentry_id": {
+          "columns": [
+            "entry_id"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": [
+            "care_wellnessentry",
+            "id"
+          ],
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `care_wellnessrevision` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `values` json NOT NULL,\n  `created` datetime(6) NOT NULL,\n  `entry_id` bigint NOT NULL,\n  PRIMARY KEY (`id`),\n  KEY `care_wellnessrevision_entry_id_70499e0a_fk_care_wellnessentry_id` (`entry_id`),\n  CONSTRAINT `care_wellnessrevision_entry_id_70499e0a_fk_care_wellnessentry_id` FOREIGN KEY (`entry_id`) REFERENCES `care_wellnessentry` (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": [
+        {
+          "constraint": "care_wellnessrevision_entry_id_70499e0a_fk_care_wellnessentry_id",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "django_content_type",
+      "purpose": "contenttypes.ContentType",
+      "engine": "InnoDB",
+      "approximate_rows": 42,
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "app_label",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        },
+        {
+          "name": "model",
+          "type": "varchar(100)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "django_content_type_app_label_model_76bd3d3b_uniq": {
+          "columns": [
+            "app_label",
+            "model"
+          ],
+          "primary_key": false,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC",
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `django_content_type` (\n  `id` int NOT NULL AUTO_INCREMENT,\n  `app_label` varchar(100) NOT NULL,\n  `model` varchar(100) NOT NULL,\n  PRIMARY KEY (`id`),\n  UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)\n) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "django_migrations",
+      "purpose": "Django schema migration history",
+      "engine": "InnoDB",
+      "approximate_rows": 24,
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": "auto_increment"
+        },
+        {
+          "name": "app",
+          "type": "varchar(255)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(255)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "applied",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "PRIMARY": {
+          "columns": [
+            "id"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `django_migrations` (\n  `id` bigint NOT NULL AUTO_INCREMENT,\n  `app` varchar(255) NOT NULL,\n  `name` varchar(255) NOT NULL,\n  `applied` datetime(6) NOT NULL,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    },
+    {
+      "rls_enabled": null,
+      "rls_forced": null,
+      "table": "django_session",
+      "purpose": "sessions.Session",
+      "engine": "InnoDB",
+      "approximate_rows": 72,
+      "columns": [
+        {
+          "name": "session_key",
+          "type": "varchar(40)",
+          "nullable": "NO",
+          "default": null,
+          "key": "PRI",
+          "extra": ""
+        },
+        {
+          "name": "session_data",
+          "type": "longtext",
+          "nullable": "NO",
+          "default": null,
+          "key": "",
+          "extra": ""
+        },
+        {
+          "name": "expire_date",
+          "type": "datetime(6)",
+          "nullable": "NO",
+          "default": null,
+          "key": "MUL",
+          "extra": ""
+        }
+      ],
+      "constraints": {
+        "PRIMARY": {
+          "columns": [
+            "session_key"
+          ],
+          "primary_key": true,
+          "unique": true,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        },
+        "django_session_expire_date_a5c62663": {
+          "columns": [
+            "expire_date"
+          ],
+          "primary_key": false,
+          "unique": false,
+          "index": true,
+          "check": false,
+          "foreign_key": null,
+          "type": "idx",
+          "orders": [
+            "ASC"
+          ],
+          "index_type": "BTREE"
+        }
+      },
+      "create_table": "CREATE TABLE `django_session` (\n  `session_key` varchar(40) NOT NULL,\n  `session_data` longtext NOT NULL,\n  `expire_date` datetime(6) NOT NULL,\n  PRIMARY KEY (`session_key`),\n  KEY `django_session_expire_date_a5c62663` (`expire_date`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci",
+      "orphan_counts": []
+    }
+  ],
+  "server_version": "8.4.13"
+}

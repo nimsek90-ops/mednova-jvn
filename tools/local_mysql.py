@@ -17,9 +17,9 @@ for key in ['MEDNOVA_TESTING','MEDNOVA_TEST_MYSQL','MEDNOVA_TEST_DB','MEDNOVA_TE
     env.pop(key,None)
 env.update(DATABASE_VENDOR='mysql',APP_ENV='local',MEDNOVA_DEMO='1',DJANGO_SECRET_KEY=config['secret_key'],ALLOWED_HOSTS='localhost,127.0.0.1',MYSQL_HOST=config['host'],MYSQL_PORT=str(config['port']),MYSQL_DATABASE=config['database'],MYSQL_USER=config['user'],MYSQL_PASSWORD=config['password'])
 args=sys.argv[1:]
-if args and args[0]=='http_acceptance':
+if args and args[0] in ('http_acceptance','hospital_http'):
     env['MEDNOVA_HTTP_MYSQL']='1'
-    raise SystemExit(subprocess.call([sys.executable,'tools/http_acceptance.py'],cwd=base,env=env))
+    raise SystemExit(subprocess.call([sys.executable,'tools/'+args[0]+'.py'],cwd=base,env=env))
 if not args or args[0]=='serve':
     try:
         with socket.create_connection((config['host'],config['port']),timeout=2):pass

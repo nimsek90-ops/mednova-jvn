@@ -1,8 +1,21 @@
 from django.urls import path
 from care import views as v
 from care import product as p
+from care import hospital_views as h
 
 urlpatterns = [
+    path('waiting-list/', h.waiting_list, name='waiting_list'),
+    path('worklist/', h.worklist, name='worklist'),
+    path('schedule/rules/', h.schedule, name='schedule_rules'),
+    path('patients/<int:patient_id>/registration/', h.registration_card, name='registration_card'),
+    path('admissions/', h.admissions, name='admissions'),
+    path('admin/beds/', h.bed_catalogue, name='bed_catalogue'),
+    path('purchasing/', h.purchasing, name='purchasing'),
+    path('prescriptions/items/<int:item_id>/issue/', h.issue, name='partial_issue'),
+    path('inventory/<int:medicine_id>/safety/', h.batch_safety, name='batch_safety'),
+    path('appointments/<uuid:pk>/clinical-work/', h.clinical_work, name='clinical_work'),
+    path('assistant/', h.assistant, name='assistant'),
+    path('admin/assistant/', h.assistant_admin, name='assistant_admin'),
     path("admin/data/schema/", p.schema_explorer, name="schema_explorer"),
     path("admin/data/", p.data_management, name="data_management"),
     path('about/', p.public_information, {'kind': 'about'}, name='about'),

@@ -6,7 +6,7 @@ Request rejected by CSRF protection (origin).
 ...........................................................Private report storage is unavailable.
 ........................................
 ----------------------------------------------------------------------
-Ran 124 tests in 73.440s
+Ran 124 tests in 32.802s
 
 OK
 Destroying test database for alias 'default'...

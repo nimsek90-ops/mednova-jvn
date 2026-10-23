@@ -1,0 +1,57 @@
+Planned operations:
+care.0006_bed_hospitalfaq_supplier_doctorprofile_daily_limit_and_more
+    Create model Bed
+    Create model HospitalFAQ
+    Create model Supplier
+    Add field daily_limit to doctorprofile
+    Add field location to doctorprofile
+    Add field barcode to medicine
+    Add field dosage_form to medicine
+    Add field generic_name to medicine
+    Add field location to medicine
+    Add field manufacturer to medicine
+    Add field purchase_price to medicine
+    Add field reorder_level to medicine
+    Add field safety_status to medicine
+    Add field strength to medicine
+    Add field dispensed_quantity to prescriptionitem
+    Add field duration_text to prescriptionitem
+    Add field frequency to prescriptionitem
+    Add field route to prescriptionitem
+    Add field buffer to slot
+    Add field duration to slot
+    Create model AssistantEscalation
+    Create model Admission
+    Create model ClinicalDraft
+    Create model DispensingEvent
+    Create model Investigation
+    Create model PatientRegistration
+    Create model PurchaseOrder
+    Create model GoodsReceipt
+    Create model ScheduleBlock
+    Create model ScheduleSession
+    Add field session to slot
+    Create model VideoAttendance
+    Create constraint schedule_doctor_day_start on model schedulesession
+care.0007_prescriptionitem_issue_not_above_prescribed_and_more
+    Create constraint issue_not_above_prescribed on model prescriptionitem
+    Create constraint receipt_not_above_order on model purchaseorder
+    Create constraint schedule_positive_block on model scheduleblock
+    Create constraint schedule_positive_session on model schedulesession
+    Create constraint schedule_valid_limits on model schedulesession
+care.0008_preserve_registration_and_dispensing
+    Raw Python operation
+care.0009_appointment_cancellation_reason_and_more
+    Add field cancellation_reason to appointment
+    Alter field status on appointment
+    Alter field status on queueentry
+    Create model WaitingList
+Operations to perform:
+  Apply all migrations: auth, care, contenttypes, sessions
+Running migrations:
+  Applying care.0006_bed_hospitalfaq_supplier_doctorprofile_daily_limit_and_more... OK
+  Applying care.0007_prescriptionitem_issue_not_above_prescribed_and_more... OK
+  Applying care.0008_preserve_registration_and_dispensing... OK
+  Applying care.0009_appointment_cancellation_reason_and_more... OK
+Private backup saved. SHA256: f7934a31caa71555d2dd0bb806f5c951af7f46ca41d5c6ddb2e814555f389987
+Migrations complete. Runtime application credentials were not changed. Restart the application.

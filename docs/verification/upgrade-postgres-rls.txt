@@ -1,0 +1,1 @@
+Private schema protected: 46 tables. Backend-only RLS; no browser database grants.

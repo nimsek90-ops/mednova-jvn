@@ -37,6 +37,9 @@ class RegisterForm(UserCreationForm):
         u.approval = "approved" if u.role == "patient" else "pending"
         if commit:
             u.save()
+            if u.role == 'patient':
+                from .models import PatientRegistration
+                PatientRegistration.objects.get_or_create(patient=u)
         return u
 
 
@@ -63,7 +66,16 @@ class ProfileForm(forms.ModelForm):
 
 
 class ReceptionPatientForm(RegisterForm):
+    duplicate_reviewed = forms.BooleanField(required=False, label='I reviewed any existing patient with this phone number; this is a separate person.')
     role = forms.ChoiceField(choices=[("patient", "Patient")], initial="patient", widget=forms.HiddenInput)
+
+
+    def clean(self):
+        data = super().clean()
+        phone = data.get('phone', '')
+        if phone and User.objects.filter(role='patient', phone=phone).exists() and not data.get('duplicate_reviewed'):
+            raise forms.ValidationError('Possible duplicate phone number. Search existing patients first; confirm separate identity before proceeding. No records were merged.')
+        return data
 
 
 class DoctorForm(forms.ModelForm):
@@ -76,6 +88,8 @@ class DoctorForm(forms.ModelForm):
             "experience",
             "bio",
             "fee",
+            "daily_limit",
+            "location",
         ]
         widgets = {"bio": forms.Textarea(attrs={"rows": 4})}
 
@@ -83,9 +97,15 @@ class DoctorForm(forms.ModelForm):
         super().__init__(*a, **kw)
         self.fields["department"].queryset = Department.objects.filter(active=True)
         self.fields["department"].required = True
+        self.fields['daily_limit'].required = False
+
+    def clean_daily_limit(self):
+        return self.cleaned_data.get('daily_limit') or 0
 
 
 class AvailabilityForm(forms.Form):
+    duration = forms.IntegerField(min_value=5, max_value=180, required=False, initial=12, label='Consultation minutes')
+    buffer = forms.IntegerField(min_value=0, max_value=120, required=False, initial=0, label='Buffer minutes')
     consultation_type = forms.ChoiceField(choices=[("both", "Either"), ("in_person", "In person"), ("video", "Video")], required=False)
     date = forms.DateField(widget=forms.DateInput(attrs={"type": "date"}))
     start = forms.TimeField(widget=forms.TimeInput(attrs={"type": "time"}))
@@ -103,8 +123,8 @@ class AvailabilityForm(forms.Form):
             from datetime import datetime
             start = timezone.make_aware(datetime.combine(d["date"], d["start"]))
             end = timezone.make_aware(datetime.combine(d["date"], d["end"]))
-            if start <= timezone.now() or end - start < timedelta(minutes=12):
-                raise forms.ValidationError("Choose a future range of at least 12 minutes.")
+            if start <= timezone.now() or end - start < timedelta(minutes=(d.get('duration') or 12)+(d.get('buffer') or 0)):
+                raise forms.ValidationError("Choose a future range long enough for consultation plus buffer.")
         return d
 
 
@@ -136,8 +156,20 @@ class SlotEditForm(forms.ModelForm):
 class MedicineForm(forms.ModelForm):
     class Meta:
         model = Medicine
-        fields = ["name", "batch", "expiry", "stock", "price"]
+        fields = ["name", "generic_name", "strength", "dosage_form", "manufacturer", "batch", "expiry", "stock", "price", "purchase_price", "location", "barcode", "reorder_level"]
         widgets = {"expiry": forms.DateInput(attrs={"type": "date"})}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['purchase_price'].required = False
+        self.fields['reorder_level'].required = False
+
+    def clean_purchase_price(self):
+        return self.cleaned_data.get('purchase_price') or 0
+
+    def clean_reorder_level(self):
+        value = self.cleaned_data.get('reorder_level')
+        return 10 if value is None else value
 
     def clean_expiry(self):
         value = self.cleaned_data["expiry"]

@@ -1,3 +1,5 @@
+> Current hospital upgrade (23 October): [implemented workflows, migrations, tests and remaining scope](docs/HOSPITAL_UPGRADE_REPORT.md). Primary MySQL now has46 tables; older reports are historical.
+
 # Open and run the complete MedNova source
 
 ## This prepared laptop: preserve the current MySQL data

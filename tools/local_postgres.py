@@ -23,9 +23,9 @@ env.update(APP_ENV='local', DATABASE_VENDOR='postgresql', PGHOST=config['host'],
            PGPASSWORD=config['password'] if operator else config['runtime_password'],
            PGSSLMODE='disable', ALLOWED_HOSTS='127.0.0.1,localhost', MEDNOVA_DEMO='1',
            DJANGO_SECRET_KEY=json.loads((base/'.runtime/local_mysql.json').read_text())['secret_key'])
-if args == ['http_acceptance']:
+if args in (['http_acceptance'],['hospital_http']):
     env.update(MEDNOVA_HTTP_POSTGRES='1', MEDNOVA_HTTP_ORIGIN='http://127.0.0.1:8002')
-    command = [sys.executable, 'tools/http_acceptance.py']
+    command = [sys.executable, 'tools/'+args[0]+'.py']
 elif not args or args == ['serve']:
     if operator:
         raise SystemExit('The web server must use restricted runtime credentials.')

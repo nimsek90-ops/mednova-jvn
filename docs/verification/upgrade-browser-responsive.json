@@ -1,0 +1,1586 @@
+[
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "duplicateIds": [],
+    "h1": "Weekly schedule & leave",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "duplicateIds": [],
+    "h1": "Appointments",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "duplicateIds": [],
+    "h1": "Availability",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "duplicateIds": [],
+    "h1": "Patients",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "duplicateIds": [],
+    "h1": "Today's patient queue",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "receptionist",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "duplicateIds": [],
+    "h1": "Today's worklist",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "duplicateIds": [],
+    "h1": "Suppliers & purchasing",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "duplicateIds": [],
+    "h1": "Inventory",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "duplicateIds": [],
+    "h1": "Prescriptions",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "duplicateIds": [],
+    "h1": "Data management",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "admin",
+    "path": "/admin/assistant/",
+    "duplicateIds": [],
+    "h1": "Assistant knowledge & support",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "admin",
+    "path": "/admin/beds/",
+    "duplicateIds": [],
+    "h1": "Bed catalogue",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "duplicateIds": [],
+    "h1": "How can we help?",
+    "scrollWidth": 1585,
+    "width": 1600
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 320,
+    "width": 320
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 390,
+    "width": 390
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 430,
+    "width": 430
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 768,
+    "width": 768
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "duplicateIds": [],
+    "h1": "Admissions & beds",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1024,
+    "width": 1024
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1280,
+    "width": 1280
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1440,
+    "width": 1440
+  },
+  {
+    "role": "patient",
+    "path": "/waiting-list/",
+    "duplicateIds": [],
+    "h1": "Waiting list",
+    "scrollWidth": 1600,
+    "width": 1600
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 305,
+    "width": 320
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 415,
+    "width": 430
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 753,
+    "width": 768
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 1009,
+    "width": 1024
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 1265,
+    "width": 1280
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "duplicateIds": [],
+    "h1": "Dashboard",
+    "scrollWidth": 1585,
+    "width": 1600
+  }
+]

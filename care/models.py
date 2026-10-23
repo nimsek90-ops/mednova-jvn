@@ -79,6 +79,8 @@ class DoctorProfile(models.Model):
     fee = models.DecimalField(
         max_digits=8, decimal_places=2, default=0, validators=[MinValueValidator(0)]
     )
+    daily_limit = models.PositiveSmallIntegerField(default=0, validators=[MaxValueValidator(500)])
+    location = models.CharField(max_length=160, blank=True)
 
 
 class Slot(models.Model):
@@ -86,6 +88,9 @@ class Slot(models.Model):
     start = models.DateTimeField()
     booked = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
+    duration = models.PositiveSmallIntegerField(default=12, validators=[MinValueValidator(5), MaxValueValidator(180)])
+    buffer = models.PositiveSmallIntegerField(default=0, validators=[MaxValueValidator(120)])
+    session = models.ForeignKey('ScheduleSession', null=True, blank=True, on_delete=models.PROTECT)
     consultation_type = models.CharField(max_length=10, default="both", choices=[("both", "Either"), ("in_person", "In person"), ("video", "Video")])
 
     class Meta:
@@ -116,9 +121,11 @@ class Appointment(models.Model):
             ("confirmed", "Confirmed"),
             ("completed", "Completed"),
             ("cancelled", "Cancelled"),
+            ("no_show", "No show"),
         ],
     )
     reason = models.CharField(max_length=400)
+    cancellation_reason = models.CharField(max_length=300, blank=True)
     fee = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     created = models.DateTimeField(auto_now_add=True)
     checked_in_at = models.DateTimeField(null=True, blank=True)
@@ -153,6 +160,15 @@ class Medicine(models.Model):
     price = models.DecimalField(
         max_digits=8, decimal_places=2, validators=[MinValueValidator(0)]
     )
+    generic_name = models.CharField(max_length=150, blank=True)
+    strength = models.CharField(max_length=80, blank=True)
+    dosage_form = models.CharField(max_length=80, blank=True)
+    manufacturer = models.CharField(max_length=150, blank=True)
+    location = models.CharField(max_length=120, blank=True)
+    barcode = models.CharField(max_length=100, blank=True)
+    reorder_level = models.PositiveIntegerField(default=10)
+    purchase_price = models.DecimalField(max_digits=8, decimal_places=2, default=0, validators=[MinValueValidator(0)])
+    safety_status = models.CharField(max_length=12, default='available', choices=[('available', 'Available'), ('quarantined', 'Quarantined'), ('recalled', 'Recalled'), ('damaged', 'Damaged')])
 
     class Meta:
         constraints = [
@@ -171,9 +187,20 @@ class PrescriptionItem(models.Model):
     )
     medicine = models.ForeignKey(Medicine, on_delete=models.PROTECT)
     dose = models.CharField(max_length=200)
+    route = models.CharField(max_length=60, blank=True)
+    frequency = models.CharField(max_length=100, blank=True)
+    duration_text = models.CharField(max_length=100, blank=True)
+    dispensed_quantity = models.PositiveSmallIntegerField(default=0)
     quantity = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(1000)]
     )
+
+    @property
+    def remaining(self):
+        return self.quantity - self.dispensed_quantity
+
+    class Meta:
+        constraints = [models.CheckConstraint(condition=models.Q(dispensed_quantity__lte=models.F('quantity')), name='issue_not_above_prescribed')]
 
 
 def report_path(instance, filename):
@@ -323,7 +350,7 @@ class QueueEntry(models.Model):
     appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT, related_name='queue_entry')
     date = models.DateField()
     number = models.PositiveIntegerField()
-    status = models.CharField(max_length=12, default='waiting', choices=[('waiting', 'Waiting'), ('called', 'Called'), ('completed', 'Completed'), ('cancelled', 'Cancelled')])
+    status = models.CharField(max_length=20, default='waiting', choices=[('waiting', 'Waiting'), ('called', 'Called'), ('in_consultation', 'In consultation'), ('completed', 'Completed'), ('cancelled', 'Cancelled')])
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -354,3 +381,167 @@ class DeliveryOutbox(models.Model):
     next_attempt = models.DateTimeField(default=timezone.now)
     sent_at = models.DateTimeField(null=True)
     last_error = models.CharField(max_length=120, blank=True)
+
+
+class ScheduleSession(models.Model):
+    doctor = models.ForeignKey(User, on_delete=models.PROTECT)
+    weekday = models.PositiveSmallIntegerField(choices=list(enumerate(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])))
+    start = models.TimeField()
+    end = models.TimeField()
+    duration = models.PositiveSmallIntegerField(default=15, validators=[MinValueValidator(5), MaxValueValidator(180)])
+    buffer = models.PositiveSmallIntegerField(default=5, validators=[MaxValueValidator(120)])
+    mode = models.CharField(max_length=10, default='both', choices=[('both', 'Either'), ('in_person', 'In person'), ('video', 'Video')])
+    visit_type = models.CharField(max_length=12, default='new', choices=[('new', 'New patient'), ('follow_up', 'Follow-up'), ('urgent', 'Reserved urgent')])
+    capacity = models.PositiveSmallIntegerField(default=30, validators=[MinValueValidator(1), MaxValueValidator(500)])
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['weekday', 'start']
+        constraints = [models.UniqueConstraint(fields=['doctor', 'weekday', 'start'], name='schedule_doctor_day_start'),
+            models.CheckConstraint(condition=models.Q(end__gt=models.F('start')), name='schedule_positive_session'),
+            models.CheckConstraint(condition=models.Q(duration__gte=5, duration__lte=180, buffer__lte=120, capacity__gte=1, weekday__lte=6), name='schedule_valid_limits')]
+
+
+class ScheduleBlock(models.Model):
+    doctor = models.ForeignKey(User, on_delete=models.PROTECT)
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+    reason = models.CharField(max_length=120, choices=[('break', 'Break'), ('leave', 'Leave / holiday'), ('rounds', 'Ward rounds'), ('procedure', 'Procedure'), ('other', 'Unavailable')])
+
+    class Meta:
+        ordering = ['start']
+        constraints = [models.CheckConstraint(condition=models.Q(end__gt=models.F('start')), name='schedule_positive_block')]
+
+
+class PatientRegistration(models.Model):
+    patient = models.OneToOneField(User, on_delete=models.PROTECT, related_name='registration')
+    mrn = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    emergency_name = models.CharField(max_length=120, blank=True)
+    emergency_phone = models.CharField(max_length=20, blank=True)
+    guardian = models.CharField(max_length=120, blank=True)
+    consent = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def display_mrn(self):
+        return 'MN-' + self.mrn.hex.upper()
+
+
+class Bed(models.Model):
+    label = models.CharField(max_length=80, unique=True)
+    ward = models.CharField(max_length=100)
+    room_type = models.CharField(max_length=100)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.ward} / {self.label} ({self.room_type})'
+
+
+class Admission(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.PROTECT, related_name='admissions')
+    doctor = models.ForeignKey(User, on_delete=models.PROTECT, related_name='admission_requests')
+    department = models.ForeignKey(Department, on_delete=models.PROTECT)
+    bed = models.OneToOneField(Bed, null=True, blank=True, on_delete=models.PROTECT)
+    status = models.CharField(max_length=16, default='requested', choices=[('requested', 'Requested'), ('admitted', 'Admitted'), ('discharge_ready', 'Discharge ready'), ('discharged', 'Discharged'), ('cancelled', 'Cancelled')])
+    last_bed = models.CharField(max_length=200, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class DispensingEvent(models.Model):
+    key = models.UUIDField(default=uuid.uuid4, unique=True)
+    item = models.ForeignKey(PrescriptionItem, on_delete=models.PROTECT, related_name='issues')
+    pharmacist = models.ForeignKey(User, on_delete=models.PROTECT)
+    quantity = models.PositiveSmallIntegerField(validators=[MinValueValidator(1)])
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class Supplier(models.Model):
+    name = models.CharField(max_length=150, unique=True)
+    contact = models.CharField(max_length=160, blank=True)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+
+class PurchaseOrder(models.Model):
+    supplier = models.ForeignKey(Supplier, on_delete=models.PROTECT)
+    medicine = models.ForeignKey(Medicine, on_delete=models.PROTECT)
+    quantity = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(100000)])
+    received = models.PositiveIntegerField(default=0)
+    status = models.CharField(max_length=12, default='requested', choices=[('requested', 'Requested'), ('approved', 'Approved'), ('received', 'Received'), ('cancelled', 'Cancelled')])
+    requested_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')
+    approved_by = models.ForeignKey(User, null=True, on_delete=models.PROTECT, related_name='+')
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.CheckConstraint(condition=models.Q(received__lte=models.F('quantity'), quantity__gte=1), name='receipt_not_above_order')]
+
+    def __str__(self):
+        return f'#{self.pk}: {self.supplier} / {self.medicine} ({self.quantity-self.received} outstanding)'
+
+
+class GoodsReceipt(models.Model):
+    order = models.ForeignKey(PurchaseOrder, on_delete=models.PROTECT)
+    reference = models.CharField(max_length=120, unique=True)
+    quantity = models.PositiveIntegerField()
+    received_by = models.ForeignKey(User, on_delete=models.PROTECT)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class ClinicalDraft(models.Model):
+    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+    complaint = models.TextField(max_length=3000)
+    examination = models.TextField(max_length=3000, blank=True)
+    assessment = models.TextField(max_length=3000, blank=True)
+    plan = models.TextField(max_length=3000)
+    follow_up = models.TextField(max_length=1500, blank=True)
+    revision = models.PositiveIntegerField(default=1)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class Investigation(models.Model):
+    appointment = models.ForeignKey(Appointment, on_delete=models.PROTECT, related_name='investigations')
+    ordered_by = models.ForeignKey(User, on_delete=models.PROTECT)
+    category = models.CharField(max_length=12, choices=[('lab', 'Laboratory'), ('radiology', 'Radiology'), ('referral', 'Referral')])
+    name = models.CharField(max_length=180)
+    status = models.CharField(max_length=12, default='ordered', choices=[('ordered', 'Ordered'), ('resulted', 'Resulted'), ('acknowledged', 'Acknowledged')])
+    result = models.TextField(max_length=3000, blank=True)
+    critical = models.BooleanField(default=False)
+    acknowledged_at = models.DateTimeField(null=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class HospitalFAQ(models.Model):
+    question = models.CharField(max_length=200)
+    answer = models.TextField(max_length=2000)
+    language = models.CharField(max_length=2, default='en', choices=[('en', 'English'), ('mr', 'Marathi'), ('hi', 'Hindi')])
+    approved = models.BooleanField(default=False)
+    updated = models.DateTimeField(auto_now=True)
+
+
+class AssistantEscalation(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.PROTECT)
+    topic = models.CharField(max_length=24, choices=[('appointment', 'Appointments'), ('billing', 'Billing'), ('technical', 'Technical support'), ('clinical', 'Contact clinical team')])
+    resolved = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+
+
+class VideoAttendance(models.Model):
+    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT)
+    patient_consented_at = models.DateTimeField(null=True)
+    admitted_at = models.DateTimeField(null=True)
+    ended_at = models.DateTimeField(null=True)
+
+
+class WaitingList(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.PROTECT, related_name='waiting_requests')
+    doctor = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')
+    mode = models.CharField(max_length=10, choices=[('in_person', 'In person'), ('video', 'Video')])
+    active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['patient','doctor','mode'], name='waiting_patient_doctor_mode')]

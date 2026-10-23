@@ -503,6 +503,11 @@ class Workflows(TestCase):
             200,
         )
         self.sign(self.patient)
+        self.assertEqual(self.client.get(path).json()['signals'], [])
+        self.client.post(reverse('video', args=[self.appt.pk]), {'action':'consent','consent':'on'})
+        self.sign(self.doctor)
+        self.client.post(reverse('video', args=[self.appt.pk]), {'action':'admit'})
+        self.sign(self.patient)
         self.assertEqual(len(self.client.get(path).json()["signals"]), 1)
 
     def test_forged_payment_rejected(self):
