@@ -21,3 +21,4 @@ backups/
 !certs/mysql-ca.pem
 
 !certs/postgres-ca.pem
+!certs/aiven-ca.pem
