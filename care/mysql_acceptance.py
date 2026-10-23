@@ -30,6 +30,19 @@ class MySQLBookingAcceptance(TransactionTestCase):
         self.assertEqual(self.race([lambda c=c:submit(c) for c in clients]), ['ok','ok'])
         self.assertEqual(SupportCase.objects.count(), 1)
 
+    def test_concurrent_review_submissions_update_one_appointment_review(self):
+        from .models import AppointmentReview
+        from .reviews import save_review
+        appointment = fixtures.Workflows.appt
+        Appointment.objects.filter(pk=appointment.pk).update(status='completed')
+        patient_id = fixtures.Workflows.patient.pk
+        results = self.race([
+            lambda rating=rating: save_review(User.objects.get(pk=patient_id), appointment.pk, rating=rating)
+            for rating in [4, 5]
+        ])
+        self.assertEqual(results, ['ok', 'ok'])
+        self.assertEqual(AppointmentReview.objects.filter(appointment=appointment).count(), 1)
+
     def setUp(self):
         if connection.vendor != "mysql":
             self.fail("This acceptance suite requires a dedicated MySQL test database.")

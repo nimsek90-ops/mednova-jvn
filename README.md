@@ -54,6 +54,7 @@ Django's ordinary test command uses an isolated test database. Real SQL locking 
 
 ## Documentation
 
+- [Patient reviews and verification](docs/PATIENT_REVIEWS.md)
 - [Cleanup audit, recovery checkpoint and verification](docs/CLEANUP_REPORT.md)
 - [Documentation and historical evidence index](docs/README.md)
 - [Patient assistant and support-case behavior](docs/PATIENT_ASSISTANT_REPORT.md)
@@ -61,4 +62,4 @@ Django's ordinary test command uses an isolated test database. Real SQL locking 
 - [Database operations](docs/MYSQL_OPERATIONS.md) and [VS Code database viewer](docs/VSCODE_DATABASE.md)
 - [External integrations](docs/INTEGRATIONS.md) and [deployment requirements](docs/VERCEL_DEPLOYMENT.md)
 
-Historical reports record their own checkpoint counts and limitations; they are not current deployment claims. The active local schema has 51 tables after the already-authored receptionist migrations. No hosted production deployment is verified by this cleanup.
+Historical reports record their own checkpoint counts and limitations; they are not current deployment claims. The active local schema has 52 tables after the patient review migration. No hosted production deployment is verified by this cleanup.

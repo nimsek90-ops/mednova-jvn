@@ -195,7 +195,7 @@ class ProductWorkflows(TestCase):
             'receipt':{'patient','receptionist','admin'},'password':all_roles,'dashboard':all_roles,'profile':all_roles,
             'availability':{'doctor'},'remove_slot':{'doctor'},'booking':{'patient','receptionist'},
             'appointments':{'patient','doctor','receptionist','admin'},'appointment':{'patient','doctor','receptionist','admin'},
-            'appointment_action':{'patient','doctor','receptionist','admin'},'upload':{'patient','doctor'},'download':{'patient','doctor'},
+            'appointment_review':{'patient'},'appointment_action':{'patient','doctor','receptionist','admin'},'upload':{'patient','doctor'},'download':{'patient','doctor'},
             'prescribe':{'doctor'},'prescriptions':{'patient','doctor','pharmacist'},'dispense':{'pharmacist'},
             'inventory':{'pharmacist','admin'},'stock':{'pharmacist','admin'},'staff':{'admin'},'departments':{'admin'},
             'settings':{'admin'},'audit':{'admin'},'payment_record':{'receptionist','admin'},'pay':{'patient'},

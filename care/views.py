@@ -16,7 +16,7 @@ from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.db import transaction, IntegrityError
-from django.db.models import Q, Count, F
+from django.db.models import Q, Count, F, Avg
 from django.http import (
     FileResponse,
     Http404,
@@ -75,7 +75,10 @@ def doctor_detail(request, pk):
     selected_patient = None
     if request.user.is_authenticated and request.user.role == 'receptionist' and request.GET.get('patient'):
         selected_patient=get_object_or_404(User,pk=integer_id(request.GET['patient']),role='patient',is_active=True,approval='approved')
+    reviews = AppointmentReview.objects.filter(doctor=doctor.user)
     return render(request, "care/doctor_detail.html", {
+        "reviews": paged(request, reviews, 10),
+        "review_summary": reviews.aggregate(average=Avg("rating"), total=Count("pk")),
         "doc": doctor,
         "selected_patient":selected_patient,
         "specialties":doctor.specialties.filter(active=True),
@@ -653,6 +656,7 @@ def appointment(request, pk):
             "appt": appt,
             "clinical": clinical,
             "rx": rx,
+            "has_review": AppointmentReview.objects.filter(appointment=appt).exists() if request.user.role == "patient" else False,
             "consultation_started": appt.slot.start <= timezone.now(),
             "can_check_in": appt.status == "confirmed" and appt.mode == "in_person" and timezone.localdate(appt.slot.start) == timezone.localdate(),
             "can_confirm": appt.status == "pending" and appt.slot.start > timezone.now(),

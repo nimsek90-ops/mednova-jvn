@@ -5,8 +5,10 @@ from care import hospital_views as h
 from care import chatbot
 from care import support
 from care import reception
+from care import reviews
 
 urlpatterns = [
+    path('appointments/<uuid:pk>/review/', reviews.edit, name='appointment_review'),
     path('reception/', reception.desk, name='reception_desk'),
     path('reception/register/', reception.register, name='reception_register'),
     path('reception/book/', reception.booking_start, name='reception_booking'),

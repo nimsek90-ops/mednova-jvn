@@ -4,6 +4,7 @@ Use the root [README](../README.md) and [VS Code run guide](../OPEN_IN_VSCODE.md
 
 ## Current operational guides
 
+- [Patient reviews](PATIENT_REVIEWS.md)
 - [Cleanup report and recovery point](CLEANUP_REPORT.md)
 - [MySQL operations](MYSQL_OPERATIONS.md), [database viewer](VSCODE_DATABASE.md), [database engine configuration](DATABASE_SETUP.md)
 - [Patient assistant and persistent staff handoff](PATIENT_ASSISTANT_REPORT.md), [intent catalogue](PATIENT_ASSISTANT_INTENTS.md)

@@ -1,0 +1,14 @@
+{% extends 'care/base.html' %}{% load static %}
+{% block title %}Review your visit | MedNova{% endblock %}
+{% block head %}<link rel="stylesheet" href="{% static 'css/reviews.css' %}">{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow">PATIENT FEEDBACK</span><h1>{% if review %}Edit your review{% else %}Review your visit{% endif %}</h1><p>Your completed appointment with Dr. {{ appt.slot.doctor.name }} · {{ appt.slot.start|date:'j M Y' }}</p></div></div>
+<section class="card review-editor"><p>Your rating and optional comment will appear publicly on the doctor's profile as “Verified patient”. Please leave out personal and medical information.</p>
+<form method="post">{% csrf_token %}{{ form.non_field_errors }}
+<fieldset class="review-rating"><legend>Your experience (required)</legend><div class="review-stars">
+{% for radio in form.rating %}<span class="review-star"><input type="radio" name="{{ radio.data.name }}" value="{{ radio.data.value }}" id="{{ radio.id_for_label }}" required{% if radio.data.selected %} checked{% endif %}><label for="{{ radio.id_for_label }}"><span aria-hidden="true">★</span><span class="sr-only">{{ radio.choice_label }}</span></label></span>{% endfor %}
+</div><p class="review-hint">Choose 1 to 5 stars. You can submit without a comment.</p>{{ form.rating.errors }}</fieldset>
+<p><label for="{{ form.comment.id_for_label }}">{{ form.comment.label }}</label>{{ form.comment }}{{ form.comment.errors }}<small>Up to 2,000 characters. Optional.</small></p>
+<div class="button-group"><button type="submit" class="primary">{% if review %}Save changes{% else %}Submit review{% endif %}</button><a class="secondary" href="{% url 'appointment' appt.pk %}">Back to appointment</a></div>
+</form></section>
+{% endblock %}

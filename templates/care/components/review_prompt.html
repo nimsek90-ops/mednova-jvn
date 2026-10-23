@@ -1,0 +1,3 @@
+{% if request.user.role == 'patient' and appt.status == 'completed' %}
+<section class="card" aria-labelledby="review-invitation"><h2 id="review-invitation">How was your visit?</h2><p>Share your experience with other patients. Written feedback is optional.</p><a class="primary" href="{% url 'appointment_review' appt.pk %}">{% if has_review %}Edit your review{% else %}Rate your appointment{% endif %}</a></section>
+{% endif %}

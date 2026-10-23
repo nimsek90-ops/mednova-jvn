@@ -599,6 +599,20 @@ class VideoAttendance(models.Model):
     ended_at = models.DateTimeField(null=True)
 
 
+class AppointmentReview(models.Model):
+    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT, related_name='review')
+    patient = models.ForeignKey(User, on_delete=models.PROTECT, related_name='submitted_reviews')
+    doctor = models.ForeignKey(User, on_delete=models.PROTECT, related_name='received_reviews')
+    rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    comment = models.TextField(max_length=2000, blank=True, default='')
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-submitted_at', '-pk']
+        constraints = [models.CheckConstraint(condition=models.Q(rating__gte=1, rating__lte=5), name='review_rating_1_to_5')]
+
+
 class WaitingList(models.Model):
     patient = models.ForeignKey(User, on_delete=models.PROTECT, related_name='waiting_requests')
     doctor = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')

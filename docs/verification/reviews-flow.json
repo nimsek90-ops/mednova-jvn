@@ -1,0 +1,16 @@
+{
+  "database": "isolated synthetic SQLite QA; no primary hospital reviews created",
+  "checks": [
+    "Existing doctor completion HTTP action succeeded",
+    "Browser completed appointment offered rating",
+    "Five radio stars rendered in narrow browser viewport",
+    "Browser rating-only submission saved",
+    "Browser edit retained five-star selection then changed to four with comment",
+    "Doctor profile rendered four-star average and verified review",
+    "Database confirms one review for appointment, correct patient/doctor IDs, comment, submission and update dates"
+  ],
+  "rating": 4,
+  "review_count": 1,
+  "submitted_at": "2026-10-23T17:52:24.300391+00:00",
+  "updated_at": "2026-10-23T17:52:48.408004+00:00"
+}
