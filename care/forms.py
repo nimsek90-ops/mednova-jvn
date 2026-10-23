@@ -267,7 +267,7 @@ class UploadForm(forms.Form):
             self.extension = ".pdf"
             return ContentFile(raw, name="report.pdf")
         try:
-            with Image.open(io.BytesIO(raw)) as im:
+            with Image.open(io.BytesIO(raw), formats=('PNG', 'JPEG')) as im:
                 if im.format not in ("JPEG", "PNG") or im.width * im.height > 20000000:
                     raise ValueError()
                 im.load()

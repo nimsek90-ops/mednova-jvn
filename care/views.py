@@ -1,5 +1,6 @@
 import base64
 from .http import integer_id, paged
+from .private_storage import STORAGE_ERRORS, unavailable as storage_unavailable
 import hashlib
 import hmac
 import json
@@ -750,6 +751,8 @@ def download(request, pk):
         )
     except FileNotFoundError:
         raise Http404("Report file is unavailable. Contact the hospital.")
+    except STORAGE_ERRORS:
+        return storage_unavailable()
 
 
 @roles("doctor")

@@ -1,0 +1,355 @@
+{
+  "python_syntax": [
+    {
+      "file": "care/__init__.py",
+      "passed": true
+    },
+    {
+      "file": "care/apps.py",
+      "passed": true
+    },
+    {
+      "file": "care/chatbot.py",
+      "passed": true
+    },
+    {
+      "file": "care/context.py",
+      "passed": true
+    },
+    {
+      "file": "care/delivery.py",
+      "passed": true
+    },
+    {
+      "file": "care/forms.py",
+      "passed": true
+    },
+    {
+      "file": "care/hospital_forms.py",
+      "passed": true
+    },
+    {
+      "file": "care/hospital_services.py",
+      "passed": true
+    },
+    {
+      "file": "care/hospital_views.py",
+      "passed": true
+    },
+    {
+      "file": "care/http.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/__init__.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/__init__.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/check_database.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/cleanup_transient.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/database_inventory.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/ensure_admin.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/launch_check.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/process_notifications.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/secure_postgres.py",
+      "passed": true
+    },
+    {
+      "file": "care/management/commands/send_payment_proofs.py",
+      "passed": true
+    },
+    {
+      "file": "care/middleware.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0001_initial.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0002_appointment_checked_in_at_and_more.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0003_queuecounter_hospital_opening_hours_and_more.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0004_alter_notification_appointment_deliveryoutbox.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0005_user_must_change_password.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0006_bed_hospitalfaq_supplier_doctorprofile_daily_limit_and_more.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0007_prescriptionitem_issue_not_above_prescribed_and_more.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0008_preserve_registration_and_dispensing.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0009_appointment_cancellation_reason_and_more.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0010_patient_support_cases.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0011_reception_specialty_catalogue.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0012_seed_possible_specialties.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0013_patient_reviews.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/0014_payment_proof_verification.py",
+      "passed": true
+    },
+    {
+      "file": "care/migrations/__init__.py",
+      "passed": true
+    },
+    {
+      "file": "care/models.py",
+      "passed": true
+    },
+    {
+      "file": "care/mysql_acceptance.py",
+      "passed": true
+    },
+    {
+      "file": "care/patient_assistant.py",
+      "passed": true
+    },
+    {
+      "file": "care/payments.py",
+      "passed": true
+    },
+    {
+      "file": "care/postgres_acceptance.py",
+      "passed": true
+    },
+    {
+      "file": "care/private_storage.py",
+      "passed": true
+    },
+    {
+      "file": "care/product.py",
+      "passed": true
+    },
+    {
+      "file": "care/reception.py",
+      "passed": true
+    },
+    {
+      "file": "care/reviews.py",
+      "passed": true
+    },
+    {
+      "file": "care/scheduling.py",
+      "passed": true
+    },
+    {
+      "file": "care/schema.py",
+      "passed": true
+    },
+    {
+      "file": "care/security.py",
+      "passed": true
+    },
+    {
+      "file": "care/services.py",
+      "passed": true
+    },
+    {
+      "file": "care/signals.py",
+      "passed": true
+    },
+    {
+      "file": "care/support.py",
+      "passed": true
+    },
+    {
+      "file": "care/templatetags/__init__.py",
+      "passed": true
+    },
+    {
+      "file": "care/templatetags/translate.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_audit_20261024.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_chatbot.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_final_audit.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_hospital_upgrade.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_login_delivery.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_patient_assistant.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_payments.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_product.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_reception.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_reviews.py",
+      "passed": true
+    },
+    {
+      "file": "care/test_transformation.py",
+      "passed": true
+    },
+    {
+      "file": "care/tests.py",
+      "passed": true
+    },
+    {
+      "file": "care/translations_extra.py",
+      "passed": true
+    },
+    {
+      "file": "care/translations_product.py",
+      "passed": true
+    },
+    {
+      "file": "care/views.py",
+      "passed": true
+    },
+    {
+      "file": "configure.py",
+      "passed": true
+    },
+    {
+      "file": "launch.py",
+      "passed": true
+    },
+    {
+      "file": "manage.py",
+      "passed": true
+    },
+    {
+      "file": "mednova/__init__.py",
+      "passed": true
+    },
+    {
+      "file": "mednova/database.py",
+      "passed": true
+    },
+    {
+      "file": "mednova/hosting.py",
+      "passed": true
+    },
+    {
+      "file": "mednova/settings.py",
+      "passed": true
+    },
+    {
+      "file": "mednova/urls.py",
+      "passed": true
+    },
+    {
+      "file": "mednova/wsgi.py",
+      "passed": true
+    },
+    {
+      "file": "tools/hospital_http.py",
+      "passed": true
+    },
+    {
+      "file": "tools/http_acceptance.py",
+      "passed": true
+    },
+    {
+      "file": "tools/local_mysql.py",
+      "passed": true
+    },
+    {
+      "file": "tools/local_postgres.py",
+      "passed": true
+    },
+    {
+      "file": "tools/migrate_mysql.py",
+      "passed": true
+    }
+  ],
+  "javascript_syntax": [
+    {
+      "file": "static/js/app.js",
+      "passed": true
+    },
+    {
+      "file": "static/js/chatbot.js",
+      "passed": true
+    },
+    {
+      "file": "static/js/payment.js",
+      "passed": true
+    },
+    {
+      "file": "static/js/reception.js",
+      "passed": true
+    },
+    {
+      "file": "static/js/video.js",
+      "passed": true
+    }
+  ],
+  "secret_scan": []
+}

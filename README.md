@@ -54,6 +54,7 @@ Django's ordinary test command uses an isolated test database. Real SQL locking 
 
 ## Documentation
 
+- [Latest complete website audit — 24 October 2026](docs/WEBSITE_AUDIT_2026-10-24.md)
 - [Appointment payment verification and email setup](docs/APPOINTMENT_PAYMENTS.md)
 - [Patient reviews and verification](docs/PATIENT_REVIEWS.md)
 - [Cleanup audit, recovery checkpoint and verification](docs/CLEANUP_REPORT.md)

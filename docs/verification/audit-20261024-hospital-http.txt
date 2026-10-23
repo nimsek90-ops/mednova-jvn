@@ -1,0 +1,6 @@
+PASS 1: new synthetic registration has a persisted MRN; patient cannot access pharmacy purchasing
+PASS 2: recurring duration/buffer slots flow through assistant booking into the shared appointment; clinical reception access denied
+PASS 3: responsible-doctor admission request, reception bed allocation and patient-owned admission view
+PASS 4: supplier, purchase request, admin approval, verified GRN and batch quarantine persist via actual HTTP
+PASS 5: waiting-list notification follows cancellation of the shared appointment
+PASS 6: actual new-table metadata and public emergency escalation; no model provider required

@@ -1,0 +1,49 @@
+Creating test database for alias 'default'...
+
+FF.FF
+======================================================================
+FAIL: test_payment_screenshot_storage_outage_is_retryable (care.test_audit_20261024.AuditStorageTests.test_payment_screenshot_storage_outage_is_retryable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_audit_20261024.py", line 33, in test_payment_screenshot_storage_outage_is_retryable
+    self.assertEqual(response.status_code, 503)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 500 != 503
+
+======================================================================
+FAIL: test_payment_upload_storage_outage_preserves_pending_payment (care.test_audit_20261024.AuditStorageTests.test_payment_upload_storage_outage_preserves_pending_payment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_audit_20261024.py", line 24, in test_payment_upload_storage_outage_preserves_pending_payment
+    self.assertEqual(response.status_code, 503)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 500 != 503
+
+======================================================================
+FAIL: test_report_signed_url_failure_is_retryable (care.test_audit_20261024.AuditStorageTests.test_report_signed_url_failure_is_retryable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\.venv\Lib\site-packages\django\test\utils.py", line 456, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_audit_20261024.py", line 50, in test_report_signed_url_failure_is_retryable
+    self.assertEqual(response.status_code, 503)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 500 != 503
+
+======================================================================
+FAIL: test_report_storage_outage_is_retryable (care.test_audit_20261024.AuditStorageTests.test_report_storage_outage_is_retryable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Niraj\Downloads\mednova-redesign\MedNova-Python-MySQL\care\test_audit_20261024.py", line 41, in test_report_storage_outage_is_retryable
+    self.assertEqual(response.status_code, 503)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 500 != 503
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.653s
+
+FAILED (failures=4)
+Destroying test database for alias 'default'...
+
+Found 5 test(s).
+System check identified no issues (0 silenced).

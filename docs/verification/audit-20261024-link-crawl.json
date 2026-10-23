@@ -1,0 +1,1201 @@
+{
+  "origin": "http://127.0.0.1:8003",
+  "checks": [
+    {
+      "role": "anonymous",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/about/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/appointments/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/assistant/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/book/3/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/book/4/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/contact/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/doctors/3/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/doctors/4/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/doctors/?department=21",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/health-hub/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/legal/privacy/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/legal/terms/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/pharmacy/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/register/",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/css/app.css",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/css/premium.css?v=6",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/css/product.css?v=3",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/css/workflows.css?v=2",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/img/hospital-line.svg",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/img/logo.png",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/js/app.js?v=7",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/static/js/reception.js",
+      "status": 200
+    },
+    {
+      "role": "anonymous",
+      "path": "/symptom-information/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/admissions/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/appointments/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/appointments/05d9f15c-09a2-4a52-bc5c-f055df3b6bce/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/appointments/3ab0c47b-c2af-4e07-804e-b5a4b64a41a7/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/appointments/?status=completed",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/appointments/?status=pending",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/appointments/b4df186e-a2a0-4715-a41d-f846b323460e/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/assistant/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/book/3/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/book/4/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/contact/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/dashboard/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/doctors/3/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/doctors/4/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/doctors/?department=21",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/health-hub/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/legal/privacy/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/legal/terms/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/notifications/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/patients/1/registration/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/patients/1/timeline/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/prescriptions/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/profile/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/specialties/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/css/app.css",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/css/premium.css?v=6",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/css/product.css?v=3",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/css/reviews.css",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/css/workflows.css?v=2",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/img/hospital-line.svg",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/img/logo.png",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/js/app.js?v=7",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/static/js/reception.js",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/support/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/symptom-information/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/waiting-list/",
+      "status": 200
+    },
+    {
+      "role": "patient",
+      "path": "/wellness/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/admissions/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/appointments/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/appointments/05d9f15c-09a2-4a52-bc5c-f055df3b6bce/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/appointments/3ab0c47b-c2af-4e07-804e-b5a4b64a41a7/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/appointments/?status=completed",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/appointments/?status=pending",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/appointments/b4df186e-a2a0-4715-a41d-f846b323460e/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/assistant/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/availability/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/contact/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/dashboard/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/doctors/3/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/doctors/4/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/doctors/?department=21",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/health-hub/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/legal/privacy/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/legal/terms/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/notifications/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/payments/verification/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/prescriptions/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/profile/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/schedule/rules/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/specialties/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/css/app.css",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/css/premium.css?v=6",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/css/product.css?v=3",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/css/reviews.css",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/css/workflows.css?v=2",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/img/hospital-line.svg",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/img/logo.png",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/js/app.js?v=7",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/static/js/reception.js",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/support/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/symptom-information/",
+      "status": 200
+    },
+    {
+      "role": "doctor",
+      "path": "/worklist/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/admissions/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/0ee3ec4d-188c-454b-8329-83fccae754fa/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/212a52c6-9885-416c-9eeb-0affa9d1e8a6/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/3ab0c47b-c2af-4e07-804e-b5a4b64a41a7/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/?date=2026-10-24",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/?date=2026-10-24&status=confirmed",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/?date=2026-10-24&status=pending",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/a0f9620e-662d-4fbc-bc33-9701be47bc34/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/appointments/b4df186e-a2a0-4715-a41d-f846b323460e/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/assistant/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/book/3/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/book/4/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/contact/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/dashboard/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/doctors/3/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/doctors/4/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/doctors/?department=21",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/health-hub/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/legal/privacy/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/legal/terms/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/notifications/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/patients/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/payments/verification/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/profile/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/queue/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/reception/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/reception/book/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/reception/patients/1/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/reception/patients/10/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/reception/patients/2/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/reception/patients/9/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/reception/register/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/specialties/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/css/app.css",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/css/premium.css?v=6",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/css/product.css?v=3",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/css/reviews.css",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/css/workflows.css?v=2",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/img/hospital-line.svg",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/img/logo.png",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/js/app.js?v=7",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/static/js/reception.js",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/support/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/symptom-information/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/waiting-list/",
+      "status": 200
+    },
+    {
+      "role": "receptionist",
+      "path": "/worklist/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/assistant/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/contact/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/dashboard/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/doctors/3/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/doctors/4/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/doctors/?department=21",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/health-hub/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/inventory/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/inventory/movements/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/legal/privacy/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/legal/terms/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/notifications/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/prescriptions/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/profile/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/purchasing/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/specialties/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/css/app.css",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/css/premium.css?v=6",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/css/product.css?v=3",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/css/reviews.css",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/css/workflows.css?v=2",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/img/hospital-line.svg",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/img/logo.png",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/js/app.js?v=7",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/static/js/reception.js",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/support/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/symptom-information/",
+      "status": 200
+    },
+    {
+      "role": "pharmacist",
+      "path": "/worklist/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/assistant/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/audit/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/data/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/departments/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/doctors/3/specialties/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/operations/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/settings/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/staff/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admin/users/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/admissions/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/appointments/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/appointments/?status=completed",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/appointments/?status=pending",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/appointments/b4df186e-a2a0-4715-a41d-f846b323460e/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/assistant/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/contact/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/dashboard/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/departments/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/doctors/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/doctors/3/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/doctors/4/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/doctors/?department=21",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/health-hub/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/inventory/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/inventory/movements/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/legal/privacy/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/legal/terms/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/login/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/notifications/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/patients/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/payments/verification/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/profile/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/purchasing/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/queue/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/reception/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/specialties/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/css/app.css",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/css/premium.css?v=6",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/css/product.css?v=3",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/css/reviews.css",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/css/workflows.css?v=2",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/img/hospital-line.svg",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/img/logo.png",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/js/app.js?v=7",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/static/js/reception.js",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/support/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/symptom-information/",
+      "status": 200
+    },
+    {
+      "role": "admin",
+      "path": "/worklist/",
+      "status": 200
+    }
+  ],
+  "failures": []
+}

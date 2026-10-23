@@ -1,0 +1,22 @@
+[
+  {
+    "command": "manage.py check --deploy --fail-level WARNING",
+    "exit_code": 0,
+    "output": "System check identified no issues (0 silenced).\n"
+  },
+  {
+    "command": "manage.py collectstatic --noinput",
+    "exit_code": 0,
+    "output": "\n0 static files copied to 'C:\\Users\\Niraj\\Downloads\\mednova-redesign\\MedNova-Python-MySQL\\staticfiles', 16 unmodified.\n"
+  },
+  {
+    "command": "manage.py launch_check",
+    "exit_code": 1,
+    "output": "CommandError: Connect the approved custom domain and set PUBLIC_ORIGIN to its HTTPS origin.\nConnect and test the password-reset email service.\nConfigure and test an authenticated TURN relay for video calls.\nComplete verified hospital identity, contacts and cancellation/refund policy.\n"
+  },
+  {
+    "command": "production WSGI import",
+    "exit_code": 0,
+    "output": "Production WSGI application imports successfully\n"
+  }
+]

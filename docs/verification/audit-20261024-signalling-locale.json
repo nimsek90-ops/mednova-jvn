@@ -1,0 +1,9 @@
+{
+  "database": "isolated MySQL audit schema",
+  "signalling_exchange": "passed after staff payment confirmation, patient consent and doctor admission",
+  "real_camera_microphone_media": "not tested; no TURN credentials or second device",
+  "locale_observation": {
+    "language_selected": true,
+    "payment_heading_remains_english": true
+  }
+}

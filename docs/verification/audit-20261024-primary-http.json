@@ -1,0 +1,53 @@
+{
+  "origin": "http://127.0.0.1:8000",
+  "read_only_checks": [
+    {
+      "path": "/health/",
+      "status": 200,
+      "security_headers": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "security_headers": true
+    },
+    {
+      "path": "/doctors/",
+      "status": 200,
+      "security_headers": true
+    },
+    {
+      "path": "/login/",
+      "status": 200,
+      "security_headers": true
+    },
+    {
+      "path": "/payments/verification/",
+      "status": 302,
+      "security_headers": true
+    },
+    {
+      "path": "/.env",
+      "status": 404,
+      "security_headers": true
+    },
+    {
+      "path": "/.git/config",
+      "status": 404,
+      "security_headers": true
+    },
+    {
+      "path": "/.runtime/local_mysql.json",
+      "status": 404,
+      "security_headers": true
+    },
+    {
+      "path": "/private_uploads/synthetic.png",
+      "status": 404,
+      "security_headers": true
+    }
+  ],
+  "tables": 53,
+  "orphan_rows": 0,
+  "patient_records_modified_by_audit": false
+}

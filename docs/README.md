@@ -4,6 +4,7 @@ Use the root [README](../README.md) and [VS Code run guide](../OPEN_IN_VSCODE.md
 
 ## Current operational guides
 
+- [Latest complete website audit — 24 October 2026](WEBSITE_AUDIT_2026-10-24.md)
 - [Appointment payment verification](APPOINTMENT_PAYMENTS.md)
 - [Patient reviews](PATIENT_REVIEWS.md)
 - [Cleanup report and recovery point](CLEANUP_REPORT.md)

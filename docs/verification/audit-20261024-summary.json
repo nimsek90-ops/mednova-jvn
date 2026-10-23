@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-24",
+  "score": 81,
+  "status": "Not Ready for Deployment",
+  "automated": {
+    "passed": 225,
+    "failed": 0
+  },
+  "live_workflow_groups_passed": 22,
+  "role_matrix_requests": 528,
+  "rendered_links_assets_checked": 239,
+  "broken_links": 0,
+  "external_groups_blocked": 6,
+  "additional_scopes_not_tested": 4,
+  "launch_gate": "failed: missing production configuration",
+  "weights": [
+    {
+      "category": "Core functionality",
+      "earned": 23,
+      "weight": 25
+    },
+    {
+      "category": "Backend/APIs/database",
+      "earned": 18,
+      "weight": 20
+    },
+    {
+      "category": "Authentication/security",
+      "earned": 18,
+      "weight": 20
+    },
+    {
+      "category": "UI/responsiveness",
+      "earned": 8,
+      "weight": 10
+    },
+    {
+      "category": "Appointment/payment/video",
+      "earned": 7,
+      "weight": 10
+    },
+    {
+      "category": "Reliability",
+      "earned": 4,
+      "weight": 5
+    },
+    {
+      "category": "Build/deployment",
+      "earned": 3,
+      "weight": 10
+    }
+  ]
+}

@@ -17,6 +17,7 @@ from .delivery import publish
 from .http import paged
 from .models import Appointment, Hospital, Payment, PaymentProof, User
 from .security import audit, roles, limited
+from .private_storage import STORAGE_ERRORS, unavailable
 
 PAYMENT_NUMBER = '9373084858'
 
@@ -39,7 +40,7 @@ class PaymentForm(forms.Form):
         if upload.size > settings.REPORT_MAX_BYTES:
             raise forms.ValidationError('The screenshot exceeds the upload size limit.')
         try:
-            with Image.open(io.BytesIO(upload.read())) as image:
+            with Image.open(io.BytesIO(upload.read()), formats=('PNG', 'JPEG')) as image:
                 if image.format not in ('PNG', 'JPEG') or image.width * image.height > 20000000:
                     raise ValueError()
                 image.load()
@@ -129,7 +130,11 @@ def submit_payment(patient, appointment_id, form):
             return payment
     except Exception:
         if saved_file:
-            saved_file.delete(save=False)
+            try:
+                saved_file.delete(save=False)
+            except STORAGE_ERRORS:
+                # Preserve the original error; a provider outage may also prevent cleanup.
+                pass
         raise
 
 
@@ -199,6 +204,7 @@ def instructions(request, pk):
     form = PaymentForm(request.POST if request.method == 'POST' else None, request.FILES if request.method == 'POST' else None,
                        appointment=appt, initial={'method': payment.method or 'online'})
     can_submit = eligible(payment) and payment.status in ('unpaid', 'rejected')
+    status = 200
     if request.method == 'POST':
         if not can_submit:
             form.add_error(None, 'This payment is already submitted or no longer eligible.')
@@ -207,10 +213,16 @@ def instructions(request, pk):
                 submit_payment(request.user, pk, form)
             except forms.ValidationError as error:
                 form.add_error(None, error)
+            except STORAGE_ERRORS:
+                form.add_error(None, 'Payment screenshot storage is temporarily unavailable. Your submission was not saved. Please retry later.')
+                status = 503
             else:
                 messages.success(request, 'Payment instructions saved. Staff must confirm receipt before payment is confirmed.')
                 return redirect('appointment_payment', pk=pk)
-    return render(request, 'care/payment_instructions.html', {'appt': appt, 'payment': payment, 'form': form, 'can_submit': can_submit, 'payment_number': PAYMENT_NUMBER})
+    response = render(request, 'care/payment_instructions.html', {'appt': appt, 'payment': payment, 'form': form, 'can_submit': can_submit, 'payment_number': PAYMENT_NUMBER}, status=status)
+    if status == 503:
+        response['Retry-After'] = '60'
+    return response
 
 
 @roles('receptionist', 'doctor', 'admin')
@@ -246,8 +258,10 @@ def screenshot(request, pk):
         raise Http404()
     try:
         response = FileResponse(proof.image.open('rb'), content_type='image/png', filename='payment-proof.png')
-    except OSError:
+    except FileNotFoundError:
         raise Http404('Payment screenshot is unavailable. Contact the hospital.')
+    except STORAGE_ERRORS:
+        return unavailable()
     response['Cache-Control'] = 'private, no-store'
     response['X-Content-Type-Options'] = 'nosniff'
     return response
