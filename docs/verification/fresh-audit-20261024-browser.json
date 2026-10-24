@@ -1,0 +1,15 @@
+{
+  "environment": "isolated localhost:8003 synthetic MySQL",
+  "patient_browser_login": "passed",
+  "completed_visit_and_review_edit_page": "passed",
+  "mobile_viewport_requested": [
+    390,
+    844
+  ],
+  "document_client_width": 375,
+  "document_scroll_width": 375,
+  "rating_radio_count": 5,
+  "comment_required": false,
+  "viewport_reset": true,
+  "screenshot": ".runtime/fresh-audit-mobile.png"
+}

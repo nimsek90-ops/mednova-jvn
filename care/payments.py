@@ -176,7 +176,9 @@ def send_proof_email(proof_id):
 
 
 def retry_proof_emails(limit=2):
-    ids = list(PaymentProof.objects.exclude(email_status='sent').order_by('email_attempts', 'submitted_at').values_list('pk', flat=True)[:limit])
+    ids = list(PaymentProof.objects.exclude(email_status='sent').filter(
+        Q(email_lease_until__isnull=True) | Q(email_lease_until__lte=timezone.now())
+    ).order_by('email_attempts', 'submitted_at').values_list('pk', flat=True)[:limit])
     return sum(send_proof_email(pk) for pk in ids)
 
 

@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "exit": 0,
+    "output": "No broken requirements found.\n"
+  },
+  "frontend_tests": {
+    "exit": 0,
+    "output": "\u00e2\u0153\u201d routes the existing server-rendered site and APIs together (4.2619ms)\n\u00e2\u0153\u201d rejects missing, local, insecure, credential-bearing and non-origin destinations (1.1608ms)\n\u00e2\u201e\u00b9 tests 2\n\u00e2\u201e\u00b9 suites 0\n\u00e2\u201e\u00b9 pass 2\n\u00e2\u201e\u00b9 fail 0\n\u00e2\u201e\u00b9 cancelled 0\n\u00e2\u201e\u00b9 skipped 0\n\u00e2\u201e\u00b9 todo 0\n\u00e2\u201e\u00b9 duration_ms 234.8349\n"
+  },
+  "frontend_build": {
+    "exit": 0,
+    "output": "Vercel routing output generated. Pages, APIs, forms and private files use the same browser origin.\n"
+  },
+  "diff": {
+    "exit": 0,
+    "output": ""
+  }
+}

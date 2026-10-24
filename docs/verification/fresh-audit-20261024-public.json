@@ -1,0 +1,62 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "expected": 200,
+    "passed": true
+  },
+  {
+    "path": "/health/",
+    "status": 200,
+    "expected": 200,
+    "passed": true
+  },
+  {
+    "path": "/doctors/",
+    "status": 200,
+    "expected": 200,
+    "passed": true
+  },
+  {
+    "path": "/login/",
+    "status": 200,
+    "expected": 200,
+    "passed": true
+  },
+  {
+    "path": "/register/",
+    "status": 200,
+    "expected": 200,
+    "passed": true
+  },
+  {
+    "path": "/contact/",
+    "status": 200,
+    "expected": 200,
+    "passed": true
+  },
+  {
+    "path": "/favicon.ico",
+    "status": 200,
+    "expected": 200,
+    "passed": true
+  },
+  {
+    "path": "/.env",
+    "status": 404,
+    "expected": 404,
+    "passed": true
+  },
+  {
+    "path": "/.git/config",
+    "status": 404,
+    "expected": 404,
+    "passed": true
+  },
+  {
+    "path": "/private_uploads/test.png",
+    "status": 404,
+    "expected": 404,
+    "passed": true
+  }
+]

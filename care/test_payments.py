@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.utils import timezone
 from . import tests as fixtures
 from .models import Appointment, Hospital, Notification, Payment, PaymentProof
-from .payments import send_proof_email, verify_payment
+from .payments import send_proof_email, verify_payment, retry_proof_emails
 from .services import book, BookingError, change_status
 
 
@@ -217,6 +217,18 @@ class PaymentVerificationTests(TestCase):
             with override_settings(EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend'):
                 self.assertTrue(send_proof_email(proof.pk))
         self.assertEqual(self.payment().status, 'awaiting')
+
+    def test_email_retry_batch_skips_active_leases_and_recovers_expired_ones(self):
+        self.submit()
+        proof = PaymentProof.objects.get()
+        now = timezone.now()
+        PaymentProof.objects.filter(pk=proof.pk).update(email_status='sending', email_lease_until=now + timedelta(minutes=5))
+        ready = PaymentProof.objects.create(payment=self.payment(), image='synthetic.png', amount=self.appt.fee)
+        expired = PaymentProof.objects.create(payment=self.payment(), image='synthetic.png', amount=self.appt.fee,
+                                            email_status='sending', email_lease_until=now - timedelta(seconds=1))
+        with patch('care.payments.send_proof_email', return_value=True) as send:
+            self.assertEqual(retry_proof_emails(limit=2), 2)
+        self.assertEqual({call.args[0] for call in send.call_args_list}, {ready.pk, expired.pk})
 
     def test_csrf_and_legacy_payment_path_cannot_bypass(self):
         client = Client(enforce_csrf_checks=True)

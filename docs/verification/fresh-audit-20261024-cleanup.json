@@ -1,0 +1,24 @@
+{
+  "preserved": [
+    "database clusters",
+    "private configs",
+    "uploads",
+    "backups",
+    "extracted database runtimes",
+    "audit evidence"
+  ],
+  "removed": [
+    {
+      "path": ".runtime\\mysql-8.4.13-winx64.zip",
+      "bytes": 281154912,
+      "reason": "Redundant download archive: extracted runtime executable verified; startup helpers use extracted directories, not ZIP."
+    },
+    {
+      "path": ".runtime\\postgres-official.zip",
+      "bytes": 384620317,
+      "reason": "Redundant download archive: extracted runtime executable verified; startup helpers use extracted directories, not ZIP."
+    }
+  ],
+  "total_bytes_removed": 665775229,
+  "verified_absent": true
+}
