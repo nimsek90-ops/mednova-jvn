@@ -34,6 +34,23 @@ class AuditStorageTests(TestCase):
         self.assertEqual(response['Retry-After'], '60')
         self.assertNotContains(response, 'storage.example.test', status_code=503)
 
+    def test_invalid_storage_endpoint_does_not_crash_payment_submission(self):
+        with patch('django.db.models.fields.files.FieldFile.save', side_effect=ValueError('Invalid endpoint: private-provider-setting')):
+            response = self.client.post(reverse('appointment_payment', args=[self.appt.pk]), {'method': 'online', 'screenshot': screenshot()})
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response['Retry-After'], '60')
+        self.assertNotContains(response, 'private-provider-setting', status_code=503)
+        self.assertFalse(PaymentProof.objects.exists())
+        self.assertEqual(Payment.objects.get(appointment=self.appt).status, 'unpaid')
+
+    def test_invalid_storage_endpoint_does_not_crash_report_submission(self):
+        with patch('django.db.models.fields.files.FieldFile.save', side_effect=ValueError('Invalid endpoint: private-provider-setting')):
+            response = self.client.post(reverse('upload', args=[self.appt.pk]), {'title': 'Synthetic report', 'file': screenshot()})
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Report storage is unavailable')
+        self.assertNotContains(response, 'private-provider-setting')
+        self.assertFalse(Report.objects.exists())
+
     def test_report_storage_outage_is_retryable(self):
         report = Report.objects.create(appointment=self.appt, uploaded_by=self.patient, title='Synthetic report', extension='.png', file='synthetic.png')
         with patch('django.db.models.fields.files.FieldFile.open', side_effect=OSError('synthetic unavailable')):
@@ -61,6 +78,18 @@ class AuditNavigationTests(TestCase):
     @classmethod
     def setUpTestData(cls):
         fixtures.Workflows.setUpTestData.__func__(cls)
+
+    def test_head_probes_preserve_readiness_and_do_not_return_bodies(self):
+        for path in ('/', '/health/'):
+            response = self.client.head(path)
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.content, b'')
+            self.assertEqual(self.client.post(path).status_code, 405)
+        from django.db import DatabaseError
+        with patch('django.db.connection.cursor', side_effect=DatabaseError('private connection detail')):
+            response = self.client.head('/health/')
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.content, b'')
 
     def test_booking_links_match_role_permissions(self):
         for user in [self.doctor, self.admin, self.pharmacist]:

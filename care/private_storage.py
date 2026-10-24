@@ -2,7 +2,9 @@
 from botocore.exceptions import BotoCoreError, ClientError
 from django.http import HttpResponse
 
-STORAGE_ERRORS = (OSError, BotoCoreError, ClientError)
+# Botocore validates endpoint configuration while constructing the S3 client
+# and raises ValueError before it can raise a provider-specific exception.
+STORAGE_ERRORS = (OSError, BotoCoreError, ClientError, ValueError)
 
 
 def unavailable():

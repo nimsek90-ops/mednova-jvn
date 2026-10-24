@@ -55,7 +55,7 @@ def approved_profiles():
     )
 
 
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "HEAD"])
 def home(request):
     return render(request, "care/home.html", {
         "departments": Department.objects.filter(active=True).order_by("name")[:6],
@@ -88,7 +88,7 @@ def doctor_detail(request, pk):
     })
 
 
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "HEAD"])
 def health(request):
     from django.db import connection, DatabaseError
     try:
@@ -707,7 +707,6 @@ def upload(request, pk):
         return HttpResponseForbidden("This appointment is cancelled.")
     form = UploadForm(request.POST or None, request.FILES or None)
     if request.method == "POST" and form.is_valid():
-        from botocore.exceptions import BotoCoreError, ClientError
         try:
             with transaction.atomic():
                 Report.objects.create(
@@ -718,7 +717,7 @@ def upload(request, pk):
                     file=form.cleaned_data["file"],
                 )
                 audit(request.user, "report.uploaded", appt.pk)
-        except (OSError, BotoCoreError, ClientError):
+        except STORAGE_ERRORS:
             logger.error("Private report storage is unavailable.")
             form.add_error(None, "Report storage is unavailable. Your upload was not saved. Please try again later.")
         else:

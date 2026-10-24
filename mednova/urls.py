@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import RedirectView
 from care import views as v
 from care import product as p
 from care import hospital_views as h
@@ -9,6 +10,8 @@ from care import reviews
 from care import payments
 
 urlpatterns = [
+    path('favicon.ico', RedirectView.as_view(url='/static/img/logo.png'), name='favicon'),
+    path('favicon.png', RedirectView.as_view(url='/static/img/logo.png')),
     path('appointments/<uuid:pk>/payment/', payments.instructions, name='appointment_payment'),
     path('payments/verification/', payments.verification, name='payment_verification'),
     path('payments/verification/<uuid:pk>/', payments.verification, name='payment_verification_detail'),
