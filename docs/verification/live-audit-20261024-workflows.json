@@ -1,0 +1,113 @@
+{
+  "checks": [
+    {
+      "check": "patient login",
+      "passed": true
+    },
+    {
+      "check": "doctor login",
+      "passed": true
+    },
+    {
+      "check": "receptionist login",
+      "passed": true
+    },
+    {
+      "check": "pharmacist login",
+      "passed": true
+    },
+    {
+      "check": "admin login",
+      "passed": true
+    },
+    {
+      "check": "other_patient login",
+      "passed": true
+    },
+    {
+      "check": "role routes have no server failures",
+      "passed": true
+    },
+    {
+      "check": "only admin can access user management",
+      "passed": true
+    },
+    {
+      "check": "video booking",
+      "passed": true
+    },
+    {
+      "check": "video owner isolation",
+      "passed": true
+    },
+    {
+      "check": "video doctor confirmation",
+      "passed": true
+    },
+    {
+      "check": "offline booking",
+      "passed": false
+    },
+    {
+      "check": "offline_online booking",
+      "passed": true
+    },
+    {
+      "check": "offline_online owner isolation",
+      "passed": true
+    },
+    {
+      "check": "offline_online doctor confirmation",
+      "passed": true
+    },
+    {
+      "check": "cancel booking",
+      "passed": true
+    },
+    {
+      "check": "cancel owner isolation",
+      "passed": true
+    },
+    {
+      "check": "cancel doctor confirmation",
+      "passed": true
+    },
+    {
+      "check": "patient cancellation",
+      "passed": true
+    },
+    {
+      "check": "rating-only review submission",
+      "passed": false
+    },
+    {
+      "check": "review edit and HTML escaping",
+      "passed": true
+    },
+    {
+      "check": "review owner isolation",
+      "passed": true
+    },
+    {
+      "check": "unpaid video remains locked",
+      "passed": true
+    },
+    {
+      "check": "online proof required",
+      "passed": true
+    },
+    {
+      "check": "invalid proof rejected",
+      "passed": true
+    },
+    {
+      "check": "cloud screenshot storage upload",
+      "passed": false,
+      "status": 503
+    },
+    {
+      "check": "proof upload does not unlock video",
+      "passed": true
+    }
+  ]
+}

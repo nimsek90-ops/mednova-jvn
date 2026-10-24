@@ -1,0 +1,40 @@
+{
+  "checks": [
+    {
+      "check": "video confirmed payment persisted",
+      "passed": true
+    },
+    {
+      "check": "video patient confirmation notification persisted",
+      "passed": true
+    },
+    {
+      "check": "offline confirmed payment persisted",
+      "passed": true
+    },
+    {
+      "check": "offline patient confirmation notification persisted",
+      "passed": true
+    },
+    {
+      "check": "offline_online confirmed payment persisted",
+      "passed": true
+    },
+    {
+      "check": "offline_online patient confirmation notification persisted",
+      "passed": true
+    },
+    {
+      "check": "browser four-star review has no comment and no duplicate",
+      "passed": true
+    },
+    {
+      "check": "report image safely transcoded to valid JPEG",
+      "passed": true
+    }
+  ],
+  "notes": [
+    "Earlier immediate assertions for one online confirmation were false; this independent final database query confirms payment verifier, timestamp and patient notification.",
+    "Report upload intentionally converts PNG to sanitized JPEG; raw byte equality is not expected."
+  ]
+}

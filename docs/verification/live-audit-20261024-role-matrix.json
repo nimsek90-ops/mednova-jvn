@@ -1,0 +1,662 @@
+[
+  {
+    "role": "patient",
+    "path": "/dashboard/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/profile/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/appointments/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/prescriptions/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/notifications/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/patients/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/reception/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/payments/verification/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/inventory/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/purchasing/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/admin/users/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/admin/settings/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/admin/operations/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/admin/audit/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/admin/data/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/support/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/availability/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/schedule/rules/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/admissions/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/queue/",
+    "status": 403
+  },
+  {
+    "role": "patient",
+    "path": "/assistant/",
+    "status": 200
+  },
+  {
+    "role": "patient",
+    "path": "/worklist/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/dashboard/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/profile/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/appointments/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/prescriptions/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/notifications/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/patients/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/reception/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/payments/verification/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/inventory/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/purchasing/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/admin/users/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/admin/settings/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/admin/operations/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/admin/audit/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/admin/data/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/support/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/availability/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/schedule/rules/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/admissions/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/queue/",
+    "status": 403
+  },
+  {
+    "role": "doctor",
+    "path": "/assistant/",
+    "status": 200
+  },
+  {
+    "role": "doctor",
+    "path": "/worklist/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/dashboard/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/profile/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/appointments/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/prescriptions/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/notifications/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/patients/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/reception/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/payments/verification/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/inventory/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/purchasing/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/admin/users/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/admin/settings/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/admin/operations/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/admin/audit/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/admin/data/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/support/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/availability/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/schedule/rules/",
+    "status": 403
+  },
+  {
+    "role": "receptionist",
+    "path": "/admissions/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/queue/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/assistant/",
+    "status": 200
+  },
+  {
+    "role": "receptionist",
+    "path": "/worklist/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/dashboard/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/profile/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/appointments/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/prescriptions/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/notifications/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/patients/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/reception/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/payments/verification/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/inventory/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/purchasing/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/admin/users/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/admin/settings/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/admin/operations/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/admin/audit/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/admin/data/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/support/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/availability/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/schedule/rules/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/admissions/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/queue/",
+    "status": 403
+  },
+  {
+    "role": "pharmacist",
+    "path": "/assistant/",
+    "status": 200
+  },
+  {
+    "role": "pharmacist",
+    "path": "/worklist/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/dashboard/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/profile/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/appointments/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/prescriptions/",
+    "status": 403
+  },
+  {
+    "role": "admin",
+    "path": "/notifications/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/patients/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/reception/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/payments/verification/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/inventory/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/purchasing/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/admin/users/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/admin/settings/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/admin/operations/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/admin/audit/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/admin/data/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/support/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/availability/",
+    "status": 403
+  },
+  {
+    "role": "admin",
+    "path": "/schedule/rules/",
+    "status": 403
+  },
+  {
+    "role": "admin",
+    "path": "/admissions/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/queue/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/assistant/",
+    "status": 200
+  },
+  {
+    "role": "admin",
+    "path": "/worklist/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/dashboard/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/profile/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/appointments/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/prescriptions/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/notifications/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/patients/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/reception/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/payments/verification/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/inventory/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/purchasing/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/admin/users/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/admin/settings/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/admin/operations/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/admin/audit/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/admin/data/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/support/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/availability/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/schedule/rules/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/admissions/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/queue/",
+    "status": 403
+  },
+  {
+    "role": "other_patient",
+    "path": "/assistant/",
+    "status": 200
+  },
+  {
+    "role": "other_patient",
+    "path": "/worklist/",
+    "status": 403
+  }
+]

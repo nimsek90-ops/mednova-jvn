@@ -1,5 +1,7 @@
 # MedNova live deployment — 24 October 2026
 
+Follow-up: [live audit and repairs](LIVE_WEBSITE_AUDIT_2026-10-24.md) supersede the storage and workflow limits recorded in this initial deployment snapshot.
+
 Frontend: https://mednova-jvn-vercel-snowy.vercel.app/
 
 Backend: https://mednova-jvn-backend.onrender.com/

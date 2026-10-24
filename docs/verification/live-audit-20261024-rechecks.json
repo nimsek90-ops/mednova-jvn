@@ -1,0 +1,15 @@
+{
+  "login": 200,
+  "rating_only": {
+    "status": 200,
+    "rating": 5,
+    "blank_comment": true,
+    "one_review": true
+  },
+  "offline_booking": {
+    "status": 200,
+    "path": "/appointments/a1679a4a-b35d-4ce6-ac8c-25510e627f04/",
+    "created": true,
+    "errors": []
+  }
+}

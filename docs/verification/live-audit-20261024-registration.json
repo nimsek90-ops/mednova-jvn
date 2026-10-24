@@ -1,0 +1,7 @@
+{
+  "registration_status": 200,
+  "redirected_to_dashboard": true,
+  "profile_updated": true,
+  "duplicate_registration_rejected": true,
+  "missing_csrf_rejected": true
+}

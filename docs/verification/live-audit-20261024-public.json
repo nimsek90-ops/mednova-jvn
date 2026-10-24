@@ -1,0 +1,367 @@
+{
+  "origin": "https://mednova-jvn-vercel-snowy.vercel.app",
+  "checks": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/"
+    },
+    {
+      "path": "/about/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/about/"
+    },
+    {
+      "path": "/assistant/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/assistant/"
+    },
+    {
+      "path": "/contact/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/contact/"
+    },
+    {
+      "path": "/departments/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/departments/"
+    },
+    {
+      "path": "/doctors/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/"
+    },
+    {
+      "path": "/forgot-password/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/forgot-password/"
+    },
+    {
+      "path": "/health-hub/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/health-hub/"
+    },
+    {
+      "path": "/health/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/health/"
+    },
+    {
+      "path": "/legal/privacy/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/legal/privacy/"
+    },
+    {
+      "path": "/legal/terms/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/legal/terms/"
+    },
+    {
+      "path": "/login/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/pharmacy/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/pharmacy/"
+    },
+    {
+      "path": "/register/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/register/"
+    },
+    {
+      "path": "/symptom-information/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/symptom-information/"
+    },
+    {
+      "path": "/appointments/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/book/12/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/book/19/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/book/27/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/book/29/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/book/3/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/book/38/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/book/4/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/doctors/12/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/12/"
+    },
+    {
+      "path": "/doctors/19/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/19/"
+    },
+    {
+      "path": "/doctors/27/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/27/"
+    },
+    {
+      "path": "/doctors/29/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/29/"
+    },
+    {
+      "path": "/doctors/3/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/3/"
+    },
+    {
+      "path": "/doctors/38/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/38/"
+    },
+    {
+      "path": "/doctors/4/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/4/"
+    },
+    {
+      "path": "/doctors/?department=1",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/"
+    },
+    {
+      "path": "/doctors/?department=2",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/"
+    },
+    {
+      "path": "/doctors/?department=3",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/doctors/"
+    },
+    {
+      "path": "/login/?next=/health-hub/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/login/?role=admin&next=/dashboard/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/login/?role=doctor&next=/dashboard/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/login/?role=patient&next=/dashboard/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/login/?role=pharmacist&next=/dashboard/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/login/?role=receptionist&next=/dashboard/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/static/css/app.css",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/css/app.css"
+    },
+    {
+      "path": "/static/css/chatbot.css",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/css/chatbot.css"
+    },
+    {
+      "path": "/static/css/premium.css?v=6",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/css/premium.css"
+    },
+    {
+      "path": "/static/css/product.css?v=3",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/css/product.css"
+    },
+    {
+      "path": "/static/css/workflows.css?v=2",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/css/workflows.css"
+    },
+    {
+      "path": "/static/img/favicon.svg",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/img/favicon.svg"
+    },
+    {
+      "path": "/static/img/hospital-line.svg",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/img/hospital-line.svg"
+    },
+    {
+      "path": "/static/img/logo.png",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/img/logo.png"
+    },
+    {
+      "path": "/static/js/app.js?v=7",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/js/app.js"
+    },
+    {
+      "path": "/static/js/chatbot.js",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/js/chatbot.js"
+    },
+    {
+      "path": "/static/js/reception.js",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/js/reception.js"
+    },
+    {
+      "path": "/support/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/wellness/",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/login/"
+    },
+    {
+      "path": "/",
+      "method": "HEAD",
+      "status": 200,
+      "final_path": "/",
+      "probe": true
+    },
+    {
+      "path": "/health/",
+      "method": "HEAD",
+      "status": 200,
+      "final_path": "/health/",
+      "probe": true
+    },
+    {
+      "path": "/favicon.ico",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/img/favicon.svg",
+      "probe": true
+    },
+    {
+      "path": "/favicon.png",
+      "method": "GET",
+      "status": 200,
+      "final_path": "/static/img/favicon.svg",
+      "probe": true
+    },
+    {
+      "path": "/.env",
+      "method": "GET",
+      "status": 404,
+      "final_path": "/.env",
+      "probe": true
+    },
+    {
+      "path": "/.git/config",
+      "method": "GET",
+      "status": 404,
+      "final_path": "/.git/config",
+      "probe": true
+    },
+    {
+      "path": "/private_uploads/",
+      "method": "GET",
+      "status": 404,
+      "final_path": "/private_uploads/",
+      "probe": true
+    }
+  ],
+  "failures": []
+}

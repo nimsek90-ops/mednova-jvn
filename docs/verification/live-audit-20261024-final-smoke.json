@@ -1,0 +1,11 @@
+{
+  "homepage": 200,
+  "doctor_directory": 200,
+  "new_qa_doctor_not_public": true,
+  "favicon_status": 200,
+  "favicon_bytes": 175,
+  "private_cache_control": "no-store, private",
+  "hsts": true,
+  "csp": true,
+  "nosniff": true
+}

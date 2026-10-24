@@ -1,0 +1,371 @@
+{
+  "foreign_keys_checked": 73,
+  "orphan_records": 0,
+  "details": [
+    {
+      "table": "auth_group_permissions",
+      "column": "group_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "auth_group_permissions",
+      "column": "permission_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "auth_permission",
+      "column": "content_type_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_admission",
+      "column": "bed_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_admission",
+      "column": "department_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_admission",
+      "column": "doctor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_admission",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_appointment",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_appointment",
+      "column": "slot_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_appointmentreview",
+      "column": "doctor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_appointmentreview",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_appointmentreview",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_assistantescalation",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_auditevent",
+      "column": "actor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_clinicaldraft",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_clinicaldraft",
+      "column": "author_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_clinicalnote",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_clinicalnote",
+      "column": "author_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_deliveryoutbox",
+      "column": "notification_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_dispensingevent",
+      "column": "item_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_dispensingevent",
+      "column": "pharmacist_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_doctorprofile",
+      "column": "department_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_doctorprofile",
+      "column": "user_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_doctorprofile_specialties",
+      "column": "doctorprofile_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_doctorprofile_specialties",
+      "column": "specialty_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_goodsreceipt",
+      "column": "order_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_goodsreceipt",
+      "column": "received_by_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_healthassessment",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_investigation",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_investigation",
+      "column": "ordered_by_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_notification",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_notification",
+      "column": "recipient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_patientregistration",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_payment",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_payment",
+      "column": "current_proof_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_payment",
+      "column": "received_by_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_paymentproof",
+      "column": "payment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_prescription",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_prescription",
+      "column": "dispensed_by_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_prescriptionitem",
+      "column": "medicine_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_prescriptionitem",
+      "column": "prescription_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_purchaseorder",
+      "column": "approved_by_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_purchaseorder",
+      "column": "medicine_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_purchaseorder",
+      "column": "requested_by_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_purchaseorder",
+      "column": "supplier_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_queueentry",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_report",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_report",
+      "column": "uploaded_by_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_scheduleblock",
+      "column": "doctor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_schedulesession",
+      "column": "doctor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_signal",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_signal",
+      "column": "sender_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_slot",
+      "column": "doctor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_slot",
+      "column": "session_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_specialty_departments",
+      "column": "department_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_specialty_departments",
+      "column": "specialty_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_stockmovement",
+      "column": "actor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_stockmovement",
+      "column": "medicine_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_stockmovement",
+      "column": "prescription_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_supportcase",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_supportcase",
+      "column": "assigned_to_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_supportcase",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_supportmessage",
+      "column": "author_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_supportmessage",
+      "column": "case_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_user_groups",
+      "column": "group_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_user_groups",
+      "column": "user_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_user_user_permissions",
+      "column": "user_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_user_user_permissions",
+      "column": "permission_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_videoattendance",
+      "column": "appointment_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_waitinglist",
+      "column": "doctor_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_waitinglist",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_wellnessentry",
+      "column": "patient_id",
+      "orphan_count": 0
+    },
+    {
+      "table": "care_wellnessrevision",
+      "column": "entry_id",
+      "orphan_count": 0
+    }
+  ]
+}

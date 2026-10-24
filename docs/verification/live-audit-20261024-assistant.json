@@ -1,0 +1,40 @@
+{
+  "checks": [
+    {
+      "check": "doctor search",
+      "status": 200,
+      "passed": true,
+      "json": true
+    },
+    {
+      "check": "hospital information",
+      "status": 200,
+      "passed": true,
+      "json": true
+    },
+    {
+      "check": "missing message",
+      "status": 400,
+      "passed": true,
+      "json": true
+    },
+    {
+      "check": "wrong JSON type",
+      "status": 400,
+      "passed": true,
+      "json": true
+    },
+    {
+      "check": "empty message",
+      "status": 400,
+      "passed": true,
+      "json": true
+    },
+    {
+      "check": "clear conversation",
+      "status": 200,
+      "passed": true,
+      "json": true
+    }
+  ]
+}

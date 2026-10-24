@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "check": "pharmacist creates synthetic inventory batch",
+      "passed": true
+    },
+    {
+      "check": "assigned doctor creates synthetic prescription",
+      "passed": true
+    },
+    {
+      "check": "dispensing updates stock and prescription",
+      "passed": true
+    },
+    {
+      "check": "duplicate dispensing leaves stock unchanged",
+      "passed": true
+    },
+    {
+      "check": "patient cannot dispense prescription",
+      "passed": true
+    }
+  ]
+}

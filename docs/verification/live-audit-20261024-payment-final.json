@@ -1,0 +1,118 @@
+{
+  "checks": [
+    {
+      "check": "patient login",
+      "passed": true
+    },
+    {
+      "check": "doctor login",
+      "passed": true
+    },
+    {
+      "check": "receptionist login",
+      "passed": true
+    },
+    {
+      "check": "other_patient login",
+      "passed": true
+    },
+    {
+      "check": "offline selection stays unpaid",
+      "passed": true
+    },
+    {
+      "check": "reception confirms offline payment",
+      "passed": true
+    },
+    {
+      "check": "duplicate confirmation does not increment version",
+      "passed": true
+    },
+    {
+      "check": "video locked before payment",
+      "passed": true
+    },
+    {
+      "check": "video proof uploads to private cloud storage",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "check": "video proof retrieval is private",
+      "passed": true
+    },
+    {
+      "check": "video proof hidden from another patient",
+      "passed": true
+    },
+    {
+      "check": "video email truthfully unavailable",
+      "passed": true
+    },
+    {
+      "check": "screenshot alone does not unlock video",
+      "passed": true
+    },
+    {
+      "check": "staff rejection persisted",
+      "passed": true
+    },
+    {
+      "check": "rejection notifies patient",
+      "passed": true
+    },
+    {
+      "check": "rejected proof can be resubmitted",
+      "passed": true
+    },
+    {
+      "check": "video assigned doctor confirms online payment",
+      "passed": true
+    },
+    {
+      "check": "video confirmation notifies patient",
+      "passed": true
+    },
+    {
+      "check": "paid eligible video room opens",
+      "passed": true
+    },
+    {
+      "check": "patient cannot self-admit",
+      "passed": true
+    },
+    {
+      "check": "consent and assigned doctor admission persisted",
+      "passed": true
+    },
+    {
+      "check": "unrelated patient cannot enter video",
+      "passed": true
+    },
+    {
+      "check": "offline_online proof uploads to private cloud storage",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "check": "offline_online proof retrieval is private",
+      "passed": true
+    },
+    {
+      "check": "offline_online proof hidden from another patient",
+      "passed": true
+    },
+    {
+      "check": "offline_online email truthfully unavailable",
+      "passed": true
+    },
+    {
+      "check": "offline_online assigned doctor confirms online payment",
+      "passed": false
+    },
+    {
+      "check": "offline_online confirmation notifies patient",
+      "passed": false
+    }
+  ]
+}

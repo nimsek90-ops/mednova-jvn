@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/",
+    "method": "HEAD",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "body_bytes": 0
+  },
+  {
+    "path": "/health/",
+    "method": "HEAD",
+    "status": 200,
+    "content_type": "application/json",
+    "body_bytes": 0
+  },
+  {
+    "path": "/favicon.ico",
+    "method": "GET",
+    "status": 200,
+    "content_type": "image/png",
+    "body_bytes": 981592
+  },
+  {
+    "path": "/favicon.png",
+    "method": "GET",
+    "status": 200,
+    "content_type": "image/png",
+    "body_bytes": 981592
+  }
+]
