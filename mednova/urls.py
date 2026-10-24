@@ -10,8 +10,8 @@ from care import reviews
 from care import payments
 
 urlpatterns = [
-    path('favicon.ico', RedirectView.as_view(url='/static/img/logo.png'), name='favicon'),
-    path('favicon.png', RedirectView.as_view(url='/static/img/logo.png'), name='favicon_png'),
+    path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg'), name='favicon'),
+    path('favicon.png', RedirectView.as_view(url='/static/img/favicon.svg'), name='favicon_png'),
     path('appointments/<uuid:pk>/payment/', payments.instructions, name='appointment_payment'),
     path('payments/verification/', payments.verification, name='payment_verification'),
     path('payments/verification/<uuid:pk>/', payments.verification, name='payment_verification_detail'),
