@@ -1,8 +1,8 @@
 # MedNova redesign — verified live release
 
-**Live:** https://mednova-jvn-vercel-snowy.vercel.app/  
-**Commit:** `1c955165c3d58c43cda2848feee3351cd15dff77` on `cleanup/safe-2026-10-23`.  
-**Status:** deployed and visually verified; ready with external-integration limitations.  
+**Live:** https://mednova-jvn-vercel-snowy.vercel.app/
+**Commit:** `1c955165c3d58c43cda2848feee3351cd15dff77` on `cleanup/safe-2026-10-23`.
+**Status:** deployed and visually verified; ready with external-integration limitations.
 **Scores:** UI/UX **90/100**, reliability **88/100**. Scores reflect representative verification, not full WCAG certification or proof that every possible defect is absent.
 
 ## What changed
