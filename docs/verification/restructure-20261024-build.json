@@ -1,0 +1,26 @@
+{
+  "frontend_tests": {
+    "exit": 0,
+    "output": "\u2714 routes the existing server-rendered site and APIs together (3.8355ms)\n\u2714 rejects missing, local, insecure, credential-bearing and non-origin destinations (1.5737ms)\n\u2139 tests 2\n\u2139 suites 0\n\u2139 pass 2\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 234.1018\n"
+  },
+  "frontend_build": {
+    "exit": 0,
+    "output": "Vercel routing output generated. Pages, APIs, forms and private files use the same browser origin.\n"
+  },
+  "video_lifecycle": {
+    "exit": 0,
+    "output": "\u2714 ending during pending media permission stops the late stream (5.28ms)\n\u2714 denied media permission restores controls with understandable feedback (4.6749ms)\n\u2139 tests 2\n\u2139 suites 0\n\u2139 pass 2\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 241.3956\n"
+  },
+  "js_app_syntax": {
+    "exit": 0,
+    "output": ""
+  },
+  "js_video_syntax": {
+    "exit": 0,
+    "output": ""
+  },
+  "dependencies": {
+    "exit": 0,
+    "output": "No broken requirements found.\n"
+  }
+}

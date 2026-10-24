@@ -1,0 +1,11 @@
+{
+  "target": "existing authoritative Aiven MySQL",
+  "migrations": [
+    "0015_appointment_cancellation_history",
+    "0016_cancellation_notification_length"
+  ],
+  "rehearsal": "restored backup passed",
+  "applied": true,
+  "existing_record_counts_unchanged": true,
+  "patient_or_appointment_records_modified": false
+}

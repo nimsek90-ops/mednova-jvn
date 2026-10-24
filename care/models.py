@@ -161,6 +161,18 @@ class Appointment(models.Model):
         return str(self.id).split("-")[0].upper()
 
 
+class AppointmentCancellation(models.Model):
+    """Immutable snapshot; the original cancelled appointment is never reopened."""
+    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT, related_name='cancellation')
+    doctor = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')
+    patient = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')
+    cancelled_by = models.ForeignKey(User, on_delete=models.PROTECT, related_name='+')
+    original_start = models.DateTimeField()
+    reason = models.CharField(max_length=300)
+    kind = models.CharField(max_length=24, default='cancelled_by_doctor')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
 class Prescription(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     appointment = models.OneToOneField(
@@ -330,7 +342,7 @@ class Hospital(models.Model):
 class Notification(models.Model):
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notifications")
     appointment = models.ForeignKey(Appointment, on_delete=models.PROTECT, null=True, blank=True)
-    message = models.CharField(max_length=200)
+    message = models.CharField(max_length=1000)
     read = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 

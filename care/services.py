@@ -161,12 +161,29 @@ def change_status(appt, user, status, reason=''):
         raise BookingError("A past appointment cannot be confirmed.")
     if status in ("completed", "no_show") and appt.slot.start > timezone.now():
         raise BookingError("The consultation has not started yet.")
+    if not isinstance(reason, str):
+        raise BookingError('Enter a valid cancellation reason.')
+    if status == 'cancelled' and actor.role == 'doctor' and len(reason.strip()) < 5:
+        raise BookingError('Enter a cancellation reason of 5 to 300 characters.')
     if len(reason) > 300:
         raise BookingError('Cancellation reason must be at most 300 characters.')
     appt.status = status
     if status == 'cancelled':
         appt.cancellation_reason = reason.strip()
     appt.save(update_fields=["status", 'cancellation_reason'])
+    if status == 'cancelled' and actor.role == 'doctor':
+        from .models import AppointmentCancellation
+        from .delivery import publish
+        from django.urls import reverse
+        AppointmentCancellation.objects.create(appointment=appt, doctor_id=appt.slot.doctor_id,
+            patient_id=appt.patient_id, cancelled_by=actor, original_start=appt.slot.start, reason=reason.strip())
+        when = timezone.localtime(appt.slot.start).strftime('%d %b %Y at %I:%M %p IST')
+        publish(appt.patient, f'Your appointment with Dr. {actor.name} on {when} has been cancelled by the doctor. '
+            f'Reason: {reason.strip()} You can reschedule or choose another available doctor.',
+            f'doctor-cancellation:{appt.pk}', appt)
+        # Do not offer this unavailable doctor's cancelled time to another patient.
+        Slot.objects.filter(pk=appt.slot_id).update(active=False)
+
     from .models import QueueEntry
     if status in ('completed','no_show'):
         QueueEntry.objects.filter(appointment=appt, status__in=['waiting','called','in_consultation']).update(status='completed' if status=='completed' else 'cancelled', updated=timezone.now())
@@ -177,14 +194,15 @@ def change_status(appt, user, status, reason=''):
         Payment.objects.filter(appointment=appt, status="paid", amount__gt=0).update(
             status="refund_due"
         )
-        if appt.slot.start > timezone.now():
+        if actor.role != "doctor" and appt.slot.start > timezone.now():
             from .models import WaitingList
             from .delivery import publish
             for entry in WaitingList.objects.filter(doctor_id=appt.slot.doctor_id, mode=appt.mode, active=True).select_related('patient'):
                 publish(entry.patient, 'An appointment time may now be available with your requested doctor. Sign in to review current availability.',
                     f'waiting:{appt.pk}:{entry.pk}:{appt.slot_id}')
     audit(user, "appointment." + status, appt.pk)
-    notify(appt, "Appointment " + status + ".")
+    if not (status == "cancelled" and actor.role == "doctor"):
+        notify(appt, "Appointment " + status + ".")
 
 
 @transaction.atomic

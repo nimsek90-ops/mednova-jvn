@@ -1,0 +1,7 @@
+{
+  "sha256": "341591f8b238071ecc54e3e6ceaaa1f5c44b1b52fbab66149bfeff264920d4b8",
+  "bytes": 255874,
+  "tables": 53,
+  "row_count_mismatches": 0,
+  "status": "backup and isolated restore verified"
+}

@@ -9,7 +9,10 @@ from care import reception
 from care import reviews
 from care import payments
 
+from care import cancellations
+
 urlpatterns = [
+    path('appointments/<uuid:pk>/alternatives/', cancellations.alternatives, name='cancellation_alternatives'),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg'), name='favicon'),
     path('favicon.png', RedirectView.as_view(url='/static/img/favicon.svg'), name='favicon_png'),
     path('appointments/<uuid:pk>/payment/', payments.instructions, name='appointment_payment'),

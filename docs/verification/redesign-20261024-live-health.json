@@ -1,0 +1,18 @@
+[
+  {
+    "origin": "https://mednova-jvn-backend.onrender.com",
+    "status": 200,
+    "body": {
+      "status": "ok"
+    },
+    "passed": true
+  },
+  {
+    "origin": "https://mednova-jvn-vercel-snowy.vercel.app",
+    "status": 200,
+    "body": {
+      "status": "ok"
+    },
+    "passed": true
+  }
+]

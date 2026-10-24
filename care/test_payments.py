@@ -170,7 +170,7 @@ class PaymentVerificationTests(TestCase):
     def test_cancelled_after_upload_cannot_be_confirmed(self):
         self.submit()
         payment = self.payment()
-        change_status(self.appt, self.doctor, 'cancelled')
+        change_status(self.appt, self.doctor, 'cancelled', reason='Doctor unavailable')
         with self.assertRaises(forms.ValidationError):
             verify_payment(self.doctor, self.appt.pk, action='confirm', version=payment.verification_version)
         self.assertEqual(self.payment().status, 'awaiting')

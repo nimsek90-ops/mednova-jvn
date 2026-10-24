@@ -1,0 +1,37 @@
+[
+  {
+    "asset": "static/css/healthcare.css",
+    "local_worktree_hash_matched": false,
+    "committed_blob_hash": "a5d9f019daab5b9ce1a0e93ad620e072275b850ffa6e8d77bfefd0fee660ed5d",
+    "live_hash_matched": true,
+    "cause": "Git stores LF; Windows checkout uses CRLF where byte hashes differ"
+  },
+  {
+    "asset": "static/css/chatbot.css",
+    "local_worktree_hash_matched": false,
+    "committed_blob_hash": "84623f9e96b486ca1af31d98fdbd8ca717f023420e9180473670c1b7fd4c1d95",
+    "live_hash_matched": true,
+    "cause": "Git stores LF; Windows checkout uses CRLF where byte hashes differ"
+  },
+  {
+    "asset": "static/css/reviews.css",
+    "local_worktree_hash_matched": false,
+    "committed_blob_hash": "e4852bac2521c5702f2b53eead2ca2f642049571f08281906add07e760811fd7",
+    "live_hash_matched": true,
+    "cause": "Git stores LF; Windows checkout uses CRLF where byte hashes differ"
+  },
+  {
+    "asset": "static/img/brand-mark.svg",
+    "local_worktree_hash_matched": true,
+    "committed_blob_hash": "e0fd63f6561fb6007b486da3d99bd779b228fe394f7b26822a88188a47894654",
+    "live_hash_matched": true,
+    "cause": "Git stores LF; Windows checkout uses CRLF where byte hashes differ"
+  },
+  {
+    "asset": "static/img/hospital-line.svg",
+    "local_worktree_hash_matched": true,
+    "committed_blob_hash": "af94ab735f8c4a972653af02d25b3c58c3776bd7e5f29b28f62f27685403f647",
+    "live_hash_matched": true,
+    "cause": "Git stores LF; Windows checkout uses CRLF where byte hashes differ"
+  }
+]

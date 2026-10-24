@@ -45,3 +45,18 @@ class InitialPasswordMiddleware:
             from django.shortcuts import redirect
             return redirect('password')
         return self.get_response(request)
+
+
+class SessionActivityMiddleware:
+    """Refresh rolling expiry at most every five minutes, not on every video poll."""
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        import time
+        if request.user.is_authenticated:
+            now = int(time.time())
+            previous = request.session.get('_activity_refreshed_at', 0)
+            if not isinstance(previous, (int, float)) or now - previous >= 300:
+                request.session['_activity_refreshed_at'] = now
+        return self.get_response(request)

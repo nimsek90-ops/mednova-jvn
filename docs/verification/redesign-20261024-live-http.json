@@ -1,0 +1,100 @@
+{
+  "commit": "1c955165c3d58c43cda2848feee3351cd15dff77",
+  "origin": "https://mednova-jvn-vercel-snowy.vercel.app",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "passed": true,
+      "new_theme_in_html": true
+    },
+    {
+      "path": "/health/",
+      "status": 200,
+      "passed": true,
+      "new_theme_in_html": null
+    },
+    {
+      "path": "/doctors/",
+      "status": 200,
+      "passed": true,
+      "new_theme_in_html": true
+    },
+    {
+      "path": "/login/?role=doctor",
+      "status": 200,
+      "passed": true,
+      "new_theme_in_html": true
+    },
+    {
+      "path": "/register/",
+      "status": 200,
+      "passed": true,
+      "new_theme_in_html": true
+    },
+    {
+      "path": "/contact/",
+      "status": 200,
+      "passed": true,
+      "new_theme_in_html": true
+    },
+    {
+      "path": "/assistant/",
+      "status": 200,
+      "passed": true,
+      "new_theme_in_html": true
+    },
+    {
+      "path": "/.env",
+      "status": 404,
+      "passed": true,
+      "new_theme_in_html": null
+    },
+    {
+      "path": "/.git/config",
+      "status": 404,
+      "passed": true,
+      "new_theme_in_html": null
+    },
+    {
+      "path": "/static/css/healthcare.css",
+      "status": 200,
+      "sha256": "a5d9f019daab5b9ce1a0e93ad620e072275b850ffa6e8d77bfefd0fee660ed5d",
+      "matches_release_source": false,
+      "passed": true,
+      "matches_committed_source": true
+    },
+    {
+      "path": "/static/css/chatbot.css",
+      "status": 200,
+      "sha256": "84623f9e96b486ca1af31d98fdbd8ca717f023420e9180473670c1b7fd4c1d95",
+      "matches_release_source": false,
+      "passed": true,
+      "matches_committed_source": true
+    },
+    {
+      "path": "/static/css/reviews.css",
+      "status": 200,
+      "sha256": "e4852bac2521c5702f2b53eead2ca2f642049571f08281906add07e760811fd7",
+      "matches_release_source": false,
+      "passed": true,
+      "matches_committed_source": true
+    },
+    {
+      "path": "/static/img/brand-mark.svg",
+      "status": 200,
+      "sha256": "e0fd63f6561fb6007b486da3d99bd779b228fe394f7b26822a88188a47894654",
+      "matches_release_source": true,
+      "passed": true,
+      "matches_committed_source": true
+    },
+    {
+      "path": "/static/img/hospital-line.svg",
+      "status": 200,
+      "sha256": "af94ab735f8c4a972653af02d25b3c58c3776bd7e5f29b28f62f27685403f647",
+      "matches_release_source": true,
+      "passed": true,
+      "matches_committed_source": true
+    }
+  ]
+}

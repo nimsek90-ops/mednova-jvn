@@ -1,0 +1,44 @@
+[
+  {
+    "path": "care\\__pycache__",
+    "files": 44,
+    "bytes": 849661.0,
+    "action": "reversibly archived"
+  },
+  {
+    "path": "care\\management\\__pycache__",
+    "files": 1,
+    "bytes": 189.0,
+    "action": "reversibly archived"
+  },
+  {
+    "path": "care\\management\\commands\\__pycache__",
+    "files": 8,
+    "bytes": 27423.0,
+    "action": "reversibly archived"
+  },
+  {
+    "path": "care\\migrations\\__pycache__",
+    "files": 17,
+    "bytes": 75502.0,
+    "action": "reversibly archived"
+  },
+  {
+    "path": "care\\templatetags\\__pycache__",
+    "files": 2,
+    "bytes": 21653.0,
+    "action": "reversibly archived"
+  },
+  {
+    "path": "mednova\\__pycache__",
+    "files": 6,
+    "bytes": 29151.0,
+    "action": "reversibly archived"
+  },
+  {
+    "path": "tools\\__pycache__",
+    "files": 3,
+    "bytes": 19649.0,
+    "action": "reversibly archived"
+  }
+]

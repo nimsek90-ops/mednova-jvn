@@ -1,0 +1,21 @@
+Creating test database for alias 'default'...
+
+....Private report storage is unavailable.
+........................Request rejected by CSRF protection (cookie missing).
+..................................Request rejected by CSRF protection (cookie missing).
+................Request rejected by CSRF protection (cookie missing).
+...........................................Request rejected by CSRF protection (cookie missing).
+....Request rejected by CSRF protection (cookie missing).
+.....................Request rejected by CSRF protection (origin).
+Request rejected by CSRF protection (origin).
+........Request rejected by CSRF protection (cookie missing).
+...........................................................Private report storage is unavailable.
+.......................
+----------------------------------------------------------------------
+Ran 236 tests in 91.042s
+
+OK
+Destroying test database for alias 'default'...
+
+Found 236 test(s).
+System check identified no issues (0 silenced).

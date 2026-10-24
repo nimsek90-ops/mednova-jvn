@@ -1,0 +1,48 @@
+{
+  "tracked_file_extensions": {
+    "": 4,
+    ".example": 1,
+    ".json": 141,
+    ".ps1": 3,
+    ".render": 1,
+    ".md": 48,
+    ".code-workspace": 1,
+    ".cmd": 2,
+    ".txt": 68,
+    ".py": 83,
+    ".pem": 1,
+    ".mjs": 2,
+    ".js": 7,
+    ".png": 16,
+    ".jpg": 7,
+    ".toml": 1,
+    ".yaml": 1,
+    ".css": 7,
+    ".woff2": 2,
+    ".svg": 3,
+    ".html": 76
+  },
+  "python_parse_errors": [],
+  "exact_duplicate_source_groups": [
+    [
+      "care/__init__.py",
+      "care/management/__init__.py",
+      "care/management/commands/__init__.py",
+      "care/migrations/__init__.py",
+      "care/templatetags/__init__.py",
+      "mednova/__init__.py"
+    ]
+  ],
+  "canonical_runtime": {
+    "frontend": "deployment/vercel/build.mjs generates same-origin proxy routes",
+    "backend": "Dockerfile.render -> deployment/render/start.py -> mednova.wsgi -> mednova.settings",
+    "authentication": "Django sessions and care.User",
+    "database": "Aiven MySQL mednova; production config uses MYSQL_*",
+    "private_files": "Cloudflare R2 through Django storage"
+  },
+  "optional_not_live": [
+    "PostgreSQL adapter and isolated rehearsal tools",
+    "direct-Django Vercel deployment compatibility configuration"
+  ],
+  "decision": "No duplicate live backend or competing authentication implementation found. Optional tested adapters, migrations and deployment files retained."
+}

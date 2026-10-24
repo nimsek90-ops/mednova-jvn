@@ -198,3 +198,7 @@ footer {font-size:12px;border-top:1px solid var(--line)}
 .payment-summary>p:last-child {margin-top:24px;margin-bottom:0}
 .payment-guidance {padding:18px 20px;margin:22px 0}
 .payment-guidance p {margin:8px 0 0;color:inherit}
+
+.cancel-dialog {border:1px solid var(--line);border-radius:12px;padding:28px;width:min(520px,calc(100% - 32px));color:var(--ink);background:#fff}
+.cancel-dialog::backdrop {background:#0f172a66}
+.cancel-dialog form>.secondary {margin-top:12px;width:100%}

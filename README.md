@@ -1,5 +1,14 @@
 # MedNova Smart Hospital
 
+## Authoritative live architecture
+
+Vercel (`deployment/vercel`) proxies same-origin requests to Render (`Dockerfile.render` → `deployment/render/start.py` → Django WSGI). **Aiven MySQL is the one authoritative live database.** Cloudflare R2 stores private upload objects; Django sessions and `care.User` provide authentication. Supabase is not part of the active live deployment.
+
+PostgreSQL helpers and the root direct-Django Vercel configuration are optional, tested compatibility paths, not a second live backend or database. Do not run a data-copy or deployment helper without selecting its target explicitly. Local fixtures, restore databases and historical audit evidence are not production sources.
+
+See [restructuring evidence](docs/RESTRUCTURE_2026-10-24.md) for the current workflow repairs and deployment status.
+
+
 Django templates and plain JavaScript, served by Waitress. MySQL is the working database. No npm build or separate frontend server is required.
 
 ## Run the existing project

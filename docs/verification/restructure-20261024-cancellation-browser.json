@@ -1,0 +1,23 @@
+{
+  "workflow": "Synthetic doctor sign-in; required-reason modal; cancellation committed; patient sign-in; persisted notification; alternatives page",
+  "passed": true,
+  "viewports": [
+    {
+      "page": "/appointments/aa169145-4481-4fab-b848-aa53f2895f31/alternatives/",
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "page": "/appointments/aa169145-4481-4fab-b848-aa53f2895f31/alternatives/",
+      "scrollWidth": 753,
+      "width": 753
+    },
+    {
+      "page": "/appointments/aa169145-4481-4fab-b848-aa53f2895f31/alternatives/",
+      "scrollWidth": 1425,
+      "width": 1425
+    }
+  ],
+  "production_records_mutated": false,
+  "console": []
+}

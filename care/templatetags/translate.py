@@ -3,6 +3,13 @@ from django import template
 register = template.Library()
 # Interface translations; medical records and names retain the author's original wording.
 WORDS = {
+    "Cancelled by doctor": ("डॉक्टरांनी भेट रद्द केली", "डॉक्टर ने अपॉइंटमेंट रद्द की"),
+    "Choose another appointment": ("दुसरी भेट निवडा", "दूसरी अपॉइंटमेंट चुनें"),
+    "Choose your next appointment": ("तुमची पुढील भेट निवडा", "अपनी अगली अपॉइंटमेंट चुनें"),
+    "Reschedule with the same doctor": ("त्याच डॉक्टरांची नवीन वेळ निवडा", "उसी डॉक्टर के साथ नई अपॉइंटमेंट चुनें"),
+    "Book another doctor": ("दुसऱ्या डॉक्टरांची भेट ठरवा", "दूसरे डॉक्टर की अपॉइंटमेंट बुक करें"),
+    "Keep appointment": ("भेट कायम ठेवा", "अपॉइंटमेंट बनाए रखें"),
+
     "Patient": ("रुग्ण", "मरीज़"),
     "Doctor": ("डॉक्टर", "डॉक्टर"),
     "Receptionist": ("स्वागत कक्ष", "रिसेप्शनिस्ट"),

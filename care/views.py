@@ -375,9 +375,7 @@ def password(request):
 @require_http_methods(["GET"])
 def doctors(request):
     from .models import Specialty
-    profiles = DoctorProfile.objects.select_related("user", "department").filter(
-        user__role="doctor", user__approval="approved", user__is_active=True, department__active=True
-    )
+    profiles = approved_profiles()
     from django.db.models import Min
     from .scheduling import available_slots
     available = available_slots(include_urgent=request.user.is_authenticated and request.user.role == 'receptionist')

@@ -1,0 +1,36 @@
+{
+  "commit": "1c955165c3d58c43cda2848feee3351cd15dff77",
+  "branch": "cleanup/safe-2026-10-23",
+  "render": {
+    "deployment": "dep-dbe15gmi0phs73bkoojg",
+    "status": "live",
+    "finishedAt": "2026-10-24T02:07:46.733214Z",
+    "errors_in_filtered_release_logs": 0
+  },
+  "vercel": {
+    "deployment": "4aqcp8cAqyUiajqQFobty5Hobug7",
+    "url": "mednova-jvn-vercel-r93zzpyom-jayesh-v-nimse.vercel.app",
+    "status": "Ready",
+    "environment": "Production",
+    "commit": "1c95516",
+    "verified_using": "signed-in Vercel browser deployment history; connector scope returned 403"
+  },
+  "public_url": "https://mednova-jvn-vercel-snowy.vercel.app/",
+  "live_browser": {
+    "homepage": "new brand and medical-blue theme visibly present",
+    "mobile_client_width": 375,
+    "mobile_scroll_width": 375,
+    "public_menu": "opens; doctor directory link visible; closes",
+    "console_warnings_errors": []
+  },
+  "screenshots": [
+    ".runtime/redesign-live-home-desktop.png",
+    ".runtime/redesign-live-home-mobile.png",
+    ".runtime/redesign-vercel-release.png"
+  ],
+  "notes": [
+    "Initial CSS worktree byte hashes differed because Windows CRLF checkout differs from committed LF blobs. All five live assets match SHA256 of git show HEAD:path.",
+    "One follow-up HTTP asset normalization fetch timed out; committed-blob comparison used already downloaded live hashes.",
+    "A transient Render application-loading screen appeared during one browser refresh; subsequent homepage navigation and both origin health checks succeeded."
+  ]
+}

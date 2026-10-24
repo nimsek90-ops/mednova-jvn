@@ -4,7 +4,7 @@ const menu=document.querySelector('.menu-toggle'),sidebar=document.getElementByI
 if(menu&&sidebar){menu.addEventListener('click',()=>{menu.setAttribute('aria-expanded',String(sidebar.classList.toggle('open')));});document.addEventListener('keydown',e=>{if(e.key==='Escape'){sidebar.classList.remove('open');menu.setAttribute('aria-expanded','false');}});document.addEventListener('click',e=>{if(!sidebar.contains(e.target)&&!menu.contains(e.target)){sidebar.classList.remove('open');menu.setAttribute('aria-expanded','false');}});}
 document.querySelectorAll('.sidebar nav a').forEach(a=>{if(a.pathname===location.pathname){a.classList.add('active');a.setAttribute('aria-current','page');}});
 document.querySelectorAll('.filter-tabs a').forEach(a=>{if(a.search===location.search){a.classList.add('active');a.setAttribute('aria-current','page');}});
-document.querySelectorAll('[data-confirm]').forEach(f=>f.addEventListener('submit',e=>{if(!window.confirm(f.dataset.confirm))e.preventDefault();}));
+document.querySelectorAll('[data-confirm]').forEach(f=>f.addEventListener('submit',e=>{if(f.dataset.confirm&&!window.confirm(f.dataset.confirm))e.preventDefault();}));
 document.querySelectorAll('.print-button').forEach(b=>b.addEventListener('click',()=>window.print()));
 if(document.querySelector('details .errorlist'))document.querySelector('details').open=true;
 
@@ -25,3 +25,15 @@ if(sidebar&&menu){const narrow=window.matchMedia('(max-width:820px)');const sync
 document.querySelectorAll('.booking-form input[name="slot"]').forEach(input=>input.addEventListener('change',()=>{const summary=document.querySelector('.booking-selection');if(summary){summary.querySelector('strong').textContent=input.dataset.label;summary.querySelector('p').textContent='Selected time. Complete your visit details to request this appointment.';}}));
 
 document.querySelectorAll('.print-page').forEach(button=>button.addEventListener('click',()=>window.print()));
+
+// Progressive enhancement: the original reason form remains usable without JavaScript.
+document.querySelectorAll('form[data-cancel-dialog]').forEach(form=>{
+ if(!window.HTMLDialogElement)return;
+ const dialog=document.createElement('dialog');dialog.className='cancel-dialog';
+ const heading=document.createElement('h2');heading.id='doctor-cancel-title';heading.textContent=form.querySelector('button').textContent;
+ dialog.setAttribute('aria-labelledby',heading.id);
+ const opener=document.createElement('button');opener.type='button';opener.className='danger wide';opener.textContent=form.querySelector('button').textContent;
+ form.replaceWith(opener);dialog.append(heading,form);document.body.append(dialog);form.removeAttribute('data-confirm');
+ const back=document.createElement('button');back.type='button';back.className='secondary';back.textContent=form.dataset.keepLabel||'Keep appointment';back.addEventListener('click',()=>dialog.close());form.append(back);
+ opener.addEventListener('click',()=>dialog.showModal());
+});
