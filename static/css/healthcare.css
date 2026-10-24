@@ -1,0 +1,200 @@
+/* Shared healthcare theme. Existing semantic components and workflow layouts remain in use. */
+:root {
+  --blue:#155eef; --teal:#155eef; --hover:#1049bd; --cyan:#06b6d4;
+  --navy:#0f172a; --ink:#26364b; --muted:#526277;
+  --bg:#f1f5f9; --surface:#fff; --line:#dce4ef; --soft-teal:#edf4ff;
+  --radius:16px; --radius-sm:10px; --shadow:0 3px 14px #17315c05;
+  --palette-white:#fff; --palette-navy:#0f172a; --palette-rail:#fff;
+  --palette-ink:#26364b; --palette-muted:#526277; --palette-teal:#155eef;
+  --palette-hover:#1049bd; --palette-canvas:#f1f5f9; --palette-line:#dce4ef; --palette-soft:#edf4ff;
+}
+body {font-size:14px;line-height:1.65;background:var(--bg);color:var(--ink)}
+h1,h2,h3 {color:var(--navy);letter-spacing:-.035em}
+h1 {font-size:clamp(28px,3vw,40px);line-height:1.15}
+h2 {font-size:21px;line-height:1.3}
+p,small,.muted {color:var(--muted)}
+a {color:var(--blue)}
+:where(a,button,input,select,textarea,summary):focus-visible {outline:3px solid var(--blue);outline-offset:4px}
+button,input,select,textarea {font-size:14px}
+.primary {background:var(--blue);color:#fff;box-shadow:none}
+.primary:hover {background:var(--hover);color:#fff}
+.secondary {border-color:var(--line);color:var(--navy);background:#fff}
+.secondary:hover {background:var(--soft-teal);border-color:#a9c4f8}
+.primary,.secondary,.danger {font-size:13px;min-height:44px;border-radius:10px}
+.card,.doctor-result,.doctor-card {box-shadow:var(--shadow);border-color:var(--line);border-radius:var(--radius)}
+.card {padding:28px}
+label {color:var(--ink);font-size:13px}
+input:not([type=checkbox]):not([type=radio]),select,textarea {border:1px solid #aebed1;border-radius:10px;font-size:14px;min-height:46px}
+input:focus,select:focus,textarea:focus {border-color:var(--blue);outline:3px solid #155eef24}
+input:hover,select:hover,textarea:hover {border-color:#759bd4}
+.help-text {font-size:12px;color:var(--muted)}
+.errorlist {color:#a32034;background:#fff1f3}
+.sidebar {background:#fff;color:var(--ink);border-right:1px solid var(--line);box-shadow:none}
+.sidebar .brand,.sidebar .brand span,.sidebar .brand small {color:var(--navy)}
+.brand img {width:40px;height:40px;border-radius:11px}
+.sidebar nav a {color:#526277;font-size:13px;border-radius:10px;min-height:46px}
+.sidebar nav a:hover {background:#f5f8ff;color:var(--blue)}
+.sidebar nav a.active {background:var(--soft-teal);color:#124dc4;box-shadow:inset 3px 0 var(--blue)}
+.sidebar nav .ui-icon {color:inherit}
+.sidebar .nav-heading {color:#526277;font-size:10px;letter-spacing:1.2px}
+.sidebar-bottom {border-color:var(--line)}
+.sidebar-bottom p {color:var(--muted);font-size:12px}
+.sidebar-bottom .secondary {background:#f8fafc;color:var(--navy);border-color:var(--line)}
+.sidebar-bottom .secondary:hover {background:var(--soft-teal)}
+.sidebar nav a.active .ui-icon {color:var(--blue)}
+.topbar {border-bottom:1px solid var(--line);background:#fff}
+.breadcrumb {font-size:13px;color:var(--muted)}
+.avatar {background:var(--soft-teal);border-color:#d4e3ff;color:var(--blue)}
+.user-link {font-size:13px}
+.language-form select,.language-form button {background:#f8fafc}
+.page-heading {align-items:center;margin-bottom:26px}
+.page-heading p {font-size:14px}
+.eyebrow,.page-heading .eyebrow {color:#365b89;font-size:10px;letter-spacing:1.5px}
+.task-overview {background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;gap:32px;margin-bottom:24px;box-shadow:var(--shadow)}
+.task-lead h2 {font-size:30px;max-width:600px;line-height:1.2;margin:10px 0 14px}
+.task-lead p {font-size:14px;max-width:620px}
+.task-context {background:#edf7fc;border:1px solid #d7eaf4;border-radius:12px;padding:24px;align-self:stretch}
+.task-context>strong {color:var(--blue)}
+.task-context>p {font-size:12px;color:var(--muted)}
+.stats-grid {background:transparent;border:0;gap:18px;overflow:visible;margin-bottom:28px}
+.stat {background:#fff;border:1px solid var(--line);border-radius:14px;padding:0;box-shadow:none}
+.stat>a {padding:22px;display:grid;grid-template-columns:1fr auto;gap:10px;text-decoration:none}
+.stat span {font-size:13px;color:var(--muted)}
+.stat strong {font-size:34px;color:var(--navy)}
+.stat small {font-size:12px;color:var(--blue)}
+.stat:after {display:none}
+.stat:hover {border-color:#a9c4f8}
+.date-tile,.doctor-initial {background:var(--soft-teal);color:var(--blue);border-color:#d6e4ff}
+.appointment-row {padding:22px 0}
+.appointment-info h3 {font-size:15px}
+.appointment-info p,.appointment-action,.quick-actions>a {font-size:13px}
+.section-heading>a,.list-row>a {font-size:13px}
+.status {font-size:11px;font-weight:600;padding:5px 10px;white-space:normal}
+.status.confirmed,.status.approved {background:#eaf2ff;color:#174aaf;border-color:#cedeff}
+.status.completed {background:#eaf8f0;color:#226047;border-color:#cbe9d8}
+.filter-tabs a {font-size:12px;min-height:44px;border-radius:10px}
+.filter-tabs a.active {background:var(--blue);border-color:var(--blue);color:#fff}
+.table-card {padding:0}
+table {font-size:13px}
+th {background:#f8fafc;color:#526277;font-size:11px;letter-spacing:.04em}
+td {border-color:#e8edf4}
+tbody tr:hover {background:#f8fbff}
+.table-scroll {border-radius:14px;scrollbar-color:#aebed1 #f1f5f9}
+.empty {padding:38px 24px;background:#fafcff;border:1px dashed #cedbed;border-radius:12px}
+.empty p {font-size:13px}
+.empty-icon {background:var(--soft-teal);color:var(--blue)}
+.notice {background:#eff6ff;border-color:#d3e3ff;color:#254c7f;font-size:13px}
+.notice.success {background:#edf9f1;border-color:#cce8d4;color:#24603b}
+.notice.error {background:#fff1f3;color:#a32034}
+.directory-intro {padding:28px 0;margin:0 0 26px}
+.directory-intro h1 {font-size:clamp(30px,3.5vw,44px)}
+.directory-filters {grid-template-columns:minmax(160px,1.1fr) minmax(155px,1fr) minmax(155px,1fr);gap:18px;border-radius:16px}
+.directory-filters .available-filter {font-size:13px;grid-column:1/3}
+.directory-filters>button {grid-column:3;justify-self:end;min-width:140px}
+.directory-results {padding:4px 0 12px;font-size:14px}
+.doctor-result {padding:28px;gap:24px}
+.doctor-result:hover {border-color:#b3ccf5}
+.doctor-identity h2 {font-size:22px}
+.doctor-professional {border-color:var(--line)}
+.doctor-result p {font-size:14px}
+.doctor-professional small {font-size:12px}
+.doctor-visit {background:#f8faff;border:1px solid #e1eaff;border-radius:12px;padding:18px}
+.doctor-visit .next-time {font-size:12px}
+.next-time strong {color:#124dc4}
+.public {background:#fff}
+.public .topbar {background:#fff}
+.public-nav a {font-size:13px;color:#43546c}
+.public-nav a[aria-current],.public-nav a:hover {color:var(--blue)}
+.public-hero {padding:64px 40px;gap:64px;align-items:center;min-height:560px;background:#fff}
+.public-hero h1 {font-size:clamp(42px,4.5vw,66px);line-height:1.08;letter-spacing:-.05em;max-width:650px}
+.public-hero .lead {font-size:17px;line-height:1.8;max-width:560px;color:var(--muted)}
+.hero-kicker {background:#edf4ff;color:#174aaf;border-color:#d4e3ff;font-size:11px}
+.hero-kicker:before {background:var(--cyan)}
+.hero-note {color:var(--muted);font-size:12px}
+.hero-aside {background:#f1f7ff;border:1px solid #d9e7fb;border-radius:24px;padding:32px}
+.hero-aside>a {border-color:#d9e7fb;color:#2b527f;font-size:13px}
+.service-band {border-radius:16px;box-shadow:none}
+.service-band strong {font-size:14px}
+.service-band small {font-size:12px}
+.public main>.directory-intro,.public main>.directory-filters,.public main>.directory-results,.public main>.doctor-comparison,.public main>.directory-help {width:calc(100% - 64px);max-width:1180px;margin-left:auto;margin-right:auto}
+.login-layout {background:#f5f8fe}
+.login-story {background:#edf4ff;border-color:#d8e5fb}
+.login-story>.eyebrow {color:#275aa3}
+.login-story .lead {color:#526277;font-size:16px}
+.care-mark {color:#5c8bd8}
+.story-features {border-color:#cfddf2;font-size:13px;color:var(--ink)}
+.login-panel {background:#f8faff}
+.login-card {box-shadow:0 8px 30px #16386908;border-color:#dce4ef;padding:36px;border-radius:20px}
+.login-logo {width:52px;height:52px}
+.role-strip {gap:6px;flex-wrap:wrap}
+.role-strip a {border-radius:9px;color:#405675;font-size:12px;background:#fff}
+.role-strip a[aria-current=page] {background:var(--blue);border-color:var(--blue);color:#fff}
+.role-strip a:hover {border-color:var(--blue)}
+.booking-summary,.profile-booking {background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:none}
+.flow-section {background:#fff;border-color:var(--line);border-radius:16px}
+.flow-heading>span {background:var(--soft-teal);color:var(--blue);border-color:#d4e3ff}
+.date-choices a {border-radius:10px;border-color:var(--line)}
+.date-choices a[aria-current=date] {background:var(--blue);border-color:var(--blue);color:#fff}
+.date-choices a[aria-current=date] small {color:#fff}
+.slot-choice span {border-color:#aebed1;background:#fff;font-size:12px;border-radius:9px}
+.slot-choice:has(input:checked) span {background:#edf4ff;border:2px solid var(--blue);color:#124dc4}
+.booking-selection {background:var(--soft-teal);border-color:#d4e3ff;border-radius:10px}
+.assistant-launch {background:var(--blue);color:#fff;box-shadow:0 4px 14px #155eef24}
+.assistant-launch:hover {background:var(--hover)}
+.record-timeline>.card {border-left-color:#a9c4f8}
+footer {font-size:12px;border-top:1px solid var(--line)}
+@media(max-width:1100px) {
+  .directory-filters {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .directory-filters .available-filter {grid-column:1}
+  .directory-filters>button {grid-column:2}
+  .task-lead h2 {font-size:26px}
+  .public-hero {gap:32px;padding:44px 28px}
+}
+@media(max-width:820px) {
+  .task-overview {padding:24px;gap:20px}
+  .task-context {padding:20px}
+  .public-hero {min-height:0;grid-template-columns:1fr}
+  .hero-aside {padding:24px}
+  .public main>.directory-intro,.public main>.directory-filters,.public main>.directory-results,.public main>.doctor-comparison,.public main>.directory-help {width:calc(100% - 40px)}
+  .sidebar nav a.active {background:var(--soft-teal);color:#124dc4}
+  .topbar .user-link {min-height:44px}
+}
+@media(max-width:520px) {
+  .card {padding:20px}
+  .table-card {padding:0}
+  .task-overview {padding:20px;grid-template-columns:1fr}
+  .task-lead h2 {font-size:26px}
+  .task-context {border:1px solid #d7eaf4;padding:18px}
+  .stats-grid {grid-template-columns:1fr;gap:12px}
+  .stat>a {grid-template-columns:1fr auto;align-items:center;padding:18px 20px}
+  .stat span {font-size:13px;min-height:0}
+  .stat strong {grid-column:2;grid-row:1/3;font-size:30px}
+  .stat small {font-size:12px}
+  .directory-filters {grid-template-columns:1fr;gap:16px;padding:20px}
+  .directory-filters .available-filter,.directory-filters>button {grid-column:1}
+  .directory-filters>button {width:100%;justify-self:stretch}
+  .doctor-result {padding:20px}
+  .doctor-visit {padding:16px}
+  .public-hero {padding:32px 20px}
+  .public-hero h1 {font-size:44px}
+  .public-hero .lead {font-size:15px}
+  .hero-aside .hero-illustration {max-width:220px}
+  .service-band>a {padding:22px}
+  .login-card {padding:26px 22px}
+  .login-story {display:none}
+  .role-strip a {flex-basis:calc(50% - 6px)}
+  .page-heading,.section-heading {flex-wrap:wrap}
+  .section-heading>a {min-height:44px;display:inline-flex;align-items:center}
+  .appointment-action {font-size:12px}
+  .status {overflow-wrap:anywhere}
+}
+@media(prefers-reduced-motion:reduce) {*,*:before,*:after {transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media print {.sidebar,.topbar,.assistant-launch {display:none!important}.workspace .main-wrap {margin:0}.card {box-shadow:none;border-color:#aaa}}
+
+.stats-grid .stat {border:1px solid var(--line)}
+.profile-booking {border-top:3px solid var(--blue)}
+.payment-summary {max-width:840px}
+.payment-summary>h2 {font-size:30px;margin-top:10px}
+.payment-summary>p:last-child {margin-top:24px;margin-bottom:0}
+.payment-guidance {padding:18px 20px;margin:22px 0}
+.payment-guidance p {margin:8px 0 0;color:inherit}

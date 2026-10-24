@@ -1,0 +1,34 @@
+{
+  "database": "isolated synthetic MySQL audit schema",
+  "checks": [
+    {
+      "check": "patient login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "doctor login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "pharmacist login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "patient login and dashboard",
+      "passed": true
+    },
+    {
+      "check": "doctor issued prescription; pharmacy dispensed; patient retrieved; private image upload/download and ownership",
+      "passed": true
+    },
+    {
+      "check": "completed visit rating-only review, public retrieval, edit, repeated submission and owner boundary",
+      "passed": true
+    },
+    {
+      "check": "malformed assistant payloads return 400 and private/config URL probes return 404",
+      "passed": true
+    }
+  ],
+  "medicine_id": "6"
+}

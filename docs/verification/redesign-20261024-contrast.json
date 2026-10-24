@@ -1,0 +1,26 @@
+[
+  {
+    "foreground": "#ffffff",
+    "background": "#155eef",
+    "contrast": 5.41,
+    "AA_normal_text": true
+  },
+  {
+    "foreground": "#526277",
+    "background": "#ffffff",
+    "contrast": 6.23,
+    "AA_normal_text": true
+  },
+  {
+    "foreground": "#0f172a",
+    "background": "#ffffff",
+    "contrast": 17.85,
+    "AA_normal_text": true
+  },
+  {
+    "foreground": "#124dc4",
+    "background": "#edf4ff",
+    "contrast": 6.58,
+    "AA_normal_text": true
+  }
+]
